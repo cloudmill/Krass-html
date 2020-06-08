@@ -1,0 +1,26 @@
+[
+  {
+    "name" : "где купить",
+    "link" : "whereBuy.html"
+  },
+  {
+    "name" : "о krass",
+    "link" : "about.html"
+  },
+  {
+    "name" : "новости",
+    "link" : "news.html"
+  },
+  {
+    "name" : "контакты",
+    "link" : "contancs.html"
+  },
+  {
+    "name" : "сертификаты",
+    "link" : "sertificate.html"
+  },
+  {
+    "name" : "рекламные материалы",
+    "link" : "admaterials.html"
+  }
+]
