@@ -1,0 +1,12 @@
+.field {
+  label {
+    display: block;
+    > span {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 130%;
+      color: #0054a4;
+    }
+  }
+}

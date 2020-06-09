@@ -1,7 +1,27 @@
 extends ../layouts/default.pug
 
 block variables
- -var pageTitle='Главная'
+    -var pageTitle='Главная'
+
+mixin production-menu-items(json)
+    each item,key in json
+        div(class=`${item.active}`).production-menu-item
+            .section-title.production-menu-title(data-trigger=`target-${key}`) #{item.name}
+            .production-menu-sub
+                each link in item.sub
+                    a(href="") #{link}
+mixin production-preview-items(json)
+    each item,key in json
+        div(class=`${item.active}`, data-target=`target-${key}`).production-preview-item
+            .production-preview-wrapper
+                .production-preview-box
+                    .production-preview-img
+                        img(src=`images/cat-preview-${key+1}.png`, alt="")
+                    +bigLink('production-preview-but')
+                        |#{item.bigLink}
+            if (item.link)
+                +link('production-preview-link gray')
+                    |#{item.link}
 
 block content
     .page
@@ -13,9 +33,48 @@ block content
                     span Удобно
                     span Практично
             .main-banner-img
-                img(src="images/banner-1.png", alt="")
-                img(src="images/banner-2.png", alt="")
-                img(src="images/banner-3.png", alt="")
-                img(src="images/banner-4.png", alt="")
+                img(src="images/banner-1.png" alt="" width="397")
+                img(src="images/banner-2.png" alt="" width="287")
+                img(src="images/banner-3.png" alt="" width="200")
+                img(src="images/banner-4.png" alt="" width="252")
+        .production.content
+            .section-name продукция
+            .production-menu
+                +production-menu-items(getData('product/category'))
+            .production-imgs
+            .production-preview
+                +production-preview-items(getData('product/category'))
 
-  
+        .main-blog.content
+            .section-name блог
+            +link('main-blog-link')
+                |перейти в блог
+            .main-blog-content
+                .section-title.main-blog-title Делимся опытом
+                .main-blog-list
+                    .main-blog-item
+                        .main-blog-item-img
+                            img(src="images/main-blog-1.jpg" alt="")
+                        .main-blog-item-content
+                            a.main-blog-item-title Герметик – незаменимый строительный материал
+                            .main-blog-item-text При производстве строительных и ремонтных работ не обойтись без использования герметиков, которые представляют собой одно или двухкомпонентную эластичную смесь.
+                            .main-blog-item-tags
+                                a(href="") Герметик
+                                a(href="") Ремонт
+                    .main-blog-item
+                        .main-blog-item-img
+                            img(src="images/main-blog-2.jpg" alt="")
+                        .main-blog-item-content
+                            a.main-blog-item-title Запенили! Все о монтажной пене KRASS
+                            .main-blog-item-text Впервые применяться в строительстве монтажная пена стала в начале 80-х, но за счет своих свойств и удобства очень быстро завоевала любовь и доверие строителей всего мира. 
+                            .main-blog-item-tags
+                                a(href="") Герметик
+                                a(href="") Ремонт
+        include ../modules/whereBuyMap.pug
+
+
+
+
+
+
+

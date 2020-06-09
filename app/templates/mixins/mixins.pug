@@ -1,14 +1,23 @@
 mixin icon(iconName, type = 'png')
-    if(type == 'png')
-        i(class='icon '+'icon-'+iconName)
-    else
-        i(class='svg-icon '+'svg-'+iconName)
+  if(type == 'png')
+    i(class='icon '+'icon-'+iconName)
+  else
+    i(class='svg-icon '+'svg-'+iconName)
 
 
-mixin link(className)
-  div(class="main-link "+className)
+mixin link(className,href)
+  a(class="main-link "+className href=href)
     block
     +icon('str-link','svg')
+
+mixin bigLink(className,href)
+  a(class="big-link "+className href=href)
+    .big-link-mask
+      span
+        block
+      span
+        block
+    +icon('str-big-link-inside','svg')
 //
 // ниже для примера
 //

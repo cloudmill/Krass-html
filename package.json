@@ -43,6 +43,7 @@
     "fancybox": "^3.0.1",
     "gsap": "^3.3.1",
     "jquery": "^3.4.1",
+    "select2": "^4.0.13",
     "swiper": "^5.3.6"
   },
   "scripts": {
