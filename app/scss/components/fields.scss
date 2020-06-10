@@ -1,4 +1,5 @@
 .field {
+  margin-bottom: 30px;
   label {
     display: block;
     > span {
@@ -7,6 +8,39 @@
       font-size: 24px;
       line-height: 130%;
       color: #0054a4;
+      margin-bottom: 13px;
+      display: block;
+    }
+  }
+  &-select {
+    select {
+      display: none;
+    }
+    .select2 {
+      display: block;
+      min-width: 290px;
+      &-selection--single {
+        background: #ffffff;
+        border: 1px solid #dddddd;
+        height: 70px;
+        .select2 {
+          &-selection__rendered {
+            line-height: 70px;
+            padding-left: 20px;
+            padding-right: 40px;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: #0054a4;
+          }
+          &-selection__arrow {
+            height: 70px;
+            top: 0;
+            width: 16px;
+            right: 20px;
+          }
+        }
+      }
     }
   }
 }

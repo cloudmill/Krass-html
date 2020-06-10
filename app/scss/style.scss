@@ -1,6 +1,7 @@
 @import "../../node_modules/swiper/swiper.scss";
 @import "../../node_modules/fancybox/dist/scss/jquery.fancybox";
 @import "../../node_modules/normalize.css/normalize";
+@import "../../node_modules/select2/dist/css/select2.min.css";
 @import "base/import";
 @import "mixins/import";
 @import "modules/import";
@@ -14,7 +15,7 @@
     padding-left: 40px;
     padding-right: 40px;
   }
-  
+
   .section {
     &-title {
       font-style: normal;
@@ -34,6 +35,69 @@
       position: absolute;
       left: 40px;
       top: 40px;
+    }
+  }
+  .selectArea {
+    position: fixed;
+    z-index: 10000;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.08);
+    width: 100vw;
+    top: 0;
+    left: 0;
+    @include modalHide();
+    &.active {
+      @include modalShow();
+    }
+    cursor: url('../images/ursor-close.svg'), pointer;
+    .select2-dropdown {
+      cursor: pointer;
+      border: 0;
+      border-radius: 0;
+      .select2 {
+        &-selection__rendered {
+          cursor: pointer;
+          position: absolute;
+          bottom: 100%;
+          margin-bottom: -1px;
+          background: white;
+          width: 100%;
+          left: 0;
+          line-height: 70px;
+          padding-left: 20px;
+          padding-right: 40px;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          color: #CC3E1E;
+          border-bottom: 1px solid #cc3e1e;
+        }
+        &-selection__arrow {
+          height: 70px;
+          top: 0;
+          width: 16px;
+          right: 20px;
+        }
+      }
+      .select2-results__option {
+        &s{
+          padding: 20px 0;
+        }
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 130%;
+        color: #0054a4;
+        transition: 0.3s;
+        padding: 10px 16px;
+        &--highlighted,&:hover {
+          background: #fff7f5 !important;
+          color: #CC3E1E;
+        }
+        &[aria-selected="true"]{
+          background: none;
+        }
+      }
     }
   }
 }

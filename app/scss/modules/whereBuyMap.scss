@@ -1,4 +1,8 @@
 .whereBuy {
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
   &-text {
     font-style: normal;
     font-weight: bold;
@@ -7,5 +11,16 @@
     color: #0054a4;
     margin-top: 18px;
     margin-bottom: 90px;
+  }
+  &-img{
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &-str{
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
   }
 }
