@@ -14,30 +14,39 @@
   z-index: 2;
   cursor: pointer;
   background-color: inherit;
-  &:before {
-    content: "";
-    width: 52px;
-    height: 52px;
-    display: block;
+  &-circle {
+    transform: translate(-50%, -50%);
     position: absolute;
-    border: 1px solid #cc3e1e;
     left: 26px;
     top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
     z-index: -2;
+    margin-left: -8px;
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    svg {
+      width: 52px;
+      height: 52px;
+      transform: scaleY(-1) translateX(8px);
+      fill: transparent;
+      circle {
+        @include will-change(stroke-dasharray, 500px, 1.5s);
+        stroke: #cc3e1e;
+        cx: 26;
+        cy: 30;
+        r: 26px;
+        stroke-width: 1px;
+        stroke-dashoffset: 300px;
+      }
+    }
   }
-  &:after {
-    content: "";
-    width: 20px;
-    height: 20px;
-    display: block;
-    position: absolute;
-    left: 46px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    z-index: -1;
+
+  &:hover {
+    svg {
+      circle {
+        stroke-dasharray: 150px;
+      }
+    }
   }
   &.gray {
     &:after {
@@ -68,27 +77,63 @@
   align-items: center;
   position: relative;
   z-index: 2;
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-image: url(../images/str-big-link.png);
-    background-size: contain;
-    background-position: right;
-    height: 100%;
-    width: 31px;
+  overflow: hidden;
+  &:hover {
+    i:after {
+      background-image: url(../images/str-big-link-orange.png);
+    }
+    .big-link-bg {
+      span {
+        transform: rotate(0);
+      }
+    }
   }
-  &:before {
-    content: "";
-    width: calc(100% - 30px);
-    height: 100%;
+  &-bg {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: -1;
-    background: #0054a4;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    @mixin figureForBG($color) {
+      &:before {
+        content: "";
+        background-color: $color;
+        display: block;
+        position: absolute;
+        right: 7px;
+        top: 50%;
+        width: 45px;
+        z-index: -2;
+        height: 45px;
+        transform: translateY(-50%) rotate(45deg) skew(29deg, 29deg);
+      }
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -2;
+        background-color: $color;
+        width: calc(100% - 30px);
+        height: 100%;
+      }
+    }
+    @include figureForBG($color-main);
+    span {
+      content: "";
+      @include will-change(transform, rotate(-45deg) translate3d(0, -75px, 0));
+      display: block;
+      transform-origin: left bottom;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      @include figureForBG($color-hover-link);
+    }
   }
   &-mask {
     overflow: hidden;
@@ -97,53 +142,55 @@
     display: flex;
     align-items: center;
     position: relative;
-  }
-  span {
-    white-space: nowrap;
-    position: absolute;
-    padding-top: 3px;
-    left: 0;
-    top: 0;
-    display: block;
-    &:nth-child(1) {
-      animation: wordMoving 2s linear infinite;
+    span {
+      white-space: nowrap;
+      position: absolute;
+      padding-top: 3px;
+      left: 0;
+      top: 0;
+      display: block;
+
+      &:nth-child(1) {
+        animation: wordMoving 2s linear infinite;
+      }
+      &:nth-child(2) {
+        animation: wordMovingTwo 2s linear infinite;
+      }
     }
-    &:nth-child(2) {
-      animation: wordMovingTwo 2s linear infinite;
+    @keyframes wordMoving {
+      0% {
+        transform: translateX(0%);
+        margin-left: 0px;
+      }
+      100% {
+        transform: translateX(100%);
+        margin-left: 2px;
+      }
+    }
+    @keyframes wordMovingTwo {
+      0% {
+        transform: translateX(-100%);
+        margin-left: -2px;
+      }
+      100% {
+        transform: translateX(0);
+        margin-left: 0px;
+      }
     }
   }
   i {
     margin-left: 15px;
     &:after {
-      background: #0054a4;
+      @include will-change(background-image, "");
+      @include background("../images/str-big-link.png");
+      background-position: right;
       content: "";
+      display: block;
       position: absolute;
-      right: 7px;
-      top: 50%;
-      width: 45px;
-      z-index: -1;
-      height: 45px;
-      transform: translateY(-50%) rotate(45deg) skew(29deg, 29deg);
-    }
-  }
-  @keyframes wordMoving {
-    0% {
-      transform: translateX(0%);
-      margin-left: 0px;
-    }
-    100% {
-      transform: translateX(100%);
-      margin-left: 2px;
-    }
-  }
-  @keyframes wordMovingTwo {
-    0% {
-      transform: translateX(-100%);
-      margin-left: -2px;
-    }
-    100% {
-      transform: translateX(0);
-      margin-left: 0px;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 31px;
     }
   }
 }

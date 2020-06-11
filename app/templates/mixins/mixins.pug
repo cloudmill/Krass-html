@@ -6,24 +6,32 @@ mixin icon(iconName, type = 'png')
 
 
 mixin link(className,href)
-  a(class="main-link "+className href=href)
+  a(class=className href=href).main-link
     block
     +icon('str-link','svg')
+    .main-link-circle
+      svg( viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg")
+        circle
+mixin submit()
+  button.field-submit.main-link(type='submit')
+    block
+    +icon('str-link','svg')
+    .main-link-circle
+      svg( viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg")
+        circle
+
 
 mixin bigLink(className,href)
-  a(class="big-link "+className href=href)
+  a(class=className href=href).big-link
+    .big-link-bg
+      span
     .big-link-mask
       span
         block
       span
         block
     +icon('str-big-link-inside','svg')
-//
-// ниже для примера
-//
-mixin sliderSimple(json)
-  each data in json
-    .swiper-slide #{data.name}
+
 
 mixin slider(classSlider, pagination,navigation,scrollbar)
   div(class=classSlider).swiper-container
@@ -36,3 +44,23 @@ mixin slider(classSlider, pagination,navigation,scrollbar)
       .swiper-button-next
     if(scrollbar)
       .swiper-scrollbar
+
+mixin fieldSelect(id,name,values)
+  .field.field-select
+    label(for=id)
+      span Выберите свой регион
+      select(name=name id=id)
+        each val in values
+          option(value=val[0]) #{val[1]}
+
+mixin fieldBase(id,name,placeholder)
+  .field.field-base
+    label(for=id)
+      input(type="text" name=name id=id required)
+      span #{placeholder}
+mixin fieldCheck(id,name)
+  .field.field-check
+    label(for=id)
+      input(type="checkbox" name=name id=id required)
+      span
+        block

@@ -9,32 +9,31 @@ $grid-gap-vertical: 20px; // Расстояние между строками в
 
 $min-main-padding: 20px;
 $breakpoints: (
-  'xl': 1920px,
-  'lg': 1280px,
-  'md': 1024px,
-  'sm': 768px,
-  'xs': 480px,
-
-  'custom-1235': 1235px,
-  'custom-860': 860px,
-  'custom-800': 800px,
-  'custom-660': 660px,
+  "xl": 1920px,
+  "lg": 1280px,
+  "md": 1024px,
+  "sm": 768px,
+  "xs": 480px,
+  "custom-1235": 1235px,
+  "custom-860": 860px,
+  "custom-800": 800px,
+  "custom-660": 660px,
 );
 
 // ##########
 // Цвета
 // ##########
-$color-basic:black; // Основной цвет текста (применяется к body)
-$background-additional: #f6f5f3;
+$color-basic: #3b3f44; // Основной цвет текста (применяется к body)
+$color-hover-link: #cc3e1e;
 $color-placeholder: #777; // Основной цвет для placeholder
-$color-input: black; // Основной цвет input, select и textarea
-$color-main: #2252d8; // Основной фирменный цвет
-$color-border: #ccc; // Основной цвет границ таблиц, секций
+$color-input: #3b3f44; // Основной цвет input, select и textarea
+$color-main: #0054a4; // Основной фирменный цвет
+$color-border: #0054A4; // Основной цвет границ таблиц, секций
 
 // ##########
 // Transitions
 // ##########
-$ease-main: .2s ease;
+$ease-main: 0.2s ease;
 
 // ##########
 // Шрифты

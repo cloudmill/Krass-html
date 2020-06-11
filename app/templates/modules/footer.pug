@@ -1,1 +1,27 @@
+mixin footer-menu(json)
+  .footer-menu
+    each data in json
+      a.footer-menu-link(href=`${data.link}`) #{data.name}
+    a.footer-menu-link(href="blog.html") Блог
+mixin footer-cats(json)
+  each item,key in json
+    .footer-cats-item
+      a.footer-cats-title #{item.name}
+      .footer-cats-links
+        each link in item.sub
+          a.footer-cats-link #{link}
 .footer
+  .footer-col
+    .footer-cats
+      +footer-cats(getData('product/category'))
+  .footer-col
+    a.footer-phone(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
+    .footer-loc
+      span Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС
+      a(href="") на карте
+    +footer-menu(getData('menu'))
+    .footer-copy
+      span TM KRASS © 2020
+      span.dev 
+        span сделано в 
+        a(href="cloudmill.ru") cloudmill

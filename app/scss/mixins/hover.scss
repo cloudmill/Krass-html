@@ -1,0 +1,21 @@
+@mixin will-change($name, $beginValue, $time: 0.3s) {
+  will-change: $name;
+  transition: $name $time;
+  #{$name}: $beginValue;
+}
+
+@mixin linkHover() {
+  @include will-change("color", $color-main);
+  &:after,
+  &:before {
+    transition: color 0.3s, background 0.3s;
+  }
+  &:hover {
+    color: $color-hover-link;
+    &:before,
+    &:after {
+      color: $color-hover-link;
+      background-color: $color-hover-link;
+    }
+  }
+}

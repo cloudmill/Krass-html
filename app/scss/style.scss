@@ -17,11 +17,15 @@
   }
 
   .section {
+    
+    &+.section{
+      border-top: 0;
+    }
     &-title {
       font-style: normal;
       font-weight: bold;
       font-size: 60px;
-      line-height: 60px;
+      line-height: 130%;
       text-transform: uppercase;
       color: #0054a4;
     }
@@ -36,6 +40,13 @@
       left: 40px;
       top: 40px;
     }
+    &-full{
+      height: calc(100vh - 90px);
+    }
+    &-border{
+      border-top: 1px solid #DDDDDD;
+      border-bottom: 1px solid #DDDDDD;
+    }
   }
   .selectArea {
     position: fixed;
@@ -45,9 +56,9 @@
     width: 100vw;
     top: 0;
     left: 0;
-    @include modalHide();
+    @include opacityHide();
     &.active {
-      @include modalShow();
+      @include opacityShow();
     }
     cursor: url('../images/ursor-close.svg'), pointer;
     .select2-dropdown {

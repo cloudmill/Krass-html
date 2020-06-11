@@ -1,0 +1,20 @@
+.subscribe{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  &-str{
+    position: absolute;
+    right: 40px;
+    top: 40px;
+  }
+  &-form{
+    margin-left: 50%;
+  }
+  &-img{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(50%);
+  }
+}

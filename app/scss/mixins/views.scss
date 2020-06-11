@@ -1,10 +1,22 @@
-@mixin modalHide(){
+@mixin opacityHide() {
   will-change: opacity;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
 }
-@mixin modalShow(){
+@mixin opacityShow() {
   opacity: 1;
   pointer-events: all;
 }
+
+
+@mixin inLeftHide() {
+  will-change: transform;
+  transition: transform 1.25s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateX(-100%);
+}
+@mixin inLeftShow(){
+  transform: translateX(0);
+}
+
+

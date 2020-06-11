@@ -1,0 +1,17 @@
+.subscribe.content.section-full.section-border
+  .section-title Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS
+  .subscribe-str
+    +icon('multi-str-blue','svg')
+  .subscribe-img
+    img(src="images/bg-blog.png", alt="")
+  form.subscribe-form
+    +fieldBase('nameSub','name','Имя')
+    +fieldBase('emailSub','email','Email')
+    .field-row
+      +submit()
+        |подписаться на новости
+      +fieldCheck('ppSub','pp')
+        |Согласен на обработку персональных данных <br> в соответствии с 
+        a(href="") политикой конфиденциальности
+
+

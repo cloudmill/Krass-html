@@ -3,17 +3,27 @@
   width: 100%;
   position: fixed;
   z-index: 20;
-  >.content {
+  will-change: transfrom;
+  background-color: transparent;
+  transition: background-color 0.3s, height 0.3s;
+  > .content {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  &.scrolled {
+    background-color: #f2f8fd;
+    height: 90px;
+  }
+  &.hide {
+    transform: translateY(-100%);
+  }
   &-product {
     &.active {
       .header-product {
         &-content {
-          @include modalShow();
+          @include inLeftShow();
         }
         &-but {
           &::before {
@@ -40,7 +50,7 @@
       padding-top: 50px;
       background: white;
       z-index: 2;
-      @include modalHide();
+      @include inLeftHide();
       &:before {
         content: "";
         width: 1px;
@@ -60,7 +70,8 @@
       cursor: pointer;
       user-select: none;
       z-index: 3;
-      &::after {
+      @include linkHover();
+      &:after {
         content: "";
         display: block;
         width: 13px;
@@ -68,20 +79,31 @@
         background: #0054a4;
         margin-left: 8px;
         border-radius: 2px;
+        transform-origin: center center;
+        transition: transform 0.7s;
       }
       &:before {
         content: "";
         display: block;
         width: 13px;
         will-change: opacity;
-        transition: opacity 0.3;
+        transition: opacity 0.3s, transform 0.7s;
         height: 2px;
         background: #0054a4;
         position: absolute;
         right: 0;
         border-radius: 2px;
         top: 50%;
+        transform-origin: center center;
         transform: translateY(-50%) rotate(90deg);
+      }
+      &:hover {
+        &:before {
+          transform: translateY(-50%) rotate(270deg);
+        }
+        &:after {
+          transform: rotate(180deg);
+        }
       }
       span {
         font-style: normal;
@@ -89,7 +111,6 @@
         font-size: 18px;
         line-height: 18px;
         text-transform: uppercase;
-        color: #0054a4;
       }
     }
     &-close {
@@ -109,8 +130,8 @@
       &:nth-child(3) {
         border-right: 1px solid #d1e5f3;
       }
-      &:nth-child(4){
-        .header-product-img img{
+      &:nth-child(4) {
+        .header-product-img img {
           margin-left: -160px;
         }
       }
@@ -141,6 +162,7 @@
       display: block;
     }
     &-link {
+      @include linkHover();
       font-style: normal;
       font-weight: bold;
       font-size: 15px;
@@ -155,7 +177,7 @@
       font-size: 13px;
       line-height: 250%;
       text-transform: uppercase;
-      color: #cc3e1e;
+      color: $color-hover-link;
       margin-top: 50px;
     }
   }
@@ -163,12 +185,12 @@
     &.active {
       .header-search {
         &-content {
-          @include modalShow();
+          @include opacityShow();
         }
       }
     }
     &-content {
-      @include modalHide();
+      @include opacityHide();
       width: 100%;
       display: flex;
       position: absolute;
@@ -188,7 +210,7 @@
           font-size: 18px;
           line-height: 140%;
           color: #0054a4;
-          &::placeholder{
+          &::placeholder {
             color: #0054a4;
           }
         }
@@ -243,6 +265,7 @@
       color: #0054a4;
       margin-right: 40px;
       white-space: nowrap;
+      @include linkHover();
       &:last-child {
         margin-right: 0;
       }

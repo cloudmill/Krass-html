@@ -1,10 +1,10 @@
 .main {
   &-banner {
+    height: 100vh;
     padding-top: 120px;
     padding-bottom: 20px;
     position: relative;
     display: flex;
-    height: 100vh;
     background-image: url(../images/banner-bg.png);
     background-repeat: no-repeat;
     background-position: right;
@@ -79,6 +79,11 @@
         }
       }
     }
+    &-link{
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+    }
   }
   &-blog {
     position: relative;
@@ -94,7 +99,7 @@
       top: 0;
     }
     &-list {
-      background-image: url(../images/bg-blog.jpg);
+      background-image: url(../images/bg-blog.png);
       background-position: left center;
       background-repeat: no-repeat;
     }
@@ -124,13 +129,13 @@
         }
         .main-blog-item {
           &-title {
-            color: #cc3e1e;
+            color: $color-hover-link;
           }
         }
       }
       &:before {
         content: "";
-        background: #cc3e1e;
+        background: $color-hover-link;
         display: block;
         height: 50%;
         width: 50%;
@@ -196,7 +201,6 @@
   }
 }
 .production {
-  height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -209,10 +213,10 @@
         .production-menu {
           &-title {
             transform: translateY(-37px);
-            color: #cc3e1e;
+            color: $color-hover-link;
           }
           &-sub {
-            @include modalShow();
+            @include opacityShow();
           }
         }
       }
@@ -230,7 +234,7 @@
       transition: transform 0.3s, color 0.3s;
     }
     &-sub {
-      @include modalHide();
+      @include opacityHide();
       display: flex;
       position: absolute;
       bottom: 0;
@@ -242,7 +246,7 @@
         font-size: 15px;
         line-height: 250%;
         text-transform: uppercase;
-        color: #cc3e1e;
+        color: $color-hover-link;
         display: block;
         margin-right: 20px;
       }
@@ -283,7 +287,7 @@
       &.active {
         .production-preview {
           &-link {
-            @include modalShow();
+            @include opacityShow();
           }
           &-wrapper {
             width: 270px;
@@ -306,7 +310,7 @@
       right: 60vw;
       bottom: 20px;
       min-width: 200px;
-      @include modalHide();
+      @include opacityHide();
     }
     @keyframes hideBox {
       0% {

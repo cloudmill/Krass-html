@@ -32,12 +32,14 @@ block content
                     span Герметично
                     span Удобно
                     span Практично
+                +bigLink('main-banner-link')
+                    |о торговой марке
             .main-banner-img
                 img(src="images/banner-1.png" alt="" width="397")
                 img(src="images/banner-2.png" alt="" width="287")
                 img(src="images/banner-3.png" alt="" width="200")
                 img(src="images/banner-4.png" alt="" width="252")
-        .production.content
+        .production.content.section-full
             .section-name продукция
             .production-menu
                 +production-menu-items(getData('product/category'))
@@ -71,6 +73,7 @@ block content
                                 a(href="") Герметик
                                 a(href="") Ремонт
         include ../modules/whereBuyMap.pug
+        include ../modules/subscribe.pug
 
 
 
