@@ -11,8 +11,10 @@ html(lang="ru")
     body
         .wrapper
             include ../modules/header
-            block content
-            include ../modules/footer
+            .scroll-box
+                block content
+                include ../modules/footer
             .selectArea
         script(src='js/scripts.min.js')
         block scripts
+            

@@ -5,7 +5,7 @@
 }
 
 @mixin linkHover() {
-  @include will-change("color", $color-main);
+  @include will-change(color, $color-main);
   &:after,
   &:before {
     transition: color 0.3s, background 0.3s;

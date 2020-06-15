@@ -5,7 +5,7 @@ block variables
 
 mixin production-menu-items(json)
     each item,key in json
-        div(class=`${item.active}`).production-menu-item
+        div(class=`${item.active}`).production-menu-item.view-item
             .section-title.production-menu-title(data-trigger=`target-${key}`) #{item.name}
             .production-menu-sub
                 each link in item.sub

@@ -2,6 +2,7 @@
 @import "../../node_modules/fancybox/dist/scss/jquery.fancybox";
 @import "../../node_modules/normalize.css/normalize";
 @import "../../node_modules/select2/dist/css/select2.min.css";
+@import "../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
 @import "base/import";
 @import "mixins/import";
 @import "modules/import";
@@ -110,5 +111,15 @@
         }
       }
     }
+  }
+  .scroll-box{
+    overflow: hidden;
+    height: 100vh;
+    .mCSB_inside>.mCSB_container{
+    margin-right: 0;
+    }
+  }
+  .view-item{
+    @include will-change(opacity,0,0);
   }
 }
