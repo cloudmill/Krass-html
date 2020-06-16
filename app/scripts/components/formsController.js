@@ -1,5 +1,5 @@
 import $ from "jquery";
-import 'select2';
+import "select2";
 
 export default class FormsController {
   constructor() {
@@ -18,9 +18,11 @@ export default class FormsController {
       console.log(html);
       $(".select2-dropdown").find(".select2-selection__rendered").remove();
       $(".select2-dropdown").append(html);
+      $("html").addClass("closeScroll");
     });
     $(".field-select select").on("select2:closing", function (e) {
       $(".selectArea").removeClass("active");
+      $("html").removeClass("closeScroll");
     });
     $(document).on(
       "click",

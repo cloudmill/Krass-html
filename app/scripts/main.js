@@ -3,6 +3,7 @@ import ModalController from "./components/modalController.js";
 import ScrollController from "./components/scrollController.js";
 import FormsController from "./components/formsController.js";
 import ViewController from "./components/viewController.js";
+import Header from "./components/header.js";
 
 var App = function () {
   var scroll = new ScrollController();
@@ -10,6 +11,7 @@ var App = function () {
   var modals = new ModalController();
   var forms = new FormsController();
   var view = new ViewController();
+  var header = new Header();
 };
 
 export default App;

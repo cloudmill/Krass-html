@@ -3,9 +3,9 @@
   width: 100%;
   position: fixed;
   z-index: 20;
-  will-change: transfrom;
+  @include will-change(transform,none);
   background-color: transparent;
-  transition: background-color 0.3s, height 0.3s;
+  transition: background-color 0.3s, height 0.3s,transform 0.3s;
   > .content {
     height: 100%;
     display: flex;

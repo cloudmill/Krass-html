@@ -9,6 +9,7 @@ export default class modalController {
       animate: false,
       open: function () {
         this.animate = true;
+        $('html').addClass('closeScroll')
         $(".header-product").addClass("active");
         setTimeout(() => {
           let i = 0;
@@ -38,6 +39,7 @@ export default class modalController {
           setTimeout(() => {
             this.animate = false;
             this.state = "close";
+            $('html').removeClass('closeScroll')
           }, 1250);
         }, i * 80);
       },

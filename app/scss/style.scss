@@ -2,13 +2,32 @@
 @import "../../node_modules/fancybox/dist/scss/jquery.fancybox";
 @import "../../node_modules/normalize.css/normalize";
 @import "../../node_modules/select2/dist/css/select2.min.css";
-@import "../../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
 @import "base/import";
 @import "mixins/import";
 @import "modules/import";
 @import "components/import";
 @import "pages/import";
 
+body,
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  &.closeScroll {
+    overflow: hidden;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #eff7fd;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #0054a4;
+  }
+}
 .wrapper {
   font-family: "Ekibastuz";
   .content {
@@ -18,8 +37,7 @@
   }
 
   .section {
-    
-    &+.section{
+    & + .section {
       border-top: 0;
     }
     &-title {
@@ -41,12 +59,12 @@
       left: 40px;
       top: 40px;
     }
-    &-full{
+    &-full {
       height: calc(100vh - 90px);
     }
-    &-border{
-      border-top: 1px solid #DDDDDD;
-      border-bottom: 1px solid #DDDDDD;
+    &-border {
+      border-top: 1px solid #dddddd;
+      border-bottom: 1px solid #dddddd;
     }
   }
   .selectArea {
@@ -61,7 +79,7 @@
     &.active {
       @include opacityShow();
     }
-    cursor: url('../images/ursor-close.svg'), pointer;
+    cursor: url("../images/ursor-close.svg"), pointer;
     .select2-dropdown {
       cursor: pointer;
       border: 0;
@@ -81,7 +99,7 @@
           font-style: normal;
           font-weight: bold;
           font-size: 16px;
-          color: #CC3E1E;
+          color: #cc3e1e;
           border-bottom: 1px solid #cc3e1e;
         }
         &-selection__arrow {
@@ -92,7 +110,7 @@
         }
       }
       .select2-results__option {
-        &s{
+        &s {
           padding: 20px 0;
         }
         font-style: normal;
@@ -102,24 +120,51 @@
         color: #0054a4;
         transition: 0.3s;
         padding: 10px 16px;
-        &--highlighted,&:hover {
+        &--highlighted,
+        &:hover {
           background: #fff7f5 !important;
-          color: #CC3E1E;
+          color: #cc3e1e;
         }
-        &[aria-selected="true"]{
+        &[aria-selected="true"] {
           background: none;
         }
       }
     }
   }
-  .scroll-box{
-    overflow: hidden;
-    height: 100vh;
-    .mCSB_inside>.mCSB_container{
-    margin-right: 0;
+  .scroll {
+    &-box {
+      position: absolute;
+      overflow: hidden;
+      z-index: 2;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    &-viewport {
+      overflow: hidden;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
   }
-  .view-item{
-    @include will-change(opacity,0,0);
+  .view-item {
+    //@include will-change(opacity, 0, 0);
+  }
+  .paralax{
+    &-box{
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    &-item{
+      position: relative;
+      top: -90px;
+      will-change: transform;
+      height: calc(100% + 90px);
+    }
   }
 }

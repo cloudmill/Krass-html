@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { gsap } from "gsap";
+
 
 export default class TabController {
   constructor() {
