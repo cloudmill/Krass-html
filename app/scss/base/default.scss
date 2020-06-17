@@ -156,7 +156,38 @@ button {
 }
 
 //Стили для спрайтов
-.icon,.svg-icon{
+.icon,
+.svg-icon {
   display: inline-block;
 }
-@include sprites($spritesheet-sprites)
+@include sprites($spritesheet-sprites);
+
+html {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #eff7fd;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #0054a4;
+  }
+  &.closeScroll {
+    overflow: hidden;
+    .wrapper {
+      .scroll-viewport {
+        margin-right: 6px;
+        width: calc(100% - 6px);
+      }
+      .header {
+        padding-right: 6px;
+      }
+    }
+  }
+}
+body,
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

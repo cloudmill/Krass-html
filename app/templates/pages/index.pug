@@ -27,23 +27,28 @@ block content
     .page
         .main-banner.content
             .main-banner-text
-                .main-banner-sub Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей и герметиков
-                .main-banner-title
+                .main-banner-sub.show-item.hide-in-left Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей и герметиков
+                .main-banner-title.show-item.hide-in-left-self
                     span Герметично
                     span Удобно
                     span Практично
-                +bigLink('main-banner-link')
+                +bigLink('main-banner-link show-item hide-in-bottom-self')
                     |о торговой марке
             .main-banner-img
-                img(src="images/banner-1.png" alt="" width="397")
-                img(src="images/banner-2.png" alt="" width="287")
-                img(src="images/banner-3.png" alt="" width="200")
-                img(src="images/banner-4.png" alt="" width="252")
+                span
+                    img(src="images/banner-1.png" alt="" width="397").show-item.hide-in-top
+                span
+                    img(src="images/banner-2.png" alt="" width="287").show-item.hide-in-top
+                span
+                    img(src="images/banner-3.png" alt="" width="200").show-item.hide-in-top
+                span
+                    img(src="images/banner-4.png" alt="" width="252").show-item.hide-in-top
         .production.content.section-full
             .section-name продукция
             .production-menu
                 +production-menu-items(getData('product/category'))
-            .production-imgs
+            .production-imgs#imgs-content
+                #slider(data-images='["images/full-sketch-1.jpg","images/full-sketch-2.jpg","images/full-sketch-3.jpg","images/full-sketch-4.jpg"]' data-disp="images/disp1.jpg")
             .production-preview
                 +production-preview-items(getData('product/category'))
 

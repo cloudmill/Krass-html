@@ -13,7 +13,7 @@
 @mixin inLeftHide() {
   will-change: transform;
   transition: transform 1.25s cubic-bezier(0.19, 1, 0.22, 1);
-  transform: translateX(-100%);
+  transform: translateX(calc(-100% - 50px));
 }
 @mixin inLeftShow(){
   transform: translateX(0);

@@ -57,8 +57,9 @@
       position: absolute;
       right: 600px;
       bottom: 270px;
-      img {
+      span {
         position: absolute;
+        display: block;
         transform: translateX(-50%);
         left: 60px;
         &:nth-child(1) {
@@ -204,7 +205,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  background: #f8f8f8;
+  overflow: hidden;
   &-menu {
     &-item {
       margin-bottom: 30px;
@@ -254,10 +255,12 @@
   }
   &-imgs {
     position: absolute;
+    background: #f8f8f8;
     left: 0;
     top: 0;
     height: 100%;
     z-index: -1;
+    pointer-events: none;
     width: 100%;
   }
   &-preview {

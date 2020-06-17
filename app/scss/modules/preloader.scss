@@ -1,0 +1,50 @@
+html {
+  &:not(.loaded) {
+    overflow: hidden;
+    .header {
+      background-color: #f2f8fd;
+      &:before {
+        transform: translate(0, -20%) rotate(-30deg);
+      }
+      > .content {
+        > div {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        .header-logo {
+          top: calc(50vh - 36px);
+          left: 22vw;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+  .header {
+    height: 120px;
+    &:before {
+      content: "";
+      display: block;
+      width: 200%;
+      height: 180vh;
+      transition: 0.6s;
+      position: absolute;
+      top: 0;
+      right: -50%;
+      transition-delay: 0.6s;
+      transform: translate(0, -100%) rotate(0);
+      background-color: #C8E1ED;
+    }
+    &-logo {
+      transition: 0.6s ease-in-out;
+      transition-delay: 0.3s;
+      left: 0;
+      top: 0;
+      transform: translate(0, 0);
+      position: relative;
+    }
+    > .content > div {
+      transition-delay: 0.3s;
+      transition: 0.6s ease-in-out;
+    }
+  }
+}

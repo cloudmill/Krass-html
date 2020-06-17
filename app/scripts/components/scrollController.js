@@ -66,6 +66,7 @@ export default class ScrollController {
     document.addEventListener("scroll", this.scroll.bind(this));
   }
   scroll() {
+    
     this.scroller.scrollRequest++;
     if (!this.requestId) {
       this.requestId = requestAnimationFrame(this.update.bind(this));

@@ -53,5 +53,10 @@ export default class modalController {
         }
       }
     });
+    $('.scroll-box').click(function(){
+      if(headerProd.state == "open"){
+        headerProd.close();
+      }
+    })
   }
 }
