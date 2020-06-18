@@ -3,7 +3,7 @@ import * as ScrollMagic from "scrollmagic";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
 import { TweenMax, TimelineMax, TweenLite } from "gsap";
-import { Linear, Power2 } from "gsap";
+import { Linear, Power2, CSSPlugin } from "gsap";
 
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
@@ -21,21 +21,22 @@ export default class ViewController {
   each() {
     var _ = this;
     $(".view-item").each(function () {
-      var opacity = _.check($(this));
+      var opacity = _.check(this);
       opacity =
         opacity <= 1.1 && opacity >= 0 ? opacity : opacity > 1.1 ? 1 : 0;
-      this.style.opacity = opacity;
-      // TweenLite.set(this, {
-      //   opacity: opacity,
-      // });
+      //this.style.opacity = opacity;
+      CSSPlugin.force3D = true;
+      TweenLite.set(this, {
+        opacity: opacity,
+        force3D: true,
+      });
     });
   }
   check(el) {
-    let height = el.height();
+    let height = el.offsetHeight;
     let addHeight = 300 > height ? 300 : height;
-    let wHeight = $(window).height();
-    let top = el.offset().top - $(document).scrollTop();
-
+    let wHeight = window.innerHeight;
+    let top = $(el).offset().top - document.documentElement.scrollTop;
     if (top + addHeight > wHeight) {
       return 1 - (top - wHeight + addHeight) / addHeight;
     } else {
@@ -63,28 +64,45 @@ export default class ViewController {
   }
   startShowing() {
     setInterval(() => {
-      if (!this.time) this.clearStyleHide();
+      let items = $(document).find(".show-item");
+      if (!this.time && items.length > 0) this.clearStyleHide(items);
     }, 100);
   }
-  clearStyleHide() {
-    let items = $(document).find(".show-item");
+
+  clearStyleHide(items) {
+    let groupsItems = [];
+    items.each((key, item) => {
+      let group = item.getAttribute("data-group");
+      if (groupsItems[group]) {
+        groupsItems[group].push(item);
+      } else {
+        groupsItems[group] = [];
+        groupsItems[group].push(item);
+      }
+    });
     let i = 0;
     this.time = setInterval(() => {
-      let item = items.eq(i);
-      if (item.attr("animed") != 1) {
-        item.attr("animed", 1);
-        TweenLite.to(item, 1, {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          ease: Power2.easeInOut,
-        });
-        setTimeout(() => {
-          item.removeClass("show-item");
-        }, 600);
-      }
+      let lenght = 0;
+      groupsItems.forEach((group) => {
+        if (lenght < group.length) lenght = group.length;
+        if (group.length > i) {
+          let item = group[i];
+          if ($(item).attr("animed") != 1) {
+            $(item).attr("animed", 1);
+            TweenLite.to(item, 1, {
+              opacity: 1,
+              x: 0,
+              y: 0,
+              ease: Power2.easeInOut,
+            });
+            setTimeout(() => {
+              $(item).removeClass("show-item");
+            }, 600);
+          }
+        }
+      });
       i++;
-      if (i == items.length) {
+      if (i == lenght) {
         clearInterval(this.time);
         this.time = null;
       }

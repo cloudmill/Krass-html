@@ -56,7 +56,7 @@ export default class ScrollController {
   init() {
     GSAP.CSSPlugin.force3D = true;
     GSAP.TweenLite.set(this.scroller.target, {
-      rotation: 0,
+      rotation: 0.1,
       force3D: true,
     });
 

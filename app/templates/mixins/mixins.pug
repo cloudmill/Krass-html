@@ -22,7 +22,7 @@ mixin submit()
 
 
 mixin bigLink(className,href)
-  a(class=className href=href).big-link
+  a(class=className href=href ).big-link
     .big-link-bg
       span
     .big-link-mask
@@ -58,6 +58,7 @@ mixin fieldBase(id,name,placeholder)
     label(for=id)
       input(type="text" name=name id=id required)
       span #{placeholder}
+      span
 mixin fieldCheck(id,name)
   .field.field-check
     label(for=id)

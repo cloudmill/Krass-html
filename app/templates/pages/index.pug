@@ -27,22 +27,23 @@ block content
     .page
         .main-banner.content
             .main-banner-text
-                .main-banner-sub.show-item.hide-in-left Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей и герметиков
-                .main-banner-title.show-item.hide-in-left-self
+                .main-banner-sub.show-item.hide-in-left(data-group=0) Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей и герметиков
+                .main-banner-title.show-item.hide-in-left-self(data-group=0)
                     span Герметично
                     span Удобно
                     span Практично
-                +bigLink('main-banner-link show-item hide-in-bottom-self')
-                    |о торговой марке
+                .main-banner-link.show-item.hide-in-bottom-self(data-group=2)
+                    +bigLink()
+                        |о торговой марке
             .main-banner-img
                 span
-                    img(src="images/banner-1.png" alt="" width="397").show-item.hide-in-top
+                    img(src="images/banner-1.png" alt="" width="397").show-item.hide-in-top(data-group=1)
                 span
-                    img(src="images/banner-2.png" alt="" width="287").show-item.hide-in-top
+                    img(src="images/banner-2.png" alt="" width="287").show-item.hide-in-top(data-group=1)
                 span
-                    img(src="images/banner-3.png" alt="" width="200").show-item.hide-in-top
+                    img(src="images/banner-3.png" alt="" width="200").show-item.hide-in-top(data-group=1)
                 span
-                    img(src="images/banner-4.png" alt="" width="252").show-item.hide-in-top
+                    img(src="images/banner-4.png" alt="" width="252").show-item.hide-in-top(data-group=1)
         .production.content.section-full
             .section-name продукция
             .production-menu
