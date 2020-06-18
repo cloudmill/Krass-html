@@ -44,6 +44,7 @@ export default class ScrollController {
     GSAP.TweenLite.set(this.scroller.target, {
       y: -this.scroller.y,
     });
+    this.updateHandlers();
     this.requestId = this.scroller.scrollRequest > 0
       ? requestAnimationFrame(this.update.bind(this))
       : null;
@@ -71,7 +72,7 @@ export default class ScrollController {
     if (!this.requestId) {
       this.requestId = requestAnimationFrame(this.update.bind(this));
     }
-    this.updateHandlers();
+    
   }
   resize() {
     this.scroller.resizeRequest++;

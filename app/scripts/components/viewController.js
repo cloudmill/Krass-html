@@ -34,13 +34,14 @@ export default class ViewController {
   }
   check(el) {
     let height = el.offsetHeight;
-    let addHeight = 300 > height ? 300 : height;
+    let defaultSize = 100;
+    let addHeight = defaultSize > height ? defaultSize : height;
     let wHeight = window.innerHeight;
     let top = $(el).offset().top - document.documentElement.scrollTop;
     if (top + addHeight > wHeight) {
       return 1 - (top - wHeight + addHeight) / addHeight;
     } else {
-      if (height < 300) {
+      if (height < defaultSize) {
         return (top + height / 2) / addHeight;
       } else return (top + addHeight) / addHeight;
     }
@@ -68,7 +69,6 @@ export default class ViewController {
       if (!this.time && items.length > 0) this.clearStyleHide(items);
     }, 100);
   }
-
   clearStyleHide(items) {
     let groupsItems = [];
     items.each((key, item) => {

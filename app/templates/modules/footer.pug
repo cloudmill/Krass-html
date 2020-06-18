@@ -1,11 +1,11 @@
 mixin footer-menu(json)
-  .footer-menu
+  .footer-menu.view-item
     each data in json
       a.footer-menu-link(href=`${data.link}`) #{data.name}
     a.footer-menu-link(href="blog.html") Блог
 mixin footer-cats(json)
   each item,key in json
-    .footer-cats-item
+    .footer-cats-item.view-item
       a.footer-cats-title #{item.name}
       .footer-cats-links
         each link in item.sub
@@ -15,12 +15,12 @@ mixin footer-cats(json)
     .footer-cats
       +footer-cats(getData('product/category'))
   .footer-col
-    a.footer-phone(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
-    .footer-loc
+    a.footer-phone.view-item(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
+    .footer-loc.view-item
       span Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС
       a(href="") на карте
     +footer-menu(getData('menu'))
-    .footer-copy
+    .footer-copy.view-item
       span TM KRASS © 2020
       span.dev 
         span сделано в 

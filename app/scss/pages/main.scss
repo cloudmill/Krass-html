@@ -5,10 +5,10 @@
     padding-bottom: 20px;
     position: relative;
     display: flex;
-    background-image: url(../images/banner-bg.png);
+    background-image: url(../images/banner-bg.jpg);
     background-repeat: no-repeat;
-    background-position: right;
-    background-size: auto 100%;
+    background-position: right bottom;
+    background-size: 1920px 1080px;
     overflow: hidden;
     &:before {
       content: "";
@@ -55,28 +55,28 @@
     }
     &-img {
       position: absolute;
-      right: 600px;
-      bottom: 270px;
+      right: 621px;
+      bottom: 244px;
       span {
         position: absolute;
         display: block;
         transform: translateX(-50%);
         left: 60px;
         &:nth-child(1) {
-          left: -107px;
-          bottom: 55px;
+          left: -98px;
+          bottom: 45px;
         }
         &:nth-child(2) {
-          bottom: 106px;
-          left: 74px;
+          bottom: 89px;
+          left: 63px;
         }
         &:nth-child(3) {
-          left: 228px;
-          bottom: -10px;
+          left: 218px;
+          bottom: -18px;
         }
         &:nth-child(4) {
           bottom: -132px;
-          left: 37px;
+          left: 27px;
         }
       }
     }

@@ -15,6 +15,9 @@ html {
           top: calc(50vh - 36px);
           left: 22vw;
           transform: translate(-50%, -50%);
+          @media (min-width: 1650px) {
+            left: 16vw;
+          }
         }
       }
     }
@@ -31,7 +34,11 @@ html {
       right: -50%;
       transition-delay: 0.6s;
       transform: translate(0, -100%) rotate(0);
-      background-color: #C8E1ED;
+      background-color: #c8e1ed;
+      @media (min-width: 1650px) {
+        width: 210%;
+        height: 250vh;
+      }
     }
     &-logo {
       transition: 0.6s ease-in-out;
