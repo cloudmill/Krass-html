@@ -33,7 +33,9 @@ $color-border: #0054A4; // Основной цвет границ таблиц, 
 // ##########
 // Transitions
 // ##########
-$ease-main: 0.2s ease;
+$ease-main: 0.3s cubic-bezier(0.36,0,0.24,1);
+$ease-long: 0.6s cubic-bezier(0.36,0,0.24,1);
+
 
 // ##########
 // Шрифты

@@ -1,5 +1,5 @@
 @import "../../node_modules/swiper/swiper.scss";
-@import "../../node_modules/fancybox/dist/scss/jquery.fancybox";
+@import "../../node_modules/fancybox/dist/css/jquery.fancybox.css";
 @import "../../node_modules/normalize.css/normalize";
 @import "../../node_modules/select2/dist/css/select2.min.css";
 @import "base/import";
@@ -11,6 +11,9 @@
 
 .wrapper {
   font-family: "Ekibastuz";
+  *{
+    font-family: "Ekibastuz";
+  }
   .content {
     width: 100%;
     padding-left: 40px;
@@ -18,9 +21,6 @@
   }
 
   .section {
-    & + .section {
-      border-top: 0;
-    }
     &-title {
       font-style: normal;
       font-weight: bold;
@@ -46,107 +46,11 @@
     &-border {
       border-top: 1px solid #dddddd;
       border-bottom: 1px solid #dddddd;
-    }
-  }
-  .selectArea {
-    position: fixed;
-    z-index: 10000;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.08);
-    width: 100vw;
-    top: 0;
-    left: 0;
-    @include opacityHide();
-    &.active {
-      @include opacityShow();
-    }
-    cursor: url("../images/ursor-close.svg"), pointer;
-    .select2-dropdown {
-      cursor: pointer;
-      border: 0;
-      border-radius: 0;
-      .select2 {
-        &-selection__rendered {
-          cursor: pointer;
-          position: absolute;
-          bottom: 100%;
-          margin-bottom: -1px;
-          background: white;
-          width: 100%;
-          left: 0;
-          line-height: 70px;
-          padding-left: 20px;
-          padding-right: 40px;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 16px;
-          color: #cc3e1e;
-          border-bottom: 1px solid #cc3e1e;
-        }
-        &-selection__arrow {
-          height: 70px;
-          top: 0;
-          width: 16px;
-          right: 20px;
-        }
-      }
-      .select2-results__option {
-        &s {
-          padding: 20px 0;
-        }
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 130%;
-        color: #0054a4;
-        transition: 0.3s;
-        padding: 10px 16px;
-        &--highlighted,
-        &:hover {
-          background: #fff7f5 !important;
-          color: #cc3e1e;
-        }
-        &[aria-selected="true"] {
-          background: none;
-        }
+      &+.section-border{
+        border-top: 0;
       }
     }
   }
-  .scroll {
-    &-box {
-      position: absolute;
-      overflow: hidden;
-      z-index: 2;
-      backface-visibility: hidden;
-      transform-style: flat;
-      will-change: transform;
-      width: 100%;
-    }
-    &-viewport {
-      overflow: hidden;
-      position: fixed;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  }
-  .view-item {
-    @include will-change(opacity, null, -1);
-  }
-  .paralax {
-    &-box {
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-    }
-    &-item {
-      position: relative;
-      top: -90px;
-      will-change: transform;
-      height: calc(100% + 90px);
-    }
-  }
+  
+  
 }

@@ -10,7 +10,7 @@
   text-transform: uppercase;
   color: #cc3e1e;
   padding-top: 3px;
-  padding-left: 40px;
+  padding-left: 35px;
   z-index: 2;
   cursor: pointer;
   background-color: inherit;
@@ -21,13 +21,13 @@
     top: 50%;
     z-index: -2;
     margin-left: -8px;
-    width: 52px;
-    height: 52px;
+    width: 57px;
+    height: 57px;
     overflow: hidden;
     svg {
-      width: 52px;
-      height: 52px;
-      transform: scaleY(-1) translateX(8px);
+      width: 57px;
+      height: 57px;
+      transform: scaleY(-1) translateX(9px);
       fill: transparent;
       circle {
         @include will-change(stroke-dasharray, 500px, 1.5s);
@@ -40,7 +40,6 @@
       }
     }
   }
-
   &:hover {
     svg {
       circle {
@@ -55,7 +54,7 @@
   }
   .svg-icon {
     position: absolute;
-    left: 21px;
+    left: 17px;
     top: 50%;
     transform: translate(-50%, -50%);
   }
@@ -80,7 +79,7 @@
   overflow: hidden;
   &:hover {
     i:after {
-      background-image: url(../images/str-big-link-orange.png);
+      background-image: url(../images/str-big-link-orange.svg);
     }
     .big-link-bg {
       span {
@@ -151,10 +150,10 @@
       display: block;
 
       &:nth-child(1) {
-        animation: wordMoving 2s linear infinite;
+        animation: wordMoving 3s linear infinite;
       }
       &:nth-child(2) {
-        animation: wordMovingTwo 2s linear infinite;
+        animation: wordMovingTwo 3s linear infinite;
       }
     }
     @keyframes wordMoving {
@@ -164,13 +163,13 @@
       }
       100% {
         transform: translateX(100%);
-        margin-left: 2px;
+        margin-left: 20px;
       }
     }
     @keyframes wordMovingTwo {
       0% {
         transform: translateX(-100%);
-        margin-left: -2px;
+        margin-left: -20px;
       }
       100% {
         transform: translateX(0);
@@ -182,7 +181,7 @@
     margin-left: 15px;
     &:after {
       @include will-change(background-image, "");
-      @include background("../images/str-big-link.png");
+      @include background("../images/str-big-link.svg");
       background-position: right;
       content: "";
       display: block;

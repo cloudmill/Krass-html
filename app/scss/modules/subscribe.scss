@@ -1,5 +1,5 @@
 .subscribe{
-  padding-top: 20px;
+  padding-top: 27px;
   padding-bottom: 20px;
   position: relative;
   overflow: hidden;
@@ -15,6 +15,6 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    transform: translateY(50%);
+    transform: translate(calc(-100% + 280px),50%);
   }
 }

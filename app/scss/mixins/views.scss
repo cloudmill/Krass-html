@@ -2,7 +2,7 @@
   will-change: opacity;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
+  transition: opacity $ease-main;
 }
 @mixin opacityShow() {
   opacity: 1;

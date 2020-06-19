@@ -8,7 +8,7 @@
   @include will-change(color, $color-main);
   &:after,
   &:before {
-    transition: color 0.3s, background 0.3s;
+    transition: color $ease-main, background $ease-main;
   }
   &:hover {
     color: $color-hover-link;

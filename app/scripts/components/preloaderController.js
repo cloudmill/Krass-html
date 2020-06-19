@@ -20,15 +20,19 @@ export default class PreloaderController {
     this.handlers.push(handler);
   }
   afterLoad() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.handlers.forEach((item) => {
         item();
       });
-    },300)
-    
+    }, 300);
+
     $("html").removeClass("closeScroll");
     $("html").removeClass("loading");
-    $("html").addClass("loaded");
+    $("html").addClass("closing-preloader");
+    setTimeout(() => {
+      $("html").addClass("loaded");
+      $("html").removeClass("closing-preloader");
+    },900);
   }
   fasterLoad() {
     let i = 1;
@@ -86,7 +90,7 @@ export default class PreloaderController {
       if (imgCount == progress) {
         $(".header-logo-strs span").eq(3).addClass("show");
         time2 = performance.now() - time;
-        console.log(time2)
+        console.log(time2);
         if (performance.now() - time > 800) {
           that.afterLoad();
         } else {

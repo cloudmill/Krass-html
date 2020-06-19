@@ -1,0 +1,28 @@
+mixin header-products(json)
+  each item,key in json
+    .header-product-item.zoom-hide-item
+      .header-product-text
+        a.header-product-title #{item.name}
+        each link in item.sub
+          a.header-product-link #{link}
+        if (item.link)
+          +link("header-product-select") #{item.link}
+      .header-product-img
+        img(src=`images/category-${key+1}.png`)
+
+.modal
+  .modal-bg
+  .modal-content
+    .modal-item.header-product#header-prod
+      .header-product-but
+        span.header-product-close(data-modal-close) закрыть
+      .header-product-content
+        +header-products(getData('product/category'))
+    .modal-item#header-search
+      .header-search-content.content
+        form(action="")
+          +fieldBase('s','s','Поиск по каталогу')
+          button(type='submit')
+            +link('gray')
+              |Найти
+        .header-search-close(data-modal-close)

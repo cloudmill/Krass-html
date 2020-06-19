@@ -25,7 +25,7 @@ mixin production-preview-items(json)
 
 block content
     .page
-        .main-banner.content
+        .main-banner.content.scroll-trigger.paralax-box(data-hook=0)
             .main-banner-text
                 .main-banner-sub.show-item.hide-in-left(data-group=0) Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей и герметиков
                 .main-banner-title.show-item.hide-in-left-self(data-group=0)
@@ -35,15 +35,17 @@ block content
                 .main-banner-link.show-item.hide-in-bottom-self(data-group=2)
                     +bigLink()
                         |о торговой марке
-            .main-banner-img
-                span
-                    img(src="images/banner-1.png" alt="" width="397").show-item.hide-in-top(data-group=1)
-                span
-                    img(src="images/banner-2.png" alt="" width="287").show-item.hide-in-top(data-group=1)
-                span
-                    img(src="images/banner-3.png" alt="" width="200").show-item.hide-in-top(data-group=1)
-                span
-                    img(src="images/banner-4.png" alt="" width="252").show-item.hide-in-top(data-group=1)
+            .main-banner-bg.paralax-item
+                .main-banner-img
+                    span
+                        img(src="images/banner-1.png" alt="" width="205" data-group=1).show-item.hide-in-top
+                    span
+                        img(src="images/banner-2.png" alt="" width="175" data-group=1).show-item.hide-in-top
+                    span
+                        img(src="images/banner-3.png" alt="" width="200" data-group=1).show-item.hide-in-top
+                    span
+                        img(src="images/banner-4.png" alt="" width="252" data-group=1).show-item.hide-in-top
+
         .production.content.section-full
             .section-name продукция
             .production-menu
@@ -52,6 +54,13 @@ block content
                 #slider(data-images='["images/full-sketch-1.jpg","images/full-sketch-2.jpg","images/full-sketch-3.jpg","images/full-sketch-4.jpg"]' data-disp="images/disp1.jpg")
             .production-preview
                 +production-preview-items(getData('product/category'))
+            .production-counter
+                .production-counter-list 
+                    i.active(data-target='target-0') 01
+                    i(data-target='target-1') 02
+                    i(data-target='target-2') 03
+                    i(data-target='target-3') 04
+                .production-counter-count 04
 
         .main-blog.content
             .section-name блог

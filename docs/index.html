@@ -10,59 +10,10 @@
     <div class="wrapper">
       <div class="header">
         <div class="content">
-          <div class="header-product">
-            <div class="header-product-but"><span class="header-product-open">продукция</span><span class="header-product-close">закрыть</span></div>
-            <div class="header-product-content">
-                    <div class="header-product-item">
-                      <div class="header-product-text"><a class="header-product-title">Герметики</a><a class="header-product-link">Акриловые</a><a class="header-product-link">силиконовые</a><a class="header-product-link">специализированные</a><a class="header-product-select main-link">Подобрать герметик<i class="svg-icon svg-str-link"></i>
-                          <div class="main-link-circle">
-                            <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
-                              <circle></circle>
-                            </svg>
-                          </div></a>
-                      </div>
-                      <div class="header-product-img"><img src="images/category-1.png"></div>
-                    </div>
-                    <div class="header-product-item">
-                      <div class="header-product-text"><a class="header-product-title">Монтажные пены</a><a class="header-product-link">Krass Professional</a><a class="header-product-link">Krass Home Edition</a><a class="header-product-link">KRASS ULTRAFLEX</a><a class="header-product-link">очистители</a>
-                      </div>
-                      <div class="header-product-img"><img src="images/category-2.png"></div>
-                    </div>
-                    <div class="header-product-item">
-                      <div class="header-product-text"><a class="header-product-title">Клеи</a><a class="header-product-link">Жидкие гвозди</a><a class="header-product-link">обойные</a><a class="header-product-link">напольные</a><a class="header-product-link">PVA</a><a class="header-product-select main-link">Подобрать клей<i class="svg-icon svg-str-link"></i>
-                          <div class="main-link-circle">
-                            <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
-                              <circle></circle>
-                            </svg>
-                          </div></a>
-                      </div>
-                      <div class="header-product-img"><img src="images/category-3.png"></div>
-                    </div>
-                    <div class="header-product-item">
-                      <div class="header-product-text"><a class="header-product-title">уплотнители</a>
-                      </div>
-                      <div class="header-product-img"><img src="images/category-4.png"></div>
-                    </div>
-            </div>
-          </div>
-          <div class="header-search" id="header-search">
-            <div class="header-search-but" data-toggle="header-search"><i class="svg-icon svg-search"></i>
-            </div>
-            <div class="header-search-content content">
-              <form action="">
-                <input type="text" name="s" placeholder="Что вы хотите найти?">
-                <button type="submit"><a class="gray main-link">Найти<i class="svg-icon svg-str-link"></i>
-                    <div class="main-link-circle">
-                      <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
-                        <circle></circle>
-                      </svg>
-                    </div></a>
-                </button>
-              </form>
-              <div class="header-search-close" data-toggle="header-search"></div>
-            </div>
-          </div><a class="header-logo"><img src="images/logo.png" alt="">
-            <div class="header-logo-strs"><span></span><span></span><span></span><span></span></div></a>
+          <div class="header-product"><a class="header-product-but js-modal" href="#header-prod"><span class="header-product-open">продукция</span></a></div>
+          <div class="header-search" id="header-search"><a class="header-search-but js-modal" href="#header-search"><i class="svg-icon svg-search"></i></a></div>
+          <div class="header-logo-box"><a class="header-logo"><img src="images/logo.png" alt="">
+              <div class="header-logo-strs"><span></span><span></span><span></span><span></span></div></a></div>
                 <div class="header-menu"><a class="header-menu-link" href="whereBuy.html">где купить</a><a class="header-menu-link" href="about.html">о krass</a><a class="header-menu-link" href="news.html">новости</a><a class="header-menu-link" href="contancs.html">контакты</a><a class="header-menu-link" href="sertificate.html">сертификаты</a><a class="header-menu-link" href="admaterials.html">рекламные материалы</a>
                 </div>
         </div>
@@ -70,7 +21,7 @@
       <div class="scroll-viewport">
         <div class="scroll-box" id="scroll-box">
           <div class="page">
-            <div class="main-banner content">
+            <div class="main-banner content scroll-trigger paralax-box" data-hook="0">
               <div class="main-banner-text">
                 <div class="main-banner-sub show-item hide-in-left" data-group="0">Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей и герметиков</div>
                 <div class="main-banner-title show-item hide-in-left-self" data-group="0"><span>Герметично</span><span>Удобно</span><span>Практично</span></div>
@@ -79,7 +30,9 @@
                     <div class="big-link-mask"><span>о торговой марке</span><span>о торговой марке</span></div><i class="svg-icon svg-str-big-link-inside"></i></a>
                 </div>
               </div>
-              <div class="main-banner-img"><span><img class="show-item hide-in-top" src="images/banner-1.png" alt="" width="397" data-group="1"></span><span><img class="show-item hide-in-top" src="images/banner-2.png" alt="" width="287" data-group="1"></span><span><img class="show-item hide-in-top" src="images/banner-3.png" alt="" width="200" data-group="1"></span><span><img class="show-item hide-in-top" src="images/banner-4.png" alt="" width="252" data-group="1"></span></div>
+              <div class="main-banner-bg paralax-item">
+                <div class="main-banner-img"><span><img class="show-item hide-in-top" src="images/banner-1.png" alt="" width="205" data-group="1"></span><span><img class="show-item hide-in-top" src="images/banner-2.png" alt="" width="175" data-group="1"></span><span><img class="show-item hide-in-top" src="images/banner-3.png" alt="" width="200" data-group="1"></span><span><img class="show-item hide-in-top" src="images/banner-4.png" alt="" width="252" data-group="1"></span></div>
+              </div>
             </div>
             <div class="production content section-full">
               <div class="section-name">продукция</div>
@@ -156,6 +109,10 @@
                   </div>
                 </div>
               </div>
+              <div class="production-counter">
+                <div class="production-counter-list"> <i class="active" data-target="target-0">01</i><i data-target="target-1">02</i><i data-target="target-2">03</i><i data-target="target-3">04</i></div>
+                <div class="production-counter-count">04</div>
+              </div>
             </div>
             <div class="main-blog content">
               <div class="section-name">блог</div><a class="main-blog-link main-link">перейти в блог<i class="svg-icon svg-str-link"></i>
@@ -194,7 +151,7 @@
             </div>
             <div class="whereBuy content section-full section-border">
               <div class="section-title view-item">где купить</div>
-              <div class="whereBuy-text view-item">Продукция представлена в 80 регионах России и странах Таможенного союза</div>
+              <div class="whereBuy-text view-item">Продукция представлена в 80 регионах <br> России и странах Таможенного союза</div>
               <div class="field field-select">
                 <label for="region"><span>Выберите свой регион</span>
                   <select name="region" id="region">
@@ -208,7 +165,7 @@
                     <circle></circle>
                   </svg>
                 </div></a>
-              <div class="whereBuy-img"><img src="images/whereBuy-map.png" alt=""></div>
+              <div class="whereBuy-img view-item"><img src="images/whereBuy-map.png" height="555" alt=""></div>
               <div class="whereBuy-str"><i class="svg-icon svg-multi-str-orange"></i>
               </div>
             </div>
@@ -217,7 +174,7 @@
               <div class="subscribe-str"><i class="svg-icon svg-multi-str-blue"></i>
               </div>
               <div class="subscribe-img"><img src="images/bg-blog.png" alt=""></div>
-              <form class="subscribe-form">
+              <form class="subscribe-form view-item">
                 <div class="field field-base">
                   <label for="nameSub">
                     <input type="text" name="name" id="nameSub" required="required"/><span>Имя</span><span></span>
@@ -248,34 +205,93 @@
           <div class="footer">
             <div class="footer-col">
               <div class="footer-cats">
-                          <div class="footer-cats-item"><a class="footer-cats-title">Герметики</a>
+                          <div class="footer-cats-item view-item"><a class="footer-cats-title">Герметики</a>
                             <div class="footer-cats-links"><a class="footer-cats-link">Акриловые</a><a class="footer-cats-link">силиконовые</a><a class="footer-cats-link">специализированные</a>
                             </div>
                           </div>
-                          <div class="footer-cats-item"><a class="footer-cats-title">Монтажные пены</a>
+                          <div class="footer-cats-item view-item"><a class="footer-cats-title">Монтажные пены</a>
                             <div class="footer-cats-links"><a class="footer-cats-link">Krass Professional</a><a class="footer-cats-link">Krass Home Edition</a><a class="footer-cats-link">KRASS ULTRAFLEX</a><a class="footer-cats-link">очистители</a>
                             </div>
                           </div>
-                          <div class="footer-cats-item"><a class="footer-cats-title">Клеи</a>
+                          <div class="footer-cats-item view-item"><a class="footer-cats-title">Клеи</a>
                             <div class="footer-cats-links"><a class="footer-cats-link">Жидкие гвозди</a><a class="footer-cats-link">обойные</a><a class="footer-cats-link">напольные</a><a class="footer-cats-link">PVA</a>
                             </div>
                           </div>
-                          <div class="footer-cats-item"><a class="footer-cats-title">уплотнители</a>
+                          <div class="footer-cats-item view-item"><a class="footer-cats-title">уплотнители</a>
                             <div class="footer-cats-links">
                             </div>
                           </div>
               </div>
             </div>
-            <div class="footer-col"><a class="footer-phone" href="tel:8 495 995–­­90–35">8 495 995–­­90–35</a>
-              <div class="footer-loc"><span>Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС</span><a href="">на карте</a></div>
-                        <div class="footer-menu"><a class="footer-menu-link" href="whereBuy.html">где купить</a><a class="footer-menu-link" href="about.html">о krass</a><a class="footer-menu-link" href="news.html">новости</a><a class="footer-menu-link" href="contancs.html">контакты</a><a class="footer-menu-link" href="sertificate.html">сертификаты</a><a class="footer-menu-link" href="admaterials.html">рекламные материалы</a><a class="footer-menu-link" href="blog.html">Блог</a>
+            <div class="footer-col"><a class="footer-phone view-item" href="tel:8 495 995–­­90–35">8 495 995–­­90–35</a>
+              <div class="footer-loc view-item"><span>Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС</span><a href="">на карте</a></div>
+                        <div class="footer-menu view-item"><a class="footer-menu-link" href="whereBuy.html">где купить</a><a class="footer-menu-link" href="about.html">о krass</a><a class="footer-menu-link" href="news.html">новости</a><a class="footer-menu-link" href="contancs.html">контакты</a><a class="footer-menu-link" href="sertificate.html">сертификаты</a><a class="footer-menu-link" href="admaterials.html">рекламные материалы</a><a class="footer-menu-link" href="blog.html">Блог</a>
                         </div>
-              <div class="footer-copy"><span>TM KRASS © 2020</span><span class="dev"> <span>сделано в </span><a href="cloudmill.ru">cloudmill</a></span></div>
+              <div class="footer-copy view-item"><span>TM KRASS © 2020</span><span class="dev"> <span>сделано в </span><a href="cloudmill.ru">cloudmill</a></span></div>
             </div>
           </div>
         </div>
       </div>
       <div class="selectArea"></div>
+      <div class="modal">
+        <div class="modal-bg"></div>
+        <div class="modal-content">
+          <div class="modal-item header-product" id="header-prod">
+            <div class="header-product-but"><span class="header-product-close" data-modal-close>закрыть</span></div>
+            <div class="header-product-content">
+                    <div class="header-product-item zoom-hide-item">
+                      <div class="header-product-text"><a class="header-product-title">Герметики</a><a class="header-product-link">Акриловые</a><a class="header-product-link">силиконовые</a><a class="header-product-link">специализированные</a><a class="header-product-select main-link">Подобрать герметик<i class="svg-icon svg-str-link"></i>
+                          <div class="main-link-circle">
+                            <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                              <circle></circle>
+                            </svg>
+                          </div></a>
+                      </div>
+                      <div class="header-product-img"><img src="images/category-1.png"></div>
+                    </div>
+                    <div class="header-product-item zoom-hide-item">
+                      <div class="header-product-text"><a class="header-product-title">Монтажные пены</a><a class="header-product-link">Krass Professional</a><a class="header-product-link">Krass Home Edition</a><a class="header-product-link">KRASS ULTRAFLEX</a><a class="header-product-link">очистители</a>
+                      </div>
+                      <div class="header-product-img"><img src="images/category-2.png"></div>
+                    </div>
+                    <div class="header-product-item zoom-hide-item">
+                      <div class="header-product-text"><a class="header-product-title">Клеи</a><a class="header-product-link">Жидкие гвозди</a><a class="header-product-link">обойные</a><a class="header-product-link">напольные</a><a class="header-product-link">PVA</a><a class="header-product-select main-link">Подобрать клей<i class="svg-icon svg-str-link"></i>
+                          <div class="main-link-circle">
+                            <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                              <circle></circle>
+                            </svg>
+                          </div></a>
+                      </div>
+                      <div class="header-product-img"><img src="images/category-3.png"></div>
+                    </div>
+                    <div class="header-product-item zoom-hide-item">
+                      <div class="header-product-text"><a class="header-product-title">уплотнители</a>
+                      </div>
+                      <div class="header-product-img"><img src="images/category-4.png"></div>
+                    </div>
+            </div>
+          </div>
+          <div class="modal-item" id="header-search">
+            <div class="header-search-content content">
+              <form action="">
+                <div class="field field-base">
+                  <label for="s">
+                    <input type="text" name="s" id="s" required="required"/><span>Поиск по каталогу</span><span></span>
+                  </label>
+                </div>
+                <button type="submit"><a class="gray main-link">Найти<i class="svg-icon svg-str-link"></i>
+                    <div class="main-link-circle">
+                      <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                        <circle></circle>
+                      </svg>
+                    </div></a>
+                </button>
+              </form>
+              <div class="header-search-close" data-modal-close></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="js/scripts.min.js"></script>
   </body>

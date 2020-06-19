@@ -1,0 +1,38 @@
+.paralax {
+  &-box {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  &-item {
+    position: relative;
+    top: -90px;
+    will-change: transform;
+    height: calc(100% + 90px);
+  }
+}
+.scroll {
+  &-box {
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+    backface-visibility: hidden;
+    transform-style: flat;
+    will-change: transform;
+    width: 100%;
+  }
+  &-viewport {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.view-item {
+  @include will-change(opacity, null, -1);
+}

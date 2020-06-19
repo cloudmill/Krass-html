@@ -4,11 +4,11 @@
   z-index: 20;
   @include will-change(transform, none);
   background-color: transparent;
-  transition: background-color 0.3s, height 0.6s, transform 0.3s;
+  transition: background-color $ease-main, height $ease-long, transform $ease-main;
   > .content {
     height: 120px;
     display: flex;
-    transition: height 0.3s;
+    transition: height $ease-main;
     justify-content: space-between;
     align-items: center;
   }
@@ -22,24 +22,6 @@
     transform: translateY(-100%);
   }
   &-product {
-    &.active {
-      .header-product {
-        &-content {
-          @include inLeftShow();
-        }
-        &-but {
-          &::before {
-            opacity: 0;
-          }
-        }
-        &-open {
-          display: none;
-        }
-        &-close {
-          display: block;
-        }
-      }
-    }
     &-content {
       display: flex;
       position: absolute;
@@ -51,8 +33,8 @@
       top: 0;
       padding-top: 50px;
       background: white;
+      overflow: hidden;
       z-index: 2;
-      @include inLeftHide();
       &:before {
         content: "";
         width: 1px;
@@ -70,10 +52,20 @@
         height: 1px;
         left: 0;
         top: 50%;
-        margin-top: 50px;
+        margin-top: 25px;
         display: block;
         position: absolute;
         background: #d1e5f3;
+      }
+    }
+    &.modal-item {
+      .header-product-but {
+        margin-top: 51px;
+        margin-left: 40px;
+        display: inline-flex;
+        &:before {
+          content: none;
+        }
       }
     }
     &-but {
@@ -93,14 +85,14 @@
         margin-left: 8px;
         border-radius: 2px;
         transform-origin: center center;
-        transition: transform 0.7s;
+        transition: transform $ease-long;
       }
       &:before {
         content: "";
         display: block;
         width: 13px;
         will-change: opacity;
-        transition: opacity 0.3s, transform 0.7s;
+        transition: opacity $ease-main, transform $ease-long;
         height: 2px;
         background: #0054a4;
         position: absolute;
@@ -126,23 +118,14 @@
         text-transform: uppercase;
       }
     }
-    &-close {
-      display: none;
-    }
     &-item {
       padding: 40px;
       padding-top: 65px;
       width: 50%;
+      height: 50%;
       display: flex;
+      justify-content: space-between;
       overflow: hidden;
-      transform: scale(1.1);
-      opacity: 0;
-      transition: transform 1.3s cubic-bezier(0.19, 1, 0.22, 1),
-        opacity 0.5s ease, filter 0.3s ease;
-      &.show {
-        transform: none;
-        opacity: 1;
-      }
       &:nth-child(4) {
         .header-product-img img {
           margin-left: -160px;
@@ -154,7 +137,7 @@
       height: 100%;
       img {
         position: absolute;
-        left: 0;
+        right: 0;
         top: 50%;
         transform: translateY(-50%);
         max-height: 100%;
@@ -165,6 +148,7 @@
       min-width: 40%;
     }
     &-title {
+      @include linkHover();
       font-style: normal;
       font-weight: bold;
       font-size: 40px;
@@ -173,6 +157,7 @@
       color: #0054a4;
       margin-bottom: 10px;
       display: block;
+      max-width: 285px;
     }
     &-link {
       @include linkHover();
@@ -195,15 +180,7 @@
     }
   }
   &-search {
-    &.active {
-      .header-search {
-        &-content {
-          @include opacityShow();
-        }
-      }
-    }
     &-content {
-      @include opacityHide();
       width: 100%;
       display: flex;
       position: absolute;
@@ -215,6 +192,9 @@
       form {
         width: 100%;
         display: flex;
+        .field{
+          margin-bottom: 0;
+        }
         input {
           flex-basis: 100%;
           border-bottom: 1px solid #95c5f3;
@@ -239,6 +219,10 @@
       position: relative;
       transform: rotate(-45deg);
       cursor: pointer;
+      transition: $ease-long;
+      &:hover {
+        transform: rotate(-215deg);
+      }
       &:before {
         content: "";
         width: 100%;
@@ -264,6 +248,10 @@
   &-logo {
     display: flex;
     align-items: center;
+    &-box {
+      height: 42px;
+      width: 176px;
+    }
     &-strs {
       margin-left: 15px;
       display: flex;

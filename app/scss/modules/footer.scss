@@ -18,6 +18,9 @@
       margin-bottom: 80px;
       &:last-child {
         margin-bottom: 0;
+        .footer-cats-title{
+          margin-bottom: 0;
+        }
       }
     }
     &-title {

@@ -8,7 +8,7 @@ export default class ScrollController {
 
     this.scroller = {
       target: document.querySelector("#scroll-box"),
-      ease: 0.1, // <= scroll speed
+      ease: 0.07, // <= scroll speed
       endY: 0,
       y: 0,
       resizeRequest: 1,

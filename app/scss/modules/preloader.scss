@@ -1,56 +1,55 @@
 html {
   &:not(.loaded) {
-    overflow: hidden;
-    .header {
-      background-color: #f2f8fd;
-      &:before {
-        transform: translate(0, -20%) rotate(-30deg);
-      }
-      > .content {
-        > div {
-          transform: translateY(100px);
-          opacity: 0;
+    &:not(.closing-preloader) {
+      overflow: hidden;
+      .header {
+        background-color: #f2f8fd;
+        &:before {
+          transform: translate(0, -20%) rotate(-30deg);
         }
-        .header-logo {
-          top: calc(50vh - 36px);
-          left: 22vw;
-          transform: translate(-50%, -50%);
-          @media (min-width: 1650px) {
-            left: 16vw;
+        > .content {
+          > div:not(.header-logo-box) {
+            transform: translateY(100px);
+            opacity: 0;
+          }
+          .header-logo {
+            top: 50vh !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%);
           }
         }
       }
     }
-  }
-  .header {
-    &:before {
-      content: "";
-      display: block;
-      width: 200%;
-      height: 180vh;
-      transition: 0.6s;
-      position: absolute;
-      top: 0;
-      right: -50%;
-      transition-delay: 0.6s;
-      transform: translate(0, -100%) rotate(0);
-      background-color: #c8e1ed;
-      @media (min-width: 1650px) {
-        width: 210%;
-        height: 250vh;
+    .header {
+      &:before {
+        content: "";
+        display: block;
+        width: 200%;
+        height: 180vh;
+        transition: $ease-long;
+        position: absolute;
+        top: 0;
+        right: -50%;
+        transition-delay: 0.3s;
+        transform: translate(0, -100%) rotate(0);
+        background-color: #c8e1ed;
+        @media (min-width: 1650px) {
+          width: 210%;
+          height: 250vh;
+        }
       }
-    }
-    &-logo {
-      transition: 0.6s ease-in-out;
-      transition-delay: 0.3s;
-      left: 0;
-      top: 0;
-      transform: translate(0, 0);
-      position: relative;
-    }
-    > .content > div {
-      transition-delay: 0.3s;
-      transition: 0.6s ease-in-out;
+      &-logo {
+        transition: $ease-long;
+        transition-delay: 0.3s;
+        left: 0;
+        top: 0;
+        transform: translate(0, 0);
+        position: absolute;
+      }
+      > .content > div {
+        transition-delay: 0.3s;
+        transition: $ease-long;
+      }
     }
   }
 }
