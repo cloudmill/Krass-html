@@ -29,7 +29,7 @@ export default class ViewController {
       $(".big-link").each(function () {
         let strs = $(".big-link").find(".big-link-mask span");
         let widthStr = strs.eq(0).width() + 20;
-        let defaultDuration = 3;
+        let defaultDuration = 4;
         let newDuration =
           defaultDuration *
           (widthStr / $(".big-link").find(".big-link-mask").width());
@@ -78,10 +78,10 @@ export default class ViewController {
     var controller = new ScrollMagic.Controller();
 
     $(".paralax-box").each(function () {
-      var triggerHook = $(this).attr('data-hook') || 0.8 
+      var triggerHook = $(this).attr("data-hook") || 0.8;
       var tl = new TimelineMax();
       var child = $(this).find(".paralax-item");
-      tl.to(child, 1, { y: 90, ease: Linear.easeNone });
+      tl.to(child, 1, { y: 90,z:0, ease: Linear.easeNone });
 
       var scene = new ScrollMagic.Scene({
         triggerElement: this,
@@ -116,17 +116,13 @@ export default class ViewController {
         if (lenght < group.length) lenght = group.length;
         if (group.length > i) {
           let item = group[i];
-          if ($(item).attr("animed") != 1) {
-            $(item).attr("animed", 1);
-            TweenLite.to(item, 1, {
-              opacity: 1,
-              x: 0,
-              y: 0,
-              ease: Power2.easeInOut,
-            });
-            setTimeout(() => {
-              $(item).removeClass("show-item");
-            }, 600);
+          if (!$(item).hasClass("play")) {
+            $(item).addClass("play");
+            let time = $(item).css('animation-duration');
+            console.log(time)
+            // setTimeout(() => {
+            //   $(item).removeClass("show-item");
+            // }, 600);
           }
         }
       });

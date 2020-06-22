@@ -1,6 +1,7 @@
 @mixin will-change($name, $beginValue, $time: 0.3s) {
   will-change: $name;
-  transition: $name $time;
+  transition: $name $ease-main;
+  transition-duration: $time;
   #{$name}: $beginValue;
 }
 

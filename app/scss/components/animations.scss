@@ -5,6 +5,7 @@
     height: 100%;
   }
   &-item {
+    @include performance();
     position: relative;
     top: -90px;
     will-change: transform;
@@ -13,10 +14,10 @@
 }
 .scroll {
   &-box {
+    @include performance();
     position: absolute;
     overflow: hidden;
     z-index: 2;
-    backface-visibility: hidden;
     transform-style: flat;
     will-change: transform;
     width: 100%;
@@ -35,4 +36,52 @@
 
 .view-item {
   @include will-change(opacity, null, -1);
+}
+@mixin animateF($name, $begin, $end) {
+  @include performance();
+  transform: $begin;
+  &.play {
+    animation: $name $ease-main both;
+    animation-duration: 1s;
+  }
+  @keyframes #{$name} {
+    0% {
+      transform: $begin;
+    }
+    100% {
+      transform: $end;
+    }
+  }
+}
+.show-item {
+  &.showInLeft {
+    @include animateF(showInLeft, translateX(-60vw), translateX(0));
+    &-self {
+      @include animateF(
+        showInLeft-self,
+        translateX(calc(-100% - 60px)),
+        translateX(0)
+      );
+    }
+  }
+  &.showInTop {
+    @include animateF(showInTop, translateY(-90vh), translateY(0));
+    &-self {
+      @include animateF(
+        showInTop-self,
+        translateY(calc(-100% - 60px)),
+        translateY(0)
+      );
+    }
+  }
+  &.showInBottom {
+    @include animateF(showInBottom, translateY(90vh), translateY(0));
+    &-self {
+      @include animateF(
+        showInBottom-self,
+        translateY(calc(100% + 60px)),
+        translateY(0)
+      );
+    }
+  }
 }

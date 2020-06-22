@@ -58,6 +58,7 @@
     color: #cc3e1e;
     display: block;
     margin-bottom: 18px;
+    margin-top: -13px;
   }
   &-loc {
     width: 100%;
@@ -92,7 +93,8 @@
       text-transform: uppercase;
       color: #0054a4;
       margin: 25px 0;
-      margin-right: 86px;
+      min-width: 118px;
+      margin-right: 70px;
     }
   }
   &-copy {
@@ -102,8 +104,13 @@
     line-height: 11px;
     text-transform: uppercase;
     color: #0054a4;
-    .dev {
+    display: flex;
+    justify-content: space-between;
+    span.pp{
       margin-left: 90px;
+      margin-right: auto;
+    }
+    .dev {
       display: inline-block;
       span {
         color: #95c5f3;

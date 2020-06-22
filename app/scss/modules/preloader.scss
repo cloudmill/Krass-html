@@ -22,15 +22,15 @@ html {
     }
     .header {
       &:before {
+        @include performance();
         content: "";
         display: block;
         width: 200%;
         height: 180vh;
-        transition: $ease-long;
+        transition: $ease-olong;
         position: absolute;
         top: 0;
         right: -50%;
-        transition-delay: 0.3s;
         transform: translate(0, -100%) rotate(0);
         background-color: #c8e1ed;
         @media (min-width: 1650px) {
@@ -39,16 +39,16 @@ html {
         }
       }
       &-logo {
-        transition: $ease-long;
-        transition-delay: 0.3s;
+        @include performance();
+        transition: $ease-olong;
         left: 0;
         top: 0;
         transform: translate(0, 0);
         position: absolute;
       }
       > .content > div {
-        transition-delay: 0.3s;
         transition: $ease-long;
+        transition-duration: 1.3s;
       }
     }
   }

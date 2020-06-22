@@ -1,6 +1,10 @@
 import $ from "jquery";
 import App from "./main.js";
 
-$(document).ready(function() {
+window.Config = {
+  debug: true,
+};
+
+$(document).ready(function () {
   App();
 });

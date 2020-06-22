@@ -14,6 +14,8 @@
   z-index: 2;
   cursor: pointer;
   background-color: inherit;
+  animation: empty $ease-main both;
+  animation-duration: 1.3s;
   &-circle {
     transform: translate(-50%, -50%);
     position: absolute;
@@ -30,7 +32,9 @@
       transform: scaleY(-1) translateX(9px);
       fill: transparent;
       circle {
-        @include will-change(stroke-dasharray, 500px, 1.5s);
+        stroke-dasharray: 500px;
+        transition: stroke-dasharray $ease-olong;
+        transition-duration: 1.5s;
         stroke: #cc3e1e;
         cx: 26;
         cy: 30;
@@ -41,10 +45,36 @@
     }
   }
   &:hover {
+    animation-name: TextMovingInButton;
+    .svg-icon {
+      animation-name: StrMovingInButton;
+    }
     svg {
       circle {
         stroke-dasharray: 150px;
       }
+    }
+  }
+  @keyframes TextMovingInButton {
+    0% {
+      padding-left: 35px;
+    }
+    50% {
+      padding-left: 43px;
+    }
+    100% {
+      padding-left: 35px;
+    }
+  }
+  @keyframes StrMovingInButton {
+    0% {
+      left: 17px;
+    }
+    50% {
+      left: 25px;
+    }
+    100% {
+      left: 17px;
     }
   }
   &.gray {
@@ -54,6 +84,8 @@
   }
   .svg-icon {
     position: absolute;
+    animation: empty $ease-main both;
+    animation-duration: 1.3s;
     left: 17px;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -136,44 +168,53 @@
   }
   &-mask {
     overflow: hidden;
-    width: 178px;
+    width: 175px;
     height: 21px;
     display: flex;
     align-items: center;
     position: relative;
     span {
+      @include performance();
       white-space: nowrap;
       position: absolute;
       padding-top: 3px;
       left: 0;
       top: 0;
       display: block;
-
+      will-change: transform;
       &:nth-child(1) {
-        animation: wordMoving 3s linear infinite;
+        position: relative;
+        animation: wordMoving 4s linear infinite;
       }
       &:nth-child(2) {
-        animation: wordMovingTwo 3s linear infinite;
+        animation: wordMovingTwo 4s linear infinite;
+      }
+      &:nth-child(3) {
+        animation: wordMovingThree 4s linear infinite;
       }
     }
     @keyframes wordMoving {
       0% {
-        transform: translateX(0%);
-        margin-left: 0px;
+        transform: translate3d(0, 0, 0);
       }
       100% {
-        transform: translateX(100%);
-        margin-left: 20px;
+        transform: translate3d(calc(100% + 20px), 0, 0);
       }
     }
     @keyframes wordMovingTwo {
       0% {
-        transform: translateX(-100%);
-        margin-left: -20px;
+        transform: translate3d(calc(-100% - 20px), 0, 0);
       }
       100% {
-        transform: translateX(0);
-        margin-left: 0px;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    @keyframes wordMovingThree {
+      0% {
+        transform: translate3d(calc(100% + 20px), 0, 0);
+      }
+      100% {
+        transform: translate3d(calc(200% + 40px), 0, 0);
       }
     }
   }

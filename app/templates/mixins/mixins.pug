@@ -30,6 +30,8 @@ mixin bigLink(className,href)
         block
       span
         block
+      span
+        block
     +icon('str-big-link-inside','svg')
 
 
@@ -48,7 +50,7 @@ mixin slider(classSlider, pagination,navigation,scrollbar)
 mixin fieldSelect(id,name,values)
   .field.field-select
     label(for=id)
-      span Выберите свой регион
+      span.name Выберите свой регион
       select(name=name id=id)
         each val in values
           option(value=val[0]) #{val[1]}
@@ -56,12 +58,14 @@ mixin fieldSelect(id,name,values)
 mixin fieldBase(id,name,placeholder)
   .field.field-base
     label(for=id)
-      input(type="text" name=name id=id required)
-      span #{placeholder}
-      span
+      input(type="text" name=name id=id data-required='1')
+      .field-inf
+        span.name #{placeholder}
+        span.line
+        span.errorText пожалуйста, заполните поле корректно
 mixin fieldCheck(id,name)
   .field.field-check
     label(for=id)
-      input(type="checkbox" name=name id=id required)
+      input(type="checkbox" name=name id=id data-required='1')
       span
         block

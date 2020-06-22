@@ -1,18 +1,18 @@
 import Sketch from "./sliders/mainSketch";
+import $ from "jquery";
 
-
-export default class SlidersController{
-  constructor(){
+export default class SlidersController {
+  constructor() {
     this.init();
   }
-  init(){
-    this.sketch();
+  init() {
+    if ($("#imgs-content").length > 0) this.sketch();
   }
-  sketch(){
-    let sketch =new Sketch({
+  sketch() {
+    let sketch = new Sketch({
       debug: true,
       uniforms: {
-        intensity: {value: 0.2, type:'f', min:0., max:2}
+        intensity: { value: 0.2, type: "f", min: 0, max: 2 },
       },
       fragment: `
         uniform float time;
@@ -55,7 +55,7 @@ export default class SlidersController{
     
         }
     
-      `
+      `,
     });
   }
 }

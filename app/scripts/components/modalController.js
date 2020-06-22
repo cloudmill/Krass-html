@@ -127,14 +127,23 @@ export default class modalController {
     let i = 0;
     for (let key in this.modals) {
       let item = this.modals[key];
-      item.close(() => {
+      if (item.state == "open")
+        item.close(() => {
+          i++;
+          if (i == this.count) {
+            this.state = "close";
+            $(".modal").removeClass("active");
+            $("html").removeClass("closeScroll");
+          }
+        });
+      else {
         i++;
         if (i == this.count) {
           this.state = "close";
           $(".modal").removeClass("active");
           $("html").removeClass("closeScroll");
         }
-      });
+      }
     }
   }
 }

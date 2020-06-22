@@ -28,14 +28,15 @@ $color-hover-link: #cc3e1e;
 $color-placeholder: #777; // Основной цвет для placeholder
 $color-input: #3b3f44; // Основной цвет input, select и textarea
 $color-main: #0054a4; // Основной фирменный цвет
-$color-border: #0054A4; // Основной цвет границ таблиц, секций
+$color-border: #0054a4; // Основной цвет границ таблиц, секций
 
 // ##########
 // Transitions
 // ##########
-$ease-main: 0.3s cubic-bezier(0.36,0,0.24,1);
-$ease-long: 0.6s cubic-bezier(0.36,0,0.24,1);
-
+$ease-main: 0.3s cubic-bezier(0.36, 0, 0.24, 1);
+$ease-long: 0.6s cubic-bezier(0.36, 0, 0.24, 1);
+$ease-vlong: 1s cubic-bezier(0.36, 0, 0.24, 1);
+$ease-olong: 1.3s cubic-bezier(0.36, 0, 0.24, 1);
 
 // ##########
 // Шрифты

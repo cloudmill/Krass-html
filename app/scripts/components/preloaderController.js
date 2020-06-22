@@ -32,7 +32,7 @@ export default class PreloaderController {
     setTimeout(() => {
       $("html").addClass("loaded");
       $("html").removeClass("closing-preloader");
-    },900);
+    },1600);
   }
   fasterLoad() {
     let i = 1;
