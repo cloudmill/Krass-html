@@ -1,0 +1,44 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Каталог'
+
+mixin production-preview-items(json)
+  each item,key in json
+    div(class=`${item.active}`, data-target=`target-${key}`).production-preview-item
+      .production-preview-wrapper
+        .production-preview-box
+          .production-preview-img
+            img(src=`images/cat-preview-${key+1}.png`, alt="")
+          +bigLink('production-preview-but')
+            |#{item.bigLink}
+      if (item.link)
+        .production-preview-link
+          +link()
+            |#{item.link}
+
+block content
+  .page
+    .page-head.content.scroll-trigger.paralax-box(data-hook=0)
+      .page-head-title герметики
+      .page-head-content
+        .page-head-menu
+          a.page-head-menu-link.active(href="") Все
+          a.page-head-menu-link(href="") Акриловые
+          a.page-head-menu-link(href="") силиконовые
+          a.page-head-menu-link(href="") специализированные
+      .page-head-bg 
+        .paralax-item
+          img(src="images/catalog-head.jpg", alt="")
+      .page-head-link
+        +link()
+          |подобрать герметик
+    include ../modules/whereBuyMap.pug
+    include ../modules/subscribe.pug
+
+
+
+
+
+
+

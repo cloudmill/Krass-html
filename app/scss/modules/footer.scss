@@ -109,6 +109,9 @@
     span.pp{
       margin-left: 90px;
       margin-right: auto;
+      a{
+        @include linkHover();
+      }
     }
     .dev {
       display: inline-block;

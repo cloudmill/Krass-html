@@ -38,11 +38,16 @@ html {
           height: 250vh;
         }
       }
+      &.scrolled{
+        .header-logo{
+          top:28px
+        }
+      }
       &-logo {
         @include performance();
         transition: $ease-olong;
         left: 0;
-        top: 0;
+        top: 39px;
         transform: translate(0, 0);
         position: absolute;
       }

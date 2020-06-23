@@ -8,7 +8,7 @@ export default class ScrollController {
 
     this.scroller = {
       target: document.querySelector("#scroll-box"),
-      ease: 0.07, // <= scroll speed
+      ease: 0.2, // <= scroll speed
       endY: 0,
       y: 0,
       resizeRequest: 1,
@@ -44,14 +44,14 @@ export default class ScrollController {
     GSAP.TweenLite.set(this.scroller.target, {
       y: -this.scroller.y,
     });
-    this.updateHandlers();
+    this.updateHandlers(this.scroller.y);
     this.requestId = this.scroller.scrollRequest > 0
       ? requestAnimationFrame(this.update.bind(this))
       : null;
   }
-  updateHandlers() {
+  updateHandlers(scrollY) {
     this.handlers.forEach((item) => {
-      item();
+      item(scrollY);
     });
   }
   init() {

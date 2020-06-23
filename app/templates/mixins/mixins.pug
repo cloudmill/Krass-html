@@ -5,8 +5,8 @@ mixin icon(iconName, type = 'png')
     i(class='svg-icon '+'svg-'+iconName)
 
 
-mixin link(className,href)
-  a(class=className href=href).main-link
+mixin link(href = '')
+  a(href=href).main-link
     block
     +icon('str-link','svg')
     .main-link-circle

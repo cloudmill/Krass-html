@@ -27,7 +27,7 @@
       background-size: 1920px 1080px;
       position: absolute;
       z-index: -1;
-      top: 0;
+      top: -45px;
       height: calc(100% + 90px);
       left: 0;
       width: 100%;
@@ -316,6 +316,13 @@
           }
           &-box {
             animation: showBoxInside both 1s;
+          }
+        }
+      }
+      &:not(.active){
+        .production-preview-but{
+          .big-link-mask span{
+            animation-play-state: paused;
           }
         }
       }

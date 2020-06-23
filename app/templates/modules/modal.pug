@@ -6,7 +6,8 @@ mixin header-products(json)
         each link in item.sub
           a.header-product-link #{link}
         if (item.link)
-          +link("header-product-select") #{item.link}
+          .header-product-select
+            +link() #{item.link}
       .header-product-img
         img(src=`images/category-${key+1}.png`)
 
@@ -23,6 +24,6 @@ mixin header-products(json)
         form(action="")
           +fieldBase('s','s','Поиск по каталогу')
           button(type='submit')
-            +link('gray')
+            +link()
               |Найти
         .header-search-close(data-modal-close)

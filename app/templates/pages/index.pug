@@ -20,8 +20,9 @@ mixin production-preview-items(json)
                     +bigLink('production-preview-but')
                         |#{item.bigLink}
             if (item.link)
-                +link('production-preview-link gray')
-                    |#{item.link}
+                .production-preview-link
+                    +link()
+                        |#{item.link}
 
 block content
     .page
@@ -64,8 +65,9 @@ block content
 
         .main-blog.content
             .section-name блог
-            +link('main-blog-link')
-                |перейти в блог
+            .main-blog-link
+                +link()
+                    |перейти в блог
             .main-blog-content
                 .section-title.main-blog-title.view-item Делимся опытом
                 .main-blog-list

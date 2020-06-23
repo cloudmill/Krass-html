@@ -42,11 +42,9 @@ class Modal {
       if (this.cCount == 0) {
         //если нету дочерней анимации открытия
         this.el.classList.remove("active");
-        setTimeout(() => {
-          this.state = "close";
-          this.animate = false;
-          handler();
-        }, 1000);
+        this.state = "close";
+        this.animate = false;
+        handler();
       } else {
         //если есть
         let i = 0;
@@ -58,11 +56,9 @@ class Modal {
           if (i == this.cCount) {
             setTimeout(() => {
               this.el.classList.remove("active");
-              setTimeout(() => {
-                this.state = "close";
-                this.animate = false;
-                handler();
-              }, 1000);
+              this.state = "close";
+              this.animate = false;
+              handler();
             }, this.cCount * 80);
           }
         });

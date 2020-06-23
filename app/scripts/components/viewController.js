@@ -7,6 +7,31 @@ import { Linear, Power2, CSSPlugin, Elastic } from "gsap";
 
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
+class ParalaxItem {
+  constructor(opts) {
+    this.parent = opts.parent;
+    this.child = opts.child;
+    this.duration = 0.9;
+    this.way = 90;
+    this.hook = opts.hook || 0.9;
+  }
+  update(y) {
+    this.startPos = this.parent.offset().top - window.innerHeight * this.hook;
+    this.endPos = this.startPos + window.innerHeight * this.duration;
+    if (y - this.startPos >= 0 && this.endPos - y >= 0) {
+      this.currentOffset =
+        (this.way / (this.endPos - this.startPos)) * (y - this.startPos);
+      this.child.css(
+        "transform",
+        "translate3d(0," + this.currentOffset + "px,0)"
+      );
+    } else if (y - this.startPos < 0) {
+      this.child.css("transform", "translate3d(0,0,0)");
+    } else if (this.endPos - y < 0) {
+      this.child.css("transform", "translate3d(0," + this.way + "px,0)");
+    }
+  }
+}
 export default class ViewController {
   constructor() {
     this.correctStyles();
@@ -17,13 +42,12 @@ export default class ViewController {
   correctStyles() {
     let currentLogoPreloadingPos = () => {
       //установка позиции лого для возвращения после прелоадера
-      let left = $(".header-logo-box").offset().left;
-      $(".header-logo").css("left", left + "px");
-      let top = $(".header-logo-box").offset().top;
-      $(".header-logo").css("top", top + "px");
-
-      //выравнивание тектса по лого
-      $(".main-banner-sub").css("left", left - 40 + "px");
+      setTimeout(() => {
+        let left = $(".header-logo-box").offset().left;
+        $(".header-logo").css("left", left + "px");
+        //выравнивание тектса по лого
+        $(".main-banner-sub").css("left", left - 40 + "px");
+      }, 100);
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {
@@ -75,21 +99,20 @@ export default class ViewController {
     each();
   }
   paralax() {
-    var controller = new ScrollMagic.Controller();
-
+    let paralaxItems = [];
     $(".paralax-box").each(function () {
-      var triggerHook = $(this).attr("data-hook") || 0.8;
-      var tl = new TimelineMax();
-      var child = $(this).find(".paralax-item");
-      tl.to(child, 1, { y: 90,z:0, ease: Linear.easeNone });
-
-      var scene = new ScrollMagic.Scene({
-        triggerElement: this,
-        triggerHook: triggerHook,
-        duration: "80%",
-      })
-        .setTween(tl)
-        .addTo(controller);
+      paralaxItems.push(
+        new ParalaxItem({
+          parent: $(this),
+          child: $(this).find(".paralax-item"),
+          hook: $(this).attr("data-hook"),
+        })
+      );
+    });
+    window.onScroll((y) => {
+      paralaxItems.forEach((item) => {
+        item.update(y);
+      });
     });
   }
   startShowing() {
@@ -118,11 +141,6 @@ export default class ViewController {
           let item = group[i];
           if (!$(item).hasClass("play")) {
             $(item).addClass("play");
-            let time = $(item).css('animation-duration');
-            console.log(time)
-            // setTimeout(() => {
-            //   $(item).removeClass("show-item");
-            // }, 600);
           }
         }
       });

@@ -51,6 +51,11 @@ export default class FormsController {
       let type = input.attr("type");
       if (input.attr("data-required")) {
         if (type == "text") {
+          if (input.val() == "") {
+            input.removeClass("fill");
+          } else {
+            input.addClass("fill");
+          }
           let name = input.attr("name");
           let val = input.val();
           if (val == "") {

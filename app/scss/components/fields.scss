@@ -147,6 +147,7 @@
             top: 0;
             font-size: 12px;
             line-height: 12px;
+            color: #0054a4;
           }
           .line {
             opacity: 1 !important;
@@ -154,7 +155,7 @@
           }
         }
       }
-      &:not(:focus):valid {
+      &.fill {
         & + .field-inf {
           .name {
             top: 0;
@@ -248,7 +249,7 @@
   position: fixed;
   z-index: 10000;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: rgba(0, 0, 0, 0.1);
   width: 100vw;
   top: 0;
   left: 0;
