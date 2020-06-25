@@ -29,19 +29,66 @@ block content
           a.page-head-menu-link(href="") специализированные
       .page-head-bg 
         .paralax-item
-          img(src="images/catalog-head.jpg", alt="")
+          img(src="images/catalog-head.jpg" alt="")
       .page-head-link
         +link()
           |подобрать герметик
     form.filter.content
       +filterSelect('application','application',[['0','первая область'],['1','вторая область'],['3','вторая область']])
       +filterSelect('material','material',[['0','материал 1'],['1','материал 2'],['3','материал 3']])
-      .filter-reset Сбросить
+      a.filter-reset
+        span.simple
+          +icon('reset','svg')
+        span.hover
+          +icon('reset-color','svg')
+        |Сбросить
+    .catalog.content
+      .catalog-list
+        include ../modules/catalogListItems.pug
+        include ../modules/catalogListItems.pug
+        include ../modules/catalogListItems.pug
+        include ../modules/catalogListItems.pug
+      .catalog-nav
+        .catalog-pages
+          a(href="").active 1
+          a(href="") 2
+          a(href="") 3
+          a.next(href="")
+            +icon('str-link','svg')
+        a.catalog-more(href="")
+          |показать еще
+          span
+    .usefulArt.content
+      .section-title.usefulArt-title полезные статьи
+        .usefulArt-link
+          +link()
+            |перейти в блог
+      .usefulArt-list
+        .usefulArt-item
+          .usefulArt-item-img
+            img(src="images/main-blog-1.jpg" alt="")
+          .usefulArt-item-content
+            .usefulArt-item-title Герметик – незаменимый строительный материал
+            .usefulArt-item-text При производстве строительных и ремонтных работ не обойтись без использования герметиков, которые представляют собой одно или двухкомпонентную эластичную смесь.
+            .usefulArt-item-tags
+              a(href="") Герметик
+              a(href="") Ремонт
+        .usefulArt-item
+          .usefulArt-item-img
+            img(src="images/main-blog-2.jpg" alt="")
+          .usefulArt-item-content
+            .usefulArt-item-title Запенили! Все о монтажной пене KRASS
+            .usefulArt-item-text Впервые применяться в строительстве монтажная пена стала в начале 80-х, 
+              |но за счет своих свойств и удобства очень быстро завоевала любовь 
+              |и доверие строителей всего мира. 
+            .usefulArt-item-tags
+              a(href="") Герметик
+              a(href="") Ремонт
 
-      
 
 
-    include ../modules/whereBuyMap.pug
+
+
     include ../modules/subscribe.pug
 
 

@@ -14,13 +14,14 @@ export default class ScrollController {
       resizeRequest: 1,
       scrollRequest: 0,
     };
-    this.requestId = null;
+    this.updating = false;
     this.init();
   }
   onScroll(handler) {
     this.handlers.push(handler);
   }
   update() {
+    this.updating = true;
     var html = document.documentElement;
     var body = document.body;
     var resized = this.scroller.resizeRequest > 0;
@@ -45,9 +46,13 @@ export default class ScrollController {
       y: -this.scroller.y,
     });
     this.updateHandlers(this.scroller.y);
-    this.requestId = this.scroller.scrollRequest > 0
-      ? requestAnimationFrame(this.update.bind(this))
-      : null;
+    this.updating = false;
+    clearTimeout(this.time);
+    this.time = setTimeout(() => {
+      if (this.scroller.scrollRequest > 0) {
+        this.update();
+      }
+    }, 1000 / 60);
   }
   updateHandlers(scrollY) {
     this.handlers.forEach((item) => {
@@ -67,17 +72,17 @@ export default class ScrollController {
     document.addEventListener("scroll", this.scroll.bind(this));
   }
   scroll() {
-    
     this.scroller.scrollRequest++;
-    if (!this.requestId) {
-      this.requestId = requestAnimationFrame(this.update.bind(this));
+
+    if (!this.updating) {
+      this.update();
     }
-    
   }
   resize() {
     this.scroller.resizeRequest++;
-    if (!this.requestId) {
-      this.requestId = requestAnimationFrame(this.update.bind(this));
+
+    if (!this.updating) {
+      this.update();
     }
   }
 }

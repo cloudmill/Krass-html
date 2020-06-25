@@ -20,3 +20,9 @@
   background-position: center center;
   background-size: contain;background-repeat: no-repeat;
 }
+
+@mixin grid(){
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 40px;
+}

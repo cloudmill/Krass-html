@@ -64,10 +64,59 @@
       }
     }
   }
-  &-filter{
-    .select2-selection--single{
-      border: 0;
-      border-bottom: 2px solid #0054A4;
+  &-filter {
+    .select2 {
+      padding-left: 20px;
+      padding-right: 20px;
+      box-sizing: content-box;
+      margin-left: -20px;
+      &-selection--single {
+        border: 0;
+        border-bottom: 2px solid #0054a4;
+      }
+      &-selection__rendered {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px !important;
+        line-height: 250%;
+        text-transform: uppercase;
+        color: #0054a4;
+        padding-left: 0 !important;
+      }
+      &-selection__arrow {
+        right: 20px !important;
+        b {
+          background: none !important;
+          position: relative;
+          width: 13px !important;
+          height: 13px !important;
+          transform: translateY(-50%) !important;
+          &::before {
+            width: 13px;
+            height: 1px;
+            display: block;
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #0054a4;
+            border-radius: 2px;
+          }
+          &::after {
+            width: 13px;
+            height: 1px;
+            display: block;
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            background: #0054a4;
+            border-radius: 2px;
+          }
+        }
+      }
     }
   }
   &-base {
@@ -268,6 +317,61 @@
     cursor: pointer;
     border: 0;
     border-radius: 0;
+    &.select2-filter-view {
+      .select2 {
+        &-selection__rendered {
+          font-style: normal;
+          font-weight: bold;
+          font-size: 15px;
+          text-transform: uppercase;
+          color: #cc3e1e;
+          &::before {
+            width: 13px;
+            height: 1px;
+            display: block;
+            content: "";
+            position: absolute;
+            right: 23px;
+            margin-top: -3px;
+            top: 50%;
+            transform: translate(0, -50%);
+            background: #CC3E1E;
+            border-radius: 2px;
+            animation: rotate2 $ease-long both;
+          }
+          &::after {
+            width: 13px;
+            height: 1px;
+            display: block;
+            content: "";
+            position: absolute;
+            right: 23px;
+            margin-top: -3px;
+            top: 50%;
+            transform: translate(0, -50%) rotate(90deg);
+            background: #CC3E1E;
+            border-radius: 2px;
+            animation: rotate $ease-long both;
+          }
+          @keyframes rotate {
+            0%{
+              transform: translate(0, -50%) rotate(90deg);
+            }
+            100%{
+              transform: translate(0, -50%) rotate(270deg);
+            }
+          }
+          @keyframes rotate2 {
+            0%{
+              transform: translate(0, -50%) rotate(0deg);
+            }
+            100%{
+              transform: translate(0, -50%) rotate(180deg);
+            }
+          }
+        }
+      }
+    }
     .select2 {
       &-selection__rendered {
         cursor: pointer;

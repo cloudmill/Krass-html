@@ -21,6 +21,10 @@ export default class FormsController {
         console.log(html);
         $(".select2-dropdown").find(".select2-selection__rendered").remove();
         $(".select2-dropdown").append(html);
+        if($(select).parent().parent().hasClass('field-filter')){
+          $(".select2-dropdown").addClass('select2-filter-view')
+        }
+        
         $("html").addClass("closeScroll");
       });
       $(select).on("select2:closing", function (e) {
