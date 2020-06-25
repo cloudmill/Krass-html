@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог</title>
+    <title>тест</title>
     <link href="css/style.min.css" rel="stylesheet">
   </head>
   <body>
@@ -21,66 +21,113 @@
       <div class="scroll-viewport">
         <div class="scroll-box" id="scroll-box">
           <div class="page">
-            <div class="page-head content scroll-trigger paralax-box" data-hook="0">
-              <div class="page-head-title section-title">герметики</div>
-              <div class="page-head-content">
-                <div class="page-head-menu"><a class="page-head-menu-link active" href="">Все</a><a class="page-head-menu-link" href="">Акриловые</a><a class="page-head-menu-link" href="">силиконовые</a><a class="page-head-menu-link" href="">специализированные</a></div>
+            <div class="subscribe content section-full section-border">
+              <div class="section-title view-item">Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS</div>
+              <div class="subscribe-str"><i class="svg-icon svg-multi-str-blue"></i>
               </div>
-              <div class="page-head-bg"> 
-                <div class="paralax-item"><img src="images/catalog-head.jpg" alt=""></div>
-              </div>
-              <div class="page-head-link"><a class="main-link" href="">
-                  <div class="main-link-text"><i class="svg-icon svg-str-link"></i>подобрать герметик
-                  </div>
-                  <div class="main-link-circle">
-                    <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
-                      <circle></circle>
-                    </svg>
-                  </div></a>
-              </div>
-            </div>
-            <form class="filter content">
-              <div class="field field-select field-filter">
-                <label for="application">
-                  <select name="application" id="application">
-                    <option value="0">первая область</option>
-                    <option value="1">вторая область</option>
-                    <option value="3">вторая область</option>
-                  </select>
-                </label>
-              </div>
-              <div class="field field-select field-filter">
-                <label for="material">
-                  <select name="material" id="material">
-                    <option value="0">материал 1</option>
-                    <option value="1">материал 2</option>
-                    <option value="3">материал 3</option>
-                  </select>
-                </label>
-              </div>
-              <div class="filter-reset">Сбросить</div>
-            </form>
-            <div class="whereBuy content section-full section-border">
-              <div class="section-title view-item">где купить</div>
-              <div class="whereBuy-text view-item">Продукция представлена в 80 регионах <br> России и странах Таможенного союза</div>
-              <div class="field field-select">
-                <label for="region"><span class="name">Выберите свой регион</span>
-                  <select name="region" id="region">
-                    <option value="0">Москва</option>
-                    <option value="1">Санкт-Петербург</option>
-                  </select>
-                </label>
-              </div><a class="main-link" href="">
-                <div class="main-link-text"><i class="svg-icon svg-str-link"></i>Перейти
+              <div class="subscribe-img"><img src="images/bg-blog.png" alt=""></div>
+              <form class="subscribe-form view-item">
+                <div class="field field-base">
+                  <label for="nameSub">
+                    <input type="text" name="name" id="nameSub" data-required="1"/>
+                    <div class="field-inf"><span class="name">Имя</span><span class="line"></span><span class="errorText">пожалуйста, заполните поле корректно</span></div>
+                  </label>
                 </div>
-                <div class="main-link-circle">
-                  <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
-                    <circle></circle>
-                  </svg>
-                </div></a>
-              <div class="whereBuy-img view-item"><img src="images/whereBuy-map.png" height="555" alt=""></div>
-              <div class="whereBuy-str"><i class="svg-icon svg-multi-str-orange"></i>
+                <div class="field field-base">
+                  <label for="emailSub">
+                    <input type="text" name="email" id="emailSub" data-required="1"/>
+                    <div class="field-inf"><span class="name">Email</span><span class="line"></span><span class="errorText">пожалуйста, заполните поле корректно</span></div>
+                  </label>
+                </div>
+                <div class="field-row">
+                  <button class="field-submit main-link" type="submit">
+                    <div class="main-link-text"><i class="svg-icon svg-str-link"></i>подписаться на новости
+                    </div>
+                    <div class="main-link-circle">
+                      <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                        <circle></circle>
+                      </svg>
+                    </div>
+                  </button>
+                  <div class="field field-check">
+                    <label for="ppSub">
+                      <input type="checkbox" name="pp" id="ppSub" data-required="1"/><span>Согласен на обработку персональных данных <br> в соответствии с <a href="">политикой конфиденциальности</a></span>
+                    </label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="subscribe content section-full section-border">
+              <div class="section-title view-item">Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS</div>
+              <div class="subscribe-str"><i class="svg-icon svg-multi-str-blue"></i>
               </div>
+              <div class="subscribe-img"><img src="images/bg-blog.png" alt=""></div>
+              <form class="subscribe-form view-item">
+                <div class="field field-base">
+                  <label for="nameSub">
+                    <input type="text" name="name" id="nameSub" data-required="1"/>
+                    <div class="field-inf"><span class="name">Имя</span><span class="line"></span><span class="errorText">пожалуйста, заполните поле корректно</span></div>
+                  </label>
+                </div>
+                <div class="field field-base">
+                  <label for="emailSub">
+                    <input type="text" name="email" id="emailSub" data-required="1"/>
+                    <div class="field-inf"><span class="name">Email</span><span class="line"></span><span class="errorText">пожалуйста, заполните поле корректно</span></div>
+                  </label>
+                </div>
+                <div class="field-row">
+                  <button class="field-submit main-link" type="submit">
+                    <div class="main-link-text"><i class="svg-icon svg-str-link"></i>подписаться на новости
+                    </div>
+                    <div class="main-link-circle">
+                      <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                        <circle></circle>
+                      </svg>
+                    </div>
+                  </button>
+                  <div class="field field-check">
+                    <label for="ppSub">
+                      <input type="checkbox" name="pp" id="ppSub" data-required="1"/><span>Согласен на обработку персональных данных <br> в соответствии с <a href="">политикой конфиденциальности</a></span>
+                    </label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="subscribe content section-full section-border">
+              <div class="section-title view-item">Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS</div>
+              <div class="subscribe-str"><i class="svg-icon svg-multi-str-blue"></i>
+              </div>
+              <div class="subscribe-img"><img src="images/bg-blog.png" alt=""></div>
+              <form class="subscribe-form view-item">
+                <div class="field field-base">
+                  <label for="nameSub">
+                    <input type="text" name="name" id="nameSub" data-required="1"/>
+                    <div class="field-inf"><span class="name">Имя</span><span class="line"></span><span class="errorText">пожалуйста, заполните поле корректно</span></div>
+                  </label>
+                </div>
+                <div class="field field-base">
+                  <label for="emailSub">
+                    <input type="text" name="email" id="emailSub" data-required="1"/>
+                    <div class="field-inf"><span class="name">Email</span><span class="line"></span><span class="errorText">пожалуйста, заполните поле корректно</span></div>
+                  </label>
+                </div>
+                <div class="field-row">
+                  <button class="field-submit main-link" type="submit">
+                    <div class="main-link-text"><i class="svg-icon svg-str-link"></i>подписаться на новости
+                    </div>
+                    <div class="main-link-circle">
+                      <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                        <circle></circle>
+                      </svg>
+                    </div>
+                  </button>
+                  <div class="field field-check">
+                    <label for="ppSub">
+                      <input type="checkbox" name="pp" id="ppSub" data-required="1"/><span>Согласен на обработку персональных данных <br> в соответствии с <a href="">политикой конфиденциальности</a></span>
+                    </label>
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="subscribe content section-full section-border">
               <div class="section-title view-item">Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS</div>

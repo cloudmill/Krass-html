@@ -51,7 +51,7 @@ export default class ViewController {
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {
-        let strs = $(".big-link").find(".big-link-mask span");
+        let strs = $(this).find(".big-link-mask span");
         let widthStr = strs.eq(0).width() + 20;
         let defaultDuration = 4;
         let newDuration =

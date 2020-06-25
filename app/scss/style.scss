@@ -50,7 +50,9 @@
         border-top: 0;
       }
     }
+    &-empty{
+      height: 200vh;
+      background: linear-gradient(0deg, red,blue);
+    }  
   }
-  
-  
 }

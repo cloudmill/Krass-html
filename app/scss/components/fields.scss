@@ -64,6 +64,12 @@
       }
     }
   }
+  &-filter{
+    .select2-selection--single{
+      border: 0;
+      border-bottom: 2px solid #0054A4;
+    }
+  }
   &-base {
     position: relative;
     label {
@@ -257,7 +263,7 @@
   &.active {
     @include opacityShow();
   }
-  cursor: url("../images/ursor-close.svg"), pointer;
+  cursor: url("../images/cursor-close.cur"), pointer;
   .select2-dropdown {
     cursor: pointer;
     border: 0;

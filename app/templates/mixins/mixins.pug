@@ -7,15 +7,17 @@ mixin icon(iconName, type = 'png')
 
 mixin link(href = '')
   a(href=href).main-link
-    block
-    +icon('str-link','svg')
+    .main-link-text
+      +icon('str-link','svg')
+      block
     .main-link-circle
       svg( viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg")
         circle
 mixin submit()
   button.field-submit.main-link(type='submit')
-    block
-    +icon('str-link','svg')
+    .main-link-text
+      +icon('str-link','svg')
+      block
     .main-link-circle
       svg( viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg")
         circle
@@ -47,10 +49,20 @@ mixin slider(classSlider, pagination,navigation,scrollbar)
     if(scrollbar)
       .swiper-scrollbar
 
-mixin fieldSelect(id,name,values)
+mixin fieldSelect(id,name,label,values)
   .field.field-select
     label(for=id)
-      span.name Выберите свой регион
+      if(label)
+        span.name #{label}
+      select(name=name id=id)
+        each val in values
+          option(value=val[0]) #{val[1]}
+
+mixin filterSelect(id,name,values)
+  div(class=className).field.field-select.field-filter
+    label(for=id)
+      if(label)
+        span.name #{label}
       select(name=name id=id)
         each val in values
           option(value=val[0]) #{val[1]}

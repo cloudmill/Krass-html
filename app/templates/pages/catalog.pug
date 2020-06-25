@@ -20,7 +20,7 @@ mixin production-preview-items(json)
 block content
   .page
     .page-head.content.scroll-trigger.paralax-box(data-hook=0)
-      .page-head-title герметики
+      .page-head-title.section-title герметики
       .page-head-content
         .page-head-menu
           a.page-head-menu-link.active(href="") Все
@@ -33,6 +33,14 @@ block content
       .page-head-link
         +link()
           |подобрать герметик
+    form.filter.content
+      +filterSelect('application','application',[['0','первая область'],['1','вторая область'],['3','вторая область']])
+      +filterSelect('material','material',[['0','материал 1'],['1','материал 2'],['3','материал 3']])
+      .filter-reset Сбросить
+
+      
+
+
     include ../modules/whereBuyMap.pug
     include ../modules/subscribe.pug
 
