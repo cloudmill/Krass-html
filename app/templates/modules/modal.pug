@@ -2,7 +2,7 @@ mixin header-products(json)
   each item,key in json
     .header-product-item.zoom-hide-item
       .header-product-text
-        a.header-product-title #{item.name}
+        a.header-product-title(href="/catalog.html") #{item.name}
         each link in item.sub
           a.header-product-link #{link}
         if (item.link)

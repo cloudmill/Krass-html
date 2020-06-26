@@ -19,10 +19,15 @@ mixin production-preview-items(json)
                         img(src=`images/cat-preview-${key+1}.png`, alt="")
                     +bigLink('production-preview-but')
                         |#{item.bigLink}
+mixin production-buts-items(json)
+    each item,key in json
+        div(class=`${item.active}`, data-target=`target-${key}`).production-buts-item
             if (item.link)
-                .production-preview-link
+                .production-buts-link
                     +link()
                         |#{item.link}
+            +bigLink('production-preview-but mobile')
+                |#{item.bigLink}
 
 block content
     .page
@@ -55,6 +60,8 @@ block content
                 #slider(data-images='["images/full-sketch-1.jpg","images/full-sketch-2.jpg","images/full-sketch-3.jpg","images/full-sketch-4.jpg"]' data-disp="images/disp1.jpg")
             .production-preview
                 +production-preview-items(getData('product/category'))
+            .production-buts
+                +production-buts-items(getData('product/category'))
             .production-counter
                 .production-counter-list 
                     i.active(data-target='target-0') 01

@@ -114,6 +114,7 @@ export default class ViewController {
         item.update(y);
       });
     });
+    console.log(paralaxItems )
   }
   startShowing() {
     setInterval(() => {

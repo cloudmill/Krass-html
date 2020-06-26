@@ -72,11 +72,28 @@
       margin-left: -20px;
       &-selection--single {
         border: 0;
-        border-bottom: 2px solid #0054a4;
+        border-bottom: 1px solid #0054a4;
+        &:hover {
+          border-color: #cc3e1e;
+          .select2 {
+            &-selection__rendered {
+              color: #cc3e1e;
+            }
+            &-selection__arrow {
+              b {
+                transform: translateY(-50%) rotate(180deg) !important;
+                &::before,&:after{
+                  background-color: #cc3e1e;
+                }
+              }
+            }
+          }
+        }
       }
       &-selection__rendered {
         font-style: normal;
         font-weight: bold;
+        transition: color $ease-main;
         font-size: 15px !important;
         line-height: 250%;
         text-transform: uppercase;
@@ -91,12 +108,14 @@
           width: 13px !important;
           height: 13px !important;
           transform: translateY(-50%) !important;
+          transition: transform $ease-main;
           &::before {
             width: 13px;
             height: 1px;
             display: block;
             content: "";
             position: absolute;
+            transition: background $ease-main;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -106,6 +125,7 @@
           &::after {
             width: 13px;
             height: 1px;
+            transition: background $ease-main;
             display: block;
             content: "";
             position: absolute;
@@ -335,7 +355,7 @@
             margin-top: -3px;
             top: 50%;
             transform: translate(0, -50%);
-            background: #CC3E1E;
+            background: #cc3e1e;
             border-radius: 2px;
             animation: rotate2 $ease-long both;
           }
@@ -349,24 +369,24 @@
             margin-top: -3px;
             top: 50%;
             transform: translate(0, -50%) rotate(90deg);
-            background: #CC3E1E;
+            background: #cc3e1e;
             border-radius: 2px;
             animation: rotate $ease-long both;
           }
           @keyframes rotate {
-            0%{
+            0% {
               transform: translate(0, -50%) rotate(90deg);
             }
-            100%{
-              transform: translate(0, -50%) rotate(270deg);
+            100% {
+              transform: translate(0, -50%) rotate(-90deg);
             }
           }
           @keyframes rotate2 {
-            0%{
+            0% {
               transform: translate(0, -50%) rotate(0deg);
             }
-            100%{
-              transform: translate(0, -50%) rotate(180deg);
+            100% {
+              transform: translate(0, -50%) rotate(-180deg);
             }
           }
         }

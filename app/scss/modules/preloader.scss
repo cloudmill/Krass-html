@@ -40,7 +40,10 @@ html {
       }
       &.scrolled{
         .header-logo{
-          top:28px
+          top:28px;
+          @media (max-width: 768px) {
+            top: 33px;
+          }
         }
       }
       &-logo {
@@ -50,6 +53,9 @@ html {
         top: 39px;
         transform: translate(0, 0);
         position: absolute;
+        @media (max-width: 768px) {
+          top: 48px;
+        }
       }
       > .content > div {
         transition: $ease-long;

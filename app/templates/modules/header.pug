@@ -5,6 +5,8 @@ mixin header-menu(json)
       a.header-menu-link(href=`${data.link}`) #{data.name}
 .header
   .content
+    .header-burger
+      .header-burger-but 
     .header-product
       a.header-product-but(href='#header-prod').js-modal
         span.header-product-open продукция
@@ -12,7 +14,7 @@ mixin header-menu(json)
       a.header-search-but(href='#header-search').js-modal
         +icon('search' , 'svg')
     .header-logo-box
-      a.header-logo
+      a.header-logo(href="/")
         img(src="images/logo.png" alt="")
         .header-logo-strs
           span
