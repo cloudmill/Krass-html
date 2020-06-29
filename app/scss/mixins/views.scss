@@ -19,4 +19,13 @@
   transform: translateX(0);
 }
 
+@mixin inRightHide() {
+  will-change: transform;
+  transition: transform 1.25s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translateX(calc(100% + 50px));
+}
+@mixin inRightShow(){
+  transform: translateX(0);
+}
+
 

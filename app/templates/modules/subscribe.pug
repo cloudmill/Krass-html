@@ -4,14 +4,17 @@
     +icon('multi-str-blue','svg')
   .subscribe-img
     img(src="images/bg-blog.png", alt="")
-  form.subscribe-form.view-item
-    +fieldBase('nameSub','name','Имя')
-    +fieldBase('emailSub','email','Email')
-    .field-row
-      +submit()
-        |подписаться на новости
-      +fieldCheck('ppSub','pp')
-        |Согласен на обработку персональных данных <br> в соответствии с 
-        a(href="") политикой конфиденциальности
+  .subscribe-mobile-box.active#subscribe-mobile
+    .subscribe-mobile-but(data-toggle="subscribe-mobile") подписаться на новости и новинки KRASS
+    .subscribe-mobile-container
+      form.subscribe-form.view-item
+        +fieldBase('nameSub','name','Имя')
+        +fieldBase('emailSub','email','Email')
+        .field-row
+          +submit()
+            |подписаться на новости
+          +fieldCheck('ppSub','pp')
+            |Согласен на обработку персональных данных <br> в соответствии с 
+            a(href="") политикой конфиденциальности
 
 

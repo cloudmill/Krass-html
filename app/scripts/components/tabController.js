@@ -9,8 +9,7 @@ export default class TabController {
   togleClickerInit() {
     $(document).on("click", "[data-toggle]", function () {
       $("#" + $(this).attr("data-toggle")).toggleClass("active");
-      // var logo = document.getElementById($(this).attr("data-toggle"));
-      // gsap.to(logo, 1, {opacity:"1"});
+      window.updateForce();
     });
   }
   tabsMenuInit() {

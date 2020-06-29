@@ -177,11 +177,15 @@ html {
     overflow: hidden;
     .wrapper {
       .scroll-viewport {
-        margin-right: 6px;
-        width: calc(100% - 6px);
+        @media (min-width: 769px) {
+          margin-right: 6px;
+          width: calc(100% - 6px);
+        }
       }
       .header {
-        padding-right: 6px;
+        @media (min-width: 769px) {
+          margin-right: 6px;
+        }
       }
     }
   }

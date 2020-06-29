@@ -5,6 +5,7 @@ export default class ScrollController {
   constructor() {
     this.handlers = [];
     window.onScroll = this.onScroll.bind(this);
+   
 
     this.scroller = {
       target: document.querySelector("#scroll-box"),
@@ -16,6 +17,7 @@ export default class ScrollController {
     };
     this.updating = false;
     this.init();
+    window.updateForce = this.update.bind(this);
   }
   onScroll(handler) {
     this.handlers.push(handler);
@@ -26,7 +28,7 @@ export default class ScrollController {
     var body = document.body;
     var resized = this.scroller.resizeRequest > 0;
 
-    if (resized) {
+    if (resized || this.scroller.target.clientHeight != body.clientHeight) {
       var height = this.scroller.target.clientHeight;
       body.style.height = height + "px";
       this.scroller.resizeRequest = 0;

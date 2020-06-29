@@ -6,7 +6,9 @@ export default class SlidersController {
     this.init();
   }
   init() {
-    if ($("#imgs-content").length > 0) this.sketch();
+    if ($(window).width() <= 768) {
+    }
+    if ($("#imgs-content").length > 0 && $(window).width() > 768) this.sketch();
   }
   sketch() {
     let sketch = new Sketch({

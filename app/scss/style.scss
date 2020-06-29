@@ -36,14 +36,20 @@
       line-height: 130%;
       text-transform: uppercase;
       color: #0054a4;
-      @media(max-width: 1250px){
+      @media (max-width: 1250px) {
         font-size: 50px;
       }
-      @media(max-width: 1200px){
+      @media (max-width: 1200px) {
         font-size: 45px;
       }
-      @media(max-width: 1150px){
+      @media (max-width: 1150px) {
         font-size: 40px;
+      }
+      @media (max-width: 1024px) {
+        font-size: 35px;
+      }
+      @media (max-width: 768px) {
+        font-size: 25px;
       }
     }
     &-name {
@@ -56,6 +62,12 @@
       position: absolute;
       left: 40px;
       top: 40px;
+      @media (max-width: 1024px) {
+        left: 20px;
+      }
+      @media (max-width: 768px) {
+        left: 15px;
+      }
     }
     &-full {
       height: calc(100vh - 90px);

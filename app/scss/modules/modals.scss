@@ -37,8 +37,16 @@
     left: 0;
     top: 0;
     @include inLeftHide();
+    &#header-burger{
+      display: flex;
+      justify-content: flex-end;
+      @include inRightHide();
+    }
     &.active {
       @include inLeftShow();
+      &#header-burger{
+        @include inRightShow();
+      }
     }
 
     .zoom-hide-item {

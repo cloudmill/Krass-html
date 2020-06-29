@@ -3,6 +3,10 @@
   padding-top: 27px;
   padding-bottom: 20px;
   position: relative;
+  @media (max-width: 768px) {
+    min-height: auto !important;
+    height: auto !important;
+  }
   &-text {
     font-style: normal;
     font-weight: bold;
@@ -11,16 +15,46 @@
     color: #0054a4;
     margin-top: 17px;
     margin-bottom: 90px;
+    @media (max-width: 768px) {
+      margin-top: 7px;
+      margin-bottom: 40px;
+      font-size: 18px;
+      line-height: 140%;
+    }
   }
-  &-img{
+  &-img {
     position: absolute;
     right: 40px;
     top: 50%;
     transform: translateY(-50%);
+    max-width: calc(100% - 380px);
+    @media (max-width: 1024px) {
+      top: auto;
+      transform: translateY(0);
+      max-width: 100%;
+      bottom: 80px;
+    }
+    @media (max-width: 768px) {
+      position: relative;
+      bottom: 0;
+      right: auto;
+      left: 0;
+    }
+    @media (max-width: 500px){
+      max-width: calc(100% + 200px);
+      width: calc(100% + 200px);
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
-  &-str{
+  &-str {
     position: absolute;
     left: 40px;
     bottom: 40px;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 }

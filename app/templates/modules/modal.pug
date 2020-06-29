@@ -11,6 +11,12 @@ mixin header-products(json)
       .header-product-img
         img(src=`images/category-${key+1}.png`)
 
+mixin burger-menu(json)
+  .header-burger-menu.view-item
+    each data in json
+      a.header-burger-menu-link(href=`${data.link}`) #{data.name}
+    a.header-burger-menu-link(href="blog.html") Блог
+
 .modal
   .modal-bg
   .modal-content
@@ -27,3 +33,12 @@ mixin header-products(json)
             +link()
               |Найти
         .header-search-close(data-modal-close)
+    .modal-item#header-burger
+      .header-burger-close(data-modal-close)
+      .header-burger-content
+        form(action="").header-burger-search
+          +fieldBase('s2','s','Поиск по каталогу')
+        +burger-menu(getData('menu'))
+        .header-burger-bottom
+          a.header-burger-phone(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
+          .header-burger-loc Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС

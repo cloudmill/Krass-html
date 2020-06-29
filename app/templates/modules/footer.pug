@@ -12,8 +12,11 @@ mixin footer-cats(json)
           a.footer-cats-link #{link}
 .footer
   .footer-col
-    .footer-cats
-      +footer-cats(getData('product/category'))
+    .footer-mobile-box#footer-mobile.active
+      .footer-mobile-but(data-toggle="footer-mobile") продукция
+      .footer-mobile-container
+        .footer-cats
+          +footer-cats(getData('product/category'))
   .footer-col
     a.footer-phone.view-item(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
     .footer-loc.view-item

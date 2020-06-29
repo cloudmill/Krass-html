@@ -42,7 +42,7 @@ html {
         .header-logo{
           top:28px;
           @media (max-width: 768px) {
-            top: 33px;
+            top: 18px;
           }
         }
       }
@@ -54,7 +54,7 @@ html {
         transform: translate(0, 0);
         position: absolute;
         @media (max-width: 768px) {
-          top: 48px;
+          top: 18px;
         }
       }
       > .content > div {
