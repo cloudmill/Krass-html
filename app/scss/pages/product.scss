@@ -1,0 +1,47 @@
+.product {
+  padding-top: 160px;
+  &-row {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 100px;
+  }
+  &-left {
+    position: relative;
+    background-color: white;
+  }
+  &-tags {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    span {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 130%;
+      text-transform: uppercase;
+      color: #0054a4;
+      display: block;
+    }
+  }
+  &-buts {
+    display: flex;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    a {
+      display: flex;
+      width: 43px;
+      height: 43px;
+      border: 1px solid #95c5f3;
+      justify-content: center;
+      align-items: center;
+      margin-right: 5px;
+    }
+  }
+  &-preview{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}

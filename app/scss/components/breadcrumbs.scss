@@ -1,0 +1,29 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  a {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 130%;
+    color: #0054a4;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    &:after {
+      content: "";
+      display: block;
+      margin: 0 10px;
+      width: 4px;
+      @include background("../images/breadcrumbs-str.svg");
+      height: 11px;
+    }
+  }
+  span {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 130%;
+    color: #0054a4;
+  }
+}

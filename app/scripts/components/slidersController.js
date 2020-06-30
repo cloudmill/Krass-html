@@ -1,14 +1,14 @@
 import Sketch from "./sliders/mainSketch";
 import $ from "jquery";
+import Swiper from "swiper";
 
 export default class SlidersController {
   constructor() {
     this.init();
   }
   init() {
-    if ($(window).width() <= 768) {
-    }
     if ($("#imgs-content").length > 0 && $(window).width() > 768) this.sketch();
+    if ($("#product-slider").length > 0) this.productSlider();
   }
   sketch() {
     let sketch = new Sketch({
@@ -58,6 +58,18 @@ export default class SlidersController {
         }
     
       `,
+    });
+  }
+  productSlider() {
+    var mySwiper = new Swiper('#product-slider', {
+      slidesPerView: 1,
+      thumbs: {
+        swiper: {
+          el: '#product-preview',
+          slidesPerView: 5,
+          direction: 'vertical',
+        }
+      }
     });
   }
 }
