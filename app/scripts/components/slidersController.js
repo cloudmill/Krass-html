@@ -63,9 +63,12 @@ export default class SlidersController {
   productSlider() {
     var mySwiper = new Swiper('#product-slider', {
       slidesPerView: 1,
+      effect: 'fade',
+      speed: 600,
       thumbs: {
         swiper: {
           el: '#product-preview',
+          grabCursor: false,
           slidesPerView: 5,
           direction: 'vertical',
         }

@@ -5,10 +5,10 @@ mixin icon(iconName, type = 'png')
     i(class='svg-icon '+'svg-'+iconName)
 
 
-mixin link(href = '')
+mixin link(href = '',iconName = 'str-link')
   a(href=href).main-link
     .main-link-text
-      +icon('str-link','svg')
+      +icon(iconName,'svg')
       block
     .main-link-circle
       svg( viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg")

@@ -8,7 +8,7 @@
     display: inline-block;
     background-image: url("../images/sprite.svg");
     background-repeat: no-repeat;
-    background-size: 4.9em 19.8em;
+    background-size: 4.9em 28.7em;
 }
 
 .no-svg .svg-icon:before {
@@ -17,8 +17,26 @@
 
 
 
-  .svg-icon.svg-multi-str-blue:before {
+  .svg-icon.svg-fb:before {
       background-position: 0em 0em;
+      width: 1em;
+      height: 2em;
+  }
+
+
+
+
+  .svg-icon.svg-mess:before {
+      background-position: 0em -2em;
+      width: 2.2em;
+      height: 2.2em;
+  }
+
+
+
+
+  .svg-icon.svg-multi-str-blue:before {
+      background-position: 0em -4.2em;
       width: 4.9em;
       height: 4.4em;
   }
@@ -27,7 +45,7 @@
 
 
   .svg-icon.svg-multi-str-orange:before {
-      background-position: 0em -4.4em;
+      background-position: 0em -8.6em;
       width: 4.9em;
       height: 4.4em;
   }
@@ -36,7 +54,16 @@
 
 
   .svg-icon.svg-print:before {
-      background-position: 0em -8.8em;
+      background-position: 0em -13em;
+      width: 2em;
+      height: 1.7em;
+  }
+
+
+
+
+  .svg-icon.svg-print-white:before {
+      background-position: 0em -14.7em;
       width: 2em;
       height: 1.7em;
   }
@@ -45,7 +72,7 @@
 
 
   .svg-icon.svg-reset:before {
-      background-position: 0em -10.5em;
+      background-position: 0em -16.4em;
       width: 1.4em;
       height: 1.3em;
   }
@@ -54,7 +81,7 @@
 
 
   .svg-icon.svg-reset-color:before {
-      background-position: 0em -11.8em;
+      background-position: 0em -17.7em;
       width: 1.4em;
       height: 1.3em;
   }
@@ -63,7 +90,7 @@
 
 
   .svg-icon.svg-search:before {
-      background-position: 0em -13.1em;
+      background-position: 0em -19em;
       width: 1.8em;
       height: 1.8em;
   }
@@ -72,7 +99,7 @@
 
 
   .svg-icon.svg-share:before {
-      background-position: 0em -14.9em;
+      background-position: 0em -20.8em;
       width: 1.8em;
       height: 1.7em;
   }
@@ -81,7 +108,7 @@
 
 
   .svg-icon.svg-str-big-link-inside:before {
-      background-position: 0em -16.6em;
+      background-position: 0em -22.5em;
       width: 1.7em;
       height: 1.6em;
   }
@@ -90,9 +117,27 @@
 
 
   .svg-icon.svg-str-link:before {
-      background-position: 0em -18.2em;
+      background-position: 0em -24.1em;
       width: 1.7em;
       height: 1.6em;
+  }
+
+
+
+
+  .svg-icon.svg-tw:before {
+      background-position: 0em -25.7em;
+      width: 2.1em;
+      height: 1.7em;
+  }
+
+
+
+
+  .svg-icon.svg-vk:before {
+      background-position: 0em -27.4em;
+      width: 2.3em;
+      height: 1.3em;
   }
 
 

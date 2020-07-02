@@ -5,6 +5,7 @@ export default class FormsController {
   constructor() {
     this.initSelect2();
     this.initErrorsChecker();
+    this.initCalcForm();
   }
   initSelect2() {
     $(".field-select select").each((key, select) => {
@@ -21,10 +22,10 @@ export default class FormsController {
         console.log(html);
         $(".select2-dropdown").find(".select2-selection__rendered").remove();
         $(".select2-dropdown").append(html);
-        if($(select).parent().parent().hasClass('field-filter')){
-          $(".select2-dropdown").addClass('select2-filter-view')
+        if ($(select).parent().parent().hasClass("field-filter")) {
+          $(".select2-dropdown").addClass("select2-filter-view");
         }
-        
+
         $("html").addClass("closeScroll");
       });
       $(select).on("select2:closing", function (e) {
@@ -103,7 +104,7 @@ export default class FormsController {
       e.preventDefault();
       if (checkFormRight(form)) {
         if (window.Config.debug) {
-          console.error("form valid");
+          console.log("form valid");
         }
         //отправка формы
       } else {
@@ -113,5 +114,16 @@ export default class FormsController {
         //ошибка отправки формы
       }
     });
+  }
+  initCalcForm() {
+    if ($(".prodInfo-calc").length > 0) {
+      $(".prodInfo-calc").submit(() => {
+        let x = $("input[name=x]").val();
+        let y = $("input[name=y]").val();
+        let z = $("input[name=z]").val();
+        console.log(x, y, z);
+        $(".prodInfo-calc").addClass("worked");
+      });
+    }
   }
 }

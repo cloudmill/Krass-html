@@ -3,6 +3,18 @@ extends ../layouts/default.pug
 block variables
   -var pageTitle='Продукт'
 
+mixin prodInfo-menu-links(ar)
+  each item,key in ar
+    if key == 0
+      .prodInfo-menu-link.active
+        span(data-trigger=`tab-${key}`) #{item}
+        +icon('str-link','svg')
+    if key > 0
+      .prodInfo-menu-link
+        span(data-trigger=`tab-${key}`) #{item}
+        +icon('str-link','svg')
+
+
 block content
   .page
     .product.content
@@ -13,10 +25,19 @@ block content
       .product-row
         .product-left
           .product-buts
-            a(href="")
+            a(href="").print
               +icon('print','svg')
-            a(href="")
-              +icon('share','svg')
+              +icon('print-white','svg')
+            .share-but#share
+              a(href="#" data-toggle='share')
+                +icon('share','svg')
+              .share-list
+                a(href="#")
+                  +icon('fb','svg')
+                a(href="#")
+                  +icon('vk','svg')
+                a(href="#")
+                  +icon('tw','svg')
           .product-tags
             span Хит продаж
             span Новинка
@@ -37,6 +58,173 @@ block content
               .swiper-slide
                 img(src="images/product-detail.jpg" alt="")
         .product-right
+          .product-title Герметик по дереву KRASS акриловый (Паркет) Россия
+          .product-type Кислотный силиконовый герметик
+          .product-area
+            .product-area-title Область применения
+            ul.product-area-list
+              li Герметизация в строительстве, автомобильной и судостроительной промышленности
+              li Заполнение щелей между строительными материалами и элементами отделки при внутренних и наружных работах
+              li Работы по остеклению (теплицы, лоджии, балконы, витрины, зимние сады, световые табло и щиты)
+              li Изоляция электрической проводки
+          .product-bottomrow
+            .product-colors
+              .product-area-title Доступные цвета
+              .product-colors-list
+                .product-colors-item
+                  .product-colors-img
+                    img(src="images/colors/color-1.png" alt="")
+                  span Бук
+                .product-colors-item
+                  .product-colors-img
+                    img(src="images/colors/color-2.png" alt="")
+                  span венге
+                .product-colors-item
+                  .product-colors-img
+                    img(src="images/colors/color-3.png" alt="")
+                  span сосна
+                .product-colors-item
+                  .product-colors-img
+                    img(src="images/colors/color-4.png" alt="")
+                  span дуб
+                .product-colors-item
+                  .product-colors-img
+                    img(src="images/colors/color-5.png" alt="")
+                  span махагон
+                .product-colors-item
+                  .product-colors-img
+                    img(src="images/colors/color-6.png" alt="")
+                  span темный дуб
+            .product-weights
+              .product-area-title Доступная фасовка
+              .product-weights-list
+                span 310 мл
+                span 600 мл
+    .prodInfo.content
+      .prodInfo-menu
+        +prodInfo-menu-links(['Преимущества','Характеристики','Применение','Рассчитать расход','Транспортировка и хранение','Сертификаты','где купить'])
+        +link('','mess')
+          | задать вопрос
+      .prodInfo-tabs
+        .prodInfo-tab.active(data-target='tab-0')
+          .product-title Преимущества
+          ul.product-area-list
+            li Превосходная адгезия к стеклу, дереву, керамике, эмали, пластикам (не рекомендуется для металлов и щелочных оснований)
+            li Минимальная усадка шва
+            li Выдерживает большие деформации шва
+        .prodInfo-tab(data-target='tab-1')
+          .product-title Характеристики
+          .prodInfo-options
+            .prodInfo-options-item
+              span Температура применения
+              span от –40 до +80°C
+            .prodInfo-options-item
+              span Термостойкость после отверждения
+              span от +5 до +40°C
+            .prodInfo-options-item
+              span Скорость отверждения
+              span 2,5 мм/сут
+        .prodInfo-tab(data-target='tab-2')
+          .product-title Применение
+          .prodInfo-title Ограничения
+          ul.product-area-list
+            li Поскольку во время отверждения выделяется уксусная кислота, герметик не рекомендуем
+              |для использования на известняковых поверхностях, таких как бетон, штукатурка, мрамор.
+            li Универсальный силикон не следует использовать на битумных поверхностях,
+              |поверхностях на основе натурального каучука, хлоропреновых поверхностях, либо на
+              |строительных материалах, которые могут выделять масла, пластификаторы или
+              |растворители.
+            li Универсальный силикон не следует использовать на чувствительных металлических
+              |поверхностях, напр. меди и ее сплавах, а также на посеребрении зеркал.
+            li Силикон не рекомендуем для соединений, находящихся постоянно под водой, поскольку в
+              |силиконе могут наступить определенные физические изменения.
+            li Универсальный силикон не следует использовать для аквариумов.
+          .prodInfo-title Подготовка поверхности
+          ul.product-area-list
+            li Поверхности должны быть сухими, чистыми и обезжиренными.
+          .prodInfo-title Нанесение
+          ul.product-area-list
+            li Отрезать кончик картриджа, навинтить носик и обрезать его под углом
+          img(src="images/product-info-img.jpg" alt="")
+        .prodInfo-tab(data-target='tab-3')
+          .product-title калькулятор расхода
+          form.prodInfo-calc
+            label.prodInfo-calc-field
+              input(type="number" value="56" name='x' data-required)
+              span Длина шва, см
+              img(src="images/calc-img-1.svg" alt="" )
+            label.prodInfo-calc-field
+              input(type="number" value="34" name='y' data-required)
+              span Ширина шва, см
+              img(src="images/calc-img-2.svg" alt="")
+            label.prodInfo-calc-field
+              input(type="number" value="23" name='z' data-required)
+              span Глубина шва, см
+              img(src="images/calc-img-3.svg" alt="")
+            .prodInfo-calc-result
+              +submit()
+                |рассчитать
+              .prodInfo-calc-result-item
+                span Потребуется герметика
+                .prodInfo-calc-result-val
+                  .val#germ 0,3
+                  i л
+              .prodInfo-calc-result-item
+                span Потребуется картриджей
+                .prodInfo-calc-result-val
+                  .val#cart 2
+                  i шт
+        .prodInfo-tab(data-target='tab-4')
+          .product-title Транспортировка и хранение
+          ul.product-area-list
+            li 12 месяцев при температуре хранения  от +7°С до +30°С
+            li Допускается кратковременная транспортировка при температуре до  -5°С
+            li Беречь от попадания прямых солнечных лучей и нагревания свыше +50°С
+            li Хранить в вертикальном положении (клапаном вверх)
+        .prodInfo-tab(data-target='tab-5')
+          .product-title сертификаты
+          .prodInfo-sert
+            .prodInfo-sert-item
+              .prodInfo-sert-top
+                .prodInfo-sert-type
+                  span PDF
+                .prodInfo-sert-size 257 KB
+                .prodInfo-sert-links
+                  a(href="" download) Скачать
+                  a(href="" target="_blank") Смотреть
+              .prodInfo-sert-name Техническая карта
+            .prodInfo-sert-item
+              .prodInfo-sert-top
+                .prodInfo-sert-type
+                  span PDF
+                .prodInfo-sert-size 257 KB
+                .prodInfo-sert-links
+                  a(href="" download) Скачать
+                  a(href="" target="_blank") Смотреть
+              .prodInfo-sert-name Свидетельства о государственной регистрации
+            .prodInfo-sert-item
+              .prodInfo-sert-top
+                .prodInfo-sert-type
+                  span PDF
+                .prodInfo-sert-size 257 KB
+                .prodInfo-sert-links
+                  a(href="" download) Скачать
+                  a(href="" target="_blank") Смотреть
+              .prodInfo-sert-name Сертификаты соответствия
+        .prodInfo-tab(data-target='tab-6')
+          .prodInfo-whereBuy
+            .product-title где купить
+            .whereBuy-text.view-item Продукция представлена в 80 регионах <br> России и странах Таможенного союза
+            +fieldSelect('region','region','Выберите свой регион',[[0,'Москва'],[1,"Санкт-Петербург"]])
+            +link()
+              |Перейти
+            .whereBuy-img.view-item
+              img(src="images/whereBuy-map.png" height="555" alt="")
+            .whereBuy-str
+              +icon('multi-str-orange','svg')
+
+
+
     include ../modules/subscribe.pug
 
 
