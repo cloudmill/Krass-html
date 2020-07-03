@@ -70,7 +70,13 @@ export default class SlidersController {
           el: '#product-preview',
           grabCursor: false,
           slidesPerView: 5,
+          spaceBetween: 15,
           direction: 'vertical',
+          breakpoints: {
+            769: {
+              spaceBetween: 30
+            },
+          }
         }
       }
     });

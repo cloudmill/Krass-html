@@ -1,8 +1,8 @@
 .breadcrumbs {
   display: flex;
-  flex-wrap: wrap;
   a {
     font-style: normal;
+    white-space: nowrap;
     font-weight: bold;
     font-size: 16px;
     line-height: 130%;
@@ -22,6 +22,7 @@
   span {
     font-style: normal;
     font-weight: bold;
+    white-space: nowrap;
     font-size: 16px;
     line-height: 130%;
     color: #0054a4;

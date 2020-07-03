@@ -1,0 +1,32 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Новости'
+
+block content
+  .page
+    .news-head.content
+      .news-head-title Новости
+    .news-list.content
+      include ../modules/newsListItems.pug
+      include ../modules/newsListItems.pug
+      include ../modules/newsListItems.pug
+      .catalog-nav
+        .catalog-pages
+          a(href="").active 1
+          a(href="") 2
+          a(href="") 3
+          a.next(href="")
+            +icon('str-link','svg')
+        a.catalog-more(href="")
+          |показать еще
+          span
+
+    include ../modules/subscribe.pug
+
+
+
+
+
+
+

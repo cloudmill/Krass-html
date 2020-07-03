@@ -1,16 +1,3 @@
-mixin header-products(json)
-  each item,key in json
-    .header-product-item.zoom-hide-item
-      .header-product-text
-        a.header-product-title(href="/catalog.html") #{item.name}
-        each link in item.sub
-          a.header-product-link #{link}
-        if (item.link)
-          .header-product-select
-            +link() #{item.link}
-      .header-product-img
-        img(src=`images/category-${key+1}.png`)
-
 mixin burger-menu(json)
   .header-burger-menu.view-item
     each data in json

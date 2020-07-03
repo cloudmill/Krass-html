@@ -1,0 +1,92 @@
+.news {
+  &-head {
+    padding-top: 230px;
+    padding-bottom: 80px;
+    @media (max-width: 1024px) {
+      padding-top: 150px;
+      padding-bottom: 40px;
+    }
+    @media (max-width: 768px) {
+      padding-top: 90px;
+    }
+    &-title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 60px;
+      line-height: 130%;
+      text-transform: uppercase;
+      color: #0054a4;
+      @media (max-width: 1024px) {
+        font-size: 25px;
+      }
+    }
+  }
+  &-list {
+    margin-bottom: 180px;
+    @media (max-width: 1024px) {
+      margin-bottom: 60px;
+    }
+    &-item {
+      padding: 50px 200px;
+      position: relative;
+      margin-top: -1px;
+      grid-gap: 40px;
+      border-top: 1px solid #0054a4;
+      border-bottom: 1px solid #0054a4;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @media (max-width: 1150px) {
+        padding: 50px 130px;
+      }
+      @media (max-width: 1024px) {
+        padding: 50px 130px;
+        padding-right: 0;
+      }
+      @media (max-width: 768px) {
+        display: block;
+        padding: 20px 0px;
+      }
+      &-date {
+        position: absolute;
+        left: 0;
+        top: 50px;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 130%;
+        color: #868686;
+        @media (max-width: 768px) {
+          position: relative;
+          top: 0;
+        }
+      }
+      &-str {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        @media (max-width: 1024px) {
+          display: none;
+        }
+      }
+      &-name {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 130%;
+        color: #3b3f44;
+        @media (max-width: 768px) {
+          margin: 20px 0;
+          font-size: 18px;
+        }
+      }
+      &-desc {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 130%;
+        color: #868686;
+      }
+    }
+  }
+}

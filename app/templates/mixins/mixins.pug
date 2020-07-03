@@ -81,3 +81,18 @@ mixin fieldCheck(id,name)
       input(type="checkbox" name=name id=id data-required='1')
       span
         block
+
+
+
+mixin header-products(json)
+  each item,key in json
+    .header-product-item.zoom-hide-item
+      .header-product-text
+        a.header-product-title(href="/catalog.html") #{item.name}
+        each link in item.sub
+          a.header-product-link #{link}
+        if (item.link)
+          .header-product-select
+            +link() #{item.link}
+      .header-product-img
+        img(src=`images/category-${key+1}.png`)
