@@ -47,6 +47,7 @@ export default class ViewController {
         $(".header-logo").css("left", left + "px");
         //выравнивание тектса по лого
         $(".main-banner-sub").css("left", left - 40 + "px");
+        $(".news-detail-box").css("left", left - 40 + "px");
       }, 100);
 
       //корректировка скорости бегущей строки в большой кнопке
