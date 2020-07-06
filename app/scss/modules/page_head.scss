@@ -6,10 +6,55 @@
   justify-content: flex-end;
   padding-bottom: 47px;
   z-index: 1;
-  @media (max-width: 900px) {
-    padding-bottom: 260px;
-    padding-top: 100px;
-    min-height: auto;
+  &.catalog-head {
+    @media (max-width: 900px) {
+      padding-bottom: 260px;
+      padding-top: 100px;
+      min-height: auto;
+    }
+    img {
+      bottom: auto;
+      right: auto;
+      left: 50%;
+      top: 170px;
+      @media (max-width: 1024px) {
+        left: auto;
+        right: 30px;
+      }
+      @media (max-width: 900px) {
+        left: auto;
+        right: 50%;
+        max-width: 340px;
+        height: auto;
+        bottom: -40px;
+        top: auto;
+        transform: translateX(50%);
+      }
+    }
+  }
+  &.blog-head {
+    @media(max-width:768px){
+      min-height: 330px;
+    }
+    @media(max-width:550px){
+      min-height: 300px;
+    }
+    img {
+      bottom: -80px;
+      @media (max-width: 1250px) {
+        max-width: 70%;
+        right: -20%;
+        height: auto;
+      }
+      @media (max-width: 1024px) {
+        bottom: auto;
+        top: 150px;
+      }
+      @media (max-width: 768px) {
+        max-width: 80%;
+        right: -15%;
+      }
+    }
   }
   &-bg {
     position: absolute !important;
@@ -33,16 +78,16 @@
         transform-origin: left bottom;
         transform: rotate(30deg);
         background: linear-gradient(
-         0deg,
+          0deg,
           rgba(213, 231, 243, 0.44) 00.21%,
           #d1e5f3 100%
         );
-        @media (max-width: 900px){
+        @media (max-width: 900px) {
           width: 200%;
           bottom: 100%;
           left: -50%;
         }
-        @media (max-width: 600px){
+        @media (max-width: 600px) {
           left: -80%;
           width: 250%;
         }
@@ -51,21 +96,8 @@
     img {
       display: block;
       position: absolute;
-      left: 50%;
-      top: 170px;
-      @media (max-width: 1024px) {
-        left: auto;
-        right: 30px;
-      }
-      @media (max-width: 900px) {
-        left: auto;
-        right: 50%;
-        max-width: 340px;
-        height: auto;
-        bottom: -40px;
-        top: auto;
-        transform: translateX(50%);
-      }
+      right: 40px;
+      bottom: 0;
     }
   }
   &-title {
@@ -73,7 +105,13 @@
       margin-bottom: 5px;
     }
   }
-  &-content {
+  &-text {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 140%;
+    color: #0054a4;
+    max-width: 70%;
   }
   &-menu {
     display: flex;

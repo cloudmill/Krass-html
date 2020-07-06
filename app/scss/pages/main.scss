@@ -413,9 +413,10 @@
       top: 100%;
       transform: translateY(-30px);
       left: 0;
-      flex-wrap: wrap;
+      
       white-space: nowrap;
       @media (max-width: 768px) {
+        flex-wrap: wrap;
         margin-top: 5px;
       }
       a {

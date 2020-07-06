@@ -1,0 +1,37 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='блог'
+
+block content
+  .page
+    .page-head.content.scroll-trigger.paralax-box(data-hook=0).blog-head
+      .page-head-title.section-title блог
+      .page-head-content
+        .page-head-text Пишем статьи, инструкции, советы по использованию
+      .page-head-bg 
+        .paralax-item
+          img(src="images/blog-head.png" alt="" height="385").blog-img
+    .blog-tags.content
+      .blog-tags-list
+        a(href="").active Советы по использованию
+        a(href="") Описание продукции
+        a(href="") Лайфхаки
+        a(href="") Советы по использованию
+        a(href="") Описание продукции
+        a(href="") Лайфхаки
+        a(href="") Советы по использованию
+
+    .blog-box.content
+      .blog-list
+        include ../modules/list_items_blog.pug
+      include ../modules/catalogNav.pug
+
+    include ../modules/subscribe.pug
+
+
+
+
+
+
+

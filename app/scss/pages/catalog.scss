@@ -317,108 +317,19 @@
     }
   }
   &-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 40px;
     padding-top: 80px;
-    @media (max-width: 768px) {
-      grid-column-gap: 15px;
-      padding-top: 30px;
-    }
     @media (max-width: 650px) {
       display: flex;
       overflow-y: hidden;
       overflow-x: scroll;
-
       -ms-overflow-style: none;
       overflow: -moz-scrollbars-none;
       &::-webkit-scrollbar {
         width: 0;
       }
     }
-  }
-  &-item {
-    transition: transform $ease-main;
-    @media (max-width: 650px) {
-      min-width: calc(100vw - 60px);
-      &:first-child {
-        margin-right: 10px;
-      }
-    }
-    &:hover {
-      transform: translateY(-20px);
-      .usefulArt {
-        &-item-title {
-          color: #cc3e1e;
-        }
-      }
-    }
-    &-img {
-      width: 100%;
-      img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-    }
-    &-content {
-      padding: 35px 60px;
-      min-height: 280px;
-      padding-bottom: 80px;
-      background: white;
-      position: relative;
-      @media (max-width: 1024px) {
-        padding: 25px 20px;
-        padding-bottom: 60px;
-      }
-      @media (max-width: 768px) {
-        padding-bottom: 50px;
-      }
-    }
-    &-title {
-      margin-bottom: 20px;
-      font-style: normal;
-      font-weight: bold;
-      display: block;
-      font-size: 24px;
-      line-height: 130%;
-      color: #3b3f44;
-      transition: color $ease-main;
-
-      @media (max-width: 1024px) {
-        font-size: 20px;
-        line-height: 130%;
-      }
-    }
-    &-text {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 16px;
-      line-height: 130%;
-      color: #868686;
-    }
-    &-tags {
-      position: absolute;
-      bottom: 30px;
-      left: 60px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      @media (max-width: 1024px) {
-        left: 20px;
-      }
-      @media (max-width: 768px) {
-        bottom: 20px;
-      }
-      a {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 130%;
-        color: #3b3f44;
-        border-bottom: 1px solid #dddddd;
-        margin-right: 20px;
-      }
+    .blog-item::nth-child(n + 3){
+      display: none;
     }
   }
 }
