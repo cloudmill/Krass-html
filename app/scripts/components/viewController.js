@@ -36,6 +36,7 @@ export default class ViewController {
   constructor() {
     this.correctStyles();
     this.paralax();
+    this.videoController();
     // this.showWithScrollSteps();
     //this.showWithScroll();
   }
@@ -115,7 +116,7 @@ export default class ViewController {
         item.update(y);
       });
     });
-    console.log(paralaxItems )
+    console.log(paralaxItems);
   }
   startShowing() {
     setInterval(() => {
@@ -173,6 +174,48 @@ export default class ViewController {
       })
         .setTween(tl)
         .addTo(controller);
+    });
+  }
+  videoController() {
+    $(".video").each(function () {
+      if ($(this).find("iframe").length > 0) {
+        let frame = $(this).find("iframe").eq(0)[0];
+        let that = this;
+        frame.onload = function () {
+          this.contentWindow.document.body.onclick = function () {
+            $(that).addClass("active");
+          };
+        };
+      }
+    });
+    $(".video").click(function () {
+      $(this).addClass("active");
+    });
+    $(".video-play").click(function () {
+      if ($(this).parent().find("iframe").length > 0) {
+        let frame = $(this).parent().find("iframe");
+        let src = frame.attr("src");
+        if(src.split('?').length > 1){
+          frame.attr("src", src + "&autoplay=1");
+        }else{
+          frame.attr("src", src + "?autoplay=1");
+        }
+        
+      }
+    });
+    const resize = function () {
+      $(".video").each(function () {
+        if ($(this).find("iframe").length > 0) {
+          let frame = $(this).find("iframe");
+          let k = frame.width() / frame.height();
+          frame.width($(this).width());
+          frame.height(frame.width() / k);
+        }
+      });
+    };
+    resize();
+    $(window).resize(function () {
+      resize();
     });
   }
 }
