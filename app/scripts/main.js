@@ -6,6 +6,7 @@ import ViewController from "./components/viewController.js";
 import Header from "./components/header.js";
 import SlidersController from "./components/slidersController.js";
 import PreloaderController from "./components/preloaderController.js";
+import MapController from "./components/mapController.js";
 
 var App = function () {
   var preloader = new PreloaderController();
@@ -16,6 +17,7 @@ var App = function () {
   var forms = new FormsController();
   var header = new Header();
   var slidersController = new SlidersController();
+  var mapController = new MapController();
 
   preloader.onLoad(() => {
     view.startShowing();

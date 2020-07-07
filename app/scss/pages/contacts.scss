@@ -1,0 +1,221 @@
+.contacts {
+  &-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 230px;
+    padding-bottom: 150px;
+    overflow: hidden;
+    position: relative;
+    @media (max-width: 1150px) {
+      grid-template-columns: 1fr 2fr;
+    }
+    @media (max-width: 1024px) {
+      display: block;
+      padding-top: 150px;
+    }
+    @media (max-width: 768px) {
+      padding-top: 100px;
+      padding-bottom: 40px;
+    }
+    &-content {
+      .footer-loc {
+        line-height: 160%;
+      }
+      @media (max-width: 1150px) {
+        .footer-phone {
+          display: block;
+        }
+        .footer-loc {
+          display: flex;
+        }
+      }
+      @media (max-width: 1024px) {
+        .footer-phone {
+          font-size: 25px;
+          line-height: 110%;
+          margin-bottom: 10px;
+        }
+        .footer-loc {
+          display: block;
+          font-size: 11px;
+          line-height: 150%;
+          a {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    &-title {
+      @media (max-width: 1024px) {
+        margin-bottom: 40px;
+      }
+    }
+    &-img {
+      position: absolute;
+      left: 200px;
+      transform-origin: right top;
+      transform: translateX(-100%) translateY(70%) scale(0.7);
+      bottom: 0;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+  &-worktime {
+    display: flex;
+    margin-top: 60px;
+    @media (max-width: 1024px) {
+      margin-top: 40px;
+    }
+    @media (max-width: 768px) {
+      display: block;
+    }
+    > span {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 130%;
+      color: #0054a4;
+      margin-right: 120px;
+      @media (max-width: 768px) {
+        margin-right: 0;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+    &-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 60px;
+    }
+    &-item {
+      .time {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 25px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: #0054a4;
+        i {
+          font-style: normal;
+          margin: 0 5px;
+        }
+        span {
+          font-size: 14px;
+          line-height: 14px;
+        }
+      }
+      .date {
+        font-style: normal;
+        margin-top: 12px;
+        font-weight: bold;
+        font-size: 11px;
+        line-height: 11px;
+        text-transform: uppercase;
+        color: #0054a4;
+      }
+    }
+  }
+  &-map {
+    #map {
+      height: 500px;
+      width: 100%;
+      .ymaps-layers-pane {
+        filter: grayscale(100%);
+      }
+    }
+  }
+  &-faces {
+    margin: 150px 0;
+    @media (max-width: 1024px) {
+      margin: 60px 0;
+    }
+    &-title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 35px;
+      line-height: 130%;
+      text-transform: uppercase;
+      color: #0054a4;
+      margin-bottom: 80px;
+      @media (max-width: 768px) {
+        margin-bottom: 30px;
+        font-size: 25px;
+        line-height: 110%;
+      }
+    }
+    &-box {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-column-gap: 100px;
+      @media (max-width: 1250px) {
+        grid-column-gap: 30px;
+      }
+      @media (max-width: 1150px) {
+        display: block;
+      }
+    }
+    &-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 100px;
+      &-wrapper {
+        @media (max-width: 768px) {
+          overflow-y: hidden;
+          overflow-x: scroll;
+          -ms-overflow-style: none;
+          overflow: -moz-scrollbars-none;
+          &::-webkit-scrollbar {
+            width: 0;
+          }
+        }
+      }
+      @media (max-width: 1250px) {
+        grid-column-gap: 30px;
+      }
+      @media (max-width: 768px) {
+        display: flex;
+      }
+    }
+    &-item {
+      @media (max-width: 768px) {
+        margin-right: 15px;
+        min-width: 260px;
+      }
+      &-img {
+        margin-bottom: 40px;
+        img {
+          max-width: 100%;
+        }
+      }
+      &-name {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 25px;
+        text-transform: uppercase;
+        color: #0054a4;
+        margin-bottom: 10px;
+      }
+      &-work {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 130%;
+        color: #0054a4;
+        margin-bottom: 30px;
+      }
+      &-links {
+        a {
+          display: block;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 160%;
+          color: #cc3e1e;
+        }
+      }
+    }
+  }
+}

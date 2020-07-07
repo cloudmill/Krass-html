@@ -1,0 +1,13 @@
+.subscribe.content.section-full
+  .section-title-sub Вопрос или пожелание
+  form.subscribe-form.view-item
+    +fieldBase('nameQuest','name','Имя')
+    +fieldBase('emailQuest','email','Email')
+    .field-row
+      +submit()
+        |отправить
+      +fieldCheck('ppQuest','pp')
+        |Согласен на обработку персональных данных <br> в соответствии с 
+        a(href="") политикой конфиденциальности
+
+

@@ -5,7 +5,7 @@
   overflow: hidden;
   height: auto !important;
   @media (max-width: 650px) {
-   margin-bottom: 60px;
+    margin-bottom: 60px;
   }
   .section-title {
     @media (max-width: 1400px) {
@@ -43,7 +43,7 @@
               &:after {
                 opacity: 0;
               }
-              &:before{
+              &:before {
                 background-color: #cc3e1e;
               }
             }
@@ -107,12 +107,12 @@
     }
     @media (max-width: 650px) {
       margin-bottom: 0;
-      .field-row{
+      .field-row {
         display: flex;
         flex-direction: column-reverse;
         align-items: flex-start;
         margin-bottom: 0px;
-        &>*:last-child{
+        & > *:last-child {
           margin-bottom: 30px;
         }
       }

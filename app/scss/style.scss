@@ -51,6 +51,17 @@
       @media (max-width: 768px) {
         font-size: 25px;
       }
+      &-sub {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 35px;
+        line-height: 130%;
+        text-transform: uppercase;
+        color: #0054a4;
+        @media (max-width: 768px) {
+          font-size: 25px;
+        }
+      }
     }
     &-name {
       font-style: normal;

@@ -20,9 +20,25 @@
   &-list {
     @include grid();
     margin-bottom: 150px;
+    &.admat-cat{
+      grid-template-columns: repeat(2,1fr);
+      .admat-item{
+        @media (min-width: 1025px) {
+         flex-direction: row-reverse;
+         align-items: flex-end;
+         .admat-img{
+           padding: 0;
+         }
+        }
+      }
+      @media (max-width: 550px) {
+        grid-template-columns: repeat(1,1fr);
+      }
+    }
     @media (max-width: 1024px) {
       margin-bottom: 60px;
     }
+
   }
   &-item {
     background: white;
@@ -34,6 +50,7 @@
     &.small {
       align-self: flex-start;
     }
+    
   }
   &-img {
     padding: 0 50px;

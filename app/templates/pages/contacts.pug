@@ -1,0 +1,69 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Контакты'
+
+block content
+  .page
+    .contacts-head.content
+      .contacts-head-img
+        img(src="images/bg-blog.png", alt="")
+      .contacts-head-title.section-title Контакты
+      .contacts-head-content
+        a.footer-phone.view-item(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
+        .footer-loc.view-item
+          span Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС
+          a(href="") на карте
+        .contacts-worktime
+          span Часы работы, Мск
+          .contacts-worktime-list
+            .contacts-worktime-item
+              .time 9
+                span 00
+                i —
+                |18
+                span 00
+              .date пнд–чт
+            .contacts-worktime-item
+              .time 9
+                span 00
+                i —
+                |16
+                span 45
+              .date пт
+    .contacts-map
+      #map
+    .contacts-faces.content
+      .contacts-faces-title Оптовые продажи
+      .contacts-faces-box
+        +fieldSelect('faces','faces','Контактное лицо в регионе',[[0,'Москва'],[1,"Санкт-Петербург"]])
+        .contacts-faces-list-wrapper
+          .contacts-faces-list
+            .contacts-faces-item
+              .contacts-faces-item-img
+                img(src="images/face-1.jpg", alt="")
+              .contacts-faces-item-name Игорь Мелехов
+              .contacts-faces-item-work Руководитель продаж по СЗФО
+              .contacts-faces-item-links
+                a(href="tel:8 495 897–11–11")  8 495 897–11–11
+                a(href="mailto:im@krass-products.ru") im@krass-products.ru
+            .contacts-faces-item
+              .contacts-faces-item-img
+                img(src="images/face-2.jpg", alt="")
+              .contacts-faces-item-name Игорь Мелехов
+              .contacts-faces-item-work Руководитель продаж по СЗФО
+              .contacts-faces-item-links
+                a(href="tel:8 495 897–11–11")  8 495 897–11–11
+                a(href="mailto:im@krass-products.ru") im@krass-products.ru
+            .contacts-faces-item
+              .contacts-faces-item-img
+                img(src="images/face-3.jpg", alt="")
+              .contacts-faces-item-name Игорь Мелехов
+              .contacts-faces-item-work Руководитель продаж по СЗФО
+              .contacts-faces-item-links
+                a(href="tel:8 495 897–11–11")  8 495 897–11–11
+                a(href="mailto:im@krass-products.ru") im@krass-products.ru
+
+
+    include ../modules/question.pug
+    include ../modules/subscribe.pug
