@@ -1,0 +1,103 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='рекламные материалы'
+
+block content
+  .page
+    .page-head.content.scroll-trigger.paralax-box(data-hook=0).admat-head
+      .page-head-title.section-title рекламные материалы
+      .page-head-content
+      
+      .page-head-bg 
+        .paralax-item
+          img(src="images/admat_head.png" alt="" height="330")
+    .admat-box.content
+      .admat-title торговое оборудование
+      .admat-list
+        .admat-item
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span JPG,
+              span 157 Kb
+          .admat-img
+            img(src="images/admat_t_1.jpg" alt="")
+          .admat-name Стенд универсальный Krass
+        .admat-item
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span JPG,
+              span 157 Kb
+          .admat-img
+            img(src="images/admat_t_2.jpg" alt="")
+          .admat-name Стенд VIP Krass
+        .admat-item
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span JPG,
+              span 157 Kb
+          .admat-img
+            img(src="images/admat_t_3.jpg" alt="")
+          .admat-name Дисплей навесной для герметиков Krass (3*6)
+        .admat-item.small
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span JPG,
+              span 157 Kb
+          .admat-img
+            img(src="images/admat_t_4.jpg" alt="")
+          .admat-name Дисплей навесной для герметиков Krass (3*6)
+      .admat-title выкрасы
+      .admat-list
+        .admat-item
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span JPG,
+              span 157 Kb
+          .admat-img
+            img(src="images/admat_v_1.jpg" alt="")
+          .admat-name Выкрас – клей-пена Thermo FIX	
+        .admat-item
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span JPG,
+              span 157 Kb
+          .admat-img
+            img(src="images/admat_v_2.jpg" alt="")
+          .admat-name Выкрас – герметик ТермоБарьер	
+        .admat-item
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span JPG,
+              span 157 Kb
+          .admat-img
+            img(src="images/admat_v_3.jpg" alt="")
+          .admat-name Выкрас герметиков ТМ Krass	
+      .admat-title каталоги
+      .admat-list
+        .admat-item.big
+          .admat-buts
+            a.admat-download(download href="")
+              +icon('download','svg')
+            .admat-type
+              span PDF,
+              span 3 Mb
+          .admat-img
+            img(src="images/admat_k_1.jpg" alt="")
+          .admat-name Каталог ТМ Krass 2017	
+
+    include ../modules/subscribe.pug

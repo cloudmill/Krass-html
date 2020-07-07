@@ -20,3 +20,26 @@
     }
   }
 }
+
+@mixin circleHover($size, $color, $hover: "") {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  border: 1px solid $color;
+  transition: background $ease-main;
+  i {
+    transition: filter $ease-main;
+  }
+  @if ($hover == "") {
+    &:hover {
+      background: $color;
+      color: white;
+      i {
+        filter: grayscale(1) brightness(0) invert(1);
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+.admat {
+  &-box {
+    background: #f8f8f8;
+    padding-top: 60px;
+    padding-bottom: 1px;
+  }
+  &-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 130%;
+    text-transform: uppercase;
+    color: #0054a4;
+    margin-bottom: 30px;
+    @media (max-width: 1024px) {
+      font-size: 20px;
+      line-height: 110%;
+    }
+  }
+  &-list {
+    @include grid();
+    margin-bottom: 150px;
+    @media (max-width: 1024px) {
+      margin-bottom: 60px;
+    }
+  }
+  &-item {
+    background: white;
+    position: relative;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &.small {
+      align-self: flex-start;
+    }
+  }
+  &-img {
+    padding: 0 50px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 130px;
+    @media (max-width: 1024px) {
+      font-size: 20px;
+      line-height: 110%;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+  &-buts {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  &-download {
+    @include circleHover(50px, #0054a4);
+    margin-bottom: 5px;
+  }
+  &-type {
+    @include circleHover(50px, #95c5f3, "-");
+    flex-wrap: wrap;
+    span {
+      font-style: normal;
+      width: 100%;
+      display: block;
+      font-weight: bold;
+      font-size: 9px;
+      line-height: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      color: #0054a4;
+      &:nth-child(1) {
+        margin-bottom: -10px;
+      }
+      &:nth-child(2) {
+        margin-top: -10px;
+      }
+    }
+  }
+  &-name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 140%;
+    text-transform: uppercase;
+    color: #0054a4;
+  }
+}

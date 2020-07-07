@@ -35,6 +35,7 @@
   &.blog-head {
     @media(max-width:768px){
       min-height: 330px;
+      padding-bottom: 20px;
     }
     @media(max-width:550px){
       min-height: 300px;
@@ -53,6 +54,22 @@
       @media (max-width: 768px) {
         max-width: 80%;
         right: -15%;
+      }
+    }
+  }
+  &.admat-head{
+    @media(max-width:768px){
+      min-height: 330px;
+      padding-bottom: 20px;
+      .page-head-title{
+        max-width: calc(100% - 150px);
+      }
+    }
+    @media(max-width: 1024px){
+      img{
+        right: -100px;
+        width: 330px;
+        height: auto;
       }
     }
   }
