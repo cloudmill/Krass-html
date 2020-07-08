@@ -122,7 +122,7 @@
       bottom: 244px;
       @media (max-width: 768px) {
         right: 305px;
-        bottom: 310px;
+        bottom: calc(50% - 183px);
       }
       span {
         position: absolute;
