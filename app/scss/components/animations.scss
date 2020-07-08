@@ -85,3 +85,20 @@
     }
   }
 }
+
+.staggers-item {
+  i {
+    display: block;
+    transform-origin: bottom center;
+    transition: transform 0.3s ease-in-out;
+    pointer-events: none;
+    &.hit {
+      pointer-events: all;
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+}

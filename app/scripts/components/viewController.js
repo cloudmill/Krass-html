@@ -37,6 +37,7 @@ export default class ViewController {
     this.correctStyles();
     this.paralax();
     this.videoController();
+    this.animateController();
     // this.showWithScrollSteps();
     //this.showWithScroll();
   }
@@ -195,12 +196,11 @@ export default class ViewController {
       if ($(this).parent().find("iframe").length > 0) {
         let frame = $(this).parent().find("iframe");
         let src = frame.attr("src");
-        if(src.split('?').length > 1){
+        if (src.split("?").length > 1) {
           frame.attr("src", src + "&autoplay=1");
-        }else{
+        } else {
           frame.attr("src", src + "?autoplay=1");
         }
-        
       }
     });
     const resize = function () {
@@ -217,5 +217,44 @@ export default class ViewController {
     $(window).resize(function () {
       resize();
     });
+  }
+  animateController() {
+    let staggersAnimate = function () {
+      let mouseOld = { x: 0, y: 0 };
+      let mouse = { x: 0, y: 0 };
+      let d = 0;
+      $(document).mousemove(function (e) {
+        d = mouseOld.x - mouse.x;
+        mouseOld.x = mouse.x;
+        mouseOld.y = mouse.y;
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      $(".staggers-item .hit").hover(function () {
+        if ($(window).width() >= 1024) {
+          let max = 8;
+          let deg = -d;
+          let elem = $(this).parent().find("i");
+          if (deg > max) deg = max;
+          if (deg < -max) deg = -max;
+          clearTimeout($(this).attr("data-time"));
+          elem.css("transform", "rotate(" + deg + "deg)");
+          let time = setInterval(() => {
+            deg = deg * -0.6;
+            deg = parseInt(deg * 100) / 100;
+            elem.css("transform", "rotate(" + deg + "deg)");
+            if (Math.abs(deg) < 1) {
+              elem.css("transform", "rotate(" + 0 + "deg)");
+              clearTimeout(time);
+            }
+          }, 300);
+          $(this).attr("data-time", time);
+        }
+      });
+    };
+
+    if ($(".staggers-item i.hit").length > 0) {
+      staggersAnimate();
+    }
   }
 }

@@ -1,0 +1,80 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Где купить'
+
+block content
+  .page
+    .news-head.content
+      .page-head-title.section-title Где купить
+    form.whereBuy-filter.content
+      .whereBuy-filter-loc
+        +fieldSelect('region','region',null,[[0,'Москва'],[1,"Санкт-Петербург"]])
+        .whereBuy-filter-geo
+          span.blue
+            +icon('geo-blue','svg')
+          span.orange
+            +icon('geo-orange','svg')
+      .whereBuy-filter-type
+        label.whereBuy-filter-type-item(for='type1')
+          input(type="radio" name="type" id='type1' checked)
+          span Оптовые продажи
+            +icon('check-blue','svg')
+        label.whereBuy-filter-type-item(for='type2')
+          input(type="radio" name="type" id='type2')
+          span Розничные продажи
+            +icon('check-blue','svg')
+    .whereBuy-map.content
+      .map-data
+        input(type="hidden" data-cords='55.688172, 37.719791' data-name='Вектор (ТЦ Муравейник)' data-content="ул. Суворова, 2 <br> (8412) 43 95 83")
+        input(type="hidden" data-cords='55.684668, 37.449691' data-name='Стройматериалы, ООО' data-content="ул. Октябрьский проспект, 73 <br> 8 (3842) 538-72-20 <br> stroi-737@mail.ru")
+      .whereBuy-map-content
+        .whereBuy-map-list
+          .whereBuy-map-item
+            .whereBuy-map-item-name Вектор (ТЦ Муравейник)
+            .whereBuy-map-item-loc
+              span ул. Суворова, 2
+              span (8412) 43 95 83
+          .whereBuy-map-item
+            .whereBuy-map-item-name Стройматериалы, ООО
+            .whereBuy-map-item-loc
+              span ул. Октябрьский проспект, 73
+              span 8 (3842) 538-72-20
+              span stroi-737@mail.ru
+          .whereBuy-map-item
+            .whereBuy-map-item-name Вектор (ТЦ Муравейник)
+            .whereBuy-map-item-loc
+              span ул. Суворова, 2
+              span (8412) 43 95 83
+          .whereBuy-map-item
+            .whereBuy-map-item-name Стройматериалы, ООО
+            .whereBuy-map-item-loc
+              span ул. Октябрьский проспект, 73
+              span 8 (3842) 538-72-20
+              span stroi-737@mail.ru
+          .whereBuy-map-item
+            .whereBuy-map-item-name Вектор (ТЦ Муравейник)
+            .whereBuy-map-item-loc
+              span ул. Суворова, 2
+              span (8412) 43 95 83
+          .whereBuy-map-item
+            .whereBuy-map-item-name Стройматериалы, ООО
+            .whereBuy-map-item-loc
+              span ул. Октябрьский проспект, 73
+              span 8 (3842) 538-72-20
+              span stroi-737@mail.ru
+          .whereBuy-map-item
+            .whereBuy-map-item-name Вектор (ТЦ Муравейник)
+            .whereBuy-map-item-loc
+              span ул. Суворова, 2
+              span (8412) 43 95 83
+          .whereBuy-map-item
+            .whereBuy-map-item-name Стройматериалы, ООО
+            .whereBuy-map-item-loc
+              span ул. Октябрьский проспект, 73
+              span 8 (3842) 538-72-20
+              span stroi-737@mail.ru
+      #map
+
+
+    include ../modules/subscribe.pug

@@ -195,3 +195,76 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+
+#map {
+  .ymaps-b-balloon__sprite_type_tail.ymaps-b-balloon__sprite {
+    background: url("../images/mapicon.png") top center no-repeat;
+    background-image: url("../images/mapicon.png") !important;
+    background-size: contain !important;
+    height: 45px;
+    width: 29px;
+    margin-top: -25px;
+    left: 6px;
+    transform: translateX(-50%);
+  }
+  .ymaps-shadows-pane {
+    display: none;
+  }
+  .ymaps-b-balloon {
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+    background: white;
+    * {
+      border: none;
+    }
+  }
+  .ymaps-b-balloon__sprite {
+    background: none !important;
+  }
+  .ymaps-b-balloon__close {
+    background: none;
+    top: 0;
+    right: 0;
+    width: 25px;
+    background: #f0f0f0;
+    height: 25px;
+    &::before,
+    &:after {
+      content: "";
+      display: block;
+      width: 12px;
+      height: 1px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: center center;
+      transform: translate(-50%, -50%) rotate(45deg);
+      background: #0054a4;
+    }
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+  .ymaps-b-balloon__content-holster {
+    padding: 15px 30px;
+  }
+  .placemark {
+    &-name {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 140%;
+      color: #cc3e1e;
+      margin-bottom: 5px;
+    }
+    &-content {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 160%;
+      color: #3b3f44;
+    }
+  }
+  .ymaps-layers-pane, canvas {
+    filter: grayscale(100%);
+  }
+}
