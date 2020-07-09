@@ -5,8 +5,18 @@ doctype html
 html(lang="ru")
     head
         meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
         title=pageTitle
+        link(href="images/favicon.png" rel="icon" type="image/png")
+        link(rel="apple-touch-icon" sizes="180x180" href="images/appletouch.png")
+
+        meta(property="og:title" content=`${pageTitle}`)
+        meta(property="og:image" content='<img class=" redactor-autoparser-object"="" src="images/opengraph.jpg">')
+        meta(property="og:type" content="")
+        meta(property="og:url" content="")
+        meta(property="og:description" content="")
+
+
         link(href='css/style.min.css' rel='stylesheet')
     body
         .wrapper
@@ -14,11 +24,11 @@ html(lang="ru")
             .scroll-viewport
                 .scroll-box#scroll-box
                     block content
-                    include ../modules/footer
+                    if withoutFooter != 'yes'
+                        include ../modules/footer
             .selectArea
             include ../modules/modal
-            
+
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=379d541b-4caa-4542-9d9c-da60da6f9abe" type="text/javascript"></script>
         script(src='js/scripts.min.js')
         block scripts
-            

@@ -1,0 +1,48 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Подобрать Герметик'
+  -var withoutFooter='yes'
+
+mixin itemFieldSelect(name,id,name)
+  label.selectProd-item(for=id)
+    input(type='ragio' name=name id=id)
+    .selectProd-item-img
+      img(src=`images/materials/${id}.png`, alt="")
+    .selectProd-item-name #{name}
+
+
+block content
+  .page
+    .page-head.content.scroll-trigger.paralax-box(data-hook=0).blog-head
+      .page-head-title.section-title Подобрать герметик
+      .page-head-content
+        .page-head-text По материалу и области применения
+      .page-head-bg 
+        .paralax-item
+          img(src="images/select-head.png" alt="" height="434")
+    .selectProd.content
+      .selectProd-block
+        .selectProd-title Выберите материал
+        form.selectProd-list
+          +itemFieldSelect('mat','mat-1','Стекло')
+          +itemFieldSelect('mat','mat-2','Металлы, подверженные коррозии')
+          +itemFieldSelect('mat','mat-3','Металлы, устойчивые к коррозии')
+          +itemFieldSelect('mat','mat-4','Древесина, ДСП, фанера')
+          +itemFieldSelect('mat','mat-5','ПВХ')
+          +itemFieldSelect('mat','mat-6','Керамика')
+          +itemFieldSelect('mat','mat-7','Гипсокартон')
+          +itemFieldSelect('mat','mat-8','Штукатурка, бетон')
+          +itemFieldSelect('mat','mat-9','Натуральный камень')
+          +itemFieldSelect('mat','mat-10','Кирпич')
+          +itemFieldSelect('mat','mat-11','Гипс')
+          +itemFieldSelect('mat','mat-12','Окрашенные поверхности')
+      .selectProd-block
+        .selectProd-title выберите область применения
+        form.selectProd-list
+          +itemFieldSelect('area','area-1','Остекление')
+          +itemFieldSelect('area','area-2','Помещения с повышенной влажностью')
+          +itemFieldSelect('area','area-3','Общестроительные работы')
+          +itemFieldSelect('area','area-4','Склеивание и герметизация аквариумов')
+
+
