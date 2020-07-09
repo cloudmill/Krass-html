@@ -225,6 +225,9 @@
       @media (max-width: 768px){
         font-size: 16px;
       }
+      &::placeholder{
+        color: #0054a4;
+      }
       &:focus {
         & + .field-inf {
           .name {

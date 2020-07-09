@@ -75,12 +75,12 @@ mixin filterSelect(id,name,values)
         each val in values
           option(value=val[0]) #{val[1]}
 
-mixin fieldBase(id,name,placeholder)
+mixin fieldBase(id,name,label,placeholder)
   .field.field-base
     label(for=id)
-      input(type="text" name=name id=id data-required='1')
+      input(type="text" name=name id=id data-required='1' placeholder=placeholder)
       .field-inf
-        span.name #{placeholder}
+        span.name #{label}
         span.line
         span.errorText пожалуйста, заполните поле корректно
 mixin fieldCheck(id,name)

@@ -121,12 +121,26 @@
           color: #0054a4;
           transition: background $ease-main, color $ease-main,
             border-color $ease-main;
+          &:hover{
+            border-color: #cc3e1e;
+            i{
+              &:first-child{
+                display: none;
+              }
+              &:last-child{
+                display: block;
+              }
+            }
+          }
           i {
             position: absolute;
             left: 30px;
             top: 50%;
             transform: translateY(-50%);
             transition: filter $ease-main;
+            &:last-child{
+              display: none;
+            }
           }
           @media (max-width: 768px) {
             font-size: 13px;

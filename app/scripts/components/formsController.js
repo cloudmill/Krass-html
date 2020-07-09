@@ -6,6 +6,7 @@ export default class FormsController {
     this.initSelect2();
     this.initErrorsChecker();
     this.initCalcForm();
+    this.initSertTabsChange();
   }
   initSelect2() {
     $(".field-select select").each((key, select) => {
@@ -101,17 +102,25 @@ export default class FormsController {
     let forms = $("form");
     forms.submit(function (e) {
       let form = $(this);
-      e.preventDefault();
-      if (checkFormRight(form)) {
-        if (window.Config.debug) {
-          console.log("form valid");
-        }
-        //отправка формы
+      if (form.attr("data-reload") == "y") {
+        console.log('reload')
       } else {
-        if (window.Config.debug) {
-          console.error("form invalid");
+        e.preventDefault();
+        if (checkFormRight(form)) {
+          if (window.Config.debug) {
+            console.log("form valid");
+          }
+          if (form.attr("data-reload") != undefined) {
+            form.attr("data-reload", "y");
+            form.submit();
+          }
+          //отправка формы
+        } else {
+          if (window.Config.debug) {
+            console.error("form invalid");
+          }
+          //ошибка отправки формы
         }
-        //ошибка отправки формы
       }
     });
   }
@@ -123,6 +132,17 @@ export default class FormsController {
         let z = $("input[name=z]").val();
         console.log(x, y, z);
         $(".prodInfo-calc").addClass("worked");
+      });
+    }
+  }
+  initSertTabsChange() {
+    if ($(".sert-block").length > 0) {
+      $("#tabs-trigger").change(function () {
+        console.log($("#tabs-trigger").val());
+        $(".sert-block").removeClass("active");
+        $(".sert-block[data-target=" + $("#tabs-trigger").val() + "]").addClass(
+          "active"
+        );
       });
     }
   }

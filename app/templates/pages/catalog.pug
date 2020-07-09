@@ -3,19 +3,6 @@ extends ../layouts/default.pug
 block variables
   -var pageTitle='Каталог'
 
-mixin production-preview-items(json)
-  each item,key in json
-    div(class=`${item.active}`, data-target=`target-${key}`).production-preview-item
-      .production-preview-wrapper
-        .production-preview-box
-          .production-preview-img
-            img(src=`images/cat-preview-${key+1}.png`, alt="")
-          +bigLink('production-preview-but')
-            |#{item.bigLink}
-      if (item.link)
-        .production-preview-link
-          +link()
-            |#{item.link}
 
 block content
   .page

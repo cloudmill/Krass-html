@@ -1,0 +1,208 @@
+.sert {
+  &-but {
+    @include linkHover();
+    display: flex;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 130%;
+    color: #0054a4;
+    align-items: center;
+    span {
+      @include circleHover(50px, #0054a4);
+      margin-right: 15px;
+    }
+    &:hover {
+      span {
+        background: #0054a4;
+        color: #fff;
+        i {
+          filter: grayscale(1) brightness(0) invert(1);
+        }
+      }
+    }
+  }
+  &-head {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 230px;
+    padding-bottom: 80px;
+    @media (max-width: 1024px) {
+      padding-top: 150px;
+      padding-bottom: 40px;
+    }
+    @media (max-width: 768px) {
+      padding-top: 100px;
+      display: block;
+      .sert-but {
+        margin-top: 20px;
+      }
+    }
+  }
+  &-content {
+    margin-bottom: 180px;
+    @media (max-width: 768px) {
+      margin-bottom: 60px;
+    }
+    &-menu {
+      display: flex;
+      position: relative;
+      @media (max-width: 768px) {
+        display: none;
+      }
+      &:before {
+        content: "";
+        width: 100%;
+        height: 2px;
+        display: block;
+        left: 0;
+        position: absolute;
+        bottom: 0;
+        background: #d1e5f3;
+      }
+      &-item {
+        @include linkHover();
+        position: relative;
+        z-index: 2;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 130%;
+        text-transform: uppercase;
+        color: #0054a4;
+        padding-bottom: 20px;
+        cursor: pointer;
+        margin-right: 60px;
+        border-bottom: 2px solid transparent;
+        transition: color $ease-main, border $ease-main;
+
+        &.active {
+          border-color: #cc3e1e;
+          color: #cc3e1e;
+        }
+      }
+    }
+    &-select {
+      @media (min-width: 769px) {
+        display: none;
+      }
+    }
+  }
+  &-block {
+    position: relative;
+    display: none;
+    margin-top: 60px;
+    padding-left: 390px;
+    @media (max-width: 1350px) {
+      padding-left: 250px;
+    }
+    @media (max-width: 1150px) {
+      padding-left: 0px;
+    }
+    @media (max-width: 768px) {
+      margin-top: -10px;
+    }
+    &.active {
+      display: block;
+      .sert-block {
+        &-head {
+          color: #cc3e1e;
+          &:after {
+            opacity: 0;
+          }
+          &::before {
+            background: #cc3e1e;
+          }
+        }
+        &-content {
+          display: block;
+        }
+      }
+    }
+    &-head {
+      padding: 40px 0;
+      cursor: pointer;
+      position: relative;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 35px;
+      line-height: 130%;
+      text-transform: uppercase;
+      color: #0054a4;
+      transition: color $ease-main;
+      &:after,
+      &:before {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 2px;
+        border-radius: 2px;
+        position: absolute;
+        right: 0;
+        transition: opacity $ease-main, background $ease-main;
+        top: 50%;
+        transform-origin: center center;
+        transform: translateY(-50%) rotate(0);
+        background: #0054a4;
+      }
+      &:after {
+        transform: translateY(-50%) rotate(90deg);
+      }
+    }
+    &-but {
+      position: absolute;
+      left: 0;
+      top: 0;
+      @media (max-width: 1150px) {
+        position: relative;
+      }
+    }
+    &-box {
+      border-top: 1px solid #d1e5f3;
+      padding-top: 10px;
+      @media (max-width: 1150px) {
+        border-top: 0;
+      }
+      .catalog-more {
+        width: calc(100% / 3);
+        margin: 0 calc(100% / 3);
+        @media (max-width: 768px) {
+          width: 350px;
+          max-width: 100%;
+          margin: auto;
+        }
+      }
+    }
+  }
+  &-cat {
+    &-head {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 130%;
+      color: #3b3f44;
+      margin: 30px 0;
+      @media (max-width: 768px) {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+    }
+    &-list {
+      margin: 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 1px;
+      @media (max-width: 768px) {
+        margin: 20px 0;
+      }
+      .prodInfo-sert-item {
+        margin-left: -1px !important;
+        margin-top: -1px !important;
+        width: calc(100% / 3);
+        @media (max-width: 768px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

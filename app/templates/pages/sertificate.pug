@@ -1,0 +1,61 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Сертификаты'
+
+mixin sert-block-content(target,_class = '')
+  .sert-block(data-target=`${target}` class=_class)
+    a.sert-but.sert-block-but(download href="")
+      span
+        +icon('download','svg')
+      |Скачать всю группу <br> 267 KB
+    .sert-block-box
+      .sert-cat
+        .sert-cat-head Пена монт KRASS ULTRAFLEX 70 Supreme Пистолетная Всесезонная 0, 89 л
+        .sert-cat-list
+          include ../modules/list_items_sert.pug
+      .sert-cat
+        .sert-cat-head Пена монт KRASS ULTRAFLEX 65 Пистолетная Всесезонная 0, 82л Республика Беларусь
+        .sert-cat-list
+          include ../modules/list_items_sert.pug
+      .sert-cat
+        .sert-cat-head Пена монт KRASS ULTRAFLEX 70 Supreme Пистолетная Всесезонная 0, 89 л
+        .sert-cat-list
+          include ../modules/list_items_sert.pug
+      .sert-cat
+        .sert-cat-head Пена монт KRASS ULTRAFLEX 65 Пистолетная Всесезонная 0, 82л Республика Беларусь
+        .sert-cat-list
+          include ../modules/list_items_sert.pug
+      a.catalog-more(href="")
+        |показать еще
+        span
+
+block content
+  .page
+    .sert-head.content
+      .sert-head-title.section-title Сертификаты
+      a.sert-but.sert-head-but(download href="")
+        span
+          +icon('download','svg')
+        |Скачать все сертификаты <br> 267 KB
+    .sert-content.content
+      .sert-content-menu
+        .sert-content-menu-item.active
+          span(data-trigger="sert-cat-1")  Монтажные пены
+        .sert-content-menu-item
+          span(data-trigger="sert-cat-2")  Герметеки
+        .sert-content-menu-item
+          span(data-trigger="sert-cat-3")  Клеи
+        .sert-content-menu-item
+          span(data-trigger="sert-cat-4")  Уплотнители 
+      form.sert-content-select
+        +fieldSelect('tabs-trigger','tabs-trigger',null,[['sert-cat-1','Монтажные пены'],['sert-cat-2','Герметеки'],['sert-cat-3','Клеи'],['sert-cat-4','Уплотнители']])
+      .sert-content-tabs
+        +sert-block-content('sert-cat-1','active')
+        +sert-block-content("sert-cat-2")
+        +sert-block-content("sert-cat-3")
+        +sert-block-content("sert-cat-4")
+
+
+
+    include ../modules/subscribe.pug

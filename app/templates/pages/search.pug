@@ -1,0 +1,28 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Результаты поиска'
+
+block content
+  .page
+    .search-page-head.content
+      .section-title результаты поиска
+      .search-page-head-text По запросу «герметик» найдено 
+        span 8 результатов
+    form.search-page-form.content(data-reload)
+      +fieldBase('sPage','s',null,'Поиск')
+      button(type='submit')
+        +link()
+          |Найти
+    .catalog.content.search-result
+      .catalog-list
+        include ../modules/list_items_catalog.pug
+        include ../modules/list_items_catalog.pug
+    include ../modules/subscribe.pug
+
+
+
+
+
+
+

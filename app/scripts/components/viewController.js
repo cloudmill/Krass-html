@@ -239,6 +239,8 @@ export default class ViewController {
           if (deg < -max) deg = -max;
           clearTimeout($(this).attr("data-time"));
           elem.css("transform", "rotate(" + deg + "deg)");
+          let i = $(this).attr("data-count") || 1;
+          $(this).attr("data-count", ++i);
           let time = setInterval(() => {
             deg = deg * -0.6;
             deg = parseInt(deg * 100) / 100;
