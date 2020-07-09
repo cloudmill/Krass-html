@@ -6,6 +6,7 @@ let gulp = require("gulp"),
   browserSyns = require("browser-sync"),
   pug = require("gulp-pug"),
   imageMin = require("gulp-imagemin"),
+  cacheFiles = require("gulp-cache-files"),
   spritesmith = require("gulp.spritesmith"),
   merge = require("merge-stream"),
   svgSprite = require("gulp-svg-sprites"),
@@ -30,59 +31,59 @@ let _ = {
     fonts: dirDist + "fonts/",
     js: dirDist + "js/",
     css: dirDist + "css/",
-    out: "../"
+    out: "../",
   },
   fonts: {
     dir: dirApp + "static/fonts/",
-    select: "**/*.{otf,ttf,woff,woff2}"
+    select: "**/*.{otf,ttf,woff,woff2}",
   },
   minImg: {
     dir: dirApp + "static/images/",
-    select: "**/*"
+    select: "**/*",
   },
   sprite: {
     png: {
       dir: dirApp + "static/images/pngSprite/",
-      select: "**/*.png"
+      select: "**/*.png",
     },
     svg: {
       dir: dirApp + "static/images/svgSprite/",
-      select: "**/*.svg"
-    }
+      select: "**/*.svg",
+    },
   },
   pug: {
     dir: dirApp + "templates/",
     data: {
       dir: dirApp + "data/",
-      select: "**/*.json"
+      select: "**/*.json",
     },
     select: {
       pages: "pages/*.pug",
-      all: "**/*.pug"
-    }
+      all: "**/*.pug",
+    },
   },
   style: {
     base: dirApp + "scss/base/",
     dir: dirApp + "scss/",
     select: {
       conv: "*.scss",
-      all: "**/*.scss"
-    }
+      all: "**/*.scss",
+    },
   },
   js: {
     libs: [
       "node_modules/jquery/src/jquery.js",
       "node_modules/fancybox/dist/js/jquery.fancybox.js",
-      "node_modules/swiper/js/swiper.js"
+      "node_modules/swiper/js/swiper.js",
     ],
     select: "**/*.js",
     dir: dirApp + "scripts/",
-    start: "index.js"
-  }
+    start: "index.js",
+  },
 };
 
 ///Работа со стилями
-gulp.task("scss", function() {
+gulp.task("scss", function () {
   return gulp
     .src(_.style.dir + _.style.select.conv)
     .pipe(sass({ outputStyle: "compressed" }))
@@ -90,7 +91,7 @@ gulp.task("scss", function() {
       postcss([
         require("autoprefixer"),
         require("postcss-discard-comments"),
-        require("postcss-import")
+        require("postcss-import"),
       ])
     )
     .pipe(cssnano({ zIndex: false }))
@@ -100,11 +101,11 @@ gulp.task("scss", function() {
 });
 
 /////Работа со скриптами
-const logError = function(err) {
+const logError = function (err) {
   //gutil.log(err);
   this.emit("end");
 };
-gulp.task("js", function(callback) {
+gulp.task("js", function (callback) {
   gulp
     .src(_.js.dir + _.js.start)
     .pipe(webpack(webpackConfig))
@@ -115,14 +116,20 @@ gulp.task("js", function(callback) {
 });
 
 /////Работа с картинками
-gulp.task("images", function() {
+gulp.task("images", function () {
   return gulp
     .src(_.minImg.dir + _.minImg.select)
-    .pipe(imageMin())
+    .pipe(cacheFiles.filter("./.cache/manifest.json"))
+    .pipe(
+      imageMin({
+        verbose: true,
+      })
+    )
     .pipe(gulp.dest(_.dist.images))
+    .pipe(cacheFiles.manifest())
     .pipe(browserSyns.reload({ stream: true }));
 });
-gulp.task("pngSprite", function() {
+gulp.task("pngSprite", function () {
   var spriteData = gulp
     .src(_.sprite.png.dir + _.sprite.png.select) // путь, откуда берем картинки для спрайта
     .pipe(
@@ -131,9 +138,9 @@ gulp.task("pngSprite", function() {
         cssName: "pngSprite.scss",
         cssFormat: "scss",
         algorithm: "binary-tree",
-        cssVarMap: function(sprite) {
+        cssVarMap: function (sprite) {
           sprite.name = "icon-" + sprite.name;
-        }
+        },
       })
     );
   var cssStream = spriteData.css.pipe(gulp.dest(_.style.base)); // путь, куда сохраняем стили
@@ -141,7 +148,7 @@ gulp.task("pngSprite", function() {
 
   return merge(imgStream, cssStream);
 });
-gulp.task("svgSprite", function() {
+gulp.task("svgSprite", function () {
   return gulp
     .src(_.sprite.svg.dir + _.sprite.svg.select)
     .pipe(
@@ -150,16 +157,16 @@ gulp.task("svgSprite", function() {
         common: "svg-icon",
         cssFile: _.dist.out + _.style.base + "svgSprite.scss",
         svg: {
-          sprite: "images/sprite.svg"
+          sprite: "images/sprite.svg",
         },
-        preview: false
+        preview: false,
       })
     )
     .pipe(gulp.dest(dirDist));
 });
 
 /////Работа со шрифтами
-gulp.task("font2css", function() {
+gulp.task("font2css", function () {
   return gulp
     .src(_.fonts.dir + _.fonts.select)
     .pipe(font2css())
@@ -168,7 +175,7 @@ gulp.task("font2css", function() {
 });
 
 /////Работа с шаблонами страниц
-gulp.task("pug", function() {
+gulp.task("pug", function () {
   return gulp
     .src(_.pug.dir + _.pug.select.pages)
     .pipe(
@@ -176,19 +183,17 @@ gulp.task("pug", function() {
         data: { getData },
         pretty: true,
         wrapLineLength: 120,
-        maxPreserveNewlines: 50
+        maxPreserveNewlines: 50,
       })
     )
     .pipe(gulp.dest(dirDist))
     .pipe(browserSyns.reload({ stream: true }));
 });
 
-
-gulp.task("copyFolderDist", function() {
-  return gulp.src(dirDist + "**/*")
-    .pipe(gulpCopy(dirDocs,{prefix:1}));
+gulp.task("copyFolderDist", function () {
+  return gulp.src(dirDist + "**/*").pipe(gulpCopy(dirDocs, { prefix: 1 }));
 });
-gulp.task("watch", function() {
+gulp.task("watch", function () {
   //Стили и скрипты
   gulp.watch(_.style.dir + _.style.select.all, gulp.parallel("scss"));
   gulp.watch(_.js.dir + _.js.select, gulp.parallel("js"));
@@ -213,38 +218,61 @@ gulp.task("watch", function() {
   //конвертация
   gulp.watch(_.fonts.dir + _.fonts.select, gulp.parallel("font2css"));
 });
-gulp.task("browser-sync", function() {
+gulp.task("browser-sync", function () {
   browserSyns.init({
     server: {
-      baseDir: dirDist
-    }
+      baseDir: dirDist,
+    },
   });
 });
-gulp.task("clear-docs", function() {
+gulp.task("clear-docs", function () {
   return gulp
     .src(dirDocs, {
       read: false,
-      allowEmpty: true
+      allowEmpty: true,
     })
     .pipe(clean());
 });
-gulp.task("clear-build", function() {
+gulp.task("clear-css", function () {
   return gulp
-    .src(dirDist, {
+    .src(dirDist + "css/", {
       read: false,
-      allowEmpty: true
+      allowEmpty: true,
     })
     .pipe(clean());
 });
+gulp.task("clear-js", function () {
+  return gulp
+    .src(dirDist + "js/", {
+      read: false,
+      allowEmpty: true,
+    })
+    .pipe(clean());
+});
+gulp.task("clear-pages", function () {
+  return gulp
+    .src(dirDist + "*.html", {
+      read: false,
+      allowEmpty: true,
+    })
+    .pipe(clean());
+});
+gulp.task("clear-build", gulp.parallel("clear-css", "clear-js", "clear-pages"));
 
 gulp.task("pre-scss", gulp.parallel("pngSprite", "svgSprite", "font2css"));
 gulp.task("styles", gulp.series("pre-scss", "scss"));
 gulp.task("after-clean", gulp.parallel("styles", "js", "pug", "images"));
 gulp.task("after-build", gulp.parallel("browser-sync", "watch"));
 
+gulp.task("clearCache", function () {
+  return gulp
+    .src('./.cache/', {
+      read: false,
+      allowEmpty: true,
+    })
+    .pipe(clean());
+});
 gulp.task("build", gulp.series("clear-build", "after-clean"));
-gulp.task("deploy",gulp.series("build","clear-docs", "copyFolderDist"));
+gulp.task("deploy", gulp.series("build", "clear-docs", "copyFolderDist"));
 gulp.task("dev", gulp.series("build", "after-build"));
 gulp.task("default", gulp.parallel("dev"));
-
-
