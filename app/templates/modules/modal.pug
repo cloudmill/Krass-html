@@ -20,6 +20,10 @@ mixin burger-menu(json)
             +link()
               |Найти
         .header-search-close(data-modal-close)
+    .modal-item#map-block
+      .map-content
+      .map-close(data-modal-close)
+      a.map-open(href='#map-block').js-modal
     .modal-item#header-burger
       .header-burger-close(data-modal-close)
       .header-burger-content

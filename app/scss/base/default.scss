@@ -247,6 +247,19 @@ html {
   .ymaps-b-balloon__content-holster {
     padding: 15px 30px;
   }
+  [class*="-balloon_layout_normal"] {
+    animation: showBottom $ease-main both;
+  }
+  @keyframes showBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .placemark {
     &-name {
       font-style: normal;
@@ -264,7 +277,53 @@ html {
       color: #3b3f44;
     }
   }
-  .ymaps-layers-pane, canvas {
+  .ymaps-layers-pane,
+  canvas {
     filter: grayscale(100%);
+  }
+}
+.map {
+  &-content {
+    #map {
+      height: 500px;
+    }
+  }
+  &-close {
+    position: absolute;
+    cursor: pointer;
+    right: 20px;
+    top: 20px;
+    width: 25px;
+    height: 25px;
+    transform: rotate(45deg);
+    transition: transform $ease-main;
+    z-index: 2;
+    &:hover {
+      transform: rotate(-45deg);
+    }
+    &:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background-color: #0054a4;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background-color: #0054a4;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+    }
   }
 }

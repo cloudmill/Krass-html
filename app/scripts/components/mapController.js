@@ -5,44 +5,40 @@ export default class MapController {
   }
   init() {
     ymaps.ready(() => {
-      if ($(".contacts-map").length > 0) this.contactsMap();
-      if ($(".whereBuy-map").length > 0) this.whereBuyMap();
+      if ($(".contacts-map").length > 0) {
+        this.contactsMap();
+      } else if ($(".whereBuy-map").length > 0) {
+        this.whereBuyMap();
+      } else {
+        this.modalMap();
+      }
     });
   }
   contactsMap() {
-    var myMap = new ymaps.Map(
-      "map",
-      {
-        center: [55.751574, 37.573856],
-        zoom: 9,
-        controls: ["zoomControl", "geolocationControl"],
-      },
-      {
-        searchControlProvider: "yandex#search",
-      }
-    );
-    $(".map-data input").each(function () {
-      let dataCords = $(this).attr("data-cords");
-      let coords = dataCords.replace(" ", "").split(",");
-      let myPlacemark = new ymaps.Placemark(
-        coords,
-        {},
-        {
-          iconLayout: "default#image",
-          iconImageHref: "images/mapicon.png",
-          iconImageSize: [67, 107],
-          iconImageOffset: [-33, -107],
-        }
-      );
-      myMap.geoObjects.add(myPlacemark);
-    });
-    myMap.behaviors.disable("scrollZoom");
+    var myMap = this.createMap([55.751574, 37.573856]);
+    this.setPlaceMark(myMap, "contacts");
+
+    this.setOptionsMap(myMap);
   }
   whereBuyMap() {
-    var myMap = new ymaps.Map(
+    var myMap = this.createMap([55.751574, 37.573856]);
+    this.setPlaceMark(myMap, "whereBuy");
+
+    this.setOptionsMap(myMap);
+  }
+  modalMap() {
+    $(".map-content").append('<div id="map"></div>');
+    var myMap = this.createMap([55.751574, 37.573856]);
+    this.setPlaceMark(myMap, "modal");
+    
+    this.setOptionsMap(myMap);
+  }
+
+  createMap(center) {
+    return new ymaps.Map(
       "map",
       {
-        center: [55.751574, 37.573856],
+        center: center,
         zoom: 9,
         controls: ["zoomControl", "geolocationControl"],
       },
@@ -50,30 +46,37 @@ export default class MapController {
         searchControlProvider: "yandex#search",
       }
     );
+  }
+  setPlaceMark(myMap, type) {
     $(".map-data input").each(function () {
       let dataCords = $(this).attr("data-cords");
       let coords = dataCords.replace(" ", "").split(",");
       let dataName = $(this).attr("data-name");
       let dataContent = $(this).attr("data-content");
-      let myPlacemark = new ymaps.Placemark(
-        coords,
-        {
+      let ballonContent = {};
+      let iconSettings = {
+        iconImageSize: [67, 107],
+        iconImageOffset: [-33, -107],
+      };
+      if (type == "whereBuy") {
+        ballonContent = {
           balloonContentHeader:
             "<span class='placemark-name' >" + dataName + "</span>",
           balloonContentBody:
             "<span class='placemark-content' >" + dataContent + "</span>",
-        },
-        {
-          iconLayout: "default#image",
-          iconImageHref: "images/mapicon-blue.png",
+        };
+        iconSettings = {
           iconImageSize: [29, 45],
           iconImageOffset: [-14, -45],
-        }
-      );
+        };
+      }
+      let myPlacemark = new ymaps.Placemark(coords, ballonContent, {
+        iconLayout: "default#image",
+        iconImageHref: "images/mapicon.png",
+        ...iconSettings,
+      });
       myMap.geoObjects.add(myPlacemark);
     });
-    myMap.behaviors.disable("scrollZoom");
-    this.setGeoLocation(myMap);
   }
   setGeoLocation(myMap) {
     let geo = ymaps.geolocation;
@@ -106,5 +109,39 @@ export default class MapController {
       let btnGeo = $("[class*=-float-button-icon_icon_geolocation]");
       if (btnGeo.length > 0) btnGeo.click();
     });
+  }
+  setSearchControls(myMap) {
+    let that = this;
+    let searchControl = new ymaps.control.SearchControl({
+      options: {
+        provider: "yandex#search",
+      },
+    });
+    window.searchControl = searchControl;
+    myMap.controls.add(searchControl);
+
+    $(".show-in-map").click(function (e) {
+      e.preventDefault();
+      let search = $(this).attr("data-search");
+      if ($("#map-block #map").length > 0) {
+        $("[href='#map-block']").click();
+        that.search(search);
+      } else {
+        $("#map").click();
+        that.search(search);
+      }
+    });
+  }
+  setOptionsMap(myMap) {
+    myMap.behaviors.disable("scrollZoom");
+    if ($(window).width() <= 768) {
+      myMap.behaviors.disable("drag");
+    }
+    this.setGeoLocation(myMap);
+    this.setSearchControls(myMap);
+  }
+
+  search(str) {
+    window.searchControl.search(str);
   }
 }
