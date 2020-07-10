@@ -142,7 +142,7 @@ gulp.task("pngSprite", function () {
           sprite.name = "icon-" + sprite.name;
         },
       })
-    );
+    )
   var cssStream = spriteData.css.pipe(gulp.dest(_.style.base)); // путь, куда сохраняем стили
   var imgStream = spriteData.img.pipe(gulp.dest(_.dist.images)); // путь, куда сохраняем картинку
 
