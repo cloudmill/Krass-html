@@ -1,0 +1,58 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Подобрать Клей'
+  -var withoutFooter='yes'
+
+mixin itemFieldSelect(nameField,id,name)
+  label.selectProd-item(for=`${nameField}-${id}`)
+    input(type='radio' name=nameField id=`${nameField}-${id}`)
+    .selectProd-item-img
+      img(src=`images/materials/${id}.png`, alt="")
+    .selectProd-item-name #{name}
+block content
+  .page
+    .page-head.content.scroll-trigger.paralax-box(data-hook=0).selectProd-head
+      .page-head-title.section-title Подобрать клей
+      .page-head-content
+        .page-head-text По материалу основания и приклеиваемому материалу
+      .page-head-bg 
+        .paralax-item
+          img(src="images/select-head.png" alt="" height="677")
+    .selectProd
+      .selectProd-block(data-step='1').content.active
+        .selectProd-title Выберите материал основания
+        form.selectProd-list
+          +itemFieldSelect('base','mat-4','Древесина, ДСП, фанера')
+          +itemFieldSelect('base','mat-9','Натуральный камень')
+          +itemFieldSelect('base','mat-8','Штукатурка, бетон')
+          +itemFieldSelect('base','mat-10','Кирпич')
+          +itemFieldSelect('base','mat-13','Стиропор, полистирол, полиуретан, пенопласт')
+          +itemFieldSelect('base','mat-6','Керамика')
+          +itemFieldSelect('base','mat-5','ПВХ')
+          +itemFieldSelect('base','mat-1','Стекло')
+          +itemFieldSelect('base','mat-14','Зеркала')
+          +itemFieldSelect('base','mat-2','Металлы, подверженные коррозии')
+          +itemFieldSelect('base','mat-3','Металлы, устойчивые к коррозии')
+          +itemFieldSelect('base','mat-15','Стекловата')
+          +itemFieldSelect('base','mat-7','Гипсокартон')
+          +itemFieldSelect('base','mat-12','Окрашенные поверхности')
+      .selectProd-block(data-step='2').content
+        .selectProd-title выберите приклеиваемый материал
+        form.selectProd-list
+          +itemFieldSelect('mat','mat-4','Древесина, ДСП, фанера')
+          +itemFieldSelect('mat','mat-9','Натуральный камень')
+          +itemFieldSelect('mat','mat-8','Штукатурка, бетон')
+          +itemFieldSelect('mat','mat-10','Кирпич')
+          +itemFieldSelect('mat','mat-13','Стиропор, полистирол, полиуретан, пенопласт')
+          +itemFieldSelect('mat','mat-6','Керамика')
+          +itemFieldSelect('mat','mat-5','ПВХ')
+          +itemFieldSelect('mat','mat-14','Зеркала')
+          +itemFieldSelect('mat','mat-3','Металлы, устойчивые к коррозии')
+          +itemFieldSelect('mat','mat-15','Стекловата')
+      .selectProd-block.result-block.content(data-step='3')
+        .selectProd-title Клеев подходит: 4 шт
+        .catalog-list
+          include ../modules/list_items_catalog.pug
+
+

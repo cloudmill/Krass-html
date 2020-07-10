@@ -1,14 +1,44 @@
 .selectProd {
   margin-top: 120px;
   background-color: white;
+  @media (max-width: 1024px) {
+    margin-top: 60px;
+  }
   &-block {
-    border-bottom: 1px solid #dddddd;
+    display: none;
+    &.active {
+      display: block;
+    }
+    &:first-child {
+      border-bottom: 1px solid #dddddd;
+    }
     margin: 30px 0;
     position: relative;
+    &.result-block {
+      background: #e5f0f8;
+      margin: 0;
+      padding-top: 80px;
+      padding-bottom: 120px;
+      margin-top: -30px;
+      border-bottom: 0;
+      @media (max-width: 1024px) {
+        padding-top: 30px;
+        padding-bottom: 20px;
+      }
+      .selectProd-title {
+        position: relative;
+        color: #cc3e1e;
+        left: 0;
+        margin-bottom: 80px;
+        @media (max-width: 1024px) {
+          margin-bottom: 20px;
+        }
+      }
+    }
   }
   &-title {
     position: absolute;
-    left: 0;
+    left: 40px;
     top: 0;
     font-style: normal;
     font-weight: bold;
@@ -16,33 +46,57 @@
     line-height: 130%;
     text-transform: uppercase;
     color: #0054a4;
+    max-width: calc(100% - 860px);
+    @media (max-width: 1250px) {
+      position: relative;
+      left: 0;
+      max-width: none;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 1024px) {
+      font-size: 20px;
+      line-height: 110%;
+    }
   }
   &-list {
-    margin-left: 50%;
+    width: 740px;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    @media (max-width: 1250px) {
+      width: auto;
+    }
   }
   &-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    cursor: pointer;
     margin-bottom: 50px;
     width: calc(50% - 40px);
+    @media (max-width: 1024px) {
+     margin-bottom: 30px;
+    }
+    @media (max-width: 768px) {
+     margin-bottom: 15px;
+     width: 100%;
+    }
     input {
       display: none;
-      &:checked{
-        &+.selectProd-item-img{
+      &:checked {
+        & + .selectProd-item-img {
           border: 1px solid #cc3e1e;
-          &+.selectProd-item-name{
-            color: #CC3E1E;
+          & + .selectProd-item-name {
+            color: #cc3e1e;
           }
         }
       }
     }
     &-img {
       width: 85px;
+      min-width: 85px;
       margin-right: 30px;
-      border: 1px solid #0054A4;
+      border: 1px solid #0054a4;
       background-color: white;
       height: 85px;
       border-radius: 50%;

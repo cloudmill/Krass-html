@@ -7,6 +7,7 @@ export default class FormsController {
     this.initErrorsChecker();
     this.initCalcForm();
     this.initSertTabsChange();
+    this.selectProd();
   }
   initSelect2() {
     $(".field-select select").each((key, select) => {
@@ -103,7 +104,7 @@ export default class FormsController {
     forms.submit(function (e) {
       let form = $(this);
       if (form.attr("data-reload") == "y") {
-        console.log('reload')
+        console.log("reload");
       } else {
         e.preventDefault();
         if (checkFormRight(form)) {
@@ -145,5 +146,14 @@ export default class FormsController {
         );
       });
     }
+  }
+  selectProd() {
+    $(".selectProd-block")
+      .find("input")
+      .change(function () {
+        let step = $(this).closest(".selectProd-block").attr("data-step");
+        $(".selectProd-block").eq(step).addClass("active");
+        window.updateForce()
+      });
   }
 }

@@ -52,10 +52,9 @@
     "three": "^0.117.1"
   },
   "scripts": {
-    "watch": "gulp watch",
     "dev": "gulp dev",
+    "build": "gulp build",
     "deploy": "gulp deploy",
-    "clearCache": "gulp clearCache",
-    "build": "gulp build"
+    "final-build": "gulp final-build"
   }
 }

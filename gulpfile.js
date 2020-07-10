@@ -257,6 +257,22 @@ gulp.task("clear-pages", function () {
     })
     .pipe(clean());
 });
+gulp.task("clear-сache", function () {
+  return gulp
+    .src("./.cache/", {
+      read: false,
+      allowEmpty: true,
+    })
+    .pipe(clean());
+});
+gulp.task("clear-build-folder", function () {
+  return gulp
+    .src(dirDist, {
+      read: false,
+      allowEmpty: true,
+    })
+    .pipe(clean());
+});
 gulp.task("clear-build", gulp.parallel("clear-css", "clear-js", "clear-pages"));
 
 gulp.task("pre-scss", gulp.parallel("pngSprite", "svgSprite", "font2css"));
@@ -264,15 +280,8 @@ gulp.task("styles", gulp.series("pre-scss", "scss"));
 gulp.task("after-clean", gulp.parallel("styles", "js", "pug", "images"));
 gulp.task("after-build", gulp.parallel("browser-sync", "watch"));
 
-gulp.task("clearCache", function () {
-  return gulp
-    .src('./.cache/', {
-      read: false,
-      allowEmpty: true,
-    })
-    .pipe(clean());
-});
 gulp.task("build", gulp.series("clear-build", "after-clean"));
-gulp.task("deploy", gulp.series("build", "clear-docs", "copyFolderDist"));
 gulp.task("dev", gulp.series("build", "after-build"));
+gulp.task("deploy", gulp.series("build", "clear-docs", "copyFolderDist"));
+gulp.task("final-build", gulp.series("clear-сache", "clear-build-folder", "deploy"));
 gulp.task("default", gulp.parallel("dev"));

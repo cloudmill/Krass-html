@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Подобрать Герметик</title>
+    <title>Подобрать Клей</title>
     <link href="images/favicon.png" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/appletouch.png">
-    <meta property="og:title" content="Подобрать Герметик">
+    <meta property="og:title" content="Подобрать Клей">
     <meta property="og:image" content="&lt;img class=&quot; redactor-autoparser-object&quot;=&quot;&quot; src=&quot;images/opengraph.jpg&quot;&gt;">
     <meta property="og:type" content="">
     <meta property="og:url" content="">
@@ -29,10 +29,10 @@
       <div class="scroll-viewport">
         <div class="scroll-box" id="scroll-box">
           <div class="page">
-            <div class="page-head content scroll-trigger paralax-box blog-head" data-hook="0">
-              <div class="page-head-title section-title">Подобрать герметик</div>
+            <div class="page-head content scroll-trigger paralax-box selectProd-head" data-hook="0">
+              <div class="page-head-title section-title">Подобрать клей</div>
               <div class="page-head-content">
-                <div class="page-head-text">По материалу и области применения</div>
+                <div class="page-head-text">По материалу основания и приклеиваемому материалу</div>
               </div>
               <div class="page-head-bg"> 
                 <div class="paralax-item"><img src="images/select-head.png" alt="" height="677"></div>
@@ -40,97 +40,137 @@
             </div>
             <div class="selectProd">
               <div class="selectProd-block content active" data-step="1">
-                <div class="selectProd-title">Выберите материал</div>
+                <div class="selectProd-title">Выберите материал основания</div>
                 <form class="selectProd-list">
-                  <label class="selectProd-item" for="mat-mat-1">
-                    <input type="radio" name="mat" id="mat-mat-1"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-1.png" alt=""/></div>
-                    <div class="selectProd-item-name">Стекло</div>
-                  </label>
-                  <label class="selectProd-item" for="mat-mat-2">
-                    <input type="radio" name="mat" id="mat-mat-2"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-2.png" alt=""/></div>
-                    <div class="selectProd-item-name">Металлы, подверженные коррозии</div>
-                  </label>
-                  <label class="selectProd-item" for="mat-mat-3">
-                    <input type="radio" name="mat" id="mat-mat-3"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-3.png" alt=""/></div>
-                    <div class="selectProd-item-name">Металлы, устойчивые к коррозии</div>
-                  </label>
-                  <label class="selectProd-item" for="mat-mat-4">
-                    <input type="radio" name="mat" id="mat-mat-4"/>
+                  <label class="selectProd-item" for="base-mat-4">
+                    <input type="radio" name="base" id="base-mat-4"/>
                     <div class="selectProd-item-img"><img src="images/materials/mat-4.png" alt=""/></div>
                     <div class="selectProd-item-name">Древесина, ДСП, фанера</div>
                   </label>
-                  <label class="selectProd-item" for="mat-mat-5">
-                    <input type="radio" name="mat" id="mat-mat-5"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-5.png" alt=""/></div>
-                    <div class="selectProd-item-name">ПВХ</div>
-                  </label>
-                  <label class="selectProd-item" for="mat-mat-6">
-                    <input type="radio" name="mat" id="mat-mat-6"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-6.png" alt=""/></div>
-                    <div class="selectProd-item-name">Керамика</div>
-                  </label>
-                  <label class="selectProd-item" for="mat-mat-7">
-                    <input type="radio" name="mat" id="mat-mat-7"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-7.png" alt=""/></div>
-                    <div class="selectProd-item-name">Гипсокартон</div>
-                  </label>
-                  <label class="selectProd-item" for="mat-mat-8">
-                    <input type="radio" name="mat" id="mat-mat-8"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-8.png" alt=""/></div>
-                    <div class="selectProd-item-name">Штукатурка, бетон</div>
-                  </label>
-                  <label class="selectProd-item" for="mat-mat-9">
-                    <input type="radio" name="mat" id="mat-mat-9"/>
+                  <label class="selectProd-item" for="base-mat-9">
+                    <input type="radio" name="base" id="base-mat-9"/>
                     <div class="selectProd-item-img"><img src="images/materials/mat-9.png" alt=""/></div>
                     <div class="selectProd-item-name">Натуральный камень</div>
                   </label>
-                  <label class="selectProd-item" for="mat-mat-10">
-                    <input type="radio" name="mat" id="mat-mat-10"/>
+                  <label class="selectProd-item" for="base-mat-8">
+                    <input type="radio" name="base" id="base-mat-8"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-8.png" alt=""/></div>
+                    <div class="selectProd-item-name">Штукатурка, бетон</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-10">
+                    <input type="radio" name="base" id="base-mat-10"/>
                     <div class="selectProd-item-img"><img src="images/materials/mat-10.png" alt=""/></div>
                     <div class="selectProd-item-name">Кирпич</div>
                   </label>
-                  <label class="selectProd-item" for="mat-mat-11">
-                    <input type="radio" name="mat" id="mat-mat-11"/>
-                    <div class="selectProd-item-img"><img src="images/materials/mat-11.png" alt=""/></div>
-                    <div class="selectProd-item-name">Гипс</div>
+                  <label class="selectProd-item" for="base-mat-13">
+                    <input type="radio" name="base" id="base-mat-13"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-13.png" alt=""/></div>
+                    <div class="selectProd-item-name">Стиропор, полистирол, полиуретан, пенопласт</div>
                   </label>
-                  <label class="selectProd-item" for="mat-mat-12">
-                    <input type="radio" name="mat" id="mat-mat-12"/>
+                  <label class="selectProd-item" for="base-mat-6">
+                    <input type="radio" name="base" id="base-mat-6"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-6.png" alt=""/></div>
+                    <div class="selectProd-item-name">Керамика</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-5">
+                    <input type="radio" name="base" id="base-mat-5"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-5.png" alt=""/></div>
+                    <div class="selectProd-item-name">ПВХ</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-1">
+                    <input type="radio" name="base" id="base-mat-1"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-1.png" alt=""/></div>
+                    <div class="selectProd-item-name">Стекло</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-14">
+                    <input type="radio" name="base" id="base-mat-14"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-14.png" alt=""/></div>
+                    <div class="selectProd-item-name">Зеркала</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-2">
+                    <input type="radio" name="base" id="base-mat-2"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-2.png" alt=""/></div>
+                    <div class="selectProd-item-name">Металлы, подверженные коррозии</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-3">
+                    <input type="radio" name="base" id="base-mat-3"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-3.png" alt=""/></div>
+                    <div class="selectProd-item-name">Металлы, устойчивые к коррозии</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-15">
+                    <input type="radio" name="base" id="base-mat-15"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-15.png" alt=""/></div>
+                    <div class="selectProd-item-name">Стекловата</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-7">
+                    <input type="radio" name="base" id="base-mat-7"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-7.png" alt=""/></div>
+                    <div class="selectProd-item-name">Гипсокартон</div>
+                  </label>
+                  <label class="selectProd-item" for="base-mat-12">
+                    <input type="radio" name="base" id="base-mat-12"/>
                     <div class="selectProd-item-img"><img src="images/materials/mat-12.png" alt=""/></div>
                     <div class="selectProd-item-name">Окрашенные поверхности</div>
                   </label>
                 </form>
               </div>
               <div class="selectProd-block content" data-step="2">
-                <div class="selectProd-title">выберите область применения</div>
+                <div class="selectProd-title">выберите приклеиваемый материал</div>
                 <form class="selectProd-list">
-                  <label class="selectProd-item" for="area-area-1">
-                    <input type="radio" name="area" id="area-area-1"/>
-                    <div class="selectProd-item-img"><img src="images/materials/area-1.png" alt=""/></div>
-                    <div class="selectProd-item-name">Остекление</div>
+                  <label class="selectProd-item" for="mat-mat-4">
+                    <input type="radio" name="mat" id="mat-mat-4"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-4.png" alt=""/></div>
+                    <div class="selectProd-item-name">Древесина, ДСП, фанера</div>
                   </label>
-                  <label class="selectProd-item" for="area-area-2">
-                    <input type="radio" name="area" id="area-area-2"/>
-                    <div class="selectProd-item-img"><img src="images/materials/area-2.png" alt=""/></div>
-                    <div class="selectProd-item-name">Помещения с повышенной влажностью</div>
+                  <label class="selectProd-item" for="mat-mat-9">
+                    <input type="radio" name="mat" id="mat-mat-9"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-9.png" alt=""/></div>
+                    <div class="selectProd-item-name">Натуральный камень</div>
                   </label>
-                  <label class="selectProd-item" for="area-area-3">
-                    <input type="radio" name="area" id="area-area-3"/>
-                    <div class="selectProd-item-img"><img src="images/materials/area-3.png" alt=""/></div>
-                    <div class="selectProd-item-name">Общестроительные работы</div>
+                  <label class="selectProd-item" for="mat-mat-8">
+                    <input type="radio" name="mat" id="mat-mat-8"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-8.png" alt=""/></div>
+                    <div class="selectProd-item-name">Штукатурка, бетон</div>
                   </label>
-                  <label class="selectProd-item" for="area-area-4">
-                    <input type="radio" name="area" id="area-area-4"/>
-                    <div class="selectProd-item-img"><img src="images/materials/area-4.png" alt=""/></div>
-                    <div class="selectProd-item-name">Склеивание и герметизация аквариумов</div>
+                  <label class="selectProd-item" for="mat-mat-10">
+                    <input type="radio" name="mat" id="mat-mat-10"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-10.png" alt=""/></div>
+                    <div class="selectProd-item-name">Кирпич</div>
+                  </label>
+                  <label class="selectProd-item" for="mat-mat-13">
+                    <input type="radio" name="mat" id="mat-mat-13"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-13.png" alt=""/></div>
+                    <div class="selectProd-item-name">Стиропор, полистирол, полиуретан, пенопласт</div>
+                  </label>
+                  <label class="selectProd-item" for="mat-mat-6">
+                    <input type="radio" name="mat" id="mat-mat-6"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-6.png" alt=""/></div>
+                    <div class="selectProd-item-name">Керамика</div>
+                  </label>
+                  <label class="selectProd-item" for="mat-mat-5">
+                    <input type="radio" name="mat" id="mat-mat-5"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-5.png" alt=""/></div>
+                    <div class="selectProd-item-name">ПВХ</div>
+                  </label>
+                  <label class="selectProd-item" for="mat-mat-14">
+                    <input type="radio" name="mat" id="mat-mat-14"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-14.png" alt=""/></div>
+                    <div class="selectProd-item-name">Зеркала</div>
+                  </label>
+                  <label class="selectProd-item" for="mat-mat-3">
+                    <input type="radio" name="mat" id="mat-mat-3"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-3.png" alt=""/></div>
+                    <div class="selectProd-item-name">Металлы, устойчивые к коррозии</div>
+                  </label>
+                  <label class="selectProd-item" for="mat-mat-15">
+                    <input type="radio" name="mat" id="mat-mat-15"/>
+                    <div class="selectProd-item-img"><img src="images/materials/mat-15.png" alt=""/></div>
+                    <div class="selectProd-item-name">Стекловата</div>
                   </label>
                 </form>
               </div>
               <div class="selectProd-block result-block content" data-step="3">
-                <div class="selectProd-title">Герметиков подходит: 4 шт</div>
+                <div class="selectProd-title">Клеев подходит: 4 шт</div>
                 <div class="catalog-list"><a class="catalog-item" href="/product.html">
                     <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
                     <div class="catalog-item-inf"><span>хит продаж</span></div>

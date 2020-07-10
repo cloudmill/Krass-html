@@ -4,9 +4,9 @@ block variables
   -var pageTitle='Подобрать Герметик'
   -var withoutFooter='yes'
 
-mixin itemFieldSelect(name,id,name)
-  label.selectProd-item(for=id)
-    input(type='ragio' name=name id=id)
+mixin itemFieldSelect(nameField,id,name)
+  label.selectProd-item(for=`${nameField}-${id}`)
+    input(type='radio' name=nameField id=`${nameField}-${id}`)
     .selectProd-item-img
       img(src=`images/materials/${id}.png`, alt="")
     .selectProd-item-name #{name}
@@ -20,9 +20,9 @@ block content
         .page-head-text По материалу и области применения
       .page-head-bg 
         .paralax-item
-          img(src="images/select-head.png" alt="" height="434")
-    .selectProd.content
-      .selectProd-block
+          img(src="images/select-head.png" alt="" height="677")
+    .selectProd
+      .selectProd-block(data-step='1').content.active
         .selectProd-title Выберите материал
         form.selectProd-list
           +itemFieldSelect('mat','mat-1','Стекло')
@@ -37,12 +37,16 @@ block content
           +itemFieldSelect('mat','mat-10','Кирпич')
           +itemFieldSelect('mat','mat-11','Гипс')
           +itemFieldSelect('mat','mat-12','Окрашенные поверхности')
-      .selectProd-block
+      .selectProd-block(data-step='2').content
         .selectProd-title выберите область применения
         form.selectProd-list
           +itemFieldSelect('area','area-1','Остекление')
           +itemFieldSelect('area','area-2','Помещения с повышенной влажностью')
           +itemFieldSelect('area','area-3','Общестроительные работы')
           +itemFieldSelect('area','area-4','Склеивание и герметизация аквариумов')
+      .selectProd-block.result-block.content(data-step='3')
+        .selectProd-title Герметиков подходит: 4 шт
+        .catalog-list
+          include ../modules/list_items_catalog.pug
 
 
