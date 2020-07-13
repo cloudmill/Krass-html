@@ -43,3 +43,14 @@
     }
   }
 }
+
+@mixin tagHover() {
+  transition: border $ease-main, color $ease-main;
+  &:hover {
+    border-color: #cc3e1e;
+  }
+  &.active {
+    border-color: #cc3e1e;
+    color: #cc3e1e;
+  }
+}

@@ -5,7 +5,6 @@ export default class ScrollController {
   constructor() {
     this.handlers = [];
     window.onScroll = this.onScroll.bind(this);
-   
 
     this.scroller = {
       target: document.querySelector("#scroll-box"),
@@ -23,38 +22,42 @@ export default class ScrollController {
     this.handlers.push(handler);
   }
   update() {
-    this.updating = true;
-    var html = document.documentElement;
-    var body = document.body;
-    var resized = this.scroller.resizeRequest > 0;
+    if ($(window).width() > 768) {
+      this.updating = true;
+      var html = document.documentElement;
+      var body = document.body;
+      var resized = this.scroller.resizeRequest > 0;
 
-    if (resized || this.scroller.target.clientHeight != body.clientHeight) {
-      var height = this.scroller.target.clientHeight;
-      body.style.height = height + "px";
-      this.scroller.resizeRequest = 0;
-    }
-
-    var scrollY = window.pageYOffset || html.scrollTop || body.scrollTop || 0;
-
-    this.scroller.endY = scrollY;
-    this.scroller.y += (scrollY - this.scroller.y) * this.scroller.ease;
-
-    if (Math.abs(scrollY - this.scroller.y) < 0.05 || resized) {
-      this.scroller.y = parseInt(scrollY);
-      this.scroller.scrollRequest = 0;
-    }
-
-    GSAP.TweenLite.set(this.scroller.target, {
-      y: -this.scroller.y,
-    });
-    this.updateHandlers(this.scroller.y);
-    this.updating = false;
-    clearTimeout(this.time);
-    this.time = setTimeout(() => {
-      if (this.scroller.scrollRequest > 0) {
-        this.update();
+      if (resized || this.scroller.target.clientHeight != body.clientHeight) {
+        var height = this.scroller.target.clientHeight;
+        body.style.height = height + "px";
+        this.scroller.resizeRequest = 0;
       }
-    }, 1000 / 60);
+
+      var scrollY = window.pageYOffset || html.scrollTop || body.scrollTop || 0;
+
+      this.scroller.endY = scrollY;
+      this.scroller.y += (scrollY - this.scroller.y) * this.scroller.ease;
+
+      if (Math.abs(scrollY - this.scroller.y) < 0.05 || resized) {
+        this.scroller.y = parseInt(scrollY);
+        this.scroller.scrollRequest = 0;
+      }
+
+      GSAP.TweenLite.set(this.scroller.target, {
+        y: -this.scroller.y,
+      });
+      this.updateHandlers(this.scroller.y);
+      this.updating = false;
+      clearTimeout(this.time);
+      this.time = setTimeout(() => {
+        if (this.scroller.scrollRequest > 0) {
+          this.update();
+        }
+      }, 1000 / 60);
+    } else {
+      this.updateHandlers($(document).scrollTop());
+    }
   }
   updateHandlers(scrollY) {
     this.handlers.forEach((item) => {
@@ -72,17 +75,20 @@ export default class ScrollController {
     window.focus();
     window.addEventListener("resize", this.resize.bind(this));
     document.addEventListener("scroll", this.scroll.bind(this));
+    $('a').click(()=>{
+      console.log(this.scroller.endY,$(document).scrollTop())
+      this.update()
+      console.log(this.scroller.endY,$(document).scrollTop())
+    })
   }
   scroll() {
     this.scroller.scrollRequest++;
-
     if (!this.updating) {
       this.update();
     }
   }
   resize() {
     this.scroller.resizeRequest++;
-
     if (!this.updating) {
       this.update();
     }

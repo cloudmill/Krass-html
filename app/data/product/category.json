@@ -7,6 +7,7 @@
       "специализированные"
     ],
     "link" : "Подобрать герметик",
+    "linkPage": "./select-product.html",
     "bigLink" : "ко всем герметикам",
     "active" : "active"
   },
@@ -29,6 +30,7 @@
       "напольные",
       "PVA"
     ],
+    "linkPage": "./select-product-2.html",
     "link" : "Подобрать клей",
     "bigLink" : "ко всем клеям",
     "active" : ""

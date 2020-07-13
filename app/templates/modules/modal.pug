@@ -2,7 +2,7 @@ mixin burger-menu(json)
   .header-burger-menu.view-item
     each data in json
       a.header-burger-menu-link(href=`${data.link}`) #{data.name}
-    a.header-burger-menu-link(href="blog.html") Блог
+    a.header-burger-menu-link(href="./blog.html") Блог
 
 .modal
   .modal-bg
@@ -33,3 +33,28 @@ mixin burger-menu(json)
         .header-burger-bottom
           a.header-burger-phone(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
           .header-burger-loc Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС
+    .modal-item#question
+      form.modal-form
+        .modal-form-content
+          .modal-form-close(data-modal-close) закрыть
+          .modal-form-step.active(data-step='1')
+            .modal-form-title задать вопрос
+            +fieldBase('nameModal','name','Имя')
+            +fieldBase('mailModal','mail','email')
+            +fieldBaseBig('messModal','text','Сообщение')
+            +fieldCheck('ppModal','pp')
+              |Согласен на обработку персональных данных <br> в соответствии с 
+              a(href="./pp.html") политикой конфиденциальности
+            +submit()
+              |отправить
+          .modal-form-step(data-step='2')
+            .modal-form-title ваш Вопрос отправлен
+              |и мы ответим на него
+              |в ближайшее время
+            .modal-form-reset 
+              +link()
+                |отправить еще
+
+
+
+

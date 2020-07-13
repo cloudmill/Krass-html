@@ -30,8 +30,8 @@ export default class MapController {
     $(".map-content").append('<div id="map"></div>');
     var myMap = this.createMap([55.751574, 37.573856]);
     this.setPlaceMark(myMap, "modal");
-    
-    this.setOptionsMap(myMap);
+
+    this.setOptionsMap(myMap, { geo: false });
   }
 
   createMap(center) {
@@ -40,7 +40,7 @@ export default class MapController {
       {
         center: center,
         zoom: 9,
-        controls: ["zoomControl", "geolocationControl"],
+        controls: ["geolocationControl"],
       },
       {
         searchControlProvider: "yandex#search",
@@ -48,6 +48,8 @@ export default class MapController {
     );
   }
   setPlaceMark(myMap, type) {
+    let i = 0;
+    let that = this;
     $(".map-data input").each(function () {
       let dataCords = $(this).attr("data-cords");
       let coords = dataCords.replace(" ", "").split(",");
@@ -75,6 +77,9 @@ export default class MapController {
         iconImageHref: "images/mapicon.png",
         ...iconSettings,
       });
+      myPlacemark.id = i;
+      that.linkedWithPointForWhereBuy(myMap, myPlacemark);
+      i++;
       myMap.geoObjects.add(myPlacemark);
     });
   }
@@ -122,22 +127,54 @@ export default class MapController {
 
     $(".show-in-map").click(function (e) {
       e.preventDefault();
+      $("html, body").animate({ scrollTop: $("#map").offset().top - 90 }, 500); // анимируем скроолинг к элементу scroll_el
       let search = $(this).attr("data-search");
       if ($("#map-block #map").length > 0) {
         $("[href='#map-block']").click();
         that.search(search);
       } else {
-        $("#map").click();
         that.search(search);
       }
     });
   }
-  setOptionsMap(myMap) {
+  linkedWithPointForWhereBuy(myMap, placeMark) {
+    let pointTarget = $(".whereBuy-map-item[data-id=" + placeMark.id + "]");
+
+    pointTarget.click(() => {
+      placeMark.events.fire("click", {
+        coordPosition: placeMark.geometry.getCoordinates(),
+        target: placeMark,
+      });
+      myMap.panTo([placeMark.geometry.getCoordinates()], {
+        flying: true,
+      });
+    });
+    placeMark.events.add("click", (e) => {
+      //Активация элелмента в списке и проктутка до него
+      //var tempScrollbar = Scrollbar.get($(".whereBuy-map-item").eq(0)[0]);
+
+      $(".whereBuy-map-item").removeClass("active");
+      pointTarget.addClass("active");
+    });
+  }
+  setOptionsMap(myMap, opts = { geo: true }) {
     myMap.behaviors.disable("scrollZoom");
+    myMap.events.add("click", function () {
+      myMap.balloon.close();
+    });
+    myMap.controls.add(
+      new ymaps.control.ZoomControl({
+        options: {
+          size: "auto",
+          float: "none",
+          position: { right: 10, bottom: 40 },
+        },
+      })
+    );
     if ($(window).width() <= 768) {
       myMap.behaviors.disable("drag");
     }
-    this.setGeoLocation(myMap);
+    if (opts.geo) this.setGeoLocation(myMap);
     this.setSearchControls(myMap);
   }
 

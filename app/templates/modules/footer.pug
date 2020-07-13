@@ -2,7 +2,7 @@ mixin footer-menu(json)
   .footer-menu.view-item
     each data in json
       a.footer-menu-link(href=`${data.link}`) #{data.name}
-    a.footer-menu-link(href="blog.html") Блог
+    a.footer-menu-link(href="./blog.html") Блог
 mixin footer-cats(json)
   each item,key in json
     .footer-cats-item.view-item
@@ -21,7 +21,7 @@ mixin footer-cats(json)
     a.footer-phone.view-item(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
     .footer-loc.view-item
       span Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС
-      a(href="" data-search="Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС").show-in-map на карте
+      a(href="#map" data-search="Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС").show-in-map на карте
     +footer-menu(getData('menu'))
     .footer-copy.view-item
       span TM KRASS © 2020

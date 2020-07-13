@@ -44,13 +44,14 @@ export default class ViewController {
   correctStyles() {
     let currentLogoPreloadingPos = () => {
       //установка позиции лого для возвращения после прелоадера
-      setTimeout(() => {
-        let left = $(".header-logo-box").offset().left;
-        $(".header-logo").css("left", left + "px");
-        //выравнивание тектса по лого
-        $(".main-banner-sub").css("left", left - 40 + "px");
-        $(".news-detail-box").css("left", left - 40 + "px");
-      }, 100);
+      let scrollOff = $("body").hasClass("closeScroll");
+      if (scrollOff) $("body").removeClass("closeScroll");
+      let left = $(".header-logo-box").offset().left;
+      if (scrollOff) $("body").addClass("closeScroll");
+      $(".header-logo").css("left", left + "px");
+      //выравнивание тектса по лого
+      $(".main-banner-sub").css("left", left - 40 + "px");
+      $(".news-detail-box").css("left", left - 40 + "px");
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {
@@ -256,7 +257,7 @@ export default class ViewController {
     };
 
     if ($(".staggers-item i.hit").length > 0) {
-      staggersAnimate();
+      //staggersAnimate();
     }
   }
 }

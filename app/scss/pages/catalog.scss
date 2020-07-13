@@ -38,17 +38,23 @@
     &:hover {
       .hover {
         opacity: 1;
+        transform: translateY(-50%) rotate(-360deg);
       }
       .simple {
         opacity: 0;
+        transform: translateY(-50%) rotate(-360deg);
       }
     }
     span {
       margin-top: -2px;
-      transition: opacity $ease-main;
+      transition: opacity $ease-main,transform $ease-long;
       position: absolute;
+      transform-origin: center center;
       left: 0;
       top: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transform: translateY(-50%);
       &.hover {
         opacity: 0;
@@ -319,7 +325,7 @@
   &-list {
     padding-top: 80px;
     @media (max-width: 650px) {
-      display: flex;
+      display: flex !important;
       overflow-y: hidden;
       overflow-x: scroll;
       -ms-overflow-style: none;
@@ -328,8 +334,8 @@
         width: 0;
       }
     }
-    .blog-item::nth-child(n + 3){
-      display: none;
+    .blog-item:nth-child(n + 3){
+      display: none !important;
     }
   }
 }
@@ -394,10 +400,10 @@
       }
       @media (max-width: 768px) {
         left: 50%;
-        max-width: 380px;
+        max-width: 300px;
         height: auto;
         top: auto;
-        bottom: 20px;
+        bottom: 100px;
         transform: translateX(-50%);
       }
     }

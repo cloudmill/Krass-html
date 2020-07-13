@@ -86,7 +86,7 @@ let _ = {
 gulp.task("scss", function () {
   return gulp
     .src(_.style.dir + _.style.select.conv)
-    .pipe(sass({ outputStyle: "compressed" }))
+    .pipe(sass())
     .pipe(
       postcss([
         require("autoprefixer"),
@@ -142,7 +142,7 @@ gulp.task("pngSprite", function () {
           sprite.name = "icon-" + sprite.name;
         },
       })
-    )
+    );
   var cssStream = spriteData.css.pipe(gulp.dest(_.style.base)); // путь, куда сохраняем стили
   var imgStream = spriteData.img.pipe(gulp.dest(_.dist.images)); // путь, куда сохраняем картинку
 
@@ -283,5 +283,8 @@ gulp.task("after-build", gulp.parallel("browser-sync", "watch"));
 gulp.task("build", gulp.series("clear-build", "after-clean"));
 gulp.task("dev", gulp.series("build", "after-build"));
 gulp.task("deploy", gulp.series("build", "clear-docs", "copyFolderDist"));
-gulp.task("final-build", gulp.series("clear-сache", "clear-build-folder", "deploy"));
+gulp.task(
+  "final-build",
+  gulp.series("clear-сache", "clear-build-folder", "deploy")
+);
 gulp.task("default", gulp.parallel("dev"));

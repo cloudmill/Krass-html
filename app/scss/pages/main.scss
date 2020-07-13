@@ -6,7 +6,9 @@
     position: relative;
     display: flex;
     overflow: hidden;
-
+    @media(max-width: 768px){
+      height: 770px;
+    }
     &:before {
       content: "";
       display: block;
@@ -388,6 +390,7 @@
           color: #3b3f44;
           border-bottom: 1px solid #dddddd;
           margin-right: 20px;
+          @include tagHover();
         }
       }
     }

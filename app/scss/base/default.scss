@@ -185,6 +185,7 @@ html {
       .header {
         @media (min-width: 769px) {
           margin-right: 6px;
+          width: calc(100% - 6px);
         }
       }
     }

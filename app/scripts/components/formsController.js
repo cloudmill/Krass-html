@@ -6,6 +6,7 @@ export default class FormsController {
     this.initSelect2();
     this.initErrorsChecker();
     this.initCalcForm();
+    this.initModalForm();
     this.initSertTabsChange();
     this.selectProd();
   }
@@ -21,13 +22,11 @@ export default class FormsController {
           .parent()
           .find(".select2-selection__rendered")
           .eq(0)[0].outerHTML;
-        console.log(html);
         $(".select2-dropdown").find(".select2-selection__rendered").remove();
         $(".select2-dropdown").append(html);
         if ($(select).parent().parent().hasClass("field-filter")) {
           $(".select2-dropdown").addClass("select2-filter-view");
         }
-
         $("html").addClass("closeScroll");
       });
       $(select).on("select2:closing", function (e) {
@@ -39,12 +38,12 @@ export default class FormsController {
       "click",
       ".select2-dropdown .select2-selection__rendered",
       function (e) {
-        $(select).select2("close");
+        $(".field-select select").select2("close");
       }
     );
   }
   initErrorsChecker() {
-    let inputs = $(".field").find("input");
+    let inputs = $(".field").find("input,textarea");
     let error = function (input) {
       input.closest("label").addClass("error");
       if (window.Config.debug) {
@@ -115,6 +114,7 @@ export default class FormsController {
             form.attr("data-reload", "y");
             form.submit();
           }
+          form.find("input,textarea").val("");
           //отправка формы
         } else {
           if (window.Config.debug) {
@@ -136,6 +136,20 @@ export default class FormsController {
       });
     }
   }
+  initModalForm() {
+    $("#question form").submit(function (e) {
+      e.preventDefault();
+      if ($(this).find(".error").length == 0) {
+        $(this).find(".modal-form-step").removeClass("active");
+        $(this).find('.modal-form-step[data-step="2"]').addClass("active");
+      }
+    });
+    $(".modal-form-reset a").click(function (e) {
+      e.preventDefault();
+      $("#question form").find(".modal-form-step").removeClass("active");
+      $("#question form").find('.modal-form-step[data-step="1"]').addClass("active");
+    });
+  }
   initSertTabsChange() {
     if ($(".sert-block").length > 0) {
       $("#tabs-trigger").change(function () {
@@ -153,7 +167,7 @@ export default class FormsController {
       .change(function () {
         let step = $(this).closest(".selectProd-block").attr("data-step");
         $(".selectProd-block").eq(step).addClass("active");
-        window.updateForce()
+        window.updateForce();
       });
   }
 }

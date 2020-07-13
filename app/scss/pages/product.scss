@@ -307,7 +307,7 @@
         font-style: normal;
         font-weight: bold;
         font-size: 9px;
-        line-height: 140%;
+        line-height: 100%;
         text-align: center;
         text-transform: uppercase;
         color: #0054a4;
@@ -354,6 +354,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-self: center;
+    margin-right: 100px;
     @media (max-width: 1024px) {
       display: none;
     }
@@ -361,19 +363,27 @@
       @include linkHover();
       cursor: pointer;
       position: relative;
+      &:hover{
+        i{
+          opacity: 0.5;
+          
+        }
+      }
       &.active {
         color: #cc3e1e;
         i {
+          filter: grayscale(0);
           opacity: 1;
         }
       }
       i {
         opacity: 0;
         margin-left: 25px;
-        transition: opacity $ease-main;
+        transition: opacity $ease-main,filter $ease-main;
         position: absolute;
         left: 100%;
         top: 50%;
+        filter: grayscale(1);
         transform: translateY(-50%);
         margin-top: -3px;
       }
@@ -655,11 +665,12 @@
       @media (min-width: 1025px) {
         position: relative;
         right: auto;
-        left: -100px;
+        left: -150px;
         top: 0;
         margin-top: -50px;
         transform: none;
-        max-width: calc(100% + 100px);
+        max-width: none;
+        width: calc(100% + 170px);
       }
     }
   }

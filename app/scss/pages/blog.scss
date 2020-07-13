@@ -95,6 +95,7 @@
         color: #3b3f44;
         border-bottom: 1px solid #dddddd;
         margin-right: 20px;
+        @include tagHover();
       }
     }
   }
@@ -141,15 +142,7 @@
         margin-right: 40px;
         padding-bottom: 2px;
         border-bottom: 1px solid #dddddd;
-        transition: border $ease-main, color $ease-main;
-        &:hover {
-          color: #cc3e1e;
-          border-bottom: 1px solid #cc3e1e;
-        }
-        &.active {
-          color: #cc3e1e;
-          border-bottom: 1px solid #cc3e1e;
-        }
+        @include tagHover();
         @media (max-width: 768px) {
           margin: 0;
           margin-right: 40px;

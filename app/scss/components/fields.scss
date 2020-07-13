@@ -175,7 +175,7 @@
         text-transform: uppercase;
         color: #3b3f44;
         left: 0;
-        top: 50%;
+        top: 31px;
         transform: translateY(-50%);
         transition: $ease-main;
         @media (max-width: 768px){
@@ -211,7 +211,7 @@
         color: #cc3e1e;
       }
     }
-    input {
+    input,textarea {
       width: 100%;
       font-style: normal;
       font-weight: bold;
@@ -222,6 +222,7 @@
       display: block;
       padding: 20px 0;
       border-bottom: 1px solid #dddddd;
+      resize: none;
       @media (max-width: 768px){
         font-size: 16px;
       }
@@ -252,6 +253,9 @@
           }
         }
       }
+    }
+    textarea{
+      height: 150px;
     }
   }
   &-check {

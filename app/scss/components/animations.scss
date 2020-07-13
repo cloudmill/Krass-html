@@ -12,6 +12,11 @@
     height: calc(100% + 90px);
   }
 }
+body{
+  @media(max-width: 768px){
+    height: auto !important;
+  }
+}
 .scroll {
   &-box {
     @include performance();
@@ -21,6 +26,10 @@
     transform-style: flat;
     will-change: transform;
     width: 100%;
+    @media(max-width: 768px){
+      position: relative;
+      transform: none !important;
+    }
   }
   &-viewport {
     overflow: hidden;
@@ -31,6 +40,9 @@
     left: 0;
     right: 0;
     bottom: 0;
+    @media(max-width: 768px){
+      position: relative;
+    }
   }
 }
 

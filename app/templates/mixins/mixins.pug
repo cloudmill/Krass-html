@@ -5,8 +5,8 @@ mixin icon(iconName, type = 'png')
     i(class='svg-icon '+'svg-'+iconName)
 
 
-mixin link(href = '',iconName = 'str-link')
-  a(href=href).main-link
+mixin link(href = '',iconName = 'str-link', className = '')
+  a(href=href class=className).main-link
     .main-link-text
       +icon(iconName,'svg')
       block
@@ -83,6 +83,15 @@ mixin fieldBase(id,name,label,placeholder)
         span.name #{label}
         span.line
         span.errorText пожалуйста, заполните поле корректно
+mixin fieldBaseBig(id,name,label,placeholder)
+  .field.field-base.filed-textarea
+    label(for=id)
+      textarea(type="text" name=name id=id data-required='1' placeholder=placeholder)
+      .field-inf
+        span.name #{label}
+        span.line
+        span.errorText пожалуйста, заполните поле корректно
+
 mixin fieldCheck(id,name)
   .field.field-check
     label(for=id)
@@ -96,11 +105,11 @@ mixin header-products(json)
   each item,key in json
     .header-product-item.zoom-hide-item
       .header-product-text
-        a.header-product-title(href="/catalog.html") #{item.name}
+        a.header-product-title(href="./catalog.html") #{item.name}
         each link in item.sub
           a.header-product-link #{link}
         if (item.link)
           .header-product-select
-            +link() #{item.link}
+            +link(`${item.linkPage}`) #{item.link}
       .header-product-img
         img(src=`images/category-${key+1}.png`)
