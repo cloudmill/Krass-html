@@ -43,6 +43,53 @@
     }
   }
 }
+@mixin circleHoverBounce($size, $color, $hover: "") {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  transition: background $ease-main;
+  i {
+    transition: filter $ease-main;
+  }
+  &::before,
+  &:after {
+    content: "";
+    display: block;
+    width: $size / 0.86666;
+    height: $size / 0.86666;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    border: 1px solid $color;
+    border-radius: 50%;
+    transition: transform $ease-main;
+  }
+  &:before {
+    transform: translate(-50%, -50%) scale(0.86666);
+  }
+  &:after {
+    transform: translate(-50%, -50%) scale(0);
+    background: $color;
+  }
+  i {
+    transition: filter $ease-main;
+  }
+  @if ($hover == "") {
+    &:hover {
+      &:after,
+      &::before {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      i {
+        filter: grayscale(1) brightness(0) invert(1);
+      }
+    }
+  }
+}
 
 @mixin tagHover() {
   transition: border $ease-main, color $ease-main;

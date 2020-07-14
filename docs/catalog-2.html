@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новость детально</title>
+    <title>Каталог</title>
     <link href="images/favicon.png" rel="icon" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/appletouch.png">
-    <meta property="og:title" content="Новость детально">
+    <meta property="og:title" content="Каталог">
     <meta property="og:image" content="&lt;img class=&quot; redactor-autoparser-object&quot;=&quot;&quot; src=&quot;images/opengraph.jpg&quot;&gt;">
     <meta property="og:type" content="">
     <meta property="og:url" content="">
@@ -29,9 +29,16 @@
       <div class="scroll-viewport">
         <div class="scroll-box" id="scroll-box">
           <div class="page">
-            <div class="news-detail content">
-              <div class="news-detail-back"><a class="main-link link-blue" href="">
-                  <div class="main-link-text"><i class="svg-icon svg-str-news"></i>вернуться в новости
+            <div class="page-head content scroll-trigger paralax-box catalog-head" data-hook="0">
+              <div class="page-head-title section-title">монтажные пены</div>
+              <div class="page-head-content">
+                <div class="page-head-menu"><a class="page-head-menu-link active" href="">Все</a><a class="page-head-menu-link" href="">Krass Professional</a><a class="page-head-menu-link" href="">Krass Home Edition</a><a class="page-head-menu-link" href="">KRASS ULTRAFLEX</a><a class="page-head-menu-link" href="">очистители</a></div>
+              </div>
+              <div class="page-head-bg">
+                <div class="paralax-item"><img class="catalog-img" src="images/catalog-head.png" alt="" height="450"></div>
+              </div>
+              <div class="page-head-link"><a class="main-link" href="./select-product.html">
+                  <div class="main-link-text"><i class="svg-icon svg-str-link"></i>подобрать герметик
                   </div>
                   <div class="main-link-circle">
                     <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
@@ -39,46 +46,171 @@
                     </svg>
                   </div></a>
               </div>
-              <div class="news-detail-share active" id="share"><span data-toggle="share">Поделиться</span>
-                <div class="news-detail-share-icon"><i class="svg-icon svg-small-str"></i>
-                </div>
-                <div class="news-detail-share-list"><a href="https://www.facebook.com/sharer/sharer.php?u=#url" target="_blank"><i class="svg-icon svg-fb"></i></a><a href="'http://vkontakte.ru/share.php?url=#" target="_blank"><i class="svg-icon svg-vk"></i></a><a href="http://twitter.com/share?url=#" target="_blank"><i class="svg-icon svg-tw"></i></a></div>
+            </div>
+            <form class="filter content">
+              <div class="field field-select field-filter">
+                <label for="typeB">
+                  <select name="typeB" id="typeB">
+                    <option value="0">Тип баллона</option>
+                    <option value="1">Тип баллона 2</option>
+                    <option value="3">Тип баллона 3</option>
+                  </select>
+                </label>
               </div>
-              <div class="news-detail-box">
-                <div class="news-detail-title">Впервые в России! Krass уплотнитель двухкомпонентный самоклеящийся!</div>
-                <div class="news-detail-date">28 мая 2020</div>
-                <div class="outside"><img src="images/about-info.jpg" alt="">
-                  <h2>Уплотнитель состоит из двух слоев резины:</h2>
+              <div class="field field-select field-filter">
+                <label for="sezon">
+                  <select name="sezon" id="sezon">
+                    <option value="0">сезонность 1</option>
+                    <option value="1">сезонность 2</option>
+                    <option value="3">сезонность 3</option>
+                  </select>
+                </label>
+              </div><a class="filter-reset"><span class="simple"><i class="svg-icon svg-reset"></i></span><span class="hover"><i class="svg-icon svg-reset-color"></i></span>Сбросить</a>
+            </form>
+            <div class="catalog content">
+              <div class="catalog-list"><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span></div>
+                  <div class="catalog-item-img"><img src="images/product-1.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS ULTRASEAL Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-2.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>310 мл</span><span>600 мл</span><span>7 кг</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span><span>новинкa</span></div>
+                  <div class="catalog-item-img"><img src="images/product-3.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-4.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span></div>
+                  <div class="catalog-item-img"><img src="images/product-1.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS ULTRASEAL Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-2.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>310 мл</span><span>600 мл</span><span>7 кг</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span><span>новинкa</span></div>
+                  <div class="catalog-item-img"><img src="images/product-3.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-4.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span></div>
+                  <div class="catalog-item-img"><img src="images/product-1.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS ULTRASEAL Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-2.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>310 мл</span><span>600 мл</span><span>7 кг</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span><span>новинкa</span></div>
+                  <div class="catalog-item-img"><img src="images/product-3.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-4.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span></div>
+                  <div class="catalog-item-img"><img src="images/product-1.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS ULTRASEAL Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-2.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Белый Россия</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>310 мл</span><span>600 мл</span><span>7 кг</span></div>
+                  <div class="catalog-item-inf"><span>хит продаж</span><span>новинкa</span></div>
+                  <div class="catalog-item-img"><img src="images/product-3.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a><a class="catalog-item" href="./product.html">
+                  <div class="catalog-item-mass"><span>115 мл</span><span>300 мл</span></div>
+                  <div class="catalog-item-inf"></div>
+                  <div class="catalog-item-img"><img src="images/product-4.png" alt=""></div>
+                  <div class="catalog-item-name">Герметик акриловый KRASS Термо Барьер для деревянного дома Сосна</div></a></div>
+              <div class="catalog-nav"><a class="catalog-more" href="">показать еще<span></span></a></div>
+            </div>
+            <div class="usefulArt content">
+              <div class="section-title usefulArt-title">полезные статьи
+                <div class="usefulArt-link"><a class="main-link" href="">
+                    <div class="main-link-text"><i class="svg-icon svg-str-link"></i>перейти в блог
+                    </div>
+                    <div class="main-link-circle">
+                      <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="26" cy="30"></circle>
+                      </svg>
+                    </div></a>
                 </div>
-                <ul>
-                  <li>Нижний слой - черная резина EPDM (сохраняет лучшие свойства черного уплотнителя);</li>
-                  <li>Внешний слой - тонкий слой цветной резины.</li>
-                </ul>
-                <div class="outside">
-                  <h2>Преимущества двухкомпонентного уплотнителя:</h2>
+              </div>
+              <div class="blog-list usefulArt-list">
+                <div class="blog-item"><a class="blog-item-img" href="./blog-detail.html"> <img src="images/main-blog-1.jpg" alt=""></a>
+                  <div class="blog-item-content"><a class="blog-item-title" href="./blog-detail.html"> Герметик – незаменимый строительный материал</a>
+                    <div class="blog-item-text">При производстве строительных и ремонтных работ не обойтись без использования герметиков, которые представляют собой одно или двухкомпонентную эластичную смесь.</div>
+                    <div class="blog-item-tags"><a href="">Герметик</a><a href="">Ремонт</a></div>
+                  </div>
                 </div>
-                <ul>
-                  <li>Увеличенный срок службы;</li>
-                  <li>Высокие компрессионные свойства (на 50% лучше по сравнению — с однослойным цветным уплотнителем);</li>
-                  <li>Отличная звукоизоляция;</li>
-                  <li>Высококачественная клейкая основа;</li>
-                  <li>Быстрый и легкий монтаж;</li>
-                </ul>
-                <p>В ассортименте представлен двухкомпонентный бытовой уплотнитель самоклеящийся профилей D, E и P.</p>
+                <div class="blog-item"><a class="blog-item-img" href="./blog-detail.html"> <img src="images/main-blog-2.jpg" alt=""></a>
+                  <div class="blog-item-content"><a class="blog-item-title" href="./blog-detail.html"> Запенили! Все о монтажной пене KRASS</a>
+                    <div class="blog-item-text">Впервые применяться в строительстве монтажная пена стала в начале 80-х, но за счет своих свойств и удобства очень быстро завоевала любовь и доверие строителей всего мира. </div>
+                    <div class="blog-item-tags"><a href="">Герметик</a><a href="">Ремонт</a></div>
+                  </div>
+                </div>
+                <div class="blog-item"><a class="blog-item-img" href="./blog-detail.html"> <img src="images/main-blog-3.jpg" alt=""></a>
+                  <div class="blog-item-content"><a class="blog-item-title" href="./blog-detail.html"> Авторский надзор во время ремонта новостройки под ключ</a>
+                    <div class="blog-item-text">Авторский надзор – регулярное посещение ремонтируемого объекта дизайнером проекта. Основной целью надзора является решение возникающих вопросов с проектной документацией, а также контроль соответствия работ дизайн-проекту.</div>
+                    <div class="blog-item-tags"><a href="">Герметик</a><a href="">Ремонт</a></div>
+                  </div>
+                </div>
+                <div class="blog-item"><a class="blog-item-img" href="./blog-detail.html"> <img src="images/main-blog-4.jpg" alt=""></a>
+                  <div class="blog-item-content"><a class="blog-item-title" href="./blog-detail.html"> С чего начинается ремонт квартиры в новостройке</a>
+                    <div class="blog-item-text">В большинстве случаев при выборе квартиры в новостройке предпочтение отдается вариантам без отделки. Стоимость такой жилплощади ниже, чем полностью отделанного жилья, а отсутствие ремонта предоставляет владельцу полную свободу воплощения своих фантазий. </div>
+                    <div class="blog-item-tags"><a href="">Герметик</a><a href="">Ремонт</a></div>
+                  </div>
+                </div>
+                <div class="blog-item"><a class="blog-item-img" href="./blog-detail.html"> <img src="images/main-blog-1.jpg" alt=""></a>
+                  <div class="blog-item-content"><a class="blog-item-title" href="./blog-detail.html"> Герметик – незаменимый строительный материал</a>
+                    <div class="blog-item-text">При производстве строительных и ремонтных работ не обойтись без использования герметиков, которые представляют собой одно или двухкомпонентную эластичную смесь.</div>
+                    <div class="blog-item-tags"><a href="">Герметик</a><a href="">Ремонт</a></div>
+                  </div>
+                </div>
+                <div class="blog-item"><a class="blog-item-img" href="./blog-detail.html"><img src="images/main-blog-2.jpg" alt=""></a>
+                  <div class="blog-item-content"><a class="blog-item-title" href="./blog-detail.html">Запенили! Все о монтажной пене KRASS</a>
+                    <div class="blog-item-text">Впервые применяться в строительстве монтажная пена стала в начале 80-х, но за счет своих свойств и удобства очень быстро завоевала любовь и доверие строителей всего мира. </div>
+                    <div class="blog-item-tags"><a href="">Герметик</a><a href="">Ремонт</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="usefulArt-link-mobile"><a class="main-link" href="">
+                  <div class="main-link-text"><i class="svg-icon svg-str-link"></i>перейти в блог
+                  </div>
+                  <div class="main-link-circle">
+                    <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="26" cy="30"></circle>
+                    </svg>
+                  </div></a>
               </div>
             </div>
-            <div class="news-another content">
-              <div class="news-another-title">другие новости</div><a class="news-list-item" href="./news-detail.html">
-                <div class="news-list-item-date">28 мая 2020</div>
-                <div class="news-list-item-name">Впервые в России! KRASS уплотнитель двухкомпонентный самоклеящийся!</div>
-                <div class="news-list-item-disc">Теперь вы можете приобрести уникальный уплотнитель двухкомпонентный самоклеящийся ТМ KRASS, произведенный по технологии тонкого наслоения.</div>
-                <div class="news-list-item-str"><i class="svg-icon svg-str-news"></i><i class="svg-icon svg-str-link"></i>
-                </div></a><a class="news-list-item" href="./news-detail.html">
-                <div class="news-list-item-date">28 мая 2020</div>
-                <div class="news-list-item-name">Герметик – незаменимый строительный материал</div>
-                <div class="news-list-item-disc">При производстве строительных и ремонтных работ не обойтись без использования герметиков, которые представляют собой одно или двухкомпонентную эластичную смесь.</div>
-                <div class="news-list-item-str"><i class="svg-icon svg-str-news"></i><i class="svg-icon svg-str-link"></i>
-                </div></a>
+            <div class="nextCat content paralax-box">
+              <div class="section-name">следующая категория</div>
+              <div class="nextCat-img">
+                <div class="paralax-item"><img src="images/nextCat.png" alt="" height="500"></div>
+              </div>
+              <div class="section-title nextCat-title">Монтажные пены
+                <div class="nextCat-link"><a class="main-link" href="">
+                    <div class="main-link-text"><i class="svg-icon svg-str-link"></i>ко всем монтажным пенам
+                    </div>
+                    <div class="main-link-circle">
+                      <svg viewBox="0 0 56 59" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="26" cy="30"></circle>
+                      </svg>
+                    </div></a>
+                </div>
+              </div>
             </div>
             <div class="subscribe content section-full section-border" id="subscribe">
               <div class="section-title view-item">Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS</div>

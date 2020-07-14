@@ -7,39 +7,21 @@ import { Linear, Power2, CSSPlugin, Elastic } from "gsap";
 
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
-class ParalaxItem {
-  constructor(opts) {
-    this.parent = opts.parent;
-    this.child = opts.child;
-    this.duration = 0.9;
-    this.way = 90;
-    this.hook = opts.hook || 0.9;
-  }
-  update(y) {
-    this.startPos = this.parent.offset().top - window.innerHeight * this.hook;
-    this.endPos = this.startPos + window.innerHeight * this.duration;
-    if (y - this.startPos >= 0 && this.endPos - y >= 0) {
-      this.currentOffset =
-        (this.way / (this.endPos - this.startPos)) * (y - this.startPos);
-      this.child.css(
-        "transform",
-        "translate3d(0," + this.currentOffset + "px,0)"
-      );
-    } else if (y - this.startPos < 0) {
-      this.child.css("transform", "translate3d(0,0,0)");
-    } else if (this.endPos - y < 0) {
-      this.child.css("transform", "translate3d(0," + this.way + "px,0)");
-    }
-  }
-}
+import ParalaxController from "./views/paralaxController.js";
+import FixedController from "./views/fixedController.js";
+import VideoController from "./views/videoController.js";
+
 export default class ViewController {
   constructor() {
     this.correctStyles();
-    this.paralax();
-    this.videoController();
-    this.animateController();
-    // this.showWithScrollSteps();
+
+    //this.animateController();
+    //this.showWithScrollSteps();
     //this.showWithScroll();
+
+    let paralax = new ParalaxController();
+    let fixed = new FixedController();
+    let video = new VideoController();
   }
   correctStyles() {
     let currentLogoPreloadingPos = () => {
@@ -52,8 +34,10 @@ export default class ViewController {
       //выравнивание тектса по лого
       $(".main-banner-sub").css("left", left - 40 + "px");
       $(".news-detail-box").css("left", left - 40 + "px");
-      $('.page-404-content span').css('left',-($(window).width() - 80) / 2 + left - 40+'px')
-
+      $(".page-404-content span").css(
+        "left",
+        -($(window).width() - 80) / 2 + left - 40 + "px"
+      );
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {
@@ -103,24 +87,6 @@ export default class ViewController {
       }
     };
     each();
-  }
-  paralax() {
-    let paralaxItems = [];
-    $(".paralax-box").each(function () {
-      paralaxItems.push(
-        new ParalaxItem({
-          parent: $(this),
-          child: $(this).find(".paralax-item"),
-          hook: $(this).attr("data-hook"),
-        })
-      );
-    });
-    window.onScroll((y) => {
-      paralaxItems.forEach((item) => {
-        item.update(y);
-      });
-    });
-    console.log(paralaxItems);
   }
   startShowing() {
     setInterval(() => {
@@ -180,47 +146,6 @@ export default class ViewController {
         .addTo(controller);
     });
   }
-  videoController() {
-    $(".video").each(function () {
-      if ($(this).find("iframe").length > 0) {
-        let frame = $(this).find("iframe").eq(0)[0];
-        let that = this;
-        frame.onload = function () {
-          this.contentWindow.document.body.onclick = function () {
-            $(that).addClass("active");
-          };
-        };
-      }
-    });
-    $(".video").click(function () {
-      $(this).addClass("active");
-    });
-    $(".video-play").click(function () {
-      if ($(this).parent().find("iframe").length > 0) {
-        let frame = $(this).parent().find("iframe");
-        let src = frame.attr("src");
-        if (src.split("?").length > 1) {
-          frame.attr("src", src + "&autoplay=1");
-        } else {
-          frame.attr("src", src + "?autoplay=1");
-        }
-      }
-    });
-    const resize = function () {
-      $(".video").each(function () {
-        if ($(this).find("iframe").length > 0) {
-          let frame = $(this).find("iframe");
-          let k = frame.width() / frame.height();
-          frame.width($(this).width());
-          frame.height(frame.width() / k);
-        }
-      });
-    };
-    resize();
-    $(window).resize(function () {
-      resize();
-    });
-  }
   animateController() {
     let staggersAnimate = function () {
       let mouseOld = { x: 0, y: 0 };
@@ -257,9 +182,8 @@ export default class ViewController {
         }
       });
     };
-
     if ($(".staggers-item i.hit").length > 0) {
-      //staggersAnimate();
+      staggersAnimate();
     }
   }
 }

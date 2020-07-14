@@ -7,22 +7,23 @@ block variables
 block content
   .page
     .page-head.content.scroll-trigger.paralax-box(data-hook=0).catalog-head
-      .page-head-title.section-title герметики
+      .page-head-title.section-title монтажные пены
       .page-head-content
         .page-head-menu
           a.page-head-menu-link.active(href="") Все
-          a.page-head-menu-link(href="") Акриловые
-          a.page-head-menu-link(href="") силиконовые
-          a.page-head-menu-link(href="") специализированные
-      .page-head-bg 
+          a.page-head-menu-link(href="") Krass Professional
+          a.page-head-menu-link(href="") Krass Home Edition
+          a.page-head-menu-link(href="") KRASS ULTRAFLEX
+          a.page-head-menu-link(href="") очистители
+      .page-head-bg
         .paralax-item
           img(src="images/catalog-head.png" alt="" height="450").catalog-img
       .page-head-link
         +link('./select-product.html')
           |подобрать герметик
     form.filter.content
-      +filterSelect('application','application',[['0','первая область'],['1','вторая область'],['3','вторая область']])
-      +filterSelect('material','material',[['0','материал 1'],['1','материал 2'],['3','материал 3']])
+      +filterSelect('typeB','typeB',[['0','Тип баллона'],['1','Тип баллона 2'],['3','Тип баллона 3']])
+      +filterSelect('sezon','sezon',[['0','сезонность 1'],['1','сезонность 2'],['3','сезонность 3']])
       a.filter-reset
         span.simple
           +icon('reset','svg')

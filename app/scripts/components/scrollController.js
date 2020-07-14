@@ -47,7 +47,7 @@ export default class ScrollController {
       GSAP.TweenLite.set(this.scroller.target, {
         y: -this.scroller.y,
       });
-      this.updateHandlers(this.scroller.y);
+      this.updateHandlers(this.scroller.y,scrollY);
       this.updating = false;
       clearTimeout(this.time);
       this.time = setTimeout(() => {
@@ -59,9 +59,9 @@ export default class ScrollController {
       this.updateHandlers($(document).scrollTop());
     }
   }
-  updateHandlers(scrollY) {
+  updateHandlers(scrollY,scrollYBase) {
     this.handlers.forEach((item) => {
-      item(scrollY);
+      item(scrollY,scrollYBase);
     });
   }
   init() {
@@ -76,9 +76,7 @@ export default class ScrollController {
     window.addEventListener("resize", this.resize.bind(this));
     document.addEventListener("scroll", this.scroll.bind(this));
     $('a').click(()=>{
-      console.log(this.scroller.endY,$(document).scrollTop())
       this.update()
-      console.log(this.scroller.endY,$(document).scrollTop())
     })
   }
   scroll() {

@@ -27,34 +27,26 @@ block content
           span.staggers-item
             img(src="images/banner-3.png" alt="" width="227" data-group=1).show-item.showInTop
     .about-words
-      .about-words-item
-        span Удобно
-          +icon('multi-str-blue','svg')
-        span практично
-          +icon('multi-str-blue','svg')
-        span герметично
-          +icon('multi-str-blue','svg')
-      .about-words-item
-        span Удобно
-          +icon('multi-str-blue','svg')
-        span практично
-          +icon('multi-str-blue','svg')
-        span герметично
-          +icon('multi-str-blue','svg')
-      .about-words-item
-        span Удобно
-          +icon('multi-str-blue','svg')
-        span практично
-          +icon('multi-str-blue','svg')
-        span герметично
-          +icon('multi-str-blue','svg')
+      each item in [1,2,3]
+        .about-words-item
+          span Удобно
+            +icon('multi-str-blue','svg')
+          span практично
+            +icon('multi-str-blue','svg')
+          span герметично
+            +icon('multi-str-blue','svg')
     .about-info.content
       .about-info-text ТМ Krass появилась на российском рынке 12 лет назад. Большинство продуктов Krass производится
         |в Европе. Продукция отвечает европейским стандартам качества и соответствует
         |международным стандартам ISO. <br><br>
         |За время присутствия на российском рынке продукция KRASS заслужила доверие, как профессионалов, так и домашних мастеров.
       .about-info-right
-        img(src="images/about-info.jpg" alt="")
+
+        .paralax-box.size-box
+          .paralax-size-box
+            img(src="images/about-info.jpg" alt="")
+          .paralax-item
+            img(src="images/about-info.jpg" alt="")
         span Активно развивается производство <br> Krass на территории России.
         +icon('multi-str-orange-down','svg')
 
