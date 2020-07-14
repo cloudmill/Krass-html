@@ -18,17 +18,10 @@ block content
         .paralax-item
           img(src="images/catalog-head.png" alt="" height="450").catalog-img
       .page-head-link
-        +link()
+        +link('./select-product.html')
           |подобрать герметик
-    form.filter.content
-      +filterSelect('application','application',[['0','первая область'],['1','вторая область'],['3','вторая область']])
-      +filterSelect('material','material',[['0','материал 1'],['1','материал 2'],['3','материал 3']])
-      a.filter-reset
-        span.simple
-          +icon('reset','svg')
-        span.hover
-          +icon('reset-color','svg')
-        |Сбросить
+    include ../modules/filter.pug
+
     .catalog.content
       .catalog-list
         include ../modules/list_items_catalog.pug
@@ -36,29 +29,9 @@ block content
         include ../modules/list_items_catalog.pug
         include ../modules/list_items_catalog.pug
       include ../modules/catalogNav.pug
-    .usefulArt.content
-      .section-title.usefulArt-title полезные статьи
-        .usefulArt-link
-          +link()
-            |перейти в блог
-      .blog-list.usefulArt-list
-        include ../modules/list_items_blog.pug
-      .usefulArt-link-mobile
-        +link()
-          |перейти в блог
-    .nextCat.content.paralax-box
-      .section-name следующая категория
-      .nextCat-img
-        .paralax-item
-          img(src="images/nextCat.png" alt="" height="500")
-      .section-title.nextCat-title Монтажные пены
-        .nextCat-link
-          +link()
-            |ко всем монтажным пенам
 
-
-
-
+    include ../modules/useful_articles.pug
+    include ../modules/next_category.pug
 
     include ../modules/subscribe.pug
 

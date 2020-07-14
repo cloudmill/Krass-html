@@ -1,9 +1,9 @@
-.subscribe.content.section-full.section-border
+.subscribe.content.section-full.section-border#subscribe
   .section-title.view-item Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS
   .subscribe-str
     +icon('multi-str-blue','svg')
   .subscribe-img
-    img(src="images/bg-blog.png", alt="")
+    img(src="images/bg-blog.png" alt="")
   .subscribe-mobile-box#subscribe-mobile
     .subscribe-mobile-but(data-toggle="subscribe-mobile") подписаться на новости и новинки KRASS
     .subscribe-mobile-container
@@ -16,5 +16,9 @@
           +fieldCheck('ppSub','pp')
             |Согласен на обработку персональных данных <br> в соответствии с 
             a(href="") политикой конфиденциальности
-
+  .subscribe-success
+    .subscribe-success-title Вы успешно оформили подписку.
+    .subscribe-success-reset
+      +link()
+        |Подписаться еще
 

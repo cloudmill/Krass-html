@@ -52,6 +52,8 @@ export default class ViewController {
       //выравнивание тектса по лого
       $(".main-banner-sub").css("left", left - 40 + "px");
       $(".news-detail-box").css("left", left - 40 + "px");
+      $('.page-404-content span').css('left',-($(window).width() - 80) / 2 + left - 40+'px')
+
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {

@@ -10,25 +10,16 @@ mixin sert-block-content(target,_class = '')
         +icon('download','svg')
       |Скачать всю группу <br> 267 KB
     .sert-block-box
-      .sert-cat
-        .sert-cat-head Пена монт KRASS ULTRAFLEX 70 Supreme Пистолетная Всесезонная 0, 89 л
-        .sert-cat-list
-          include ../modules/list_items_sert.pug
-      .sert-cat
-        .sert-cat-head Пена монт KRASS ULTRAFLEX 65 Пистолетная Всесезонная 0, 82л Республика Беларусь
-        .sert-cat-list
-          include ../modules/list_items_sert.pug
-      .sert-cat
-        .sert-cat-head Пена монт KRASS ULTRAFLEX 70 Supreme Пистолетная Всесезонная 0, 89 л
-        .sert-cat-list
-          include ../modules/list_items_sert.pug
-      .sert-cat
-        .sert-cat-head Пена монт KRASS ULTRAFLEX 65 Пистолетная Всесезонная 0, 82л Республика Беларусь
-        .sert-cat-list
-          include ../modules/list_items_sert.pug
-      a.catalog-more(href="")
-        |показать еще
-        span
+      each item in [1,2]
+        .sert-cat
+          .sert-cat-head Пена монт KRASS ULTRAFLEX 70 Supreme Пистолетная Всесезонная 0, 89 л
+          .sert-cat-list
+            include ../modules/list_items_sert.pug
+        .sert-cat
+          .sert-cat-head Пена монт KRASS ULTRAFLEX 65 Пистолетная Всесезонная 0, 82л Республика Беларусь
+          .sert-cat-list
+            include ../modules/list_items_sert.pug
+      include ../modules/catalogNav.pug
 
 block content
   .page

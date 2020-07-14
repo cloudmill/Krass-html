@@ -1,0 +1,50 @@
+.usefulArt {
+  background: #f8f8f8;
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 180px;
+  @media (max-width: 1024px) {
+    padding-bottom: 120px;
+    padding-top: 60px;
+  }
+  @media (max-width: 768px) {
+    padding-bottom: 60px;
+    padding-top: 30px;
+  }
+  &-title {
+    position: relative;
+  }
+  &-link {
+    position: absolute !important;
+    right: 0px;
+    left: auto;
+    line-height: 44px;
+    font-size: 14px;
+    top: 0px;
+    @media (max-width: 768px) {
+      display: none;
+    }
+    &-mobile {
+      margin-top: 30px;
+      @media (min-width: 769px) {
+        display: none;
+      }
+    }
+  }
+  &-list {
+    padding-top: 80px;
+    @media (max-width: 650px) {
+      display: flex !important;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      overflow: -moz-scrollbars-none;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+    .blog-item:nth-child(n + 3){
+      display: none !important;
+    }
+  }
+}

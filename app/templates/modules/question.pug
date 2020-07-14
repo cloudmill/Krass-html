@@ -1,13 +1,19 @@
-.subscribe.content.section-full
+.subscribe.content.section-full#question-section
   .section-title-sub Вопрос или пожелание
   form.subscribe-form.view-item
     +fieldBase('nameQuest','name','Имя')
     +fieldBase('emailQuest','email','Email')
+    +fieldBaseBig('messQuest','text','Сообщение')
     .field-row
       +submit()
         |отправить
       +fieldCheck('ppQuest','pp')
         |Согласен на обработку персональных данных <br> в соответствии с 
         a(href="./pp.html") политикой конфиденциальности
+  .subscribe-success
+    .subscribe-success-title ваше сообщение принято. <br> ответим, как только сможем.
+    .subscribe-success-reset
+      +link()
+        |Отправить еще
 
 

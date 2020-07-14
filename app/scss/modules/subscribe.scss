@@ -127,4 +127,35 @@
       display: none;
     }
   }
+  &-success {
+    @include opacityHide();
+    position: absolute;
+    height: 100%;
+    z-index: 5;
+    background-color: white;
+    padding: 80px 40px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &.active {
+      @include opacityShow();
+    }
+    &-title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 35px;
+      line-height: 130%;
+      margin-right: auto;
+      text-transform: uppercase;
+      color: #0054a4;
+    }
+    &-reset{
+      margin-left: 60px;
+      margin-right: 0;
+    }
+  }
 }
