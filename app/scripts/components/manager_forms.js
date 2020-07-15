@@ -3,9 +3,12 @@ import "select2";
 
 export default class Manager_forms {
   constructor() {
+    this.init();
+  }
+  init() {
     this.initSelect2();
     this.initErrorsChecker();
-
+    
     this.init_form_calc();
     this.init_form_modal();
     this.init_form_subscribe();
@@ -151,14 +154,16 @@ export default class Manager_forms {
     $(".modal-form-reset a").click(function (e) {
       e.preventDefault();
       $("#question form").find(".modal-form-step").removeClass("active");
-      $("#question form").find('.modal-form-step[data-step="1"]').addClass("active");
+      $("#question form")
+        .find('.modal-form-step[data-step="1"]')
+        .addClass("active");
     });
   }
   init_form_subscribe() {
     $("#subscribe form").submit(function (e) {
       e.preventDefault();
       if ($(this).find(".error").length == 0) {
-        $('#subscribe .subscribe-success').addClass("active");
+        $("#subscribe .subscribe-success").addClass("active");
       }
     });
     $("#subscribe .subscribe-success-reset a").click(function (e) {
@@ -170,7 +175,7 @@ export default class Manager_forms {
     $("#question-section form").submit(function (e) {
       e.preventDefault();
       if ($(this).find(".error").length == 0) {
-        $('#question-section .subscribe-success').addClass("active");
+        $("#question-section .subscribe-success").addClass("active");
       }
     });
     $("#question-section .subscribe-success-reset a").click(function (e) {

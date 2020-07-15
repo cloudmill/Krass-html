@@ -1,0 +1,54 @@
+extends ../layouts/default.pug
+
+block variables
+  -var pageTitle='Каталог'
+
+
+block content
+  .page
+    .page-head.content.scroll-trigger.paralax-box(data-hook=0).catalog-head
+      .page-head-title.section-title  Клеи
+      .page-head-content
+        .page-head-menu
+          a.page-head-menu-link.active(href="") Все
+          a.page-head-menu-link(href="") Жидкие гвозди
+          a.page-head-menu-link(href="") обойные
+          a.page-head-menu-link(href="") напольные
+          a.page-head-menu-link(href="") PVA
+      .page-head-bg
+        .paralax-item
+          img(src="images/catalog-head-3.png" alt="" height="460").catalog-img
+      .page-head-link
+        +link('./select-product-2.html')
+          |подобрать клей
+    form.filter.content
+      +filterSelect('inside','inside',[['null','состав'],['1','состав 2'],['3','состав 3']])
+      +filterSelect('color','color',[['null','цвет после высыхания'],['1','цвет 2'],['3','цвет 3']])
+      +filterSelect('material','materialf',[['null','приклеиваемый материаля'],['1','материал 2'],['3','материал 3']])
+      +filterSelect('area','areaf',[['null','область применения'],['1','область 2'],['3','область 3']])
+      a.filter-reset
+        span.simple
+          +icon('reset','svg')
+        span.hover
+          +icon('reset-color','svg')
+        |Сбросить
+
+    .catalog.content
+      .catalog-list
+        include ../modules/list_items_catalog.pug
+        include ../modules/list_items_catalog.pug
+        include ../modules/list_items_catalog.pug
+        include ../modules/list_items_catalog.pug
+      include ../modules/catalogNav.pug
+
+    include ../modules/useful_articles.pug
+    include ../modules/next_category.pug
+
+    include ../modules/subscribe.pug
+
+
+
+
+
+
+

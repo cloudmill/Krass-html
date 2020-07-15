@@ -6,5 +6,5 @@ window.Config = {
 };
 
 $(document).ready(function () {
-  App();
+  let app = new App();
 });

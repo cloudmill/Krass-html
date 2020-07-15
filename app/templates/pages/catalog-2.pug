@@ -17,13 +17,10 @@ block content
           a.page-head-menu-link(href="") очистители
       .page-head-bg
         .paralax-item
-          img(src="images/catalog-head.png" alt="" height="450").catalog-img
-      .page-head-link
-        +link('./select-product.html')
-          |подобрать герметик
+          img(src="images/catalog-head-2.png" alt="" height="490").catalog-img
     form.filter.content
-      +filterSelect('typeB','typeB',[['0','Тип баллона'],['1','Тип баллона 2'],['3','Тип баллона 3']])
-      +filterSelect('sezon','sezon',[['0','сезонность 1'],['1','сезонность 2'],['3','сезонность 3']])
+      +filterSelect('typeB','typeB',[['null','Тип баллона'],['1','Тип баллона 2'],['3','Тип баллона 3']])
+      +filterSelect('sezon','sezon',[['null','сезонность'],['1','сезонность 2'],['3','сезонность 3']])
       a.filter-reset
         span.simple
           +icon('reset','svg')

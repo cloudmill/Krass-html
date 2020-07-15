@@ -68,12 +68,12 @@ class Modal {
 }
 export default class Manager_modals {
   constructor() {
-    this.modals = [];
-    this.count = 0;
     this.init();
-    this.state = "close";
   }
   init() {
+    this.modals = [];
+    this.count = 0;
+    this.state = "close";
     var that = this;
     $(document)
       .find(".modal-item")
@@ -91,7 +91,7 @@ export default class Manager_modals {
     $("[data-modal-close]").click(() => {
       this.closeAll();
     });
-    $(document).mouseup((e) => {
+    $("body").mouseup((e) => {
       if (this.state == "open") {
         var container = $(".modal-item > *");
         if (container.has(e.target).length === 0) {

@@ -21,8 +21,8 @@ block content
         +link('./select-product.html')
           |подобрать герметик
     form.filter.content
-      +filterSelect('application','application',[['0','первая область'],['1','вторая область'],['3','вторая область']])
-      +filterSelect('material','material',[['0','материал 1'],['1','материал 2'],['3','материал 3']])
+      +filterSelect('application','application',[['null','Область применения'],['1','вторая область'],['3','вторая область']])
+      +filterSelect('material','material',[['null','Материал поверхности'],['1','материал 2'],['3','материал 3']])
       a.filter-reset
         span.simple
           +icon('reset','svg')

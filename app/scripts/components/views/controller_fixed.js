@@ -16,10 +16,7 @@ class FixedItem {
     let bottomOffsetBase = this.baseOffsetTop + this.base.height();
     let offsetTop = 0;
     let overTop = 0;
-
-    console.log(this.maxWidth,$(window).width())
-
-    if ($(window).width()+6 <= this.maxWidth) {
+    if ($(window).width() + 6 <= this.maxWidth) {
       this.clear();
       return true;
     }
@@ -41,15 +38,19 @@ class FixedItem {
 
 export default class Controller_fixed {
   constructor() {
-    this.init();
+    this._init();
   }
   init() {
-    let fixedItems = [];
+    this.fixedItems = [];
+    let that = this;
     $(".fixed-item").each(function () {
-      fixedItems.push(new FixedItem($(this)));
+      that.fixedItems.push(new FixedItem($(this)));
     });
+  }
+  _init() {
+    this.init();
     window.onScroll((yease, ybase) => {
-      fixedItems.forEach((item) => {
+      this.fixedItems.forEach((item) => {
         if (item.update) item.update(yease, ybase);
       });
     });

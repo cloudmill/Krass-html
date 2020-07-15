@@ -8,16 +8,28 @@ import Manager_maps from "./components/manager_maps.js";
 
 import Header from "./components/header.js";
 
-var App = function () {
-  var scroll = new Manager_scroll();
-  var views = new Manager_views();
-  var tabs = new Manager_tabs();
-  var modals = new Manager_modals();
-  var forms = new Manager_forms();
-  var sliders = new Manager_sliders();
-  var maps = new Manager_maps();
+class App {
+  constructor() {
+    window.initedItems = [];
+    this.scroll = new Manager_scroll();
+    this.views = new Manager_views();
+    this.tabs = new Manager_tabs();
+    window.modals = this.modals = new Manager_modals();
+    this.forms = new Manager_forms();
+    this.sliders = new Manager_sliders();
+    this.maps = new Manager_maps();
+    this.header = new Header();
 
-  var header = new Header();
-};
+    window.XHRon("complete", () => {
+      this.views.init();
+      this.modals.init();
+      this.forms.init();
+      this.sliders.init();
+      this.maps.init();
+      this.header.update();
+      window.updateForce();
+    });
+  }
+}
 
 export default App;

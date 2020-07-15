@@ -11,38 +11,46 @@ import Controller_paralax from "./views/controller_paralax.js";
 import Controller_fixed from "./views/controller_fixed.js";
 import Controller_video from "./views/controller_video.js";
 import Controller_preloader from "./views/controller_preloader.js";
+import Controller_pageSurfing from "./views/controller_pageSurfing.js";
+import Controller_difAnimate from "./views/controller_difAnimate.js";
 
 export default class Manager_views {
   constructor() {
     this.correctStyles();
-
-    //this.animateController();
     //this.showWithScrollSteps();
     //this.showWithScroll();
-    var preloader = new Controller_preloader();
-    let paralax = new Controller_paralax();
-    let fixed = new Controller_fixed();
-    let video = new Controller_video();
+    this.pageSurfing = new Controller_pageSurfing();
+    this.preloader = new Controller_preloader();
+    this.paralax = new Controller_paralax();
+    this.fixed = new Controller_fixed();
+    this.video = new Controller_video();
+    this.animate = new Controller_difAnimate();
 
-    preloader.onLoad(() => {
-      this.startShowing();
+    this.preloader.onLoad(() => {
+      this.animate.startAfterLoad();
     });
+  }
+  init() {
+    this.paralax.init();
+    this.fixed.init();
+    this.video.init();
+    this.animate.init();
+    this.animate.startAfterLoad();
   }
   correctStyles() {
     let currentLogoPreloadingPos = () => {
       //установка позиции лого для возвращения после прелоадера
-      let scrollOff = $("body").hasClass("closeScroll");
-      if (scrollOff) $("body").removeClass("closeScroll");
-      let left = $(".header-logo-box").offset().left;
-      if (scrollOff) $("body").addClass("closeScroll");
-      $(".header-logo").css("left", left + "px");
-      //выравнивание тектса по лого
-      $(".main-banner-sub").css("left", left - 40 + "px");
-      $(".news-detail-box").css("left", left - 40 + "px");
-      $(".page-404-content span").css(
-        "left",
-        -($(window).width() - 80) / 2 + left - 40 + "px"
-      );
+      setTimeout(() => {
+        let left = $(".header-logo-box").offset().left;
+        $(".header-logo").css("left", left + "px");
+        //выравнивание тектса по лого
+        $(".main-banner-sub").css("left", left - 40 + "px");
+        $(".news-detail-box").css("left", left - 40 + "px");
+        $(".page-404-content span").css(
+          "left",
+          -($(window).width() - 80) / 2 + left - 40 + "px"
+        );
+      }, 300);
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {
@@ -92,42 +100,6 @@ export default class Manager_views {
       }
     };
     each();
-  }
-  startShowing() {
-    setInterval(() => {
-      let items = $(document).find(".show-item");
-      if (!this.time && items.length > 0) this.clearStyleHide(items);
-    }, 100);
-  }
-  clearStyleHide(items) {
-    let groupsItems = [];
-    items.each((key, item) => {
-      let group = item.getAttribute("data-group");
-      if (groupsItems[group]) {
-        groupsItems[group].push(item);
-      } else {
-        groupsItems[group] = [];
-        groupsItems[group].push(item);
-      }
-    });
-    let i = 0;
-    this.time = setInterval(() => {
-      let lenght = 0;
-      groupsItems.forEach((group) => {
-        if (lenght < group.length) lenght = group.length;
-        if (group.length > i) {
-          let item = group[i];
-          if (!$(item).hasClass("play")) {
-            $(item).addClass("play");
-          }
-        }
-      });
-      i++;
-      if (i == lenght) {
-        clearInterval(this.time);
-        this.time = null;
-      }
-    }, 200);
   }
   showWithScroll() {
     $(".scroll-trigger").each((key, item) => {

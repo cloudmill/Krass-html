@@ -2,7 +2,14 @@ import $ from "jquery";
 
 export default class Controller_video {
   constructor() {
+    this._init();
+  }
+  _init() {
     this.init();
+
+    $(window).resize(() => {
+      this.resize();
+    });
   }
   init() {
     $(".video").each(function () {
@@ -31,9 +38,6 @@ export default class Controller_video {
       }
     });
     this.resize();
-    $(window).resize(() => {
-      this.resize();
-    });
   }
   resize() {
     $(".video").each(function () {

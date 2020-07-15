@@ -441,13 +441,11 @@
     }
   }
   &-tab {
-    @media (max-width: 1024px) {
+    &:nth-child(n + 2){
       padding-top: 60px;
     }
-    &:not(.active) {
-      @media (min-width: 1025px) {
-        display: none;
-      }
+    @media (max-width: 1024px) {
+      padding-top: 60px;
     }
     .product-title {
       margin-bottom: 40px;

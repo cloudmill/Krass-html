@@ -8,9 +8,7 @@ class ParalaxItem {
     this.way = 90;
     this.hook = opts.hook || 0.9;
     this.offset = this.parent.hasClass("size-box") ? "-50%" : "0";
-    this.init();
   }
-  init() {}
   update(y) {
     this.startPos = this.parent.offset().top - window.innerHeight * this.hook;
     this.endPos = this.startPos + window.innerHeight * this.duration;
@@ -34,23 +32,27 @@ class ParalaxItem {
 
 export default class Controller_paralax {
   constructor() {
+    this._init();
+  }
+  _init() {
     this.init();
+    window.onScroll((y) => {
+      this.paralaxItems.forEach((item) => {
+        item.update(y);
+      });
+    });
   }
   init() {
-    let paralaxItems = [];
+    this.paralaxItems = [];
+    let that = this;
     $(".paralax-box").each(function () {
-      paralaxItems.push(
+      that.paralaxItems.push(
         new ParalaxItem({
           parent: $(this),
           child: $(this).find(".paralax-item"),
           hook: $(this).attr("data-hook"),
         })
       );
-    });
-    window.onScroll((y) => {
-      paralaxItems.forEach((item) => {
-        item.update(y);
-      });
     });
   }
 }

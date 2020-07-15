@@ -14,7 +14,8 @@
     }
     &:hover {
       span {
-        background: #0054a4;
+        background: #CC3E1E;
+        border-color: #CC3E1E;
         color: #fff;
         i {
           filter: grayscale(1) brightness(0) invert(1);
@@ -73,13 +74,19 @@
         padding-bottom: 20px;
         cursor: pointer;
         margin-right: 60px;
-        border-bottom: 2px solid transparent;
-        transition: color $ease-main, border $ease-main;
-
+        transition: color $ease-main;
         &.active {
-          border-color: #cc3e1e;
           color: #cc3e1e;
         }
+      }
+      &-progress{
+        height: 2px;
+        width: 100px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: left $ease-main,width $ease-main;
+        background-color: #cc3e1e;;
       }
     }
     &-select {

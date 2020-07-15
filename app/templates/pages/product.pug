@@ -104,11 +104,13 @@ block content
               .product-weights-list
                 span 310 мл
                 span 600 мл
-    .prodInfo.content
-      .prodInfo-menu
-        +prodInfo-menu-links(['Преимущества','Характеристики','Применение','Рассчитать расход','Транспортировка и хранение','Сертификаты','где купить'])
-        +link('#question','mess','js-modal')
-          | задать вопрос
+    .prodInfo.content.fixed-base(data-max-width="1024")
+      .fixed-box
+        .fixed-item
+          .prodInfo-menu
+            +prodInfo-menu-links(['Преимущества','Характеристики','Применение','Рассчитать расход','Транспортировка и хранение','Сертификаты','где купить'])
+            +link('#question','mess','js-modal')
+              | задать вопрос
       .prodInfo-tabs
         .prodInfo-tab.active(data-target='tab-0')
           .product-title Преимущества
