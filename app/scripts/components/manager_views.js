@@ -1,11 +1,4 @@
 import $ from "jquery";
-import * as ScrollMagic from "scrollmagic";
-import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
-
-import { TweenMax, TimelineMax, TweenLite } from "gsap";
-import { Linear, Power2, CSSPlugin, Elastic } from "gsap";
-
-ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
 import Controller_paralax from "./views/controller_paralax.js";
 import Controller_fixed from "./views/controller_fixed.js";
@@ -17,25 +10,18 @@ import Controller_difAnimate from "./views/controller_difAnimate.js";
 export default class Manager_views {
   constructor() {
     this.correctStyles();
-    //this.showWithScrollSteps();
-    //this.showWithScroll();
     this.pageSurfing = new Controller_pageSurfing();
     this.preloader = new Controller_preloader();
     this.paralax = new Controller_paralax();
     this.fixed = new Controller_fixed();
     this.video = new Controller_video();
     this.animate = new Controller_difAnimate();
-
-    this.preloader.onLoad(() => {
-      this.animate.startAfterLoad();
-    });
   }
   init() {
     this.paralax.init();
     this.fixed.init();
     this.video.init();
     this.animate.init();
-    this.animate.startAfterLoad();
   }
   correctStyles() {
     let currentLogoPreloadingPos = () => {
@@ -67,61 +53,6 @@ export default class Manager_views {
     window.onresize = () => {
       currentLogoPreloadingPos();
     };
-  }
-  showWithScrollSteps() {
-    var _ = this;
-    window.onScroll(() => {
-      each();
-    });
-    let each = () => {
-      $(".view-item").each(function () {
-        var opacity = check(this);
-        opacity =
-          opacity <= 1.1 && opacity >= 0 ? opacity : opacity > 1.1 ? 1 : 0;
-        CSSPlugin.force3D = true;
-        TweenLite.set(this, {
-          opacity: opacity,
-          force3D: true,
-        });
-      });
-    };
-    let check = (el) => {
-      let height = el.offsetHeight;
-      let defaultSize = 100;
-      let addHeight = defaultSize > height ? defaultSize : height;
-      let wHeight = window.innerHeight;
-      let top = $(el).offset().top - document.documentElement.scrollTop;
-      if (top + addHeight > wHeight) {
-        return 1 - (top - wHeight + addHeight) / addHeight;
-      } else {
-        if (height < defaultSize) {
-          return (top + height / 2) / addHeight;
-        } else return (top + addHeight) / addHeight;
-      }
-    };
-    each();
-  }
-  showWithScroll() {
-    $(".scroll-trigger").each((key, item) => {
-      var controller = new ScrollMagic.Controller();
-      var tl = new TimelineMax();
-      tl.staggerFrom($(item).find(".show-item"), 1.25, {
-        opacity: 0,
-        y: 0,
-        x: 0,
-        ease: Elastic.easeOut,
-        stagger: {
-          from: "center",
-          amount: 0.25,
-        },
-      });
-      var scene = new ScrollMagic.Scene({
-        triggerElement: item,
-        triggerHook: 0,
-      })
-        .setTween(tl)
-        .addTo(controller);
-    });
   }
   animateController() {
     let staggersAnimate = function () {

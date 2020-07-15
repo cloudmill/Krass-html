@@ -3,51 +3,57 @@ import $ from "jquery";
 export default class Controller_difAnimate {
   constructor() {
     this.init();
+    globalListener.on('preloader-load', () => {
+      this.showItemsAfterload();
+    })
+    globalListener.on('XHR-complate', () => {
+      this.init();
+      this.showItemsAfterload();
+    })
   }
   init() {
     this.productDetailTabChange();
     this.menuTabsLineMoving();
   }
-  //----
-  /////
-  startAfterLoad() {
-    setInterval(() => {
-      let items = $(document).find(".show-item");
-      if (!this.time && items.length > 0) this.clearStyleHide(items);
-    }, 100);
-  }
-  clearStyleHide(items) {
-    let groupsItems = [];
-    items.each((key, item) => {
-      let group = item.getAttribute("data-group");
-      if (groupsItems[group]) {
-        groupsItems[group].push(item);
-      } else {
-        groupsItems[group] = [];
-        groupsItems[group].push(item);
-      }
-    });
-    let i = 0;
-    this.time = setInterval(() => {
-      let lenght = 0;
-      groupsItems.forEach((group) => {
-        if (lenght < group.length) lenght = group.length;
-        if (group.length > i) {
-          let item = group[i];
-          if (!$(item).hasClass("play")) {
-            $(item).addClass("play");
-          }
+
+  showItemsAfterload() {
+    let clearStyleHide = (items) => {
+      let groupsItems = [];
+      items.each((key, item) => {
+        let group = item.getAttribute("data-group");
+        if (groupsItems[group]) {
+          groupsItems[group].push(item);
+        } else {
+          groupsItems[group] = [];
+          groupsItems[group].push(item);
         }
       });
-      i++;
-      if (i == lenght) {
-        clearInterval(this.time);
-        this.time = null;
-      }
-    }, 200);
+      let i = 0;
+      let time = setInterval(() => {
+        let lenght = 0;
+        groupsItems.forEach((group) => {
+          if (lenght < group.length) lenght = group.length;
+          if (group.length > i) {
+            let item = group[i];
+            if (!$(item).hasClass("play")) {
+              $(item).addClass("play");
+            }
+          }
+        });
+        i++;
+        if (i == lenght) {
+          clearInterval(time);
+          time = null;
+        }
+      }, 200);
+    }
+
+    setInterval(() => {
+      let items = $(document).find(".show-item");
+      if (!this.time && items.length > 0) clearStyleHide(items);
+    }, 100);
   }
-  ////
-  //----
+
   productDetailTabChange() {
     if ($(".prodInfo-menu").length > 0) {
     }
@@ -70,14 +76,13 @@ export default class Controller_difAnimate {
         500
       );
     });
-    if (!window.initedItems["productDetailTabChange"]) {
-      window.initedItems["productDetailTabChange"] = true;
+    if (globalListener.checkInit('productDetailTabChange')) {
       window.onScroll((yease, y) => {
         if (updateState) updateState(y);
       });
     }
   }
-  menuTabsLineMoving(update) {
+  menuTabsLineMoving() {
     if ($(".sert-content-menu").length > 0) {
       let update = function (item) {
         $(".sert-content-menu-progress").width(item.width());
@@ -91,8 +96,8 @@ export default class Controller_difAnimate {
         update($(this));
       });
       update($(".sert-content-menu-item").eq(0));
-      if (!window.initedItems["menuTabsLineMoving"]) {
-        window.initedItems["menuTabsLineMoving"] = true;
+
+      if (globalListener.checkInit('menuTabsLineMoving')) {
         $(window).resize(() => {
           update($(".sert-content-menu-item.active"));
         });

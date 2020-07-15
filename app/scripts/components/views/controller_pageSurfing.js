@@ -12,7 +12,6 @@ class Controller_XHR {
     this.XHR = new XMLHttpRequest();
     this.pullState();
     this.events();
-    window.XHRon = this.on.bind(this);
     console.log("XHR inited");
   }
   pullState() {
@@ -49,19 +48,19 @@ class Controller_XHR {
       }
       if (request.status == 200 || request.status == 404) {
         var temp_html = request.response;
-        that.trigger("XHR-success", temp_html);
+        globalListener.trigger("XHR-success", [temp_html])
         success();
         _this.XHR.onload = null;
       } else {
         failed();
-        that.trigger("XHR-error", e);
+        globalListener.trigger("XHR-error", [e])
       }
     };
 
     this.XHR.open("GET", href, true);
 
     this.XHR.onerror = function (e) {
-      that.trigger("XHR-error", e);
+      globalListener.trigger("XHR-error", e)
       failed();
       _this.XHR.onerror = null;
     };
@@ -141,19 +140,6 @@ class Controller_XHR {
       }
     });
   }
-  trigger(type, data) {
-    this.handlers.forEach((item) => {
-      if (item.type == type) {
-        item.handler(data);
-      }
-    });
-  }
-  on(type, handler) {
-    this.handlers.push({
-      type: type,
-      handler: handler,
-    });
-  }
 }
 
 export default class Controller_pageSurfing {
@@ -162,14 +148,14 @@ export default class Controller_pageSurfing {
   }
   init() {
     this.reloader = new Controller_XHR();
-    this.reloader.on("XHR-success", (html) => {
+    globalListener.on("XHR-success", (html) => {
       window.modals.closeAll();
       $("html, body").animate({ scrollTop: 0 }, 400);
       this.showPreloader();
       setTimeout(() => {
         this.reloadPageDoing(html);
       }, 400);
-    });
+    })
   }
   reloadPageDoing(temp_html) {
     var that = this;
@@ -190,7 +176,6 @@ export default class Controller_pageSurfing {
 
       replaceDOM(".page", wrapper);
       replaceDOM(".header", wrapper);
-      replaceDOM(".footer", wrapper);
       replaceDOM(".modal", wrapper);
 
       if (!0) {
@@ -214,7 +199,7 @@ export default class Controller_pageSurfing {
       }
 
       let doo = () => {
-        that.reloader.trigger("complete");
+        globalListener.trigger("XHR-complete");
         that.hidePreloader();
       };
       if (document.readyState === "complete") {

@@ -1,3 +1,7 @@
+//tools
+import Listener from "./tools/listener.js";
+
+//managers
 import Manager_tabs from "./components/manager_tabs.js";
 import Manager_modals from "./components/manager_modals.js";
 import Manager_scroll from "./components/manager_scroll.js";
@@ -10,17 +14,21 @@ import Header from "./components/header.js";
 
 class App {
   constructor() {
-    window.initedItems = [];
+    this.listener = new Listener();
+    window.globalListener = this.listener
+    
     this.scroll = new Manager_scroll();
     this.views = new Manager_views();
     this.tabs = new Manager_tabs();
-    window.modals = this.modals = new Manager_modals();
+    this.modals = new Manager_modals();
     this.forms = new Manager_forms();
     this.sliders = new Manager_sliders();
     this.maps = new Manager_maps();
     this.header = new Header();
 
-    window.XHRon("complete", () => {
+    window.modals = this.modals
+
+    globalListener.on("XHR-complete", () => {
       this.views.init();
       this.modals.init();
       this.forms.init();

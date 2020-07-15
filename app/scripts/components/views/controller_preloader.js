@@ -2,7 +2,6 @@ import $ from "jquery";
 
 export default class Controller_preloader {
   constructor() {
-    this.handlers = [];
     this.init();
   }
   init() {
@@ -16,14 +15,9 @@ export default class Controller_preloader {
       };
     }
   }
-  onLoad(handler) {
-    this.handlers.push(handler);
-  }
   afterLoad() {
     setTimeout(() => {
-      this.handlers.forEach((item) => {
-        item();
-      });
+      globalListener.trigger('preloader-load');
     }, 300);
 
     $("html").removeClass("closeScroll");
