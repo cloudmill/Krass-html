@@ -1,7 +1,7 @@
 import $ from "jquery";
 import "select2";
 
-export default class FormsController {
+export default class Manager_forms {
   constructor() {
     this.initSelect2();
     this.initErrorsChecker();

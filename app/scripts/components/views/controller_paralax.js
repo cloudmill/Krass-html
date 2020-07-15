@@ -32,7 +32,7 @@ class ParalaxItem {
   }
 }
 
-export default class ParalaxController {
+export default class Controller_paralax {
   constructor() {
     this.init();
   }

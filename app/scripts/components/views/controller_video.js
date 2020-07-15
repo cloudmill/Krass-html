@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-export default class VideoController {
+export default class Controller_video {
   constructor() {
     this.init();
   }

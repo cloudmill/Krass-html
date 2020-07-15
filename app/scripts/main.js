@@ -1,27 +1,23 @@
-import TabController from "./components/tabController.js";
-import ModalController from "./components/modalController.js";
-import ScrollController from "./components/scrollController.js";
-import FormsController from "./components/formsController.js";
-import ViewController from "./components/viewController.js";
+import Manager_tabs from "./components/manager_tabs.js";
+import Manager_modals from "./components/manager_modals.js";
+import Manager_scroll from "./components/manager_scroll.js";
+import Manager_forms from "./components/manager_forms.js";
+import Manager_views from "./components/manager_views.js";
+import Manager_sliders from "./components/manager_sliders.js";
+import Manager_maps from "./components/manager_maps.js";
+
 import Header from "./components/header.js";
-import SlidersController from "./components/slidersController.js";
-import PreloaderController from "./components/preloaderController.js";
-import MapController from "./components/mapController.js";
 
 var App = function () {
-  var preloader = new PreloaderController();
-  var scroll = new ScrollController();
-  var view = new ViewController();
-  var tabs = new TabController();
-  var modals = new ModalController();
-  var forms = new FormsController();
-  var header = new Header();
-  var slidersController = new SlidersController();
-  var mapController = new MapController();
+  var scroll = new Manager_scroll();
+  var views = new Manager_views();
+  var tabs = new Manager_tabs();
+  var modals = new Manager_modals();
+  var forms = new Manager_forms();
+  var sliders = new Manager_sliders();
+  var maps = new Manager_maps();
 
-  preloader.onLoad(() => {
-    view.startShowing();
-  });
+  var header = new Header();
 };
 
 export default App;

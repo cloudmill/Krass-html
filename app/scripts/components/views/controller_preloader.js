@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-export default class PreloaderController {
+export default class Controller_preloader {
   constructor() {
     this.handlers = [];
     this.init();
@@ -15,6 +15,7 @@ export default class PreloaderController {
         this.load();
       };
     }
+    this.pageSurfing();
   }
   onLoad(handler) {
     this.handlers.push(handler);
@@ -32,7 +33,7 @@ export default class PreloaderController {
     setTimeout(() => {
       $("html").addClass("loaded");
       $("html").removeClass("closing-preloader");
-    },1600);
+    }, 1600);
   }
   fasterLoad() {
     let i = 1;
@@ -105,6 +106,40 @@ export default class PreloaderController {
       $(imgLoad).bind("load", function () {
         refreshPreloader();
       });
+    });
+  }
+  pageSurfing() {
+    window.test = true;
+    function redir(url) {
+      $.ajax({
+        url: url,
+        type: "POST",
+        success: function (result) {
+          console.log(result);
+        },
+      });
+    }
+    $("a").click(function (e) {
+      if ($(this).attr("href") && window.test) {
+        let domain = location.hostname || document.domain;
+
+        let link = $(this).attr("href");
+        let haslink = link.length > 0;
+        let blank = $(this).attr("target") != "_blank";
+        let download = $(this).attr("download") == undefined;
+        let hrefhash = link[0] != "#";
+        let http = link.indexOf("http") > -1;
+        let thisdomain = link.indexOf(domain) > -1;
+        let insidelink = (http && thisdomain) || !http;
+
+        if (insidelink && blank && download && hrefhash && haslink) {
+          e.preventDefault();
+          console.log("внутрення ссылка");
+          redir(link);
+        } else {
+          console.log("не внутренняя ссылка");
+        }
+      }
     });
   }
 }

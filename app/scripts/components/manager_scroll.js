@@ -1,7 +1,7 @@
 import $ from "jquery";
 import * as GSAP from "gsap";
 
-export default class ScrollController {
+export default class Manager_scroll {
   constructor() {
     this.handlers = [];
     window.onScroll = this.onScroll.bind(this);
@@ -56,7 +56,7 @@ export default class ScrollController {
         }
       }, 1000 / 60);
     } else {
-      this.updateHandlers($(document).scrollTop());
+      this.updateHandlers($(document).scrollTop(),$(document).scrollTop());
     }
   }
   updateHandlers(scrollY,scrollYBase) {

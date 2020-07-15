@@ -10,7 +10,7 @@ class FixedItem {
     this.h = this.target.find(">*").height();
     this.top = 50;
   }
-  update(y, y2) {
+  update(yease, y) {
     let headerH = $(".header").height() + $(".header").offset().top - y;
     let offsetY = this.box.offset().top;
     let bottomOffsetBase = this.baseOffsetTop + this.base.height();
@@ -27,7 +27,7 @@ class FixedItem {
       offsetTop = y + headerH + this.top - offsetY;
     }
     if (y + this.h + this.top + headerH >= bottomOffsetBase) {
-      overTop = y2 + this.h + this.top + headerH - bottomOffsetBase;
+      overTop = yease + this.h + this.top + headerH - bottomOffsetBase;
     }
 
     this.target.css("transform", "translate3d(0," + offsetTop + "px,0)");
@@ -39,7 +39,7 @@ class FixedItem {
   }
 }
 
-export default class FixedController {
+export default class Controller_fixed {
   constructor() {
     this.init();
   }
@@ -48,9 +48,9 @@ export default class FixedController {
     $(".fixed-item").each(function () {
       fixedItems.push(new FixedItem($(this)));
     });
-    window.onScroll((y, ybase) => {
+    window.onScroll((yease, ybase) => {
       fixedItems.forEach((item) => {
-        if (item.update) item.update(ybase, y);
+        if (item.update) item.update(yease, ybase);
       });
     });
   }

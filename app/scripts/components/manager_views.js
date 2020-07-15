@@ -7,21 +7,26 @@ import { Linear, Power2, CSSPlugin, Elastic } from "gsap";
 
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
-import ParalaxController from "./views/paralaxController.js";
-import FixedController from "./views/fixedController.js";
-import VideoController from "./views/videoController.js";
+import Controller_paralax from "./views/controller_paralax.js";
+import Controller_fixed from "./views/controller_fixed.js";
+import Controller_video from "./views/controller_video.js";
+import Controller_preloader from "./views/controller_preloader.js";
 
-export default class ViewController {
+export default class Manager_views {
   constructor() {
     this.correctStyles();
 
     //this.animateController();
     //this.showWithScrollSteps();
     //this.showWithScroll();
+    var preloader = new Controller_preloader();
+    let paralax = new Controller_paralax();
+    let fixed = new Controller_fixed();
+    let video = new Controller_video();
 
-    let paralax = new ParalaxController();
-    let fixed = new FixedController();
-    let video = new VideoController();
+    preloader.onLoad(() => {
+      this.startShowing();
+    });
   }
   correctStyles() {
     let currentLogoPreloadingPos = () => {

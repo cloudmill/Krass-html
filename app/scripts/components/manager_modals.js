@@ -66,7 +66,7 @@ class Modal {
     }
   }
 }
-export default class modalController {
+export default class Manager_modals {
   constructor() {
     this.modals = [];
     this.count = 0;

@@ -2,7 +2,7 @@ import Sketch from "./sliders/mainSketch";
 import $ from "jquery";
 import Swiper from "swiper";
 
-export default class SlidersController {
+export default class Manager_sliders {
   constructor() {
     this.init();
   }

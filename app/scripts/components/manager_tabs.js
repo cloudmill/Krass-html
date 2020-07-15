@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 
-export default class TabController {
+export default class Manager_tabs {
   constructor() {
     this.togleClickerInit();
     this.tabsMenuInit();

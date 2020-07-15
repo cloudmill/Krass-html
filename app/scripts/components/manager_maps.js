@@ -1,5 +1,5 @@
 import $ from "jquery";
-export default class MapController {
+export default class Manager_maps {
   constructor() {
     this.init();
   }
