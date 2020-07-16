@@ -24,7 +24,14 @@ export default class Manager_views {
     this.animate.init();
   }
   correctStyles() {
-    let currentLogoPreloadingPos = () => {
+    let correctDuing = () => {
+      if ($(window).width() < $(window).outerWidth()) {
+        $("html").removeClass("touch");
+        $("html").addClass("no-touch");
+      } else {
+        $("html").removeClass("no-touch");
+        $("html").addClass("touch");
+      }
       //установка позиции лого для возвращения после прелоадера
       setTimeout(() => {
         let left = $(".header-logo-box").offset().left;
@@ -49,9 +56,9 @@ export default class Manager_views {
         strs.css("animation-duration", newDuration + "s");
       });
     };
-    currentLogoPreloadingPos();
+    correctDuing();
     window.onresize = () => {
-      currentLogoPreloadingPos();
+      correctDuing();
     };
   }
   animateController() {

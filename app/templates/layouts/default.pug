@@ -23,9 +23,10 @@ html(lang="ru")
             include ../modules/header
             .scroll-viewport
                 .scroll-box#scroll-box
-                    block content
-                    if withoutFooter != 'yes'
-                        include ../modules/footer
+                    .page
+                        block content
+                        if withoutFooter != 'yes'
+                            include ../modules/footer
             .selectArea
             .pageSurfing
             include ../modules/modal

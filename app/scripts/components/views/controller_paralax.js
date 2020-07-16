@@ -36,7 +36,7 @@ export default class Controller_paralax {
   }
   _init() {
     this.init();
-    window.onScroll((y) => {
+    globalListener.on("scroll", (y) => {
       this.paralaxItems.forEach((item) => {
         item.update(y);
       });

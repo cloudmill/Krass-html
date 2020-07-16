@@ -4,9 +4,9 @@
     +icon('multi-str-blue','svg')
   .subscribe-img
     img(src="images/bg-blog.png" alt="")
-  .subscribe-mobile-box#subscribe-mobile
-    .subscribe-mobile-but(data-toggle="subscribe-mobile") подписаться на новости и новинки KRASS
-    .subscribe-mobile-container
+  .subscribe-mobile-box.lazy-opened
+    .subscribe-mobile-but.lazy-opened-but подписаться на новости <br> и новинки KRASS
+    .subscribe-mobile-container.lazy-opened-box 
       form.subscribe-form.view-item
         +fieldBase('nameSub','name','Имя')
         +fieldBase('emailSub','email','Email')

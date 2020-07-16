@@ -12,9 +12,9 @@ mixin footer-cats(json)
           a.footer-cats-link #{link}
 .footer
   .footer-col
-    .footer-mobile-box#footer-mobile
-      .footer-mobile-but(data-toggle="footer-mobile") продукция
-      .footer-mobile-container
+    .footer-mobile-box.lazy-opened
+      .footer-mobile-but.lazy-opened-but продукция
+      .footer-mobile-container.lazy-opened-box 
         .footer-cats
           +footer-cats(getData('product/category'))
   .footer-col

@@ -115,14 +115,7 @@
     padding-top: 50px;
     @media (max-width: 768px) {
       padding-top: 30px;
-
-      overflow: hidden;
-      overflow-x: scroll;
-      -ms-overflow-style: none;
-      overflow: -moz-scrollbars-none;
-      &::-webkit-scrollbar {
-        width: 0;
-      }
+      @include scrollBox();
     }
     &-list {
       display: flex;

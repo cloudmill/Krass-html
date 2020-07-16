@@ -6,8 +6,8 @@
     position: relative;
     display: flex;
     overflow: hidden;
-    @media(max-width: 768px){
-      height: 770px;
+    @media (max-width: 1024px) {
+      min-height: 780px;
     }
     &:before {
       content: "";
@@ -27,6 +27,7 @@
     &-bg {
       @include background("../images/banner-bg.jpg");
       background-position: right bottom;
+      background-color: #dbe7ed;
       background-size: 1920px 1080px;
       position: absolute;
       z-index: -1;
@@ -38,16 +39,21 @@
         width: calc(100% + 175px);
         left: 0;
       }
+      @media (max-width: 1024px) {
+        min-height: 780px;
+        background-size: 1536px 864px;
+        background-position: calc(100% - 70px) bottom;
+      }
       @media (max-width: 768px) {
         background-size: 960px 540px;
         width: 100%;
         background-color: #dbe7ed;
-        background-position: right center;
+        background-position: calc(100% - 20px) center;
         top: -90px;
         &::before {
           content: "";
           width: 1000px;
-          margin-top: 130px;
+          margin-top: 124px;
           height: 500px;
           background-color: #d3e4ec;
           position: absolute;
@@ -58,7 +64,11 @@
         }
       }
       @media (max-width: 550px) {
+        background-position: right center;
         width: calc(100% + 120px);
+        &::before {
+          margin-top: 130px;
+        }
       }
     }
     &-text {
@@ -122,9 +132,16 @@
       position: absolute;
       right: 621px;
       bottom: 244px;
+      @media (max-width: 1024px) {
+        right: 556px;
+        bottom: 179px;
+      }
       @media (max-width: 768px) {
-        right: 305px;
+        right: 325px;
         bottom: calc(50% - 183px);
+      }
+      @media (max-width: 550px) {
+        right: 305px;
       }
       span {
         position: absolute;
@@ -147,6 +164,10 @@
             height: 84%;
             width: 36%;
           }
+          @media (max-width: 1024px) {
+            left: -91px;
+            bottom: 33px;
+          }
           @media (max-width: 768px) {
             left: -53px;
             bottom: 48px;
@@ -158,8 +179,13 @@
         &:nth-child(2) {
           bottom: 132px;
           left: 87px;
+
           i {
             transform-origin: 23% 103%;
+          }
+          @media (max-width: 1024px) {
+            bottom: 119px;
+            left: 70px;
           }
           @media (max-width: 768px) {
             bottom: 100px;
@@ -180,6 +206,10 @@
             width: 38%;
             height: 97%;
           }
+          @media (max-width: 1024px) {
+            left: 184px;
+            bottom: 4px;
+          }
           @media (max-width: 768px) {
             left: 117px;
             bottom: 31px;
@@ -199,6 +229,10 @@
             width: 38%;
             height: 82%;
             top: 7%;
+          }
+          @media (max-width: 1024px) {
+            bottom: -96px;
+            left: 23px;
           }
           @media (max-width: 768px) {
             bottom: -34px;
@@ -573,7 +607,6 @@
       overflow: hidden;
       position: relative;
       width: 270px;
-      height: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -646,6 +679,7 @@
       img {
         display: block;
         height: 100%;
+        width: 100%;
       }
     }
     @keyframes hideBox {
@@ -761,7 +795,7 @@
       &:not(.active) {
         pointer-events: none;
         span {
-          animation: none !important;
+          animation-play-state: paused;
         }
       }
     }

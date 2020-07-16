@@ -22,32 +22,31 @@ mixin sert-block-content(target,_class = '')
       include ../modules/catalogNav.pug
 
 block content
-  .page
-    .sert-head.content
-      .sert-head-title.section-title Сертификаты
-      a.sert-but.sert-head-but(download href="")
-        span
-          +icon('download','svg')
-        |Скачать все сертификаты <br> 267 KB
-    .sert-content.content
-      .sert-content-menu
-        .sert-content-menu-progress
-        .sert-content-menu-item.active
-          span(data-trigger="sert-cat-1")  Монтажные пены
-        .sert-content-menu-item
-          span(data-trigger="sert-cat-2")  Герметеки
-        .sert-content-menu-item
-          span(data-trigger="sert-cat-3")  Клеи
-        .sert-content-menu-item
-          span(data-trigger="sert-cat-4")  Уплотнители 
-      form.sert-content-select
-        +fieldSelect('tabs-trigger','tabs-trigger',null,[['sert-cat-1','Монтажные пены'],['sert-cat-2','Герметеки'],['sert-cat-3','Клеи'],['sert-cat-4','Уплотнители']])
-      .sert-content-tabs
-        +sert-block-content('sert-cat-1','active')
-        +sert-block-content("sert-cat-2")
-        +sert-block-content("sert-cat-3")
-        +sert-block-content("sert-cat-4")
+  .sert-head.content
+    .sert-head-title.section-title Сертификаты
+    a.sert-but.sert-head-but(download href="")
+      span
+        +icon('download','svg')
+      |Скачать все сертификаты <br> 267 KB
+  .sert-content.content
+    .sert-content-menu
+      .sert-content-menu-progress
+      .sert-content-menu-item.active
+        span(data-trigger="sert-cat-1")  Монтажные пены
+      .sert-content-menu-item
+        span(data-trigger="sert-cat-2")  Герметеки
+      .sert-content-menu-item
+        span(data-trigger="sert-cat-3")  Клеи
+      .sert-content-menu-item
+        span(data-trigger="sert-cat-4")  Уплотнители 
+    form.sert-content-select
+      +fieldSelect('tabs-trigger','tabs-trigger',null,[['sert-cat-1','Монтажные пены'],['sert-cat-2','Герметеки'],['sert-cat-3','Клеи'],['sert-cat-4','Уплотнители']])
+    .sert-content-tabs
+      +sert-block-content('sert-cat-1','active')
+      +sert-block-content("sert-cat-2")
+      +sert-block-content("sert-cat-3")
+      +sert-block-content("sert-cat-4")
 
 
 
-    include ../modules/subscribe.pug
+  include ../modules/subscribe.pug

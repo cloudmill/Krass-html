@@ -165,13 +165,7 @@
       grid-column-gap: 100px;
       &-wrapper {
         @media (max-width: 768px) {
-          overflow-y: hidden;
-          overflow-x: scroll;
-          -ms-overflow-style: none;
-          overflow: -moz-scrollbars-none;
-          &::-webkit-scrollbar {
-            width: 0;
-          }
+          @include scrollBox();
         }
       }
       @media (max-width: 1250px) {

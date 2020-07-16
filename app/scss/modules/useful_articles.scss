@@ -35,13 +35,7 @@
     padding-top: 80px;
     @media (max-width: 650px) {
       display: flex !important;
-      overflow-y: hidden;
-      overflow-x: scroll;
-      -ms-overflow-style: none;
-      overflow: -moz-scrollbars-none;
-      &::-webkit-scrollbar {
-        width: 0;
-      }
+      @include scrollBox();
     }
     .blog-item:nth-child(n + 3){
       display: none !important;

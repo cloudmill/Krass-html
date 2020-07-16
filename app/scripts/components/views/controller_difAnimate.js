@@ -3,17 +3,18 @@ import $ from "jquery";
 export default class Controller_difAnimate {
   constructor() {
     this.init();
-    globalListener.on('preloader-load', () => {
+    globalListener.on("preloader-load", () => {
       this.showItemsAfterload();
-    })
-    globalListener.on('XHR-complate', () => {
+    });
+    globalListener.on("XHR-complate", () => {
       this.init();
       this.showItemsAfterload();
-    })
+    });
   }
   init() {
     this.productDetailTabChange();
     this.menuTabsLineMoving();
+    this.lazyOpened();
   }
 
   showItemsAfterload() {
@@ -46,7 +47,7 @@ export default class Controller_difAnimate {
           time = null;
         }
       }, 200);
-    }
+    };
 
     setInterval(() => {
       let items = $(document).find(".show-item");
@@ -76,8 +77,8 @@ export default class Controller_difAnimate {
         500
       );
     });
-    if (globalListener.checkInit('productDetailTabChange')) {
-      window.onScroll((yease, y) => {
+    if (globalListener.checkInit("productDetailTabChange")) {
+      globalListener.on("scroll", (yease, y) => {
         if (updateState) updateState(y);
       });
     }
@@ -97,11 +98,35 @@ export default class Controller_difAnimate {
       });
       update($(".sert-content-menu-item").eq(0));
 
-      if (globalListener.checkInit('menuTabsLineMoving')) {
+      if (globalListener.checkInit("menuTabsLineMoving")) {
         $(window).resize(() => {
           update($(".sert-content-menu-item.active"));
         });
       }
     }
+  }
+  lazyOpened() {
+    if ($(window).width() <= 650) {
+      $(".lazy-opened").each(function () {
+        $(this).height($(this).find(".lazy-opened-but").height());
+      });
+      $(".lazy-opened-but").click(function () {
+        let parent = $(this).parent();
+        parent.toggleClass("active");
+        let height = $(this).height();
+        if (parent.hasClass("active")) {
+          height +=
+            parent.find(".lazy-opened-box").height() +
+            parseInt($(this).css("margin-bottom"));
+        }
+        parent.height(height);
+      });
+    }
+    if (globalListener.checkInit("lazyOpened"))
+      $(window).resize(function () {
+        if ($(window).width() > 650) {
+          $(".lazy-opened").attr("style", "");
+        }
+      });
   }
 }

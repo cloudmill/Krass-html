@@ -5,43 +5,42 @@ block variables
 
 
 block content
-  .page
-    .page-head.content.scroll-trigger.paralax-box(data-hook=0).catalog-head
-      .page-head-title.section-title герметики
-      .page-head-content
-        .page-head-menu
-          a.page-head-menu-link.active(href="") Все
-          a.page-head-menu-link(href="") Акриловые
-          a.page-head-menu-link(href="") силиконовые
-          a.page-head-menu-link(href="") специализированные
-      .page-head-bg 
-        .paralax-item
-          img(src="images/catalog-head.png" alt="" height="450").catalog-img
-      .page-head-link
-        +link('./select-product.html')
-          |подобрать герметик
-    form.filter.content
-      +filterSelect('application','application',[['null','Область применения'],['1','вторая область'],['3','вторая область']])
-      +filterSelect('material','material',[['null','Материал поверхности'],['1','материал 2'],['3','материал 3']])
-      a.filter-reset
-        span.simple
-          +icon('reset','svg')
-        span.hover
-          +icon('reset-color','svg')
-        |Сбросить
+  .page-head.content.scroll-trigger.paralax-box(data-hook=0).catalog-head
+    .page-head-title.section-title герметики
+    .page-head-content
+      .page-head-menu
+        a.page-head-menu-link.active(href="") Все
+        a.page-head-menu-link(href="") Акриловые
+        a.page-head-menu-link(href="") силиконовые
+        a.page-head-menu-link(href="") специализированные
+    .page-head-bg 
+      .paralax-item
+        img(src="images/catalog-head.png" alt="" height="450").catalog-img
+    .page-head-link
+      +link('./select-product.html')
+        |подобрать герметик
+  form.filter.content
+    +filterSelect('application','application',[['null','Область применения'],['1','вторая область'],['3','вторая область']])
+    +filterSelect('material','material',[['null','Материал поверхности'],['1','материал 2'],['3','материал 3']])
+    a.filter-reset
+      span.simple
+        +icon('reset','svg')
+      span.hover
+        +icon('reset-color','svg')
+      |Сбросить
 
-    .catalog.content
-      .catalog-list
-        include ../modules/list_items_catalog.pug
-        include ../modules/list_items_catalog.pug
-        include ../modules/list_items_catalog.pug
-        include ../modules/list_items_catalog.pug
-      include ../modules/catalogNav.pug
+  .catalog.content
+    .catalog-list
+      include ../modules/list_items_catalog.pug
+      include ../modules/list_items_catalog.pug
+      include ../modules/list_items_catalog.pug
+      include ../modules/list_items_catalog.pug
+    include ../modules/catalogNav.pug
 
-    include ../modules/useful_articles.pug
-    include ../modules/next_category.pug
+  include ../modules/useful_articles.pug
+  include ../modules/next_category.pug
 
-    include ../modules/subscribe.pug
+  include ../modules/subscribe.pug
 
 
 

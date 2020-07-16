@@ -4,17 +4,16 @@ block variables
   -var pageTitle='Новости'
 
 block content
-  .page
-    .news-head.content
-      .news-head-title Новости
-    .news-list.content
-      include ../modules/list_items_news.pug
-      include ../modules/list_items_news.pug
-      include ../modules/list_items_news.pug
-      
-      include ../modules/catalogNav.pug
+  .news-head.content
+    .news-head-title Новости
+  .news-list.content
+    include ../modules/list_items_news.pug
+    include ../modules/list_items_news.pug
+    include ../modules/list_items_news.pug
 
-    include ../modules/subscribe.pug
+    include ../modules/catalogNav.pug
+
+  include ../modules/subscribe.pug
 
 
 

@@ -88,6 +88,9 @@
       font-size: 45px;
     }
     @media (max-width: 1150px) {
+      font-size: 30px;
+    }
+    @media (max-width: 767px) {
       display: none;
     }
   }
@@ -103,8 +106,9 @@
     color: #cc3e1e;
     @media (max-width: 1200px) {
       font-size: 14px;
+      line-height: 130%;
     }
-    @media (max-width: 1150px) {
+    @media (max-width: 767px) {
       display: none;
     }
     a {
@@ -207,6 +211,7 @@
         margin-left: -15px;
         box-sizing: content-box;
         width: 100%;
+        position: relative;
         &:not(.active) {
           .footer-mobile {
             &-container {

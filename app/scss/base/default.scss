@@ -163,27 +163,16 @@ button {
 @include sprites($spritesheet-sprites);
 
 html {
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #eff7fd;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #0054a4;
-  }
+  @include customScrollBar(6px, 6px, #0054a4, #eff7fd);
   &.closeScroll {
     overflow: hidden;
-    .wrapper {
-      .scroll-viewport {
-        @media (min-width: 769px) {
+    &.no-touch{
+      .wrapper {
+        .scroll-viewport {
           margin-right: 6px;
           width: calc(100% - 6px);
         }
-      }
-      .header {
-        @media (min-width: 769px) {
+        .header {
           margin-right: 6px;
           width: calc(100% - 6px);
         }

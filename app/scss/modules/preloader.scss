@@ -1,7 +1,9 @@
 html {
   &:not(.loaded) {
     &:not(.closing-preloader) {
-      overflow: hidden;
+      &.touch,&.no-touch{
+        overflow: hidden;
+      }
       .header {
         background-color: #f2f8fd;
         &:before {

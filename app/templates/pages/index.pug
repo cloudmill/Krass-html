@@ -30,99 +30,98 @@ mixin production-buts-items(json)
                 |#{item.bigLink}
 
 block content
-    .page
-        .main-banner.content.scroll-trigger.paralax-box(data-hook=0)
-            .main-banner-text
-                .main-banner-sub.show-item.showInLeft(data-group=0) Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей <br> и герметиков
-                .main-banner-title.show-item.showInLeft-self(data-group=0)
-                    span Герметично
-                    span Удобно
-                    span Практично
-                .main-banner-link.show-item.showInBottom-self(data-group=2)
-                    +bigLink()
-                        |о торговой марке
-            .main-banner-bg.paralax-item
-                .main-banner-img
-                    span.staggers-item 
-                        i.hit
-                        i
-                            img(src="images/banner-1.png" alt="" width="205" data-group=1).show-item.showInTop
-                    span.staggers-item 
-                        i.hit
-                        i
-                            img(src="images/banner-2.png" alt="" width="175" data-group=1).show-item.showInTop
-                    span.staggers-item 
-                        i.hit
-                        i
-                            img(src="images/banner-3.png" alt="" width="200" data-group=1).show-item.showInTop
-                    span.staggers-item 
-                        i.hit
-                        i
-                            img(src="images/banner-4.png" alt="" width="252" data-group=1).show-item.showInTop
+    .main-banner.content.scroll-trigger.paralax-box(data-hook=0)
+        .main-banner-text
+            .main-banner-sub.show-item.showInLeft(data-group=0) Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей <br> и герметиков
+            .main-banner-title.show-item.showInLeft-self(data-group=0)
+                span Герметично
+                span Удобно
+                span Практично
+            .main-banner-link.show-item.showInBottom-self(data-group=2)
+                +bigLink()
+                    |о торговой марке
+        .main-banner-bg.paralax-item
+            .main-banner-img
+                span.staggers-item 
+                    i.hit
+                    i
+                        img(src="images/banner-1.png" alt="" width="205" data-group=1).show-item.showInTop
+                span.staggers-item 
+                    i.hit
+                    i
+                        img(src="images/banner-2.png" alt="" width="175" data-group=1).show-item.showInTop
+                span.staggers-item 
+                    i.hit
+                    i
+                        img(src="images/banner-3.png" alt="" width="200" data-group=1).show-item.showInTop
+                span.staggers-item 
+                    i.hit
+                    i
+                        img(src="images/banner-4.png" alt="" width="252" data-group=1).show-item.showInTop
 
-        .production.content.section-full
-            .section-name продукция
-            .production-menu
-                +production-menu-items(getData('product/category'))
-            .production-imgs#imgs-content
-                #slider(data-images='["images/full-sketch-1.jpg","images/full-sketch-2.jpg","images/full-sketch-3.jpg","images/full-sketch-4.jpg"]' data-disp="images/disp1.jpg")
-            .production-imgs-mobile
-                .production-imgs-mobile-box
-                    .production-imgs-mobile-item.active(data-target='target-0')
-                        img(src="images/sketch-mobile-1.jpg" alt="")
-                    .production-imgs-mobile-item(data-target='target-1')
-                        img(src="images/sketch-mobile-2.jpg" alt="")
-                    .production-imgs-mobile-item(data-target='target-2')
-                        img(src="images/sketch-mobile-3.jpg" alt="")
-                    .production-imgs-mobile-item(data-target='target-3')
-                        img(src="images/sketch-mobile-4.jpg" alt="")
-            .production-preview
-                +production-preview-items(getData('product/category'))
-            .production-buts
-                +production-buts-items(getData('product/category'))
-            .production-counter
-                .production-counter-list 
-                    i.active(data-target='target-0') 01
-                    i(data-target='target-1') 02
-                    i(data-target='target-2') 03
-                    i(data-target='target-3') 04
-                .production-counter-count 04
+    .production.content.section-full
+        .section-name продукция
+        .production-menu
+            +production-menu-items(getData('product/category'))
+        .production-imgs#imgs-content
+            #slider(data-images='["images/full-sketch-1.jpg","images/full-sketch-2.jpg","images/full-sketch-3.jpg","images/full-sketch-4.jpg"]' data-disp="images/disp1.jpg")
+        .production-imgs-mobile
+            .production-imgs-mobile-box
+                .production-imgs-mobile-item.active(data-target='target-0')
+                    img(src="images/sketch-mobile-1.jpg" alt="")
+                .production-imgs-mobile-item(data-target='target-1')
+                    img(src="images/sketch-mobile-2.jpg" alt="")
+                .production-imgs-mobile-item(data-target='target-2')
+                    img(src="images/sketch-mobile-3.jpg" alt="")
+                .production-imgs-mobile-item(data-target='target-3')
+                    img(src="images/sketch-mobile-4.jpg" alt="")
+        .production-preview
+            +production-preview-items(getData('product/category'))
+        .production-buts
+            +production-buts-items(getData('product/category'))
+        .production-counter
+            .production-counter-list 
+                i.active(data-target='target-0') 01
+                i(data-target='target-1') 02
+                i(data-target='target-2') 03
+                i(data-target='target-3') 04
+            .production-counter-count 04
 
-        .main-blog.content
-            .section-name блог
-            .main-blog-link
+    .main-blog.content
+        .section-name блог
+        .main-blog-link
+            +link()
+                |перейти в блог
+        .main-blog-content
+            .section-title.main-blog-title.view-item Делимся опытом
+            .main-blog-list
+                .main-blog-item.view-item
+                    .main-blog-item-img
+                        .paralax-box
+                            .paralax-item
+                                img(src="images/main-blog-1.jpg" alt="")
+                    .main-blog-item-content
+                        a.main-blog-item-title Герметик – незаменимый строительный материал
+                        .main-blog-item-text При производстве строительных и ремонтных работ не обойтись без использования герметиков, которые представляют собой одно или двухкомпонентную эластичную смесь.
+                        .main-blog-item-tags
+                            a(href="") Герметик
+                            a(href="") Ремонт
+                .main-blog-item.view-item
+                    .main-blog-item-img
+                        .paralax-box
+                            .paralax-item
+                                img(src="images/main-blog-2.jpg" alt="")
+                    .main-blog-item-content
+                        a.main-blog-item-title Запенили! Все о монтажной пене KRASS
+                        .main-blog-item-text Впервые применяться в строительстве монтажная пена стала в начале 80-х, но за счет своих свойств и удобства очень быстро завоевала любовь и доверие строителей всего мира. 
+                        .main-blog-item-tags
+                            a(href="") Герметик
+                            a(href="") Ремонт
+            .main-blog-link-mobile
                 +link()
                     |перейти в блог
-            .main-blog-content
-                .section-title.main-blog-title.view-item Делимся опытом
-                .main-blog-list
-                    .main-blog-item.view-item
-                        .main-blog-item-img
-                            .paralax-box
-                                .paralax-item
-                                    img(src="images/main-blog-1.jpg" alt="")
-                        .main-blog-item-content
-                            a.main-blog-item-title Герметик – незаменимый строительный материал
-                            .main-blog-item-text При производстве строительных и ремонтных работ не обойтись без использования герметиков, которые представляют собой одно или двухкомпонентную эластичную смесь.
-                            .main-blog-item-tags
-                                a(href="") Герметик
-                                a(href="") Ремонт
-                    .main-blog-item.view-item
-                        .main-blog-item-img
-                            .paralax-box
-                                .paralax-item
-                                    img(src="images/main-blog-2.jpg" alt="")
-                        .main-blog-item-content
-                            a.main-blog-item-title Запенили! Все о монтажной пене KRASS
-                            .main-blog-item-text Впервые применяться в строительстве монтажная пена стала в начале 80-х, но за счет своих свойств и удобства очень быстро завоевала любовь и доверие строителей всего мира. 
-                            .main-blog-item-tags
-                                a(href="") Герметик
-                                a(href="") Ремонт
-                .main-blog-link-mobile
-                    +link()
-                        |перейти в блог
-        include ../modules/whereBuyMap.pug
-        include ../modules/subscribe.pug
+    include ../modules/whereBuyMap.pug
+    include ../modules/subscribe.pug
 
 
 

@@ -49,7 +49,7 @@ export default class Controller_fixed {
   }
   _init() {
     this.init();
-    window.onScroll((yease, ybase) => {
+    globalListener.on("scroll", (yease, ybase) => {
       this.fixedItems.forEach((item) => {
         if (item.update) item.update(yease, ybase);
       });

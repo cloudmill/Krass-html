@@ -4,8 +4,6 @@ import * as GSAP from "gsap";
 export default class Manager_scroll {
   constructor() {
     this.handlers = [];
-    window.onScroll = this.onScroll.bind(this);
-
     this.scroller = {
       target: document.querySelector("#scroll-box"),
       ease: 0.2, // <= scroll speed
@@ -18,9 +16,7 @@ export default class Manager_scroll {
     this.init();
     window.updateForce = this.update.bind(this);
   }
-  onScroll(handler) {
-    this.handlers.push(handler);
-  }
+  
   update() {
     if ($(window).width() > 768) {
       this.updating = true;
@@ -47,7 +43,7 @@ export default class Manager_scroll {
       GSAP.TweenLite.set(this.scroller.target, {
         y: -this.scroller.y,
       });
-      this.updateHandlers(this.scroller.y,scrollY);
+      globalListener.trigger("scroll", [this.scroller.y, scrollY]);
       this.updating = false;
       clearTimeout(this.time);
       this.time = setTimeout(() => {
@@ -56,13 +52,11 @@ export default class Manager_scroll {
         }
       }, 1000 / 60);
     } else {
-      this.updateHandlers($(document).scrollTop(),$(document).scrollTop());
+      globalListener.trigger("scroll", [
+        $(document).scrollTop(),
+        $(document).scrollTop(),
+      ]);
     }
-  }
-  updateHandlers(scrollY,scrollYBase) {
-    this.handlers.forEach((item) => {
-      item(scrollY,scrollYBase);
-    });
   }
   init() {
     GSAP.CSSPlugin.force3D = true;
@@ -75,9 +69,9 @@ export default class Manager_scroll {
     window.focus();
     window.addEventListener("resize", this.resize.bind(this));
     document.addEventListener("scroll", this.scroll.bind(this));
-    $('a').click(()=>{
-      this.update()
-    })
+    $("a").click(() => {
+      this.update();
+    });
   }
   scroll() {
     this.scroller.scrollRequest++;

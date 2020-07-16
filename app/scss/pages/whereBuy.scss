@@ -216,35 +216,12 @@
       height: 100%;
       position: relative;
       z-index: 4;
-      overflow-y: scroll;
-      overflow-x: hidden;
       @media (max-width: 768px) {
         height: 420px;
         width: 100%;
         box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.1);
       }
-      &::-webkit-scrollbar {
-        width: 7px;
-        height: 3px;
-      }
-      &::-webkit-scrollbar-button {
-        background-color: transparent;
-      }
-      &::-webkit-scrollbar-track {
-        background-color: #999;
-      }
-      &::-webkit-scrollbar-track-piece {
-        background: #e7e7e7;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: #cc3e1e;
-      }
-      &::-webkit-scrollbar-corner {
-        background-color: #999;
-      }
-      &::-webkit-resizer {
-        background-color: #666;
-      }
+      @include customScrollBar(7px,3px,#cc3e1e,#e7e7e7);
     }
     &-list {
       background: #ffffff;

@@ -161,3 +161,14 @@ body{
   height: 100vh;
   z-index: 19;
 }
+
+.lazy-opened{
+  overflow: hidden;
+  transition: height $ease-main;
+  &-but{
+
+  }
+  &-box{
+
+  }
+}
