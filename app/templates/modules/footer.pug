@@ -6,7 +6,7 @@ mixin footer-menu(json)
 mixin footer-cats(json)
   each item,key in json
     .footer-cats-item.view-item
-      a.footer-cats-title #{item.name}
+      a.footer-cats-title(href=`./catalog-${key+1}.html`) #{item.name}
       .footer-cats-links
         each link in item.sub
           a.footer-cats-link #{link}

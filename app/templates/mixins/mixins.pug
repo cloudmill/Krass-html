@@ -36,12 +36,9 @@ mixin bigLink(className,href)
     .big-link-bg
       span
     .big-link-mask
-      span
-        block
-      span
-        block
-      span
-        block
+      each item in [1,2,3]
+        span
+          block
     +icon('str-big-link-inside','svg')
 
 

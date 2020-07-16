@@ -24,7 +24,7 @@ mixin production-buts-items(json)
         div(class=`${item.active}`, data-target=`target-${key}`).production-buts-item
             if (item.link)
                 .production-buts-link
-                    +link()
+                    +link(`${item.linkPage}`)
                         |#{item.link}
             +bigLink('production-preview-but mobile')
                 |#{item.bigLink}
