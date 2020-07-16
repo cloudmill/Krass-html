@@ -115,7 +115,7 @@
     padding-top: 50px;
     @media (max-width: 768px) {
       padding-top: 30px;
-      @include scrollBox();
+      @include scrollBox('1');
     }
     &-list {
       display: flex;

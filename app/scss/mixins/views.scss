@@ -63,8 +63,12 @@
     background-color: transparent;
   }
 }
-@mixin scrollBox() {
+@mixin scrollBox($hor: null) {
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
   @include customScrollBar(0, 0, transparent, transparent);
+  @if ($hor != null){
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
 }
