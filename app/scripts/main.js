@@ -28,7 +28,7 @@ class App {
 
     window.modals = this.modals
 
-    globalListener.on("XHR-complete", () => {
+    globalListener.on("XHR-complate", () => {
       this.views.init();
       this.modals.init();
       this.forms.init();

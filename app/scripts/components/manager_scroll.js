@@ -16,8 +16,8 @@ export default class Manager_scroll {
     this.init();
     window.updateForce = this.update.bind(this);
   }
-  
-  update() {
+
+  update(firstUpdate) {
     if ($(window).width() > 768) {
       this.updating = true;
       var html = document.documentElement;
@@ -43,7 +43,11 @@ export default class Manager_scroll {
       GSAP.TweenLite.set(this.scroller.target, {
         y: -this.scroller.y,
       });
-      globalListener.trigger("scroll", [this.scroller.y, scrollY]);
+      
+      if (!firstUpdate){
+        globalListener.trigger("scroll", [this.scroller.y, scrollY]);
+      }
+        
       this.updating = false;
       clearTimeout(this.time);
       this.time = setTimeout(() => {
@@ -65,8 +69,8 @@ export default class Manager_scroll {
       force3D: true,
     });
 
-    this.update();
-    window.focus();
+    this.update(true);
+    //window.focus();
     window.addEventListener("resize", this.resize.bind(this));
     document.addEventListener("scroll", this.scroll.bind(this));
     $("a").click(() => {

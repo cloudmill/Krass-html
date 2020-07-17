@@ -1,11 +1,11 @@
 mixin footer-menu(json)
-  .footer-menu.view-item
+  .footer-menu.show-item.showInRight(data-group='footer2')
     each data in json
       a.footer-menu-link(href=`${data.link}`) #{data.name}
     a.footer-menu-link(href="./blog.html") Блог
 mixin footer-cats(json)
   each item,key in json
-    .footer-cats-item.view-item
+    .footer-cats-item.show-item.showInLeft(data-group='footer')
       a.footer-cats-title(href=`./catalog-${key+1}.html`) #{item.name}
       .footer-cats-links
         each link in item.sub
@@ -18,12 +18,13 @@ mixin footer-cats(json)
         .footer-cats
           +footer-cats(getData('product/category'))
   .footer-col
-    a.footer-phone.view-item(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
-    .footer-loc.view-item
+    a.footer-phone(href="tel:8 495 995–­­90–35")
+      .show-item.showInRight(data-group='footer2') 8 495 995–­­90–35
+    .footer-loc.show-item.showInRight(data-group='footer2')
       span Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС
       a(href="#map" data-search="Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС").show-in-map на карте
     +footer-menu(getData('menu'))
-    .footer-copy.view-item
+    .footer-copy.show-item.showInRight(data-group='footer2')
       span TM KRASS © 2020
       span.pp
         a(href="") Политика конфиденциальности

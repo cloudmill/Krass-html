@@ -148,15 +148,6 @@
       position: absolute;
       left: 0;
       top: 0;
-      &:nth-child(1) {
-        animation: wordMoving 16s linear infinite;
-      }
-      &:nth-child(2) {
-        animation: wordMovingTwo 16s linear infinite;
-      }
-      &:nth-child(3) {
-        animation: wordMovingThree 16s linear infinite;
-      }
       span {
         display: flex;
         white-space: nowrap;
@@ -187,30 +178,6 @@
           margin-top: -4px;
           font-size: 4px;
         }
-      }
-    }
-    @keyframes wordMoving {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(100%, 0, 0);
-      }
-    }
-    @keyframes wordMovingTwo {
-      0% {
-        transform: translate3d(-100%, 0, 0);
-      }
-      100% {
-        transform: translate3d(0, 0, 0);
-      }
-    }
-    @keyframes wordMovingThree {
-      0% {
-        transform: translate3d(100%, 0, 0);
-      }
-      100% {
-        transform: translate3d(200%, 0, 0);
       }
     }
   }

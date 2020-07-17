@@ -1,10 +1,14 @@
 .subscribe.content.section-full#question-section
-  .section-title-sub Вопрос или пожелание
-  form.subscribe-form.view-item
-    +fieldBase('nameQuest','name','Имя')
-    +fieldBase('emailQuest','email','Email')
-    +fieldBaseBig('messQuest','text','Сообщение')
-    .field-row
+  .section-title-sub
+    .show-item.showInLeft(data-group='question-section') Вопрос или пожелание
+  form.subscribe-form
+    .show-item.showInRight(data-group='question-section')
+      +fieldBase('nameQuest','name','Имя')
+    .show-item.showInRight(data-group='question-section')
+      +fieldBase('emailQuest','email','Email')
+    .show-item.showInRight(data-group='question-section')
+      +fieldBaseBig('messQuest','text','Сообщение')
+    .field-row.show-item.showInRight(data-group='question-section')
       +submit()
         |отправить
       +fieldCheck('ppQuest','pp')

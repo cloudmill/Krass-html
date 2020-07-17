@@ -5,7 +5,7 @@ block variables
 
 mixin production-menu-items(json)
     each item,key in json
-        div(class=`${item.active}`).production-menu-item.view-item
+        div(class=`${item.active}`).production-menu-item.show-item.showInLeft(data-group=3)
             .section-title.production-menu-title(data-trigger=`target-${key}`) #{item.name}
             .production-menu-sub
                 each link in item.sub
@@ -33,10 +33,10 @@ block content
     .main-banner.content.scroll-trigger.paralax-box(data-hook=0)
         .main-banner-text
             .main-banner-sub.show-item.showInLeft(data-group=0) Широкий ассортимент монтажных полиуретановых пен, клеев, жидких гвоздей <br> и герметиков
-            .main-banner-title.show-item.showInLeft-self(data-group=0)
-                span Герметично
-                span Удобно
-                span Практично
+            .main-banner-title
+                span.show-item.showInLeft-self(data-group=0) Герметично
+                span.show-item.showInLeft-self(data-group=0) Удобно
+                span.show-item.showInLeft-self(data-group=0) Практично
             .main-banner-link.show-item.showInBottom-self(data-group=2)
                 +bigLink()
                     |о торговой марке
@@ -75,7 +75,7 @@ block content
                     img(src="images/sketch-mobile-3.jpg" alt="")
                 .production-imgs-mobile-item(data-target='target-3')
                     img(src="images/sketch-mobile-4.jpg" alt="")
-        .production-preview
+        .production-preview.show-item.showInRight(data-group=4)
             +production-preview-items(getData('product/category'))
         .production-buts
             +production-buts-items(getData('product/category'))
@@ -93,9 +93,9 @@ block content
             +link()
                 |перейти в блог
         .main-blog-content
-            .section-title.main-blog-title.view-item Делимся опытом
+            .section-title.main-blog-title Делимся опытом
             .main-blog-list
-                .main-blog-item.view-item
+                .main-blog-item.show-item.showInRight(data-group=5)
                     .main-blog-item-img
                         .paralax-box
                             .paralax-item
@@ -106,7 +106,7 @@ block content
                         .main-blog-item-tags
                             a(href="") Герметик
                             a(href="") Ремонт
-                .main-blog-item.view-item
+                .main-blog-item.show-item.showInRight(data-group=5)
                     .main-blog-item-img
                         .paralax-box
                             .paralax-item

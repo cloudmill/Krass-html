@@ -1,10 +1,14 @@
 .whereBuy.content.section-full.section-border
-  .section-title.view-item где купить
-  .whereBuy-text.view-item Продукция представлена в 80 регионах <br> России и странах Таможенного союза
-  +fieldSelect('region','region','Выберите свой регион',[[0,'Москва'],[1,"Санкт-Петербург"]])
-  +link()
-    |Перейти
-  .whereBuy-img.view-item
+  .section-title
+    .show-item.showInLeft(data-group='whereBuy') где купить
+  .whereBuy-text
+    .show-item.showInLeft(data-group='whereBuy') Продукция представлена в 80 регионах <br> России и странах Таможенного союза
+  div
+    .show-item.showInLeft(data-group='whereBuy')
+      +fieldSelect('region','region','Выберите свой регион',[[0,'Москва'],[1,"Санкт-Петербург"]])
+      +link()
+        |Перейти
+  .whereBuy-img
     img(src="images/whereBuy-map.png", height="555" alt="")
   .whereBuy-str
     +icon('multi-str-orange','svg')

@@ -1,16 +1,21 @@
 .subscribe.content.section-full.section-border#subscribe
-  .section-title.view-item Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS
+  .section-title
+    .show-item.showInLeft(data-group='subscribe') Подпишитесь, чтобы быть <br> в курсе новостей и новинок <br> продукции KRASS
   .subscribe-str
     +icon('multi-str-blue','svg')
   .subscribe-img
     img(src="images/bg-blog.png" alt="")
   .subscribe-mobile-box.lazy-opened
-    .subscribe-mobile-but.lazy-opened-but подписаться на новости <br> и новинки KRASS
+
+    .subscribe-mobile-but.lazy-opened-but
+      .show-item.showInRight(data-group='subscribe') подписаться на новости <br> и новинки KRASS
     .subscribe-mobile-container.lazy-opened-box 
-      form.subscribe-form.view-item
-        +fieldBase('nameSub','name','Имя')
-        +fieldBase('emailSub','email','Email')
-        .field-row
+      form.subscribe-form
+        .show-item.showInRight(data-group='subscribe')  
+          +fieldBase('nameSub','name','Имя')
+        .show-item.showInRight(data-group='subscribe')  
+          +fieldBase('emailSub','email','Email')
+        .field-row.show-item.showInRight(data-group='subscribe')  
           +submit()
             |подписаться на новости
           +fieldCheck('ppSub','pp')

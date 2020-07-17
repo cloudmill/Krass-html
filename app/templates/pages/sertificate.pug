@@ -23,8 +23,9 @@ mixin sert-block-content(target,_class = '')
 
 block content
   .sert-head.content
-    .sert-head-title.section-title Сертификаты
-    a.sert-but.sert-head-but(download href="")
+    .sert-head-title.section-title
+      .show-item.showInLeft(data-group='sertificate') Сертификаты
+    a.sert-but.sert-head-but(download href="").show-item.showInRight(data-group='sertificate')
       span
         +icon('download','svg')
       |Скачать все сертификаты <br> 267 KB

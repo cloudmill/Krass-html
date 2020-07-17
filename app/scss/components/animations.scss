@@ -4,7 +4,7 @@
     width: 100%;
     height: 100%;
     position: relative;
-    &.size-box{
+    &.size-box {
       height: auto;
     }
   }
@@ -15,16 +15,16 @@
     will-change: transform;
     height: calc(100% + 90px);
   }
-  &-size-box{
+  &-size-box {
     opacity: 0;
     pointer-events: none;
-    &+.paralax-item{
+    & + .paralax-item {
       position: absolute;
       display: flex;
       left: 50%;
       align-items: center;
       justify-content: center;
-      >*{
+      > * {
         position: relative;
         width: auto;
         max-width: none;
@@ -33,19 +33,17 @@
     }
   }
 }
-.fixed{
-  &-base{
-
+.fixed {
+  &-base {
   }
-  &-box{
-
+  &-box {
   }
-  &-item{
+  &-item {
     position: relative;
   }
 }
-body{
-  @media(max-width: 768px){
+body {
+  @media (max-width: 768px) {
     height: auto !important;
   }
 }
@@ -58,7 +56,7 @@ body{
     transform-style: flat;
     will-change: transform;
     width: 100%;
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       position: relative;
       transform: none !important;
     }
@@ -72,18 +70,17 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       position: relative;
     }
   }
 }
-
-.view-item {
-  @include will-change(opacity, null, -1);
-}
-@mixin animateF($name, $begin, $end) {
+@mixin animateF($name, $begin, $end, $opacity: false) {
   @include performance();
   transform: $begin;
+  @if ($opacity) {
+    opacity: 0;
+  }
   &.play {
     animation: $name $ease-main both;
     animation-duration: 1s;
@@ -91,19 +88,35 @@ body{
   @keyframes #{$name} {
     0% {
       transform: $begin;
+      @if ($opacity) {
+        opacity: 0;
+      }
     }
     100% {
       transform: $end;
+      @if ($opacity) {
+        opacity: 1;
+      }
     }
   }
 }
 .show-item {
   &.showInLeft {
-    @include animateF(showInLeft, translateX(-60vw), translateX(0));
+    @include animateF(showInLeft, translateX(-60vw), translateX(0), 1);
     &-self {
       @include animateF(
         showInLeft-self,
         translateX(calc(-100% - 60px)),
+        translateX(0)
+      );
+    }
+  }
+  &.showInRight {
+    @include animateF(showInRight, translateX(60vw), translateX(0), 1);
+    &-self {
+      @include animateF(
+        showInRight-self,
+        translateX(calc(100% + 60px)),
         translateX(0)
       );
     }
@@ -147,10 +160,10 @@ body{
   }
 }
 
-.pageSurfing{
+.pageSurfing {
   @include opacityHide();
   transition-duration: 0.4s;
-  &.active{
+  &.active {
     @include opacityShow();
   }
   background-color: white;
@@ -162,13 +175,11 @@ body{
   z-index: 19;
 }
 
-.lazy-opened{
+.lazy-opened {
   overflow: hidden;
   transition: height $ease-main;
-  &-but{
-
+  &-but {
   }
-  &-box{
-
+  &-box {
   }
 }

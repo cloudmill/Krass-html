@@ -16,15 +16,15 @@ class Controller_XHR {
   }
   pullState() {
     if (history.length == 2) {
-      href = document.location.href;
-      var pageInf = {
+      let href = document.location.href;
+      let pageInf = {
         id: 0,
         href: href,
       };
       this.store.push(pageInf);
       history.replaceState(pageInf, null, href);
     } else {
-      for (var i = 0; i < history.length - 1; i++) {
+      for (let i = 0; i < history.length - 1; i++) {
         this.store.push({
           id: i,
           url: null,
@@ -33,21 +33,22 @@ class Controller_XHR {
     }
   }
   newRequest(href, success = () => {}, failed = () => {}) {
+    globalListener.trigger("XHR-start")
     let that = this;
     if (window.XMLHttpRequest) {
       this.XHR = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
       this.XHR = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    var _this = this;
+    let _this = this;
     this.XHR.onload = function (e) {
       let request = _this.XHR;
-      var elem_ = $(document).find(".iframeDoc");
+      let elem_ = $(document).find(".iframeDoc");
       if (elem_.length > 1) {
         elem_.eq(0).remove();
       }
       if (request.status == 200 || request.status == 404) {
-        var temp_html = request.response;
+        let temp_html = request.response;
         globalListener.trigger("XHR-success", [temp_html])
         success();
         _this.XHR.onload = null;
@@ -74,9 +75,9 @@ class Controller_XHR {
           this.store.length - 1 - this.currentPage_id
         );
       }
-      var lastStore = this.store[this.store.length - 1];
-      var next_id = lastStore ? lastStore.id + 1 : 0;
-      var pageInf = {
+      let lastStore = this.store[this.store.length - 1];
+      let next_id = lastStore ? lastStore.id + 1 : 0;
+      let pageInf = {
         id: next_id,
         href: href,
       };
@@ -103,7 +104,7 @@ class Controller_XHR {
     this.newRequest(href);
   }
   events() {
-    var _this = this;
+    let _this = this;
     $(document).on("click", ".wrapper a", function (e) {
       if ($(this).attr("href")) {
         let domain = location.hostname || document.domain;
@@ -158,21 +159,21 @@ export default class Controller_pageSurfing {
     })
   }
   reloadPageDoing(temp_html) {
-    var that = this;
-    var iframe = this.subDocument(temp_html);
-    var __html = iframe.contentDocument;
-    var loadedIframe = function (_html) {
+    let that = this;
+    let iframe = this.subDocument(temp_html);
+    let __html = iframe.contentDocument;
+    let loadedIframe = function (_html) {
       console.log("reload ________");
-      var replaceDOM = function (_selector, _parent) {
-        var _old = $(document).find(_selector);
-        var _new = $(_html).find(_selector);
+      let replaceDOM = function (_selector, _parent) {
+        let _old = $(document).find(_selector);
+        let _new = $(_html).find(_selector);
         if (!_old) {
           _parent.append(_new);
         } else {
           _old.replaceWith(_new);
         }
       };
-      var wrapper = $(document).find(".wrapper");
+      let wrapper = $(document).find(".wrapper");
 
       replaceDOM(".page", wrapper);
       replaceDOM(".header", wrapper);
@@ -188,7 +189,7 @@ export default class Controller_pageSurfing {
           }
         );
         getArray("*", _html.head).forEach(function (elem) {
-          var find = false;
+          let find = false;
           getArray("*", document.head).forEach(function (elem2) {
             if (elem2.outerHTML == elem.outerHTML) find = true;
           });
@@ -199,7 +200,7 @@ export default class Controller_pageSurfing {
       }
 
       let doo = () => {
-        globalListener.trigger("XHR-complete");
+        globalListener.trigger("XHR-complate");
         that.hidePreloader();
       };
       if (document.readyState === "complete") {
@@ -220,15 +221,15 @@ export default class Controller_pageSurfing {
     }
   }
   subDocument(string) {
-    var _iframe = document.createElement("iframe");
+    let _iframe = document.createElement("iframe");
     _iframe.style.display = "none";
     _iframe.className = "iframeDoc";
     document.body.appendChild(_iframe);
-    var head = string.slice(
+    let head = string.slice(
       string.indexOf("<head>") + 6,
       string.indexOf("</head>")
     );
-    var body = string.slice(
+    let body = string.slice(
       string.indexOf("<body>") + 6,
       string.indexOf("</body>")
     );

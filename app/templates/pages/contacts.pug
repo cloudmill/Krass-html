@@ -7,13 +7,15 @@ block content
   .contacts-head.content
     .contacts-head-img
       img(src="images/bg-blog.png" alt="")
-    .contacts-head-title.section-title Контакты
+    .contacts-head-title.section-title
+      .show-item.showInLeft(data-group='contacts-head') Контакты
     .contacts-head-content
-      a.footer-phone.view-item(href="tel:8 495 995–­­90–35") 8 495 995–­­90–35
-      .footer-loc.view-item
+      a.footer-phone(href="tel:8 495 995–­­90–35")
+        .show-item.showInRight(data-group='contacts-head') 8 495 995–­­90–35
+      .footer-loc.show-item.showInRight(data-group='contacts-head')
         span Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС
         a(href="#map" data-search="Московская область, Люберецкий р-н, пос.Октябрьский, ул.Фабричная, ГАС").show-in-map на карте
-      .contacts-worktime
+      .contacts-worktime.show-item.showInRight(data-group='contacts-head')
         span Часы работы, Мск
         .contacts-worktime-list
           .contacts-worktime-item
@@ -33,11 +35,13 @@ block content
   .contacts-map
     #map
   .contacts-faces.content
-    .contacts-faces-title Оптовые продажи
+    .contacts-faces-title
+      .show-item.showInLeft(data-group='contacts-faces') Оптовые продажи
     .contacts-faces-box
-      +fieldSelect('faces','faces','Контактное лицо в регионе',[[0,'Москва'],[1,"Санкт-Петербург"]])
+      .show-item.showInLeft(data-group='contacts-faces')
+        +fieldSelect('faces','faces','Контактное лицо в регионе',[[0,'Москва'],[1,"Санкт-Петербург"]])
       .contacts-faces-list-wrapper
-        .contacts-faces-list
+        .contacts-faces-list.show-item.showInRight(data-group='contacts-faces')
           .contacts-faces-item
             .contacts-faces-item-img
               img(src="images/face-1.jpg" alt="")
