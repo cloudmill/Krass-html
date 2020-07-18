@@ -32,7 +32,7 @@ class Controller_XHR {
       }
     }
   }
-  newRequest(href, success = () => {}, failed = () => {}) {
+  newRequest(href, success = () => { }, failed = () => { }) {
     globalListener.trigger("XHR-start")
     let that = this;
     if (window.XMLHttpRequest) {
@@ -48,8 +48,8 @@ class Controller_XHR {
         elem_.eq(0).remove();
       }
       if (request.status == 200 || request.status == 404) {
-        let temp_html = request.response;
-        globalListener.trigger("XHR-success", [temp_html])
+        let newPage_html = request.response;
+        globalListener.trigger("XHR-success", [newPage_html])
         success();
         _this.XHR.onload = null;
       } else {
@@ -131,7 +131,7 @@ class Controller_XHR {
       }
     });
     window.addEventListener("popstate", (e) => {
-      console.log(e,e.state.id,this.currentPage_id)
+      console.log(e, e.state.id, this.currentPage_id)
       if (e.state) {
         if (e.state.id < this.currentPage_id) {
           this.backPage(e.state.href);
@@ -142,103 +142,113 @@ class Controller_XHR {
     });
   }
 }
+class DOMUpdater {
+  constructor(wrapper, itemsForReplace) {
+    this.wrapper = wrapper;
+    this.selectors = itemsForReplace;
+    this.newDocument = null;
+  }
+  update(arForReplace) {
+    let that = this;
+    console.log("reload ________");
+    globalListener.trigger('DOM-update-start')
 
+    let wrapper = $(document).find(this.wrapper);
+    this.selectors.forEach((item) => {
+      that.replace(item, wrapper);
+    })
+
+    if (!0) {
+      function getArray(selector, parent) {
+        return Array.prototype.slice.call(parent.querySelectorAll(selector));
+      }
+      getArray('title,meta,[type="image/png"]', document.head).forEach(
+        function (elem) {
+          if (elem.remove) elem.remove();
+        }
+      );
+      getArray("*", this.newDocument.head).forEach(function (elem) {
+        let find = false;
+        getArray("*", document.head).forEach(function (elem2) {
+          if (elem2.outerHTML == elem.outerHTML) find = true;
+        });
+        if (!find && elem.tagName) document.head.appendChild(elem);
+      });
+    } else {
+      document.documentElement.replaceChild(this.newDocument.head, document.head);
+    }
+    let doo = () => {
+      globalListener.trigger("XHR-complate");
+      globalListener.trigger("DOM-update-end");
+    };
+    if (document.readyState === "complete") {
+      doo();
+    } else {
+      window.onload = function () {
+        doo();
+        window.onload = null;
+      };
+    }
+  }
+  start(str_html) {
+    this.iframe = this.subDocument(str_html);
+    this.newDocument = this.iframe.contentDocument;
+    if (this.iframe.contentWindow.document.readyState == "complete") {
+      this.update()
+    } else {
+      this.iframe.onload = () => {
+        this.update()
+      };
+    }
+  }
+  subDocument(str_html) {
+    let iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.className = "iframeDoc";
+    document.body.appendChild(iframe);
+    let head = str_html.slice(
+      str_html.indexOf("<head>") + 6,
+      str_html.indexOf("</head>")
+    );
+    let body = str_html.slice(
+      str_html.indexOf("<body>") + 6,
+      str_html.indexOf("</body>")
+    );
+    iframe.contentDocument.body.innerHTML = body;
+    iframe.contentDocument.head.innerHTML = head;
+    return iframe;
+  }
+  replace(_selector, _parent) {
+    let _old = $(document).find(_selector);
+    let _new = $(this.newDocument).find(_selector);
+    if (!_old) {
+      _parent.append(_new);
+    } else {
+      _old.replaceWith(_new);
+    }
+  }
+}
 export default class Controller_pageSurfing {
   constructor() {
     this.init();
   }
   init() {
     this.reloader = new Controller_XHR();
-    globalListener.on("XHR-success", (html) => {
-      window.modals.closeAll();
-      $("html, body").animate({ scrollTop: 0 }, 400);
+    this.updater = new DOMUpdater('.wrapper', ['.page', '.modals', '.header']);
+    globalListener.on("XHR-success", (str_html) => {
       this.showPreloader();
       setTimeout(() => {
-        this.reloadPageDoing(html);
+        this.updater.start(str_html)
       }, 400);
     })
-  }
-  reloadPageDoing(temp_html) {
-    let that = this;
-    let iframe = this.subDocument(temp_html);
-    let __html = iframe.contentDocument;
-    let loadedIframe = function (_html) {
-      console.log("reload ________");
-      let replaceDOM = function (_selector, _parent) {
-        let _old = $(document).find(_selector);
-        let _new = $(_html).find(_selector);
-        if (!_old) {
-          _parent.append(_new);
-        } else {
-          _old.replaceWith(_new);
-        }
-      };
-      let wrapper = $(document).find(".wrapper");
-
-      replaceDOM(".page", wrapper);
-      replaceDOM(".header", wrapper);
-      replaceDOM(".modal", wrapper);
-
-      if (!0) {
-        function getArray(selector, parent) {
-          return Array.prototype.slice.call(parent.querySelectorAll(selector));
-        }
-        getArray('title,meta,[type="image/png"]', document.head).forEach(
-          function (elem) {
-            if (elem.remove) elem.remove();
-          }
-        );
-        getArray("*", _html.head).forEach(function (elem) {
-          let find = false;
-          getArray("*", document.head).forEach(function (elem2) {
-            if (elem2.outerHTML == elem.outerHTML) find = true;
-          });
-          if (!find && elem.tagName) document.head.appendChild(elem);
-        });
-      } else {
-        document.documentElement.replaceChild(_html.head, document.head);
-      }
-
-      let doo = () => {
-        globalListener.trigger("XHR-complate");
-        that.hidePreloader();
-      };
-      if (document.readyState === "complete") {
-        doo();
-      } else {
-        window.onload = function () {
-          doo();
-          window.onload = null;
-        };
-      }
-    };
-    if (iframe.contentWindow.document.readyState == "complete") {
-      loadedIframe(__html);
-    } else {
-      iframe.onload = function () {
-        loadedIframe(__html);
-      };
-    }
-  }
-  subDocument(string) {
-    let _iframe = document.createElement("iframe");
-    _iframe.style.display = "none";
-    _iframe.className = "iframeDoc";
-    document.body.appendChild(_iframe);
-    let head = string.slice(
-      string.indexOf("<head>") + 6,
-      string.indexOf("</head>")
-    );
-    let body = string.slice(
-      string.indexOf("<body>") + 6,
-      string.indexOf("</body>")
-    );
-    _iframe.contentDocument.body.innerHTML = body;
-    _iframe.contentDocument.head.innerHTML = head;
-    return _iframe;
+    globalListener.on("XHR-complate", () => {
+      this.hidePreloader()
+    })
   }
   showPreloader() {
     this.time = performance.now();
+    window.modals.closeAll();
+    $("html, body").animate({ scrollTop: 0 }, 400);
     $(".pageSurfing").addClass("active");
   }
   hidePreloader() {
