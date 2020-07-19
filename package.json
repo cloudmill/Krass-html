@@ -13,7 +13,7 @@
     "babel-loader": "^8.0.6",
     "babel-preset-latest": "^6.24.1",
     "bemto.pug": "^2.1.0",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.26.10",
     "core-js": "^3.6.4",
     "filter": "^0.1.1",
     "gulp": "^4.0.2",

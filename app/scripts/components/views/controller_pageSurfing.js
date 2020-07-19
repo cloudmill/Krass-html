@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-class Controller_XHR {
+class BrowserRouter {
   constructor() {
     this.store = [];
     this.currentPage_id = 0;
@@ -148,7 +148,7 @@ class DOMUpdater {
     this.selectors = itemsForReplace;
     this.newDocument = null;
   }
-  update(arForReplace) {
+  update() {
     let that = this;
     console.log("reload ________");
     globalListener.trigger('DOM-update-start')
@@ -158,25 +158,23 @@ class DOMUpdater {
       that.replace(item, wrapper);
     })
 
-    if (!0) {
-      function getArray(selector, parent) {
-        return Array.prototype.slice.call(parent.querySelectorAll(selector));
-      }
-      getArray('title,meta,[type="image/png"]', document.head).forEach(
-        function (elem) {
-          if (elem.remove) elem.remove();
-        }
-      );
-      getArray("*", this.newDocument.head).forEach(function (elem) {
-        let find = false;
-        getArray("*", document.head).forEach(function (elem2) {
-          if (elem2.outerHTML == elem.outerHTML) find = true;
-        });
-        if (!find && elem.tagName) document.head.appendChild(elem);
-      });
-    } else {
-      document.documentElement.replaceChild(this.newDocument.head, document.head);
+
+    function getArray(selector, parent) {
+      return Array.prototype.slice.call(parent.querySelectorAll(selector));
     }
+    getArray('title,meta,[type="image/png"]', document.head).forEach(
+      function (elem) {
+        if (elem.remove) elem.remove();
+      }
+    );
+    getArray("*", this.newDocument.head).forEach(function (elem) {
+      let find = false;
+      getArray("*", document.head).forEach(function (elem2) {
+        if (elem2.outerHTML == elem.outerHTML) find = true;
+      });
+      if (!find && elem.tagName) document.head.appendChild(elem);
+    });
+
     let doo = () => {
       globalListener.trigger("XHR-complate");
       globalListener.trigger("DOM-update-end");
@@ -233,7 +231,7 @@ export default class Controller_pageSurfing {
     this.init();
   }
   init() {
-    this.reloader = new Controller_XHR();
+    this.router = new BrowserRouter();
     this.updater = new DOMUpdater('.wrapper', ['.page', '.modals', '.header']);
     globalListener.on("XHR-success", (str_html) => {
       this.showPreloader();

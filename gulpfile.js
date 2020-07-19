@@ -2,24 +2,28 @@ let gulp = require("gulp"),
   sass = require("gulp-sass"),
   postcss = require("gulp-postcss"),
   cssnano = require("gulp-cssnano"),
-  rename = require("gulp-rename"),
-  browserSyns = require("browser-sync"),
+  font2css = require("gulp-font2css").default,
+
   pug = require("gulp-pug"),
+  getData = require("jade-get-data")("app/data"),
+
   imageMin = require("gulp-imagemin"),
-  cacheFiles = require("gulp-cache-files"),
+  сacheFiles = require("gulp-cache-files"),
   spritesmith = require("gulp.spritesmith"),
-  merge = require("merge-stream"),
   svgSprite = require("gulp-svg-sprites"),
-  filter = require("filter"),
+
   webpack = require("webpack-stream"),
   webpackConfig = require("./webpack.config.js"),
-  gutil = require("gulp-util"),
-  getData = require("jade-get-data")("app/data"),
-  concat = require("gulp-concat"),
-  font2css = require("gulp-font2css").default,
   errorHandler = require("gulp-error-handle"),
+  gutil = require("gulp-util"),
+
+  browserSyns = require("browser-sync"),
+  concat = require("gulp-concat"),
   gulpCopy = require("gulp-copy"),
-  clean = require("gulp-clean");
+  clean = require("gulp-clean"),
+  merge = require("merge-stream"),
+  rename = require("gulp-rename"),
+  filter = require("filter");
 
 //конфигурации
 let dirDist = "./dist/";
@@ -71,11 +75,6 @@ let _ = {
     },
   },
   js: {
-    libs: [
-      "node_modules/jquery/src/jquery.js",
-      "node_modules/fancybox/dist/js/jquery.fancybox.js",
-      "node_modules/swiper/js/swiper.js",
-    ],
     select: "**/*.js",
     dir: dirApp + "scripts/",
     start: "index.js",
@@ -89,9 +88,9 @@ gulp.task("scss", function () {
     .pipe(sass())
     .pipe(
       postcss([
+        require("postcss-import"),
         require("autoprefixer"),
         require("postcss-discard-comments"),
-        require("postcss-import"),
       ])
     )
     .pipe(cssnano({ zIndex: false }))
@@ -118,15 +117,15 @@ gulp.task("js", function (callback) {
 /////Работа с картинками
 gulp.task("images", function () {
   return gulp
-    .src(_.minImg.dir + _.minImg.select)
-    .pipe(cacheFiles.filter("./.cache/manifest.json"))
+    .src(_.minImg.dir + _.minImg.select, { read: false })
+    .pipe(сacheFiles.filter("./cache/images.json"))
     .pipe(
       imageMin({
         verbose: true,
       })
     )
     .pipe(gulp.dest(_.dist.images))
-    .pipe(cacheFiles.manifest())
+    .pipe(сacheFiles.manifest())
     .pipe(browserSyns.reload({ stream: true }));
 });
 gulp.task("pngSprite", function () {
@@ -171,7 +170,7 @@ gulp.task("font2css", function () {
     .src(_.fonts.dir + _.fonts.select)
     .pipe(font2css())
     .pipe(concat("fonts.css"))
-    .pipe(gulp.dest(_.style.base));
+    .pipe(gulp.dest(_.style.base))
 });
 
 /////Работа с шаблонами страниц
@@ -190,9 +189,7 @@ gulp.task("pug", function () {
     .pipe(browserSyns.reload({ stream: true }));
 });
 
-gulp.task("copyFolderDist", function () {
-  return gulp.src(dirDist + "**/*").pipe(gulpCopy(dirDocs, { prefix: 1 }));
-});
+
 gulp.task("watch", function () {
   //Стили и скрипты
   gulp.watch(_.style.dir + _.style.select.all, gulp.parallel("scss"));
@@ -225,64 +222,37 @@ gulp.task("browser-sync", function () {
     },
   });
 });
-gulp.task("clear-docs", function () {
+
+
+let clear = (dir) => {
   return gulp
-    .src(dirDocs, {
+    .src(dir, {
       read: false,
       allowEmpty: true,
     })
-    .pipe(clean());
-});
-gulp.task("clear-css", function () {
-  return gulp
-    .src(dirDist + "css/", {
-      read: false,
-      allowEmpty: true,
-    })
-    .pipe(clean());
-});
-gulp.task("clear-js", function () {
-  return gulp
-    .src(dirDist + "js/", {
-      read: false,
-      allowEmpty: true,
-    })
-    .pipe(clean());
-});
-gulp.task("clear-pages", function () {
-  return gulp
-    .src(dirDist + "*.html", {
-      read: false,
-      allowEmpty: true,
-    })
-    .pipe(clean());
-});
-gulp.task("clear-сache", function () {
-  return gulp
-    .src("./.cache/", {
-      read: false,
-      allowEmpty: true,
-    })
-    .pipe(clean());
-});
-gulp.task("clear-build-folder", function () {
-  return gulp
-    .src(dirDist, {
-      read: false,
-      allowEmpty: true,
-    })
-    .pipe(clean());
-});
+    .pipe(clean())
+}
+gulp.task("clear-css", () => { return clear(dirDist + "css/") });
+gulp.task("clear-js", () => { return clear(dirDist + "js/") });
+gulp.task("clear-pages", () => { return clear(dirDist + "*.html") });
+gulp.task("clear-сache", () => { return clear("./.cache/") });
+gulp.task("clear-docs", () => { return clear(dirDocs) });
 gulp.task("clear-build", gulp.parallel("clear-css", "clear-js", "clear-pages"));
+gulp.task("clear-build-folder", () => { return clear(dirDist) });
+
+gulp.task("copyDist", function () {
+  return gulp.src(dirDist + "**/*").pipe(gulpCopy(dirDocs, { prefix: 1 }));
+});
+
 
 gulp.task("pre-scss", gulp.parallel("pngSprite", "svgSprite", "font2css"));
 gulp.task("styles", gulp.series("pre-scss", "scss"));
-gulp.task("after-clean", gulp.parallel("styles", "js", "pug", "images"));
-gulp.task("after-build", gulp.parallel("browser-sync", "watch"));
+gulp.task("build-start", gulp.parallel("styles", "js", "pug", "images"));
+gulp.task("dev-tools", gulp.parallel("browser-sync", "watch"));
 
-gulp.task("build", gulp.series("clear-build", "after-clean"));
-gulp.task("dev", gulp.series("build", "after-build"));
-gulp.task("deploy", gulp.series("build", "clear-docs", "copyFolderDist"));
+gulp.task("build", gulp.series("clear-build", "build-start"));
+gulp.task("dev", gulp.series("build", "dev-tools"));
+gulp.task("deploy", gulp.series("build", "clear-docs", "copyDist"));
 gulp.task(
   "final-build",
   gulp.series("clear-сache", "clear-build-folder", "deploy")
