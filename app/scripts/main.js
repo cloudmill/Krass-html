@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 //tools
 import Listener from "./tools/listener.js";
 
@@ -14,9 +16,12 @@ import Header from "./components/header.js";
 
 class App {
   constructor() {
-    this.listener = new Listener();
-    window.globalListener = this.listener
+    window.globalListener = new Listener();
+
+    globalListener.setTriggerChange(document.body, 'offsetHeight', 'resize')
+    $(window).resize(() => { globalListener.trigger('resize');})
     
+
     this.scroll = new Manager_scroll();
     this.views = new Manager_views();
     this.tabs = new Manager_tabs();

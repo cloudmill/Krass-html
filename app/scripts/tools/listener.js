@@ -1,28 +1,27 @@
-import $ from "jquery";
 
 export default class Listener {
   constructor() {
     this.handlers = [];
+    this.triggers = [];
     this.initeds = [];
-    this.state = [];
     this.init();
   }
   updater() {
     setInterval(() => {
       this.update();
-    }, 50);
-    $(window).resize(() => {
-      this.trigger("resize");
-    });
+    }, 10);
   }
   update() {
-    if ($("body").height() != this.state["body-height"]) {
-      this.state["body-height"] = $("body").height();
-      this.trigger("resize");
+    for (let key in this.triggers) {
+      let trigger = this.triggers[key];
+      if (trigger.el[trigger.field] != trigger.val) {
+        trigger.val = trigger.el[trigger.field];
+        this.trigger(trigger.name);
+      }
     }
   }
   init() {
-    this.state["body-height"] = $("body").height();
+
     this.updater();
   }
   on(type, handler) {
@@ -30,6 +29,24 @@ export default class Listener {
       type: type,
       handler: handler,
     });
+  }
+  setTriggerChange(el, field, nameEvent) {
+    if (!this.triggers[name + '-' + field]) {
+      this.triggers[name + '-' + field] = {
+        el: el,
+        name: nameEvent,
+        field: field,
+        val: el[field]
+      }
+      return el[field];
+    }
+    else return false;
+    /* Example
+        listener.setTriggerChange(document.body,'offsetWidth','resize')
+        listener.on('resize',function(){
+            console.log('body-resize')
+        })
+    */
   }
   off(type, handler) {
     this.handlers.forEach((item, key) => {

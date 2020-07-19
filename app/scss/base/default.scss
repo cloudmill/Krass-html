@@ -54,6 +54,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; // Убираем горизонтальный скролл
+  overflow-y: auto; // Убираем горизонтальный скролл
   width: 100%;
   min-height: 100%;
 }
@@ -62,7 +63,6 @@ body {
   font-family: $font-main; // Задаем основной шрифт
   font-size: 16px; // Убираем проблему с отступами между inline-элементами
   color: $color-basic;
-  overflow: hidden;
   *,
   *::after,
   *::before {
@@ -179,11 +179,6 @@ html {
       }
     }
   }
-}
-body,
-html {
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 #map {
