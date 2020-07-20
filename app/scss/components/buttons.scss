@@ -184,6 +184,7 @@
       top: 0;
       display: block;
       will-change: transform;
+      width: auto !important;
       &:nth-child(1) {
         position: relative;
         animation: wordMoving 4s linear infinite;
