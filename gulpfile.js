@@ -2,6 +2,7 @@ let gulp = require("gulp"),
   sass = require("gulp-sass"),
   postcss = require("gulp-postcss"),
   cssnano = require("gulp-cssnano"),
+  autoprefixer = require('autoprefixer'),
   font2css = require("gulp-font2css").default,
 
   pug = require("gulp-pug"),
@@ -89,7 +90,7 @@ gulp.task("scss", function () {
     .pipe(
       postcss([
         require("postcss-import"),
-        require("autoprefixer"),
+        autoprefixer({ grid: 'autoplace' }),
         require("postcss-discard-comments"),
       ])
     )
