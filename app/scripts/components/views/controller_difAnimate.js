@@ -80,7 +80,7 @@ export default class Controller_difAnimate {
           height +=
             parent.find(".lazy-opened-box").height() +
             parseInt($(this).css("margin-bottom"));
-          $(this).parent().find('.show-item').addClass('play')
+          $(this).parent().find(".show-item").addClass("play");
         }
         parent.height(height);
       });
@@ -98,8 +98,8 @@ export default class Controller_difAnimate {
     if (globalListener.checkInit("wordChangeSpeedmovingWithScroll")) {
       let state = [-100, 0, 100];
       let phaze = 0;
-      let phazeStep = 0.1;
-      let timeOut;
+      let phazeStepDEF = 0.05;
+      let phazeStep = phazeStepDEF;
       setInterval(() => {
         if (
           $(".about-words-item").length > 0 &&
@@ -117,21 +117,44 @@ export default class Controller_difAnimate {
           }
         }
       }, 10);
-      globalListener.on("scroll", (y) => {
-        clearInterval(timeOut);
-        if ($(".about-words-item").length > 0) {
+
+      let timeUp = null;
+      let timeDown = null;
+      let timeOut = null;
+      let free = true;
+      let speedUp = () => {
+        clearInterval(timeUp);
+        clearTimeout(timeOut)
+        timeUp = setInterval(() => {
           if (phazeStep < 0.2) {
-            phazeStep += 0.03;
+            phazeStep *= 1.05;
+          } else {
+            clearInterval(timeUp);
           }
-          timeOut = setInterval(() => {
-            if (phazeStep > 0.1) {
-              phazeStep *= 0.99;
-              phazeStep = parseInt(phazeStep * 1000) / 1000;
-            } else {
-              phazeStep = 0.1;
-              clearInterval(timeOut);
-            }
-          }, 10);
+        }, 10);
+        timeOut = setTimeout(()=>{
+          speedDown();
+          clearInterval(timeUp);
+          free = true;
+        },100)
+      };
+      let speedDown = () => {
+        clearInterval(timeDown);
+        timeDown = setInterval(() => {
+          if (phazeStep > phazeStepDEF) {
+            phazeStep *= 0.99;
+            phazeStep = parseInt(phazeStep * 1000) / 1000;
+          } else {
+            phazeStep = phazeStepDEF;
+            clearInterval(timeDown);
+          }
+        }, 10);
+      };
+      globalListener.on("scroll", (y) => {
+        if ($(".about-words-item").length > 0 && free) {
+          free = false
+          clearInterval(timeDown);
+          speedUp();
         }
       });
     }
