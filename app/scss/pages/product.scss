@@ -442,7 +442,10 @@
   }
   &-tab {
     &:nth-child(n + 2){
-      padding-top: 60px;
+      padding-top: 150px;
+      @media(max-width: 1200px){
+        padding-top: 90px;
+      }
     }
     @media (max-width: 1024px) {
       padding-top: 60px;

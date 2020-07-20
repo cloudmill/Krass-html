@@ -121,7 +121,7 @@ export default class Controller_difAnimate {
         clearInterval(timeOut);
         if ($(".about-words-item").length > 0) {
           if (phazeStep < 0.2) {
-            phazeStep += 0.005;
+            phazeStep += 0.03;
           }
           timeOut = setInterval(() => {
             if (phazeStep > 0.1) {

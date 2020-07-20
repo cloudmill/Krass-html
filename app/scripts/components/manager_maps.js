@@ -18,7 +18,7 @@ export default class Manager_maps {
     var myMap = this.createMap([55.751574, 37.573856]);
     this.setPlaceMark(myMap, "contacts");
 
-    this.setOptionsMap(myMap);
+    this.setOptionsMap(myMap, { geo: false });
   }
   whereBuyMap() {
     var myMap = this.createMap([55.751574, 37.573856]);

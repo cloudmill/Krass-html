@@ -232,7 +232,7 @@ export default class Controller_pageSurfing {
   }
   init() {
     this.router = new BrowserRouter();
-    this.updater = new DOMUpdater('.wrapper', ['.page', '.modals', '.header']);
+    this.updater = new DOMUpdater('.wrapper', ['.page', '.modal', '.header']);
     globalListener.on("XHR-success", (str_html) => {
       this.showPreloader();
       setTimeout(() => {

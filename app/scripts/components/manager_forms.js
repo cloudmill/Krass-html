@@ -1,6 +1,53 @@
 import $ from "jquery";
 import "select2";
 
+class Form {
+  constructor(el) {
+    this.form = el;
+    this.url = this.form.attr("action");
+
+    this.form.submit((e) => {
+      e.preventDefault();
+      if (this.form.find(".error").length == 0) {
+        this.mess();
+      }
+    });
+  }
+  mess() {
+    $.ajax({
+      url: this.url,
+      method: "get",
+      dataType: "html",
+      data: this.getData(),
+      success: (data) => {
+        console.log(data)
+        this.onsuccess(data);
+        this.clear();
+      },
+      error: (e) => {
+        this.onerror(e);
+      },
+    });
+  }
+  getData() {
+    let ar = [];
+    this.form.find("input,textarea").each((key, item) => {
+      let name = $(item).attr("name") || $(item).attr("id");
+      ar[name] = $(item).val();
+    });
+    return ar;
+  }
+  clear() {
+    this.form.find("input,textarea").val("");
+  }
+  onsuccess(data) {
+    ///
+  }
+  onerror(e) {
+    console.error("Ошибка отправки формы", e);
+  }
+}
+
 export default class Manager_forms {
   constructor() {
     this.init();
@@ -8,7 +55,7 @@ export default class Manager_forms {
   init() {
     this.initSelect2();
     this.initErrorsChecker();
-    
+
     this.init_form_calc();
     this.init_form_modal();
     this.init_form_subscribe();
@@ -57,6 +104,11 @@ export default class Manager_forms {
         console.error("field " + input.attr("name") + " invalid");
       }
     };
+    let validMail = function (mail) {
+      var re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+      var valid = re.test(mail);
+      return valid;
+    };
     let success = function (input) {
       input.parent("label").removeClass("error");
       if (window.Config.debug) {
@@ -77,7 +129,9 @@ export default class Manager_forms {
           if (val == "") {
             error(input);
           } else {
-            success(input);
+            if (name.indexOf("mail") != -1 && !validMail(val)) {
+              error(input);
+            } else success(input);
           }
         } else if (type == "checkbox") {
           if (!input.eq(0)[0].checked) {
@@ -121,7 +175,6 @@ export default class Manager_forms {
             form.attr("data-reload", "y");
             form.submit();
           }
-          form.find("input,textarea").val("");
           //отправка формы
         } else {
           if (window.Config.debug) {
@@ -143,14 +196,14 @@ export default class Manager_forms {
       });
     }
   }
+
   init_form_modal() {
-    $("#question form").submit(function (e) {
-      e.preventDefault();
-      if ($(this).find(".error").length == 0) {
-        $(this).find(".modal-form-step").removeClass("active");
-        $(this).find('.modal-form-step[data-step="2"]').addClass("active");
-      }
-    });
+    let form = new Form($("#question form"));
+    form.onsuccess = function () {
+      $(this).find(".modal-form-step").removeClass("active");
+      $(this).find('.modal-form-step[data-step="2"]').addClass("active");
+    };
+
     $(".modal-form-reset a").click(function (e) {
       e.preventDefault();
       $("#question form").find(".modal-form-step").removeClass("active");
@@ -160,29 +213,28 @@ export default class Manager_forms {
     });
   }
   init_form_subscribe() {
-    $("#subscribe form").submit(function (e) {
-      e.preventDefault();
-      if ($(this).find(".error").length == 0) {
-        $("#subscribe .subscribe-success").addClass("active");
-      }
-    });
+    let form = new Form($("#subscribe form"));
+    form.onsuccess = function () {
+      $("#subscribe .subscribe-success").addClass("active");
+    };
+
     $("#subscribe .subscribe-success-reset a").click(function (e) {
       e.preventDefault();
       $("#subscribe .subscribe-success").removeClass("active");
     });
   }
   init_form_questionSection() {
-    $("#question-section form").submit(function (e) {
-      e.preventDefault();
-      if ($(this).find(".error").length == 0) {
-        $("#question-section .subscribe-success").addClass("active");
-      }
-    });
+    let form = new Form($("#question-section form"));
+    form.onsuccess = function () {
+      $("#question-section .subscribe-success").addClass("active");
+    };
+
     $("#question-section .subscribe-success-reset a").click(function (e) {
       e.preventDefault();
       $("#question-section .subscribe-success").removeClass("active");
     });
   }
+
   initSertTabsChange() {
     if ($(".sert-block").length > 0) {
       $("#tabs-trigger").change(function () {
