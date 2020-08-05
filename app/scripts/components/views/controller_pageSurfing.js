@@ -143,10 +143,11 @@ class BrowserRouter {
   }
 }
 class DOMUpdater {
-  constructor(wrapper, itemsForReplace) {
+  constructor(wrapper, itemsForReplace, reCaller) {
     this.wrapper = wrapper;
     this.selectors = itemsForReplace;
     this.newDocument = null;
+    this.reCaller = reCaller;
   }
   update() {
     let that = this;
@@ -180,9 +181,17 @@ class DOMUpdater {
       globalListener.trigger("DOM-update-end");
     };
     if (document.readyState === "complete") {
+      if(this.reCaller){
+        debugger;
+        this.reCaller();
+      }
       doo();
     } else {
       window.onload = function () {
+        if(this.reCaller){
+          debugger;
+          this.reCaller();
+        }
         doo();
         window.onload = null;
       };
@@ -227,12 +236,13 @@ class DOMUpdater {
   }
 }
 export default class Controller_pageSurfing {
-  constructor() {
+  constructor(options) {
+    this.options = options;
     this.init();
   }
   init() {
     this.router = new BrowserRouter();
-    this.updater = new DOMUpdater('.wrapper', ['.page', '.modal', '.header']);
+    this.updater = new DOMUpdater('.wrapper', ['.page', '.modal', '.header'], this.options.reCaller);
     globalListener.on("XHR-success", (str_html) => {
       this.showPreloader();
       setTimeout(() => {

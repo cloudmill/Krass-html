@@ -160,8 +160,22 @@ export default class Controller_difAnimate {
     }
   }
 
+  _reCalc(){
+    let left = $(".header-logo-box").offset().left;
+    $(".header-logo").css("left", left + "px");
+    //выравнивание тектса по лого
+    $(".main-banner-sub").css("left", left - 40 + "px");
+    $(".news-detail-box").css("left", left - 40 + "px");
+    $(".page-404-content span").css(
+        "left",
+        -(
+            $(window).width() - 80
+        ) / 2 + left - 40 + "px"
+    );
+  }
+
   //Корректировка стилей
-  correctStyles() {
+  correctStyles(useTimeout = true) {
     let correctDuing = () => {
       if ($(window).width() < $(window).outerWidth()) {
         $("html").removeClass("touch");
@@ -171,17 +185,13 @@ export default class Controller_difAnimate {
         $("html").addClass("touch");
       }
       //установка позиции лого для возвращения после прелоадера
-      setTimeout(() => {
-        let left = $(".header-logo-box").offset().left;
-        $(".header-logo").css("left", left + "px");
-        //выравнивание тектса по лого
-        $(".main-banner-sub").css("left", left - 40 + "px");
-        $(".news-detail-box").css("left", left - 40 + "px");
-        $(".page-404-content span").css(
-          "left",
-          -($(window).width() - 80) / 2 + left - 40 + "px"
-        );
-      }, 300);
+      if (useTimeout) {
+        setTimeout(() => {
+          this._reCalc();
+        }, 300);
+      }else{
+        this._reCalc();
+      }
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {
