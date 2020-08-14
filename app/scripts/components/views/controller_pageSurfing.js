@@ -105,7 +105,7 @@ class BrowserRouter {
   }
   events() {
     let _this = this;
-    $(document).on("click", ".wrapper a", function (e) {
+    /*$(document).on("click", ".wrapper a", function (e) {
       if ($(this).attr("href")) {
         let domain = location.hostname || document.domain;
 
@@ -139,7 +139,7 @@ class BrowserRouter {
           this.nextPage(e.state.href);
         }
       }
-    });
+    });*/
   }
 }
 class DOMUpdater {
