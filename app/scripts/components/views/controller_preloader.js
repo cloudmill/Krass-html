@@ -5,8 +5,8 @@ export default class Controller_preloader {
     this.init();
   }
   init() {
-    $("html").addClass("loading");
-    $("html").addClass("closeScroll");
+    //$("html").addClass("loading");
+    //$("html").addClass("closeScroll");
     if (document.readyState === "complete") {
       this.load();
     } else {
@@ -16,17 +16,7 @@ export default class Controller_preloader {
     }
   }
   afterLoad() {
-    setTimeout(() => {
-      globalListener.trigger('preloader-load');
-    }, 300);
-
-    $("html").removeClass("closeScroll");
-    $("html").removeClass("loading");
-    $("html").addClass("closing-preloader");
-    setTimeout(() => {
-      $("html").addClass("loaded");
-      $("html").removeClass("closing-preloader");
-    }, 1600);
+    globalListener.trigger('preloader-load');
   }
   fasterLoad() {
     let i = 1;
@@ -37,7 +27,7 @@ export default class Controller_preloader {
         clearInterval(time);
         this.afterLoad();
       }
-    }, 300);
+    }, 0);
   }
   load() {
     var time = performance.now();
