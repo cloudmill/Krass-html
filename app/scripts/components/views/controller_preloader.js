@@ -5,18 +5,33 @@ export default class Controller_preloader {
     this.init();
   }
   init() {
-    //$("html").addClass("loading");
-    //$("html").addClass("closeScroll");
-    if (document.readyState === "complete") {
-      this.load();
-    } else {
-      window.onload = () => {
+    if (window.currentPage == '') {
+      $(".pageSurfing").removeClass("active")
+      $("html").addClass("loading");
+      $("html").addClass("closeScroll");
+      if (document.readyState === "complete") {
         this.load();
-      };
+      } else {
+        window.onload = () => {
+          this.load();
+        };
+      }
+    } else {
+      this.hideSimplePreloader();
     }
   }
   afterLoad() {
-    globalListener.trigger('preloader-load');
+    setTimeout(() => {
+      globalListener.trigger('preloader-load');
+    }, 300);
+
+    $("html").removeClass("closeScroll");
+    $("html").removeClass("loading");
+    $("html").addClass("closing-preloader");
+    setTimeout(() => {
+      $("html").addClass("loaded");
+      $("html").removeClass("closing-preloader");
+    }, 1600);
   }
   fasterLoad() {
     let i = 1;
@@ -27,7 +42,7 @@ export default class Controller_preloader {
         clearInterval(time);
         this.afterLoad();
       }
-    }, 0);
+    }, 300);
   }
   load() {
     var time = performance.now();
@@ -90,5 +105,10 @@ export default class Controller_preloader {
         refreshPreloader();
       });
     });
+  }
+  hideSimplePreloader() {
+    setTimeout(() => {
+      $(".pageSurfing").removeClass("active");
+    }, 300)
   }
 }

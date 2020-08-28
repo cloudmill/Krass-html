@@ -57,6 +57,8 @@ export default class Manager_forms {
 
         this.initSertTabsChange();
         this.selectProd();
+
+        
     }
 
     initSelect2() {
@@ -245,6 +247,8 @@ export default class Manager_forms {
         $(".selectProd-block").find("input").change(function () {
             let step = $(this).closest(".selectProd-block").attr("data-step");
             $(".selectProd-block").eq(step).addClass("active");
+
+            $("html, body").animate({ scrollTop:  $(".selectProd-block").eq(step).offset().top }, 400);
             window.updateForce();
         });
     }

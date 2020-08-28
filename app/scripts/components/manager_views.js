@@ -9,11 +9,11 @@ import Controller_showItems from "./views/controller_showItems.js";
 export default class Manager_views {
   constructor() {
     this.animate = new Controller_difAnimate();
-    this.pageSurfing = new Controller_pageSurfing({
-      reCaller: ()=>{
-        this.animate.correctStyles(false);
-      }
-    });
+    // this.pageSurfing = new Controller_pageSurfing({
+    //   reCaller: ()=>{
+    //     this.animate.correctStyles(false);
+    //   }
+    // });
     this.preloader = new Controller_preloader();
     this.paralax = new Controller_paralax();
     this.fixed = new Controller_fixed();
