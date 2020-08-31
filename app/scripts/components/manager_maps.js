@@ -9,6 +9,7 @@ export default class Manager_maps {
         this.contactsMap();
       } else if ($(".whereBuy-map").length > 0) {
         this.whereBuyMap();
+        this.whereBuyMapAjaxLogic();
       } else {
         this.modalMap();
       }
@@ -23,57 +24,6 @@ export default class Manager_maps {
   whereBuyMap() {
     var myMap = this.createMap([55.751574, 37.573856]);
     this.setPlaceMark(myMap, "whereBuy");
-    $('.whereBuy-filter-type-item').on('change', function () {
-      let saleType = $(this).attr('for');
-      $.ajax({
-        type: 'POST',
-        url: 'http://krass.hellem.ru/whereBuy/',
-        dataType: 'html',
-        data: ({
-          'ajax_sale_type': true,
-          'sale_type_id': saleType
-        }),
-        success: function (data) {
-          $('#region').find('option').remove();
-          let el = $(data).find('#region').find('option');
-          $('#region').append(el);
-
-          $('.whereBuy-map').find('.whereBuy-map-list').remove();
-          let shopEl = $(data).find('.whereBuy-map-list');
-          $('.whereBuy-map-content').append(shopEl);
-
-          let inpEl = $(data).find('.map-data').find('input');
-          $('.map-data').find('input').remove();
-          $('.map-data').append(inpEl);
-          myMap = this.createMap([55.751574, 37.573856]);
-          this.setPlaceMark(myMap, "whereBuy");
-        }
-      });
-    });
-
-    $('#region').on('change', function(){
-      let selectCity = $(this).val();
-      $.ajax({
-        type: 'POST',
-        url: 'http://krass.hellem.ru/whereBuy/',
-        dataType: 'html',
-        data: ({
-          'ajax_city_select': true,
-          'cityId': selectCity
-        }),
-        success: function (data) {
-          $('.whereBuy-map').find('.whereBuy-map-list').remove();
-          let el = $(data).find('.whereBuy-map-list');
-          $('.whereBuy-map-content').append(el);
-
-          let inpEl = $(data).find('.map-data').find('input');
-          $('.map-data').find('input').remove();
-          $('.map-data').append(inpEl);
-          myMap = this.createMap([55.751574, 37.573856]);
-          this.setPlaceMark(myMap, "whereBuy");
-        }
-      });
-    });
 
     this.setOptionsMap(myMap);
   }
@@ -260,6 +210,58 @@ export default class Manager_maps {
     }
     if (opts.geo) this.setGeoLocation(myMap);
     this.setSearchControls(myMap);
+  }
+  removeMap(){
+    $('#map *').remove();
+  }
+  whereBuyMapAjaxLogic() {
+    let that = this;
+    let success =  (data) => {
+      $(".whereBuy-map").find(".whereBuy-map-list").remove();
+      let shopEl = $(data).find(".whereBuy-map-list");
+      $(".whereBuy-map-content").append(shopEl);
+
+      let inpEl = $(data).find(".map-data").find("input");
+      $(".map-data").find("input").remove();
+      $(".map-data").append(inpEl);
+      that.removeMap();
+      that.whereBuyMap();
+    };
+    $(".whereBuy-filter-type-item").on("change", function () {
+      let saleType = $(this).attr("for");
+      $.ajax({
+        type: "POST",
+        url: "http://krass.hellem.ru/whereBuy/",
+        dataType: "html",
+        data: {
+          ajax_sale_type: true,
+          sale_type_id: saleType,
+        },
+        success: function (data) {
+          $("#region").find("option").remove();
+          let el = $(data).find("#region").find("option");
+          $("#region").append(el);
+
+          success(data);
+        },
+      });
+    });
+
+    $("#region").on("change", function () {
+      let selectCity = $(this).val();
+      $.ajax({
+        type: "POST",
+        url: "http://krass.hellem.ru/whereBuy/",
+        dataType: "html",
+        data: {
+          ajax_city_select: true,
+          cityId: selectCity,
+        },
+        success: function (data) {
+          success(data);
+        },
+      });
+    });
   }
 
   search(str) {
