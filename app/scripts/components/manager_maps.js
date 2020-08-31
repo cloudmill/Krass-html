@@ -23,6 +23,57 @@ export default class Manager_maps {
   whereBuyMap() {
     var myMap = this.createMap([55.751574, 37.573856]);
     this.setPlaceMark(myMap, "whereBuy");
+    $('.whereBuy-filter-type-item').on('change', function () {
+      let saleType = $(this).attr('for');
+      $.ajax({
+        type: 'POST',
+        url: 'http://krass.hellem.ru/whereBuy/',
+        dataType: 'html',
+        data: ({
+          'ajax_sale_type': true,
+          'sale_type_id': saleType
+        }),
+        success: function (data) {
+          $('#region').find('option').remove();
+          let el = $(data).find('#region').find('option');
+          $('#region').append(el);
+
+          $('.whereBuy-map').find('.whereBuy-map-list').remove();
+          let shopEl = $(data).find('.whereBuy-map-list');
+          $('.whereBuy-map-content').append(shopEl);
+
+          let inpEl = $(data).find('.map-data').find('input');
+          $('.map-data').find('input').remove();
+          $('.map-data').append(inpEl);
+          myMap = this.createMap([55.751574, 37.573856]);
+          this.setPlaceMark(myMap, "whereBuy");
+        }
+      });
+    });
+
+    $('#region').on('change', function(){
+      let selectCity = $(this).val();
+      $.ajax({
+        type: 'POST',
+        url: 'http://krass.hellem.ru/whereBuy/',
+        dataType: 'html',
+        data: ({
+          'ajax_city_select': true,
+          'cityId': selectCity
+        }),
+        success: function (data) {
+          $('.whereBuy-map').find('.whereBuy-map-list').remove();
+          let el = $(data).find('.whereBuy-map-list');
+          $('.whereBuy-map-content').append(el);
+
+          let inpEl = $(data).find('.map-data').find('input');
+          $('.map-data').find('input').remove();
+          $('.map-data').append(inpEl);
+          myMap = this.createMap([55.751574, 37.573856]);
+          this.setPlaceMark(myMap, "whereBuy");
+        }
+      });
+    });
 
     this.setOptionsMap(myMap);
   }
@@ -48,6 +99,39 @@ export default class Manager_maps {
     );
   }
   setPlaceMark(myMap, type) {
+    // if (type == "contacts") {
+    //   let i = 0;
+    //   let that = this;
+    //   let dataCords = "55.688172, 37.719791";
+    //   let coords = dataCords.replace(" ", "").split(",");
+    //   let dataName = "Вектор (ТЦ Муравейник)";
+    //   let dataContent = "ул. Октябрьский проспект, 73<br>8 (3842) 538-72-20<br>stroi-737@mail.ru";
+    //   let ballonContent = {};
+    //   let iconSettings = {
+    //     iconImageSize: [67, 107],
+    //     iconImageOffset: [-33, -107],
+    //   };
+    //   ballonContent = {
+    //     balloonContentHeader:
+    //       "<span class='placemark-name' >" + dataName + "</span>",
+    //     balloonContentBody:
+    //       "<span class='placemark-content' >" + dataContent + "</span>",
+    //   };
+    //   iconSettings = {
+    //     iconImageSize: [29, 45],
+    //     iconImageOffset: [-14, -45],
+    //   };
+
+    //   let myPlacemark = new ymaps.Placemark(coords, ballonContent, {
+    //     iconLayout: "default#image",
+    //     iconImageHref: "/local/templates/main/images/mapicon.png",
+    //     ...iconSettings,
+    //   });
+    //   myPlacemark.id = i;
+    //   that.linkedWithPointForWhereBuy(myMap, myPlacemark);
+    //   i++;
+    //   myMap.geoObjects.add(myPlacemark);
+    // }
     let i = 0;
     let that = this;
     $(".map-data input").each(function () {
@@ -74,7 +158,7 @@ export default class Manager_maps {
       }
       let myPlacemark = new ymaps.Placemark(coords, ballonContent, {
         iconLayout: "default#image",
-        iconImageHref: "images/mapicon.png",
+        iconImageHref: "/local/templates/main/images/mapicon.png",
         ...iconSettings,
       });
       myPlacemark.id = i;
