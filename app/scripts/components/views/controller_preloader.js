@@ -5,7 +5,9 @@ export default class Controller_preloader {
     this.init();
   }
   init() {
+    
     if (window.currentPage == '') {
+      console.log('preloader init')
       $(".pageSurfing").removeClass("active")
       $("html").addClass("loading");
       $("html").addClass("closeScroll");

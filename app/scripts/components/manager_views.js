@@ -15,10 +15,10 @@ export default class Manager_views {
     //   }
     // });
     this.preloader = new Controller_preloader();
+    this.showItems = new Controller_showItems();
     this.paralax = new Controller_paralax();
     this.fixed = new Controller_fixed();
     this.video = new Controller_video();
-    this.showItems = new Controller_showItems();
   }
   init() {
     this.paralax.init();
