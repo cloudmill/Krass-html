@@ -56,7 +56,7 @@ export default class Controller_difAnimate {
       $(".sert-content-menu-item").click(function () {
         update($(this));
       });
-      update($(".sert-content-menu-item").eq(0));
+      update($(".sert-content-menu-item.active"));
 
       if (globalListener.checkInit("menuTabsLineMoving")) {
         $(window).resize(() => {
