@@ -12,29 +12,6 @@ class Validator {
     inputs.change(function () {
       that.checkInputForRight($(this));
     });
-
-    let forms = $("form");
-    forms.submit(function (e) {
-      let form = $(this);
-      if (form.attr("data-reload") == "y") {
-        console.log("reload");
-      } else {
-        e.preventDefault();
-        if (that.checkFormRight(form)) {
-          if (window.Config.debug) {
-            console.log("form valid");
-          }
-          form.attr("data-reload", "y");
-          form.submit();
-          //отправка формы
-        } else {
-          if (window.Config.debug) {
-            console.error("form invalid");
-          }
-          //ошибка отправки формы
-        }
-      }
-    });
   }
   error(input) {
     input.closest("label").addClass("error");
