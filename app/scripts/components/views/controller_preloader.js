@@ -5,7 +5,7 @@ export default class Controller_preloader {
     this.init();
   }
   init() {
-    
+    console.log(window.currentPage)
     if (window.currentPage == '') {
       console.log('preloader init')
       $(".pageSurfing").removeClass("active")
@@ -111,6 +111,9 @@ export default class Controller_preloader {
   hideSimplePreloader() {
     setTimeout(() => {
       $(".pageSurfing").removeClass("active");
+      setTimeout(() => {
+        globalListener.trigger('preloader-load');
+      }, 300);
     }, 300)
   }
 }
