@@ -318,10 +318,18 @@
       z-index: 2;
       margin-bottom: 40px;
       overflow: hidden;
+      justify-content: flex-end;
       @media (max-width: 650px) {
         display: block;
         padding: 0;
         min-height: auto;
+      }
+      &:nth-child(odd){
+        justify-content: flex-start;
+        &:before {
+          right: auto;
+          left: 0;
+        }
       }
       &:nth-child(3) {
         justify-content: flex-end;
@@ -348,7 +356,7 @@
         width: 50%;
         bottom: 0;
         position: absolute;
-        left: 0;
+        right: 0;
         will-change: transform;
         transition: transform $ease-long;
         transform: translateY(100%);

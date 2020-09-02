@@ -20,6 +20,7 @@ export default class Sketch {
 
     this.container = document.getElementById("slider");
     this.images = JSON.parse(this.container.getAttribute("data-images"));
+    this.disp_path = this.container.getAttribute("data-disp");
     
     this.width = this.container.offsetWidth;
     this.height = this.container.offsetHeight;
@@ -143,7 +144,7 @@ export default class Sketch {
         texture2: { type: "f", value: this.textures[1] },
         displacement: {
           type: "f",
-          value: new THREE.TextureLoader().load("images/disp1.jpg"),
+          value: new THREE.TextureLoader().load(that.disp_path),
         },
         resolution: { type: "v4", value: new THREE.Vector4() },
       },

@@ -52,6 +52,13 @@
     transition: transform $ease-main;
     &:hover {
       transform: translateY(-20px);
+      .admat-download {
+        background: #0054a4;
+        color: #fff;
+        i {
+          filter: grayscale(1) brightness(0) invert(1);
+        }
+      }
     }
   }
   &-img {

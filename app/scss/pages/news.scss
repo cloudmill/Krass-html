@@ -442,6 +442,7 @@
         line-height: 130%;
         color: #3b3f44;
         border-bottom: 1px solid #dddddd;
+        @include tagHover();
       }
     }
   }
