@@ -144,6 +144,7 @@
   }
   &-base {
     position: relative;
+    z-index: 2;
     label {
       .field-inf {
         z-index: -1;
