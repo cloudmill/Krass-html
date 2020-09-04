@@ -18,7 +18,7 @@ export default class Controller_difAnimate {
     }
     let updateState = function (y) {
       $(".prodInfo-tab").each((key, item) => {
-        let center = y + $(window).height() / 3;
+        let center = y + $(window).height() / 4;
         if ($(item).offset().top < center) {
           if ($(item).offset().top + $(item).height() > center) {
             $(".prodInfo-menu-link").removeClass("active");
@@ -31,7 +31,7 @@ export default class Controller_difAnimate {
       let index = $(this).index();
       let item = $(".prodInfo-tab").eq(index);
       $("html, body").animate(
-        { scrollTop: item.offset().top - $(window).height() / 3 + 50 },
+        { scrollTop: item.offset().top - $(window).height() / 4 + 50 },
         500
       );
     });

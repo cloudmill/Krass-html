@@ -4,35 +4,37 @@ export default class Header {
   constructor() {
     this.del = 10;
     this.pos = 0;
-    this.state = 1;
+    this.limitScrollForHide = 70;
+    this.state = 'show';
     this.init();
   }
   show() {
-    if (this.state == 0) {
+    if (this.state == 'hide') {
       $(document).find(".header").removeClass("hide");
-      this.state = 1;
+      this.state = 'show';
     }
   }
   hide() {
     let header = $(document).find(".header");
-    if (this.state == 1 && $(document).scrollTop() > header.height()) {
+    if (this.state == 'show' && $(document).scrollTop() > this.limitScrollForHide) {
       header.addClass("hide");
-      this.state = 0;
+      this.state = 'hide';
     }
   }
   update() {
-    let pos = $(document).scrollTop();
-    let d = pos - this.pos;
-    if (pos > 100) {
+    let scrollTop = $(document).scrollTop();
+    let d = scrollTop - this.pos;
+    if (scrollTop > 0) {
       $(document).find(".header").addClass("scrolled");
     } else {
       $(document).find(".header").removeClass("scrolled");
     }
+    console.log(scrollTop)
     if (d < -this.del) {
-      this.pos = pos;
+      this.pos = scrollTop;
       this.show();
     } else if (d > this.del) {
-      this.pos = pos;
+      this.pos = scrollTop;
       this.hide();
     }
   }

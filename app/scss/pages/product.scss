@@ -175,6 +175,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        visibility: hidden;
+        &.swiper-slide-active{
+          visibility: visible;
+        }
         img {
           max-width: 100%;
           max-height: 650px;
