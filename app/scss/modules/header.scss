@@ -235,6 +235,10 @@
       margin-bottom: 10px;
       display: block;
       max-width: 285px;
+      @media(max-width: 1366px) and (max-height: 768px){
+        font-size: 35px;
+        line-height: 35px;
+      }
       @media (max-width: 1024px) {
         font-size: 25px;
         line-height: 110%;
@@ -252,6 +256,9 @@
       @media (max-width: 1024px) {
         white-space: nowrap;
       }
+      @media(max-width: 1366px) and (max-height: 768px){
+        line-height: 220%;
+      }
     }
     &-select {
       font-style: normal;
@@ -261,6 +268,9 @@
       text-transform: uppercase;
       color: $color-hover-link;
       margin-top: 50px;
+      @media(max-width: 1366px) and (max-height: 768px){
+        margin-top: 20px;
+      }
     }
   }
   &-search {

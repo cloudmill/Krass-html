@@ -29,7 +29,6 @@ export default class Header {
     } else {
       $(document).find(".header").removeClass("scrolled");
     }
-    console.log(scrollTop)
     if (d < -this.del) {
       this.pos = scrollTop;
       this.show();

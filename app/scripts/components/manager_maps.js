@@ -19,7 +19,7 @@ export default class Manager_maps {
     var myMap = this.createMap([55.751574, 37.573856]);
     this.setPlaceMark(myMap, "contacts");
 
-    this.setOptionsMap(myMap, { geo: false });
+    this.setOptionsMap(myMap, { geo: false});
   }
   whereBuyMap() {
     var myMap = this.createMap([55.751574, 37.573856]);
@@ -49,39 +49,6 @@ export default class Manager_maps {
     );
   }
   setPlaceMark(myMap, type) {
-    // if (type == "contacts") {
-    //   let i = 0;
-    //   let that = this;
-    //   let dataCords = "55.688172, 37.719791";
-    //   let coords = dataCords.replace(" ", "").split(",");
-    //   let dataName = "Вектор (ТЦ Муравейник)";
-    //   let dataContent = "ул. Октябрьский проспект, 73<br>8 (3842) 538-72-20<br>stroi-737@mail.ru";
-    //   let ballonContent = {};
-    //   let iconSettings = {
-    //     iconImageSize: [67, 107],
-    //     iconImageOffset: [-33, -107],
-    //   };
-    //   ballonContent = {
-    //     balloonContentHeader:
-    //       "<span class='placemark-name' >" + dataName + "</span>",
-    //     balloonContentBody:
-    //       "<span class='placemark-content' >" + dataContent + "</span>",
-    //   };
-    //   iconSettings = {
-    //     iconImageSize: [29, 45],
-    //     iconImageOffset: [-14, -45],
-    //   };
-
-    //   let myPlacemark = new ymaps.Placemark(coords, ballonContent, {
-    //     iconLayout: "default#image",
-    //     iconImageHref: "/local/templates/main/images/mapicon.png",
-    //     ...iconSettings,
-    //   });
-    //   myPlacemark.id = i;
-    //   that.linkedWithPointForWhereBuy(myMap, myPlacemark);
-    //   i++;
-    //   myMap.geoObjects.add(myPlacemark);
-    // }
     let i = 0;
     let that = this;
     $(".map-data input").each(function () {
@@ -208,6 +175,7 @@ export default class Manager_maps {
     if ($(window).width() <= 768) {
       myMap.behaviors.disable("drag");
     }
+
     if (opts.geo) this.setGeoLocation(myMap);
     this.setSearchControls(myMap);
   }
