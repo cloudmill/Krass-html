@@ -264,7 +264,7 @@
     position: relative;
     padding-top: 20px;
     margin: 180px 0;
-    @media (max-width: 1250px) {
+    @media (max-width: 1366px) {
       margin: 90px 0;
     }
     @media (max-width: 1024px) {
@@ -276,6 +276,9 @@
     }
     &-title {
       margin-bottom: 80px;
+      @media (max-width: 1366px) {
+        margin-bottom: 50px;
+      }
       @media (max-width: 1024px) {
         margin-bottom: 30px;
       }
@@ -325,6 +328,10 @@
       margin-bottom: 40px;
       overflow: hidden;
       justify-content: flex-end;
+      @media (max-width: 1366px) {
+        min-height: 350px;
+        padding: 30px 100px;
+      }
       @media (max-width: 650px) {
         display: block;
         padding: 0;
@@ -400,6 +407,7 @@
         background: white;
         max-width: 400px;
         position: relative;
+        padding-bottom: 70px;
         @media (max-width: 650px) {
           padding: 20px;
           padding-bottom: 50px;

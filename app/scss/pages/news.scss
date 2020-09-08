@@ -2,6 +2,9 @@
   &-head {
     padding-top: 230px;
     padding-bottom: 80px;
+    @media (max-width: 1366px) {
+      padding-bottom: 40px;
+    }
     @media (max-width: 1024px) {
       padding-top: 150px;
       padding-bottom: 40px;
