@@ -390,6 +390,9 @@
         img {
           height: 100%;
           display: block;
+          @media(min-width: 1600px){
+            width: 100%;
+          }
         }
       }
       &-content {

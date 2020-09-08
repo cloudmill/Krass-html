@@ -159,6 +159,7 @@ export default class Manager_forms {
     this.init_form_modal();
     this.init_form_subscribe();
     this.init_form_questionSection();
+    this.init_form_search();
   }
 
   initSelect2() {
@@ -244,6 +245,20 @@ export default class Manager_forms {
       e.preventDefault();
       $("#question-section .subscribe-success").removeClass("active");
     });
+  }
+
+  init_form_search(){
+    $('[href="#header-search"]').click(function(){
+      console.log('sdfsdf');
+      document.getElementById('s').focus();
+     // document.querySelector('#header-search input[name="q"]').focus();
+    })
+    $("#s").keyup(function(event){
+      if(event.keyCode == 13){
+          $('#header-search form').submit()
+  
+      }
+  });
   }
 
   initSertTabsChange() {

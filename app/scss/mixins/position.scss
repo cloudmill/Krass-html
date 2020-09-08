@@ -25,18 +25,21 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px;
-  @media (max-width: 1250px) {
+  @media (max-width: 1400px) {
     grid-gap: 30px;
   }
-  @media (max-width: 1024px) {
-    grid-gap: 20px;
+  @media (max-width: 1350px) {
+    grid-gap: 30px;
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1050px) {
+    grid-gap: 20px;
+  }
+  @media (max-width: 980px) {
     grid-gap: 15px;
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 550px) {
+  @media (max-width: 660px) {
     grid-template-columns: repeat(1, 1fr);
   }
 }
