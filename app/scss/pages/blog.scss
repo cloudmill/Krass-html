@@ -4,6 +4,9 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
     padding-top: 60px;
+    @media (max-width: 1366px){
+      padding-top: 30px;
+    }
     @media (max-width: 768px) {
       grid-column-gap: 15px;
       padding-top: 30px;
@@ -32,6 +35,11 @@
     }
     &-img {
       width: 100%;
+      @media (max-width: 1366px) {
+        overflow: hidden;
+        display: block;
+        max-height: 200px;
+      }
       img {
         width: 100%;
         height: auto;
@@ -44,6 +52,11 @@
       padding-bottom: 80px;
       background: white;
       position: relative;
+      @media (max-width: 1366px) {
+        padding: 20px 30px;
+        min-height: 260px;
+        padding-bottom: 60px;
+      }
       @media (max-width: 1024px) {
         padding: 25px 20px;
         padding-bottom: 60px;
@@ -81,6 +94,9 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
+      @media (max-width: 1366px) {
+        left: 30px;
+      }
       @media (max-width: 1024px) {
         left: 20px;
       }
@@ -115,7 +131,7 @@
     padding-top: 50px;
     @media (max-width: 768px) {
       padding-top: 30px;
-      @include scrollBox('1');
+      @include scrollBox("1");
     }
     &-list {
       display: flex;

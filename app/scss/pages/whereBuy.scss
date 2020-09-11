@@ -30,6 +30,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      @media (max-width: 1366px) {
+        height: 50px;
+        width: 50px;
+      }
       @media (max-width: 768px) {
         margin-left: 15px;
       }
@@ -45,6 +49,9 @@
       &:hover {
         &:before {
           animation: hoverZoom both $ease-long;
+          @media (max-width: 1366px) {
+            animation: hoverZoomSmall both $ease-long;
+          }
         }
         span.blue {
           opacity: 0;
@@ -58,6 +65,10 @@
         display: block;
         width: 70px;
         height: 70px;
+        @media (max-width: 1366px) {
+          height: 50px;
+          width: 50px;
+        }
         border: 1px solid #0054a4;
         position: absolute;
         left: 50%;
@@ -68,6 +79,10 @@
         0% {
           width: 70px;
           height: 70px;
+          @media (max-width: 1366px) {
+            height: 50px;
+            width: 50px;
+          }
         }
         50% {
           width: 80px;
@@ -78,6 +93,24 @@
         100% {
           width: 70px;
           height: 70px;
+          border: 1px solid #cc3e1e;
+          background: #cc3e1e;
+        }
+      }
+      @keyframes hoverZoomSmall {
+        0% {
+          width: 50px;
+          height: 50px;
+        }
+        50% {
+          width: 60px;
+          height: 60px;
+          border: 1px solid #cc3e1e;
+          background: white;
+        }
+        100% {
+          width: 50px;
+          height: 50px;
           border: 1px solid #cc3e1e;
           background: #cc3e1e;
         }
@@ -125,13 +158,16 @@
           color: #0054a4;
           transition: background $ease-main, color $ease-main,
             border-color $ease-main;
-          &:hover{
+          @media (max-width: 1366px) {
+            height: 50px;
+          }
+          &:hover {
             border-color: #cc3e1e;
-            i{
-              &:first-child{
+            i {
+              &:first-child {
                 display: none;
               }
-              &:last-child{
+              &:last-child {
                 display: block;
               }
             }
@@ -142,7 +178,7 @@
             top: 50%;
             transform: translateY(-50%);
             transition: filter $ease-main;
-            &:last-child{
+            &:last-child {
               display: none;
             }
           }
@@ -228,7 +264,7 @@
         width: 100%;
         box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.1);
       }
-      @include customScrollBar(7px,3px,#cc3e1e,#e7e7e7);
+      @include customScrollBar(7px, 3px, #cc3e1e, #e7e7e7);
     }
     &-list {
       background: #ffffff;

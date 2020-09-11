@@ -210,6 +210,9 @@
         transform: translateY(-50%);
         max-height: 100%;
         max-width: 500px;
+        @media (max-width: 1366px) {
+          max-width: 400px;
+        }
         @media (max-width: 1024px) {
           position: relative;
           max-width: 100%;

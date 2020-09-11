@@ -166,7 +166,7 @@ html {
   @include customScrollBar(6px, 6px, #0054a4, #eff7fd);
   &.closeScroll {
     overflow: hidden;
-    &.no-touch{
+    &.no-touch {
       .wrapper {
         .scroll-viewport {
           margin-right: 6px;
@@ -312,7 +312,7 @@ html {
     }
   }
 }
-.wrapper{
+.wrapper {
   .content {
     width: 100%;
     padding-left: 40px;
@@ -336,6 +336,9 @@ html {
       line-height: 130%;
       text-transform: uppercase;
       color: #0054a4;
+      @media (max-width: 1366px) and(max-height:768px) and(min-width: 1201px) {
+        font-size: 45px;
+      }
       @media (max-width: 1250px) {
         font-size: 50px;
       }

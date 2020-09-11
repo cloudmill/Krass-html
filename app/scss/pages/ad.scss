@@ -20,6 +20,9 @@
   &-list {
     @include grid();
     margin-bottom: 150px;
+    @media(max-width: 1366px){
+      margin-bottom: 70px;
+    }
     &.admat-cat {
       grid-template-columns: repeat(2, 1fr);
       .admat-item {
@@ -65,7 +68,8 @@
     padding: 0 50px;
     padding-bottom: 30px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    flex-basis: calc(100% - 60px);
     justify-content: center;
     min-height: 130px;
     @media (max-width: 1024px) {

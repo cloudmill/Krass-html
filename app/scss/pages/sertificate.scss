@@ -42,6 +42,9 @@
   }
   &-content {
     margin-bottom: 180px;
+    @media (max-width: 1366px) {
+      margin-bottom: 80px;
+    }
     @media (max-width: 768px) {
       margin-bottom: 60px;
     }
