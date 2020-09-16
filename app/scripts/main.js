@@ -18,9 +18,14 @@ class App {
   constructor() {
     window.globalListener = new Listener();
 
-    globalListener.setTriggerChange(document.body, 'offsetHeight', 'resize')
-    $(window).resize(() => { globalListener.trigger('resize');})
-    
+    globalListener.setTriggerChange(document.body, "offsetHeight", "resize");
+    $(window).resize(() => {
+      globalListener.trigger("resize");
+      var vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", vh + "px");
+    });
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", vh + "px");
 
     this.scroll = new Manager_scroll();
     this.views = new Manager_views();
@@ -31,7 +36,7 @@ class App {
     this.maps = new Manager_maps();
     this.header = new Header();
 
-    window.modals = this.modals
+    window.modals = this.modals;
 
     globalListener.on("XHR-complate", () => {
       this.views.init();

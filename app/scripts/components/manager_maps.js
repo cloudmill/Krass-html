@@ -1,4 +1,5 @@
 import $ from "jquery";
+const APIKEY = "379d541b-4caa-4542-9d9c-da60da6f9abe";
 export default class Manager_maps {
   constructor() {
     this.init();
@@ -19,7 +20,7 @@ export default class Manager_maps {
     var myMap = this.createMap([55.751574, 37.573856]);
     this.setPlaceMark(myMap, "contacts");
 
-    this.setOptionsMap(myMap, { geo: false});
+    this.setOptionsMap(myMap, { geo: false });
   }
   whereBuyMap() {
     var myMap = this.createMap([55.751574, 37.573856]);
@@ -99,6 +100,19 @@ export default class Manager_maps {
           balloonContentBody: "Мое местоположение",
         });
         myMap.geoObjects.add(result.geoObjects);
+        let position = result.geoObjects.get(0).properties.get("text").split(',');
+        let sity = position[position.length-1].trim();
+        console.log(sity)
+        if($('#region').length > 0){
+          $('#region').find('option').each((k,item)=>{
+            console.log(item)
+            if(item.textContent == sity){
+              item.selected = true;
+              $('#region').trigger('change')
+             // $('#region').val(item.getAttribute('value'));
+            }
+          });
+        }
       });
 
     geo
@@ -179,12 +193,12 @@ export default class Manager_maps {
     if (opts.geo) this.setGeoLocation(myMap);
     this.setSearchControls(myMap);
   }
-  removeMap(){
-    $('#map *').remove();
+  removeMap() {
+    $("#map *").remove();
   }
   whereBuyMapAjaxLogic() {
     let that = this;
-    let success =  (data) => {
+    let success = (data) => {
       $(".whereBuy-map").find(".whereBuy-map-list").remove();
       let shopEl = $(data).find(".whereBuy-map-list");
       $(".whereBuy-map-content").append(shopEl);

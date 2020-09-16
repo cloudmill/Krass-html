@@ -386,7 +386,7 @@ html {
       }
     }
     &-full {
-      height: calc(100vh - 90px);
+      height: calc(var(--vh, 1vh) * 100 - 90px);
     }
     &-border {
       border-top: 1px solid #dddddd;
