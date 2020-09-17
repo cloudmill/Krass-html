@@ -102,13 +102,12 @@ export default class Manager_maps {
         myMap.geoObjects.add(result.geoObjects);
         let position = result.geoObjects.get(0).properties.get("text").split(',');
         let sity = position[position.length-1].trim();
-        console.log(sity)
-        if($('#region').length > 0){
+        if($('#region').length > 0 && !$('#region').is('[changed]')){
           $('#region').find('option').each((k,item)=>{
-            console.log(item)
             if(item.textContent == sity){
               item.selected = true;
               $('#region').trigger('change')
+              $('#region').attr('changed','1');
              // $('#region').val(item.getAttribute('value'));
             }
           });
