@@ -185,9 +185,14 @@
       &:nth-child(4) {
         .header-product-img img {
           margin-left: -160px;
+
           @media (max-width: 1024px) {
-            margin-left: -90%;
-            max-width: 200%;
+            margin-left: -30%;
+            max-width: 120%;
+          }
+          @media (max-width: 768px) {
+            margin-left: -15%;
+            max-width: 100%;
           }
         }
       }

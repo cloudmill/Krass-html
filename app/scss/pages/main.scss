@@ -754,6 +754,10 @@
         width: 200px;
       }
       @media (max-width: 1024px) {
+        height: 225px;
+        width: 150px;
+      }
+      @media (max-width: 768px) {
         height: 150px;
         width: 100px;
       }
@@ -770,6 +774,9 @@
         width: 200px;
       }
       @media (max-width: 1024px) {
+        width: 150px;
+      }
+      @media (max-width: 768px) {
         width: 100px;
       }
     }
@@ -781,6 +788,9 @@
         left: -200px;
       }
       @media (max-width: 1024px) {
+        left: -150px;
+      }
+      @media (max-width: 768px) {
         left: -100px;
       }
       &.active {
@@ -795,6 +805,9 @@
               width: 200px;
             }
             @media (max-width: 1024px) {
+              width: 150px;
+            }
+            @media (max-width: 768px) {
               width: 100px;
             }
           }
@@ -895,6 +908,34 @@
       }
     }
     @media (max-width: 1024px) {
+      @keyframes hideBox {
+        0% {
+          width: 150px;
+        }
+        100% {
+          width: 0;
+        }
+      }
+      @keyframes showBox {
+        0% {
+          width: 0;
+          left: 150px;
+        }
+        100% {
+          width: 150px;
+          left: 0;
+        }
+      }
+      @keyframes showBoxInside {
+        0% {
+          left: -150px;
+        }
+        100% {
+          left: 0;
+        }
+      }
+    }
+    @media (max-width: 768px) {
       @keyframes hideBox {
         0% {
           width: 100px;

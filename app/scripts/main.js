@@ -33,7 +33,7 @@ class App {
     this.modals = new Manager_modals();
     this.forms = new Manager_forms();
     this.sliders = new Manager_sliders();
-    this.maps = new Manager_maps();
+    window.maps = this.maps = new Manager_maps();
     this.header = new Header();
 
     window.modals = this.modals;

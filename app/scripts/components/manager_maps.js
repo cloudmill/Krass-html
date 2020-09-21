@@ -14,16 +14,19 @@ export default class Manager_maps {
       } else {
         this.modalMap();
       }
+      window.regionCenter = this.regionCenter.bind(this);
     });
   }
   contactsMap() {
     var myMap = this.createMap([55.751574, 37.573856]);
+    this.map = myMap;
     this.setPlaceMark(myMap, "contacts");
 
     this.setOptionsMap(myMap, { geo: false });
   }
   whereBuyMap() {
     var myMap = this.createMap([55.751574, 37.573856]);
+    this.map = myMap;
     this.setPlaceMark(myMap, "whereBuy");
 
     this.setOptionsMap(myMap);
@@ -31,11 +34,10 @@ export default class Manager_maps {
   modalMap() {
     $(".map-content").append('<div id="map"></div>');
     var myMap = this.createMap([55.751574, 37.573856]);
+    this.map = myMap;
     this.setPlaceMark(myMap, "modal");
-
     this.setOptionsMap(myMap, { geo: false });
   }
-
   createMap(center) {
     return new ymaps.Map(
       "map",
@@ -49,14 +51,35 @@ export default class Manager_maps {
       }
     );
   }
+  clustererInit() {
+    var clusterIcons = [
+        {
+          href: `/local/templates/main/images/map-pin-black.svg`,
+          size: [29, 45],
+          offset: [-14, -45],
+        },
+        {
+          href: `/local/templates/main/images/map-pin-black.svg`,
+          size: [29, 45],
+          offset: [-14, -45],
+        },
+      ],
+      MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+        '<div class="map-clusterer" >{{ properties.geoObjects.length }}</div>'
+      );
+    this.clusterer = new ymaps.Clusterer({
+      clusterIcons: clusterIcons,
+      clusterIconContentLayout: MyIconContentLayout,
+    });
+  }
   setPlaceMark(myMap, type) {
+    this.clustererInit();
     let i = 0;
-    let that = this;
-    $(".map-data input").each(function () {
-      let dataCords = $(this).attr("data-cords");
+    $(".map-data input").each((key, item) => {
+      let dataCords = $(item).attr("data-cords");
       let coords = dataCords.replace(" ", "").split(",");
-      let dataName = $(this).attr("data-name");
-      let dataContent = $(this).attr("data-content");
+      let dataName = $(item).attr("data-name");
+      let dataContent = $(item).attr("data-content");
       let ballonContent = {};
       let iconSettings = {
         iconImageSize: [67, 107],
@@ -74,60 +97,97 @@ export default class Manager_maps {
           iconImageOffset: [-14, -45],
         };
       }
+      let img = $('.whereBuy-filter-type-item:first-child input').is(':checked') ? "map-pin-blue.svg" : "map-pin-red.svg"
       let myPlacemark = new ymaps.Placemark(coords, ballonContent, {
         iconLayout: "default#image",
-        iconImageHref: "/local/templates/main/images/mapicon.png",
+        iconImageHref: "/local/templates/main/images/"+img,
         ...iconSettings,
       });
       myPlacemark.id = i;
-      that.linkedWithPointForWhereBuy(myMap, myPlacemark);
+      this.linkedWithPointForWhereBuy(myMap, myPlacemark);
       i++;
-      myMap.geoObjects.add(myPlacemark);
+      this.clusterer.add(myPlacemark);
+    });
+    myMap.geoObjects.add(this.clusterer);
+  }
+  async setRegions(myMap) {
+    this.regions = null;
+    var result = await ymaps.borders.load("RU");
+    this.regions = ymaps.geoQuery(result);
+    this.regions.setOptions("fillColor", "rgba(0,0,0,0)");
+    this.regions.setOptions("borderColor", "rgba(0,0,0,0)");
+    this.regions.addToMap(myMap);
+  }
+  regionCenter(region) {
+    switch (region) {
+      case "ХМАО":
+        region = "Ханты-Мансийский автономный округ";
+      case "ЯНАО":
+        region = "Ямало-Ненецкий автономный округ";
+    }
+    region = region.toLowerCase();
+
+    this.regions.each((item) => {
+      if (item.properties._data.name.toLowerCase().indexOf(region) != -1) {
+        console.log(region, item.properties._data.name);
+        this.map.setBounds(item.geometry.getBounds());
+      }
     });
   }
-  setGeoLocation(myMap) {
-    let geo = ymaps.geolocation;
-
-    geo
-      .get({
-        provider: "yandex",
-        mapStateAutoApply: true,
-      })
-      .then(function (result) {
-        // Красным цветом пометим положение, вычисленное через ip.
-        result.geoObjects.options.set("preset", "islands#geolocationIcon");
-        result.geoObjects.get(0).properties.set({
-          balloonContentBody: "Мое местоположение",
+  async setGeoLocation(myMap) {
+    try {
+      if (!this.regions) {
+        await this.setRegions(myMap);
+      } else {
+        this.regions.addToMap(myMap);
+      }
+      let geo = ymaps.geolocation;
+      let result;
+      await geo
+        .get({
+          provider: "yandex",
+          mapStateAutoApply: true,
+        })
+        .then((res) => {
+          result = res;
         });
-        myMap.geoObjects.add(result.geoObjects);
-        let position = result.geoObjects.get(0).properties.get("text").split(',');
-        let sity = position[position.length-1].trim();
-        if($('#region').length > 0 && !$('#region').is('[changed]')){
-          $('#region').find('option').each((k,item)=>{
-            if(item.textContent == sity){
-              item.selected = true;
-              $('#region').trigger('change')
-              $('#region').attr('changed','1');
-             // $('#region').val(item.getAttribute('value'));
-            }
-          });
+      result.geoObjects.options.set("preset", "islands#geolocationIcon");
+      result.geoObjects.get(0).properties.set({
+        balloonContentBody: "Мое местоположение",
+      });
+      myMap.geoObjects.add(result.geoObjects);
+
+      this.regions.each((item) => {
+        if (item.geometry.contains(result.geoObjects.position)) {
+          this.region = item;
         }
       });
-
-    geo
-      .get({
-        provider: "browser",
-        mapStateAutoApply: true,
-      })
-      .then(function (result) {
-        result.geoObjects.options.set("preset", "islands#geolocationIcon");
-        myMap.geoObjects.add(result.geoObjects);
+      let position = this.region.properties._data.name;
+      if ($("#region").length > 0 && !$("#region").is("[changed]")) {
+        $("#region")
+          .find("option")
+          .each((k, item) => {
+            if (
+              position.toLowerCase().indexOf(item.textContent.toLowerCase()) !=
+              -1
+            ) {
+              item.selected = true;
+              $("#region").trigger("change");
+            }
+          });
+        $("#region").attr("changed", "1");
+      } else {
+        setTimeout(() => {
+          this.regionCenter($("#region").find(":selected").text());
+        }, 100);
+      }
+      $(".whereBuy-filter-geo").click(() => {
+        let btnGeo = $("[class*=-float-button-icon_icon_geolocation]");
+        if (btnGeo.length > 0) btnGeo.click();
       });
-
-    $(".whereBuy-filter-geo").click(() => {
-      let btnGeo = $("[class*=-float-button-icon_icon_geolocation]");
-      if (btnGeo.length > 0) btnGeo.click();
-    });
+    } catch (e) {
+      console.log(e);
+    }
   }
   setSearchControls(myMap) {
     let that = this;
@@ -228,8 +288,8 @@ export default class Manager_maps {
       });
     });
 
-    $("#region").on("change", function () {
-      let selectCity = $(this).val();
+    $("#region").on("change", (e) => {
+      let selectCity = $(e.target).val();
       $.ajax({
         type: "POST",
         url: "http://krass.hellem.ru/whereBuy/",
