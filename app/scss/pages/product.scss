@@ -346,6 +346,9 @@
   @media (max-width: 1500px) {
     grid-column-gap: 50px;
   }
+  @media (max-width: 1366px) {
+    padding-top: 60px;
+  }
   @media (max-width: 1024px) {
     display: block;
     padding-top: 0;

@@ -30,8 +30,12 @@ export default class Controller_difAnimate {
     $(".prodInfo-menu-link").click(function () {
       let index = $(this).index();
       let item = $(".prodInfo-tab").eq(index);
+      let height = item.height() / 2;
+      if (item.height() > $(window).height()) height = $(window).height() / 3 - 50;
       $("html, body").animate(
-        { scrollTop: item.offset().top - $(window).height() / 4 + 50 },
+        {
+          scrollTop: item.offset().top - $(window).height() / 4 + height,
+        },
         500
       );
     });
@@ -124,7 +128,7 @@ export default class Controller_difAnimate {
       let free = true;
       let speedUp = () => {
         clearInterval(timeUp);
-        clearTimeout(timeOut)
+        clearTimeout(timeOut);
         timeUp = setInterval(() => {
           if (phazeStep < 0.2) {
             phazeStep *= 1.05;
@@ -132,11 +136,11 @@ export default class Controller_difAnimate {
             clearInterval(timeUp);
           }
         }, 10);
-        timeOut = setTimeout(()=>{
+        timeOut = setTimeout(() => {
           speedDown();
           clearInterval(timeUp);
           free = true;
-        },100)
+        }, 100);
       };
       let speedDown = () => {
         clearInterval(timeDown);
@@ -152,7 +156,7 @@ export default class Controller_difAnimate {
       };
       globalListener.on("scroll", (y) => {
         if ($(".about-words-item").length > 0 && free) {
-          free = false
+          free = false;
           clearInterval(timeDown);
           speedUp();
         }
@@ -160,17 +164,15 @@ export default class Controller_difAnimate {
     }
   }
 
-  _reCalc(){
+  _reCalc() {
     let left = $(".header-logo-box").offset().left;
     $(".header-logo").css("left", left + "px");
     //выравнивание тектса по лого
     $(".main-banner-sub").css("left", left - 40 + "px");
     $(".news-detail-box").css("left", left - 40 + "px");
     $(".page-404-content span").css(
-        "left",
-        -(
-            $(window).width() - 80
-        ) / 2 + left - 40 + "px"
+      "left",
+      -($(window).width() - 80) / 2 + left - 40 + "px"
     );
   }
 
@@ -189,7 +191,7 @@ export default class Controller_difAnimate {
         setTimeout(() => {
           this._reCalc();
         }, 300);
-      }else{
+      } else {
         this._reCalc();
       }
 

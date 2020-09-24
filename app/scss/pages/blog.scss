@@ -204,6 +204,9 @@
       line-height: 130%;
       text-transform: uppercase;
       color: #0054a4;
+      @media(max-width:1366px){
+        font-size: 45px;
+      }
       @media (max-width: 1024px) {
         font-size: 25px;
         line-height: 110%;

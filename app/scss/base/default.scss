@@ -263,6 +263,7 @@ html {
     }
   }
   .ymaps-layers-pane,
+  [class*="-ground-pane"],
   canvas {
     filter: grayscale(100%);
   }
@@ -337,7 +338,7 @@ html {
       text-transform: uppercase;
       color: #0054a4;
       @media (max-width: 1366px) and(max-height:768px) and(min-width: 1201px) {
-        font-size: 45px;
+        font-size: 55px;
       }
       @media (max-width: 1250px) {
         font-size: 50px;

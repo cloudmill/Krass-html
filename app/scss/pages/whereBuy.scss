@@ -210,8 +210,10 @@
     height: 650px;
     padding-top: 40px;
     padding-bottom: 40px;
+    margin-bottom: 150px;
     @media (max-width: 1366px) {
       height: 450px;
+      margin-bottom: 60px;
     }
     @media (max-width: 768px) {
       height: auto;
@@ -270,6 +272,7 @@
       height: 100%;
       position: relative;
       z-index: 4;
+
       @media (max-width: 768px) {
         height: 420px;
         width: 100%;
