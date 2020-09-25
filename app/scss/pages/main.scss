@@ -555,6 +555,8 @@
     }
   }
   &-menu {
+    position: relative;
+    z-index: 2;
     &-item {
       margin-bottom: 16px;
       position: relative;
@@ -648,18 +650,18 @@
       @media (min-width: 769px) {
         display: none;
       }
-      $sizesmallimg: 50vw;
+      $sizesmallimg: 280px;
       &-box {
         position: relative;
         @media (max-width: 768px) {
-          left: 15px;
+          left: -15px;
         }
         @include mediaSmallScreen {
           left: auto;
           margin-left: auto;
           width: $sizesmallimg;
-          min-height: 220px;
-          margin-top: -15px;
+          min-height: 190px;
+          margin-top: -80px;
           margin-bottom: -50px;
           margin-right: -80px;
         }
@@ -767,6 +769,8 @@
   $media_4: 768px;
   $widthBox_4: 100px;
   $heightBox_4: 150px;
+  $widthBox_4: 70px;
+  $heightBox_4: 90px;
 
   &-preview {
     position: absolute;
@@ -779,7 +783,7 @@
     }
     @include mediaSmallScreen {
       right: auto;
-      left: 115px;
+      left: 175px;
       bottom: 150px;
       transform: none;
     }

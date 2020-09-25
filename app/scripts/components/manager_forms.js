@@ -106,7 +106,7 @@ class Form {
   mess() {
     $.ajax({
       url: this.url,
-      method: "get",
+      method: "post",
       dataType: "html",
       data: this.getData(),
       success: (data) => {
@@ -210,8 +210,8 @@ export default class Manager_forms {
   init_form_modal() {
     let form = new Form($("#question form"));
     form.onsuccess = function () {
-      $(this).find(".modal-form-step").removeClass("active");
-      $(this).find('.modal-form-step[data-step="2"]').addClass("active");
+      $("#question form .modal-form-step").removeClass("active");
+      $('#question form .modal-form-step[data-step="2"]').addClass("active");
     };
 
     $(".modal-form-reset a").click(function (e) {
@@ -247,18 +247,17 @@ export default class Manager_forms {
     });
   }
 
-  init_form_search(){
-    $('[href="#header-search"]').click(function(){
-      console.log('sdfsdf');
-      document.getElementById('s').focus();
-     // document.querySelector('#header-search input[name="q"]').focus();
-    })
-    $("#s").keyup(function(event){
-      if(event.keyCode == 13){
-          $('#header-search form').submit()
-  
+  init_form_search() {
+    $('[href="#header-search"]').click(function () {
+      console.log("sdfsdf");
+      document.getElementById("s").focus();
+      // document.querySelector('#header-search input[name="q"]').focus();
+    });
+    $("#s").keyup(function (event) {
+      if (event.keyCode == 13) {
+        $("#header-search form").submit();
       }
-  });
+    });
   }
 
   initSertTabsChange() {

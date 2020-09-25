@@ -83,21 +83,20 @@
 }
 .big-link {
   height: 100px;
-  user-select: none;
-  display: flex;
   padding: 0 20px;
   padding-right: 40px;
+  user-select: none;
   font-style: normal;
   font-weight: bold;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
   font-size: 13px;
   line-height: 140%;
   text-transform: uppercase;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  position: relative;
   z-index: 2;
+  cursor: pointer;
   overflow: hidden;
   @media (max-width: 1024px) {
     height: 60px;
@@ -176,15 +175,16 @@
     align-items: center;
     position: relative;
     span {
-      @include performance();
+      display: block;
       white-space: nowrap;
       position: absolute;
       padding-top: 3px;
       left: 0;
       top: 0;
-      display: block;
       will-change: transform;
+      transform-origin: right;
       $confAnim: 4s linear infinite reverse;
+      @include performance();
       &:nth-child(1) {
         position: relative;
         animation: wordMoving $confAnim;

@@ -9,6 +9,9 @@
   img {
     height: auto;
   }
+  @media(max-width: 1366px){
+    min-height: 320px;
+  }
   &.catalog-head {
     @media (max-width: 900px) {
       padding-bottom: 260px;
@@ -75,6 +78,9 @@
   &.admat-head {
     img {
       max-width: 640px;
+      @media(max-width: 1366px){
+        max-width: 500px;
+      }
     }
     @media (max-width: 1024px) {
       min-height: 380px;
@@ -135,6 +141,9 @@
     z-index: -1;
     img {
       max-height: 450px;
+      @media(max-width: 1366px){
+        max-height: 350px;
+      }
     }
     > div {
       display: flex;
