@@ -90,7 +90,7 @@
     z-index: 1;
     @media (max-width: 1366px) {
       background-size: 520px 340px;
-      background-position: 95% bottom;
+      background-position: right bottom;
     }
     @media (max-width: 1250px) {
       background-size: 420px 290px;
@@ -110,12 +110,11 @@
     right: 500px;
     bottom: 650px;
     @media (max-width: 1366px) {
-      right: calc(5% + 198px);
+      right: 240px;
       bottom: 530px;
     }
     @media (max-width: 1250px) {
-      right: calc(5% + 198px);
-      bottom: 530px;
+      right: 220px;
     }
     @media (max-width: 1024px) {
       right: 220px;
