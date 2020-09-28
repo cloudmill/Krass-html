@@ -44,10 +44,10 @@ export default class Manager_maps {
       {
         center: center,
         zoom: 9,
-        controls: ["geolocationControl"],
+        controls: ["geolocationControl"]
       },
       {
-        searchControlProvider: "yandex#search",
+        searchControlProvider: "yandex#search"
       }
     );
   }
@@ -56,20 +56,20 @@ export default class Manager_maps {
         {
           href: `/local/templates/main/images/map-pin-black.svg`,
           size: [29, 45],
-          offset: [-14, -45],
+          offset: [-14, -45]
         },
         {
           href: `/local/templates/main/images/map-pin-black.svg`,
           size: [29, 45],
-          offset: [-14, -45],
-        },
+          offset: [-14, -45]
+        }
       ],
       MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
         '<div class="map-clusterer" >{{ properties.geoObjects.length }}</div>'
       );
     this.clusterer = new ymaps.Clusterer({
       clusterIcons: clusterIcons,
-      clusterIconContentLayout: MyIconContentLayout,
+      clusterIconContentLayout: MyIconContentLayout
     });
   }
   setPlaceMark(myMap, type) {
@@ -83,25 +83,25 @@ export default class Manager_maps {
       let ballonContent = {};
       let iconSettings = {
         iconImageSize: [67, 107],
-        iconImageOffset: [-33, -107],
+        iconImageOffset: [-33, -107]
       };
       if (type == "whereBuy") {
         ballonContent = {
-          balloonContentHeader:
-            "<span class='placemark-name' >" + dataName + "</span>",
-          balloonContentBody:
-            "<span class='placemark-content' >" + dataContent + "</span>",
+          balloonContentHeader: "<span class='placemark-name' >" + dataName + "</span>",
+          balloonContentBody: "<span class='placemark-content' >" + dataContent + "</span>"
         };
         iconSettings = {
           iconImageSize: [29, 45],
-          iconImageOffset: [-14, -45],
+          iconImageOffset: [-14, -45]
         };
       }
-      let img = $('.whereBuy-filter-type-item:first-child input').is(':checked') ? "map-pin-blue.svg" : "map-pin-red.svg"
+      let img = $(".whereBuy-filter-type-item:first-child input").is(":checked")
+        ? "map-pin-blue.svg"
+        : "map-pin-red.svg";
       let myPlacemark = new ymaps.Placemark(coords, ballonContent, {
         iconLayout: "default#image",
-        iconImageHref: "/local/templates/main/images/"+img,
-        ...iconSettings,
+        iconImageHref: "/local/templates/main/images/" + img,
+        ...iconSettings
       });
       myPlacemark.id = i;
       this.linkedWithPointForWhereBuy(myMap, myPlacemark);
@@ -127,7 +127,7 @@ export default class Manager_maps {
     }
     region = region.toLowerCase();
 
-    this.regions.each((item) => {
+    this.regions.each(item => {
       if (item.properties._data.name.toLowerCase().indexOf(region) != -1) {
         console.log(region, item.properties._data.name);
         this.map.setBounds(item.geometry.getBounds());
@@ -146,18 +146,18 @@ export default class Manager_maps {
       await geo
         .get({
           provider: "yandex",
-          mapStateAutoApply: true,
+          mapStateAutoApply: true
         })
-        .then((res) => {
+        .then(res => {
           result = res;
         });
       result.geoObjects.options.set("preset", "islands#geolocationIcon");
       result.geoObjects.get(0).properties.set({
-        balloonContentBody: "Мое местоположение",
+        balloonContentBody: "Мое местоположение"
       });
       myMap.geoObjects.add(result.geoObjects);
 
-      this.regions.each((item) => {
+      this.regions.each(item => {
         if (item.geometry.contains(result.geoObjects.position)) {
           this.region = item;
         }
@@ -167,10 +167,7 @@ export default class Manager_maps {
         $("#region")
           .find("option")
           .each((k, item) => {
-            if (
-              position.toLowerCase().indexOf(item.textContent.toLowerCase()) !=
-              -1
-            ) {
+            if (position.toLowerCase().indexOf(item.textContent.toLowerCase()) != -1) {
               item.selected = true;
               $("#region").trigger("change");
             }
@@ -178,7 +175,11 @@ export default class Manager_maps {
         $("#region").attr("changed", "1");
       } else {
         setTimeout(() => {
-          this.regionCenter($("#region").find(":selected").text());
+          this.regionCenter(
+            $("#region")
+              .find(":selected")
+              .text()
+          );
         }, 100);
       }
       $(".whereBuy-filter-geo").click(() => {
@@ -193,13 +194,13 @@ export default class Manager_maps {
     let that = this;
     let searchControl = new ymaps.control.SearchControl({
       options: {
-        provider: "yandex#search",
-      },
+        provider: "yandex#search"
+      }
     });
     window.searchControl = searchControl;
     myMap.controls.add(searchControl);
 
-    $(".show-in-map").click(function (e) {
+    $(".show-in-map").click(function(e) {
       e.preventDefault();
       $("html, body").animate({ scrollTop: $("#map").offset().top - 90 }, 500); // анимируем скроолинг к элементу scroll_el
       let search = $(this).attr("data-search");
@@ -217,13 +218,13 @@ export default class Manager_maps {
     pointTarget.click(() => {
       placeMark.events.fire("click", {
         coordPosition: placeMark.geometry.getCoordinates(),
-        target: placeMark,
+        target: placeMark
       });
       myMap.panTo([placeMark.geometry.getCoordinates()], {
-        flying: true,
+        flying: true
       });
     });
-    placeMark.events.add("click", (e) => {
+    placeMark.events.add("click", e => {
       //Активация элелмента в списке и проктутка до него
       //var tempScrollbar = Scrollbar.get($(".whereBuy-map-item").eq(0)[0]);
 
@@ -233,7 +234,7 @@ export default class Manager_maps {
   }
   setOptionsMap(myMap, opts = { geo: true }) {
     myMap.behaviors.disable("scrollZoom");
-    myMap.events.add("click", function () {
+    myMap.events.add("click", function() {
       myMap.balloon.close();
     });
     myMap.controls.add(
@@ -241,8 +242,8 @@ export default class Manager_maps {
         options: {
           size: "auto",
           float: "none",
-          position: { right: 10, bottom: 40 },
-        },
+          position: { right: 10, bottom: 40 }
+        }
       })
     );
     if ($(window).width() <= 768) {
@@ -257,54 +258,53 @@ export default class Manager_maps {
   }
   whereBuyMapAjaxLogic() {
     let that = this;
-    let success = (data) => {
-      $(".whereBuy-map").find(".whereBuy-map-list").remove();
+
+    const success = data => {
+      $(".whereBuy-map")
+        .find(".whereBuy-map-list")
+        .remove();
       let shopEl = $(data).find(".whereBuy-map-list");
       $(".whereBuy-map-content").append(shopEl);
 
-      let inpEl = $(data).find(".map-data").find("input");
-      $(".map-data").find("input").remove();
+      let inpEl = $(data)
+        .find(".map-data")
+        .find("input");
+      $(".map-data")
+        .find("input")
+        .remove();
       $(".map-data").append(inpEl);
       that.removeMap();
       that.whereBuyMap();
     };
-    $(".whereBuy-filter-type-item").on("change", function () {
-      let saleType = $(this).attr("for");
+    const changeHandler = () => {
       $.ajax({
         type: "POST",
         url: "http://krass.hellem.ru/whereBuy/",
         dataType: "html",
         data: {
-          ajax_sale_type: true,
-          sale_type_id: saleType,
+          select_region: $("#region").val(),
+          select_sales_type: $(".whereBuy-filter-type-item:checked").attr("name")
         },
-        success: function (data) {
-          $("#region").find("option").remove();
-          let el = $(data).find("#region").find("option");
+        success: function(data) {
+          $("#region")
+            .find("option")
+            .remove();
+          let el = $(data)
+            .find("#region")
+            .find("option");
           $("#region").append(el);
-
           success(data);
-        },
+        }
       });
+    };
+    $(".whereBuy-filter-type-item").on("change", function() {
+      changeHandler();
     });
 
-    $("#region").on("change", (e) => {
-      let selectCity = $(e.target).val();
-      $.ajax({
-        type: "POST",
-        url: "http://krass.hellem.ru/whereBuy/",
-        dataType: "html",
-        data: {
-          ajax_city_select: true,
-          cityId: selectCity,
-        },
-        success: function (data) {
-          success(data);
-        },
-      });
+    $("#region").on("change", e => {
+      changeHandler();
     });
   }
-
   search(str) {
     window.searchControl.search(str);
   }
