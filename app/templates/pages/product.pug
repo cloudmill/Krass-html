@@ -203,7 +203,27 @@ block content
             +icon('multi-str-orange','svg')
 
 
-
+  .subscribe.content.section-full#question-section.only-mobile
+    .section-title-sub
+      .show-item.showInLeft(data-group='question-section') Задать вопрос
+    form.subscribe-form
+      .show-item.showInRight(data-group='question-section')
+        +fieldBase('nameQuest','name','Имя')
+      .show-item.showInRight(data-group='question-section')
+        +fieldBase('emailQuest','email','Email')
+      .show-item.showInRight(data-group='question-section')
+        +fieldBaseBig('messQuest','text','Сообщение')
+      .field-row.show-item.showInRight(data-group='question-section')
+        +submit()
+          |отправить
+        +fieldCheck('ppQuest','pp')
+          |Согласен на обработку персональных данных <br> в соответствии с 
+          a(href="./pp.html") политикой конфиденциальности
+    .subscribe-success
+      .subscribe-success-title ваше сообщение принято. <br> ответим, как только сможем.
+      .subscribe-success-reset
+        +link()
+          |Отправить еще
   include ../modules/subscribe.pug
 
 
