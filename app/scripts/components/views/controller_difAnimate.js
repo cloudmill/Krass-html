@@ -31,7 +31,10 @@ export default class Controller_difAnimate {
       let index = $(this).index();
       let item = $(".prodInfo-tab").eq(index);
       let height = item.height() / 2;
-      if (item.height() > $(window).height()) height = $(window).height() / 3 - 50;
+      if (item.height() > $(window).height()/3*2) {
+        height = $(window).height() / 3 - 50;
+        console.log('big')
+      }
       $("html, body").animate(
         {
           scrollTop: item.offset().top - $(window).height() / 4 + height,

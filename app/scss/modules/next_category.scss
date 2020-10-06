@@ -57,7 +57,11 @@
       display: block;
       position: absolute;
       left: 50%;
-      top: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      @media (max-width: 1366px) {
+        max-height: 350px;
+      }
       @media (max-width: 1024px) {
         left: 40%;
       }
