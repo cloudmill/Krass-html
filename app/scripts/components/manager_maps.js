@@ -283,7 +283,7 @@ export default class Manager_maps {
         dataType: "html",
         data: {
           select_region: $("#region").val(),
-          select_sales_type: $(".whereBuy-filter-type-item:checked").attr("name")
+          select_sales_type: $(".whereBuy-filter-type-item input:checked").attr("id")
         },
         success: function(data) {
           $("#region")
