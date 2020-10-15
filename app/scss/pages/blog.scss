@@ -4,15 +4,39 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
     padding-top: 60px;
+    &.slider{
+      @include scrollBox();
+      overflow-x: auto;
+      grid-gap: 0;
+      overflow-y: visible;
+      display: flex;
+      .blog-item{
+        display: block !important;
+        min-width: calc(50% - 20px);
+        margin-right: 40px;
+      }
+    }
     @media (max-width: 1366px) {
       padding-top: 30px;
     }
     @media (max-width: 768px) {
       grid-column-gap: 15px;
       padding-top: 30px;
+      &.slider{
+        .blog-item{
+          min-width: calc(50% - 7px);
+          margin-right: 15px;
+        }
+      }
     }
     @media (max-width: 650px) {
       grid-template-columns: 1fr;
+      &.slider{
+        .blog-item{
+          min-width: 100%;
+          margin-right: 15px;
+        }
+      }
     }
   }
   &-item {

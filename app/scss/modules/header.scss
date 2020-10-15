@@ -473,7 +473,7 @@
       position: relative;
       align-items: flex-start;
       justify-content: space-between;
-      min-height: 100vh;
+      min-height: calc(var(--vh, 1vh) * 100);
       max-width: 375px;
       @media (max-width: 1150px){
         overflow-x: hidden;
