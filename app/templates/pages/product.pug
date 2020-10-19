@@ -155,16 +155,16 @@ block content
         .product-title калькулятор расхода
         form.prodInfo-calc
           label.prodInfo-calc-field
-            input(type="number" value="56" name='x' data-required)
-            span Длина шва, см
+            input(type="text" value="56" name='x' data-required)
+            span Длина шва, м
             img(src="images/calc-img-1.svg" alt="" )
           label.prodInfo-calc-field
-            input(type="number" value="34" name='y' data-required)
-            span Ширина шва, см
+            input(type="text" value="34" name='y' data-required)
+            span Ширина шва, мм
             img(src="images/calc-img-2.svg" alt="")
           label.prodInfo-calc-field
-            input(type="number" value="23" name='z' data-required)
-            span Глубина шва, см
+            input(type="text" value="23" name='z' data-required)
+            span Глубина шва, мм
             img(src="images/calc-img-3.svg" alt="")
           .prodInfo-calc-result
             +submit()

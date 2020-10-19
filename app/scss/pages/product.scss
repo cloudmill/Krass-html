@@ -550,6 +550,9 @@
             font-size: 13px;
           }
         }
+        &.open {
+          display: initial;
+        }
       }
       &-val {
         font-style: normal;
