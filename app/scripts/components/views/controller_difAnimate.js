@@ -200,13 +200,36 @@ export default class Controller_difAnimate {
 
       //корректировка скорости бегущей строки в большой кнопке
       $(".big-link").each(function () {
-        let strs = $(this).find(".big-link-mask span");
-        let widthStr = strs.eq(0).width() + 20;
-        let defaultDuration = 4;
-        let newDuration =
-          defaultDuration *
-          (widthStr / $(".big-link").find(".big-link-mask").width());
-        strs.css("animation-duration", newDuration + "s");
+        // NEW
+        const DEFAULT_DURATION = 2.5;
+
+        const mask = $(this).find(".big-link-mask");
+        const pipe = $(this).find(".big-link-pipe");
+
+        const maskWidth = mask.width();
+        const pipeWidth = pipe.width();
+
+        // длина pipe'а должна быть больше длины рамки
+        const widthRatio = pipeWidth / maskWidth;
+
+        // увеличим duration пропорционально увеличению размера pipe'a относительно рамки
+        const curDuration = DEFAULT_DURATION * widthRatio;
+
+        pipe.css("animation-duration", curDuration + "s");
+        
+        // END NEW
+
+        // OLD
+
+        // let strs = $(this).find(".big-link-mask span");
+        // let widthStr = strs.eq(0).width() + 20;
+        // let defaultDuration = 4;
+        // let newDuration =
+        //   defaultDuration *
+        //   (widthStr / $(".big-link").find(".big-link-mask").width());
+        // strs.css("animation-duration", newDuration + "s");
+
+        // END OLD
       });
     };
     correctDuing();

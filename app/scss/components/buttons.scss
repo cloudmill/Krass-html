@@ -167,13 +167,24 @@
       @include figureForBG($color-hover-link);
     }
   }
+
+  /*
+    Проблема: анимация бесконечной прокрутки в кнопках на iPad при первом запуске страницы
+    Преположение: проблема в translate3d, will-change итп
+    Идея решения: двигать не каждый span по отдельности, а созданный для них контейнер
+    Улучшения: анимация одна, анимация проще (без translate3d)
+  */
+
   &-mask {
-    overflow: hidden;
+    position: relative;
     width: 175px;
     height: 21px;
     display: flex;
     align-items: center;
-    position: relative;
+    overflow: hidden;
+
+    /* OLD
+
     span {
       display: block;
       white-space: nowrap;
@@ -220,7 +231,46 @@
         transform: translate3d(calc(200% + 40px), 0, 0);
       }
     }
+
+    END OLD */
   }
+
+  /* NEW */
+
+  &-pipe {
+    // контейней "прижат к правому краю"
+    // расположен вертикально по центру
+    position: absolute;
+    right: 0;
+    top: 50%;
+    max-height: 21px;
+    display: flex;
+    $animation-options: 4s linear infinite;
+    animation: pipe-animation $animation-options;
+
+    span {
+      margin-left: 15px;
+      padding-top: 3px;
+      display: block;
+      white-space: nowrap;
+    }
+
+    // кол-во эл-ов четное
+    // сдвигаем на половину (и так по кругу)
+    // = эффект бесконечной прокрутки
+    @keyframes pipe-animation {
+      0% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      100% {
+        transform: translateY(-50%) translateX(50%);
+      }
+    }
+  }
+
+  /* END NEW */
+
   i {
     margin-left: 15px;
     &:after {
