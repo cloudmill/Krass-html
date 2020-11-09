@@ -114,24 +114,26 @@
     position: absolute;
     width: 130px;
     z-index: 2;
-    bottom: 22px;
+    top: 83px;
+    bottom: 40px;
     left: 20px;
     @media (max-width: 768px) {
       width: 60px;
     }
     .swiper {
       &-wrapper {
-        transform: none !important;
+        // transform: none !important; (мешает прокрутке слайдера, когда элементов больше, perView
+        height: auto;
       }
       &-slide {
-        height: 130px !important;
+        // height: 130px !important; (мешает корректной высоте слайдера - последний элемент не помещался)
         display: flex;
         cursor: pointer;
         align-items: center;
         justify-content: center;
         position: relative;
         @media (max-width: 768px) {
-          height: 60px !important;
+          // height: 60px !important; (мешает корректной высоте слайдера - последний элемент не помещался)
         }
         &.swiper-slide-thumb-active {
           &:before {
