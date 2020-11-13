@@ -15,6 +15,19 @@ $(document).ready(function () {
 });
 
 function expenseCalculator() {
+  let sectionType; // 0 - герметик (по-умолчанию), 1 - пена
+  
+  try {
+    sectionType = sectionName === "Герметики" ? 0 : 1;
+  } catch (err) {
+    sectionType = 0;
+  }
+
+  if (sectionType) {
+    document.querySelector(".prodInfo-calc-result-item").remove();
+    $(".prodInfo-calc-result-item > span").text("Потребуется баллонов");
+  }
+
   const form = $(".prodInfo-calc");
 
   const submitButton = form.find(".field-submit");
