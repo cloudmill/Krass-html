@@ -9,6 +9,16 @@
   img {
     height: auto;
   }
+  &.catalog-head.catalog-seals {
+    
+    img {
+      max-height: 350px;
+
+      @media (max-width: 1366px) {
+        max-height: 250px;
+      }
+    }
+  }
   @mixin mediaConf{
     @media (max-width: 900px) {
       min-height: auto !important;
@@ -160,7 +170,7 @@
     img {
       max-height: 450px;
       @media (max-width: 1366px) {
-        max-height: 250px;
+        max-height: 350px;
       }
     }
     > div {
