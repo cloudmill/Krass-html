@@ -27,9 +27,11 @@ let gulp = require("gulp"),
   filter = require("filter");
 
 //конфигурации
-let dirDist = "./dist/";
+// dist -> docs
+let dirDist = "./docs/";
 let dirApp = "./app/";
-let dirDocs = "./docs/";
+// docs -> docsDeprecated
+let dirDocs = "./docsDeprecated/";
 let _ = {
   dist: {
     images: dirDist + "images/",
