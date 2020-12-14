@@ -3,6 +3,7 @@ const APIKEY = "379d541b-4caa-4542-9d9c-da60da6f9abe";
 export default class Manager_maps {
   constructor() {
     this.init();
+    this.qwe = $(document.cloneNode($("#region")[0]));
   }
   init() {
     ymaps.ready(() => {
@@ -39,6 +40,7 @@ export default class Manager_maps {
     this.setOptionsMap(myMap, { geo: false });
   }
   createMap(center) {
+
     return new ymaps.Map(
       "map",
       {
@@ -277,6 +279,8 @@ export default class Manager_maps {
       that.whereBuyMap();
     };
     const changeHandler = () => {
+      console.log("test");
+      
       $.ajax({
         type: "POST",
         url: "http://krass.hellem.ru/whereBuy/",
@@ -286,13 +290,13 @@ export default class Manager_maps {
           select_sales_type: $(".whereBuy-filter-type-item input:checked").attr("id")
         },
         success: function(data) {
-          $("#region")
-            .find("option")
-            .remove();
-          let el = $(data)
-            .find("#region")
-            .find("option");
-          $("#region").append(el);
+          // $("#region")
+          //   .find("option")
+          //   .remove();
+          // let el = $(data)
+          //   .find("#region")
+          //   .find("option");
+          // $("#region").append(el);
           success(data);
         }
       });
