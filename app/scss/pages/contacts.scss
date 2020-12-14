@@ -195,9 +195,12 @@
       }
       &-img {
         margin-bottom: 40px;
-        max-width: 260px;
+        // max-width: 260px;
         img {
-          max-width: 100%;
+          // max-width: 100%;
+          max-width: 260px;
+          max-height: 290px;
+          display: block;
         }
       }
       &-name {
