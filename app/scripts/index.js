@@ -74,32 +74,36 @@ function expenseCalculator() {
   function inputControl(inputField, maxValue) {
     const inputFieldElement = inputField[0];
 
-    inputFieldElement.oninput = function (event) {
-      const lastInputStr = $(this).val();
-      const lastInputChar = lastInputStr.slice(-1);
-  
-      if (isDigit(lastInputChar)) {
-        if (lastInputStr.length == 1 && lastInputChar == "0") {
-          $(this).val("");
+    if (inputFieldElement) {
+      inputFieldElement.oninput = function (event) {
+        const lastInputStr = $(this).val();
+        const lastInputChar = lastInputStr.slice(-1);
+    
+        if (isDigit(lastInputChar)) {
+          if (lastInputStr.length == 1 && lastInputChar == "0") {
+            $(this).val("");
+          }
+        } else {
+          $(this).val(lastInputStr.substr(0, lastInputStr.length - 1));
         }
-      } else {
-        $(this).val(lastInputStr.substr(0, lastInputStr.length - 1));
-      }
 
-      const resultInputValue = $(this).val();
-      if (resultInputValue > maxValue) {
-        // $(this).val(lastInputStr.substr(0, lastInputStr.length - 1));
-        $(this).val(maxValue);
-      }
-    };
+        const resultInputValue = $(this).val();
+        if (resultInputValue > maxValue) {
+          // $(this).val(lastInputStr.substr(0, lastInputStr.length - 1));
+          $(this).val(maxValue);
+        }
+      };
+    }
 
-    inputFieldElement.onblur = function (event) {
-      const inputValue = $(this).val();
-  
-      if (!inputValue || inputValue === "0") {
-        $(this).val(1);
-      }
-    };
+    if (inputFieldElement) {
+      inputFieldElement.onblur = function (event) {
+        const inputValue = $(this).val();
+    
+        if (!inputValue || inputValue === "0") {
+          $(this).val(1);
+        }
+      };
+    }
   }
 
   function isDigit(char) {
