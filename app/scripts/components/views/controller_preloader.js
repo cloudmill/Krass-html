@@ -30,6 +30,10 @@ export default class Controller_preloader {
     $("html").removeClass("closeScroll");
     $("html").removeClass("loading");
     $("html").addClass("closing-preloader");
+
+    let left = $(".header-logo-box").offset().left;
+    $(".header-logo").css("left", left + "px");
+
     setTimeout(() => {
       $("html").addClass("loaded");
       $("html").removeClass("closing-preloader");
