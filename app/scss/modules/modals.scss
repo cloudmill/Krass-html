@@ -7,12 +7,15 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 1000;
+
   &.active {
     pointer-events: all;
+
     .modal-bg {
       opacity: 1;
     }
   }
+
   &-bg {
     position: absolute;
     z-index: -1;
@@ -24,12 +27,14 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.1);
   }
+
   &-content {
     width: 100%;
     height: 100%;
     position: relative;
     z-index: 1;
   }
+
   &-item {
     position: absolute;
     width: 100%;
@@ -37,13 +42,16 @@
     left: 0;
     top: 0;
     @include inLeftHide();
+
     &#header-burger {
       display: flex;
       justify-content: flex-end;
       @include inRightHide();
     }
+
     &.active {
       @include inLeftShow();
+
       &#header-burger {
         @include inRightShow();
       }
@@ -54,14 +62,38 @@
         opacity 0.5s ease;
       transform: scale(1.1);
       opacity: 0;
+
       &.show {
         transform: none;
         opacity: 1;
       }
     }
+
+    &.header-product {
+      .header-product-but {
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+
+    .header-product-content {
+      @media (max-width: 768px) {
+        padding-top: 0;
+      }
+
+      .header-product-but {
+        display: none;
+
+        @media (max-width: 768px) {
+          display: flex;
+        }
+      }
+    }
   }
+
   &-form {
-    &-content{
+    &-content {
       max-width: 100%;
       width: 520px;
       background-color: white;
@@ -69,11 +101,13 @@
       padding: 40px;
       position: relative;
     }
-    &-step{
-      &:not(.active){
+
+    &-step {
+      &:not(.active) {
         display: none;
       }
     }
+
     &-close {
       font-style: normal;
       font-weight: bold;
@@ -84,6 +118,7 @@
       color: #0054a4;
       display: inline-flex;
       align-items: center;
+
       &:after {
         content: "";
         display: block;
@@ -95,12 +130,14 @@
         transform-origin: center center;
         transition: transform $ease-main;
       }
+
       &:hover {
         &:after {
           transform: rotate(180deg);
         }
       }
     }
+
     &-title {
       font-style: normal;
       font-weight: bold;
@@ -111,7 +148,8 @@
       margin-top: 40px;
       margin-bottom: 30px;
     }
-    &-reset{
+
+    &-reset {
       position: absolute;
       bottom: 40px;
       left: 40px;

@@ -10,6 +10,8 @@ mixin burger-menu(json)
       .header-product-but
         span.header-product-close(data-modal-close) закрыть
       .header-product-content
+        .header-product-but
+          span.header-product-close(data-modal-close) закрыть
         +header-products(getData('product/category'))
     .modal-item#header-search
       .header-search-content.content
