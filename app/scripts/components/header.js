@@ -24,7 +24,7 @@ export default class Header {
   update() {
     let scrollTop = $(document).scrollTop();
     let d = scrollTop - this.pos;
-    if (scrollTop > 0) {
+    if (scrollTop > 0 || pageYOffset) {
       $(document).find(".header").addClass("scrolled");
     } else {
       $(document).find(".header").removeClass("scrolled");
@@ -39,6 +39,7 @@ export default class Header {
   }
   init() {
     this.pos = $(document).scrollTop();
+    this.update();
     $(document).on("scroll", () => {
       this.update();
     });
