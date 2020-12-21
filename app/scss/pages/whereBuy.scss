@@ -277,7 +277,7 @@
       z-index: 4;
 
       @media (max-width: 768px) {
-        // height: 420px;
+        max-height: 420px;
         width: 100%;
         box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.1);
       }
