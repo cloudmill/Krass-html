@@ -301,7 +301,7 @@ export default class Manager_maps {
             that.removeMap();
             that.whereBuyMap();
         };
-        const changeHandler = () => {
+        const changeHandler = (selectValue) => {
             $.ajax({
                 type: "POST",
                 url: "http://krass.hellem.ru/whereBuy/",
@@ -311,22 +311,27 @@ export default class Manager_maps {
                     select_sales_type: $(".whereBuy-filter-type-item input:checked").attr("id")
                 },
                 success: function(data) {
-                    // $("#region")
-                    //     .find("option")
-                    //     .remove();
-                    // let el = $(data)
-                    //     .find("#region")
-                    //     .find("option");
-                    // $("#region").append(el);
+                    $("#region")
+                        .find("option")
+                        .remove();
+                    let el = $(data)
+                        .find("#region")
+                        .find("option");
+                    $("#region").append(el);
+                    if ($('#region').find('option').filter(`[value="${selectValue}"]`).length > 0) {
+                        $('#region').val(selectValue);
+                    }
                     success(data);
                 }
             });
         };
         $(".whereBuy-filter-type-item").on("change", function() {
-            changeHandler();
+            const selectValue = $('#region').val();
+            changeHandler(selectValue);
         });
         $("#region").on("change", e => {
-            changeHandler();
+            const selectValue = $('#region').val();
+            changeHandler(selectValue);
         });
     }
 

@@ -202,6 +202,9 @@
               filter: grayscale(1) brightness(0) invert(1);
             }
           }
+          &:disabled + span {
+            opacity: 0.5;
+          }
         }
       }
     }
