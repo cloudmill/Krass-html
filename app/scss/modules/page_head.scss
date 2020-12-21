@@ -178,6 +178,7 @@
       align-items: flex-end;
       background: #e5f0f8;
       &::before {
+        z-index: 5;
         content: "";
         display: block;
         width: 100%;
@@ -208,6 +209,7 @@
       position: absolute;
       right: 40px;
       bottom: 0;
+      z-index: 10;
     }
   }
   &-title {

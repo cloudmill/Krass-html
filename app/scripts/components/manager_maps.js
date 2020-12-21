@@ -51,7 +51,7 @@ export default class Manager_maps {
         return new ymaps.Map(
             "map", {
                 center: center,
-                zoom: 9,
+                zoom: 5,
                 controls: ["geolocationControl"]
             }, {
                 searchControlProvider: "yandex#search"
@@ -119,7 +119,7 @@ export default class Manager_maps {
         myMap.geoObjects.add(this.clusterer);
         if ($(".map-data input").length) {
             myMap.setBounds(this.clusterer.getBounds(), {
-                checkZoomRange: true
+                checkZoomRange: true,
             });
         }
     }
@@ -289,19 +289,23 @@ export default class Manager_maps {
             $(".whereBuy-map")
                 .find(".whereBuy-map-list")
                 .remove();
+            $('.whereBuy-filter-type').remove();
             let shopEl = $(data).find(".whereBuy-map-list");
             $(".whereBuy-map-content").append(shopEl);
             let inpEl = $(data)
                 .find(".map-data")
                 .find("input");
+            let selectTypeBlock = $(data)
+                .find(".whereBuy-filter-type");
             $(".map-data")
                 .find("input")
                 .remove();
             $(".map-data").append(inpEl);
+            $(".whereBuy-filter-loc").after(selectTypeBlock);
             that.removeMap();
             that.whereBuyMap();
         };
-        const changeHandler = (selectValue) => {
+        const changeHandler = () => {
             $.ajax({
                 type: "POST",
                 url: "http://krass.hellem.ru/whereBuy/",
@@ -311,27 +315,22 @@ export default class Manager_maps {
                     select_sales_type: $(".whereBuy-filter-type-item input:checked").attr("id")
                 },
                 success: function(data) {
-                    $("#region")
-                        .find("option")
-                        .remove();
-                    let el = $(data)
-                        .find("#region")
-                        .find("option");
-                    $("#region").append(el);
-                    if ($('#region').find('option').filter(`[value="${selectValue}"]`).length > 0) {
-                        $('#region').val(selectValue);
-                    }
+                    // $("#region")
+                    //     .find("option")
+                    //     .remove();
+                    // let el = $(data)
+                    //     .find("#region")
+                    //     .find("option");
+                    // $("#region").append(el);
                     success(data);
                 }
             });
         };
-        $(".whereBuy-filter-type-item").on("change", function() {
-            const selectValue = $('#region').val();
-            changeHandler(selectValue);
+        $(document).on("change", '.whereBuy-filter-type-item', function() {
+            changeHandler();
         });
         $("#region").on("change", e => {
-            const selectValue = $('#region').val();
-            changeHandler(selectValue);
+            changeHandler();
         });
     }
 
