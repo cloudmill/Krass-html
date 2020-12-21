@@ -117,10 +117,13 @@ export default class Manager_maps {
             this.clusterer.add(myPlacemark);
         });
         myMap.geoObjects.add(this.clusterer);
-        if ($(".map-data input").length) {
-            myMap.setBounds(this.clusterer.getBounds(), {
-                checkZoomRange: true,
-            });
+        const MARKET_ZOOM = 15;
+        const marketsCount = $(".map-data input").length;
+        if (marketsCount) {
+            myMap.setBounds(this.clusterer.getBounds());
+            if (marketsCount === 1) {
+                myMap.setZoom(MARKET_ZOOM);
+            }
         }
     }
 
