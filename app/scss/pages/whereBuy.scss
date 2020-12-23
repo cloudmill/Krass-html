@@ -12,7 +12,7 @@
     &-loc {
       display: flex;
       .field {
-        width: auto;
+        // width: auto;
         @media (max-width: 768px) {
           .select2 {
             min-width: calc(100vw - 45px - 70px);

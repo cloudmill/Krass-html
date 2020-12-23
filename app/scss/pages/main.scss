@@ -963,6 +963,7 @@
       bottom: 50%;
       transform: translateY(75px);
       right: 15px;
+      display: none;
     }
     @include mediaSmallScreen {
       right: auto;

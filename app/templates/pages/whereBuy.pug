@@ -9,11 +9,11 @@ block content
   form.whereBuy-filter.content
     .whereBuy-filter-loc
       +fieldSelect('region','region',null,[[0,'Москва'],[1,"Санкт-Петербург"],[2,"Воронеж"]])
-      .whereBuy-filter-geo
-        span.blue
-          +icon('geo-blue','svg')
-        span.orange
-          +icon('geo-orange','svg')
+      //- .whereBuy-filter-geo
+      //-   span.blue
+      //-     +icon('geo-blue','svg')
+      //-   span.orange
+      //-     +icon('geo-orange','svg')
     .whereBuy-filter-type
       label.whereBuy-filter-type-item(for='type1')
         input(type="checkbox" name="type" id='type1' checked)
