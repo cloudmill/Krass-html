@@ -193,6 +193,11 @@
         align-items: center;
         justify-content: center;
         visibility: hidden;
+
+        @media (min-width: 1025px) {
+          min-height: 380px;
+        }
+
         &.swiper-slide-active{
           visibility: visible;
         }
