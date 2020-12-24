@@ -69,7 +69,8 @@
       }
     }
     &:nth-child(3) {
-      @media (max-width: 768px) {
+      // fix @media (max-width: 768px) {
+      @media (max-width: 1140px) {
         right: 50%;
         top: auto;
         bottom: 0;
