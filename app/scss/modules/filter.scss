@@ -73,7 +73,8 @@
       @media (max-width: 1140px) {
         right: 50%;
         top: auto;
-        bottom: 0;
+        // fix bottom: 0;
+        bottom: -10px;
         transform: translateX(50%);
       }
     }

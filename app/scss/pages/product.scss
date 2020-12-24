@@ -170,15 +170,25 @@
     }
   }
   &-imgs {
+    padding-left: 170px; // с учетом превью
+    padding-right: 20px;
     max-width: calc(50vw - 40px - 50px);
-    // min-height: 380px;
-    @media (max-width: 768px) {
-      // min-height: 380px;
-      max-width: calc(80vw - 40px - 50px);
+    // fix min-height: 380px;
+    
+    @media (max-width: 1024px) {
+      max-width: none;
     }
+    
+    @media (max-width: 768px) {
+      // fix max-width: calc(80vw - 40px - 50px);
+      padding-left: 100px; // с учетом уменьшения превью
+    }
+    
+    
     .swiper {
+      
       &-slide {
-        max-height: 650px;
+        // fix  max-height: 650px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -189,6 +199,13 @@
         img {
           max-width: 100%;
           max-height: 650px;
+
+          @each $breakpoint in (900px, 800px, 700px, 600px) {
+            
+            @media (max-height: #{$breakpoint}) {
+              max-height: #{650px - (1000px - $breakpoint)};
+            }
+          }
         }
       }
     }

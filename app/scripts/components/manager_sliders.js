@@ -61,6 +61,8 @@ export default class Manager_sliders {
     });
   }
   productSlider() {
+    let previewCount = $('.product-preview .swiper-slide').length;
+    previewCount = previewCount < 5 ? (previewCount < 3 ? 3 : previewCount) : 5;
     var mySwiper = new Swiper('#product-slider', {
       slidesPerView: 1,
       effect: 'fade',
@@ -69,7 +71,7 @@ export default class Manager_sliders {
         swiper: {
           el: '#product-preview',
           grabCursor: false,
-          slidesPerView: 5,
+          slidesPerView: previewCount,
           spaceBetween: 15,
           direction: 'vertical',
           breakpoints: {

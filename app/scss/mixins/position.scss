@@ -32,7 +32,7 @@
     grid-gap: 30px;
     grid-template-columns: repeat(3, 1fr);
   }
-  // START fix
+  // START fix 
   @media (max-width: 1140px) {
     grid-gap: 15px;
     grid-template-columns: repeat(2, 1fr);
