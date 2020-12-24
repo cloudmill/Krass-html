@@ -33,7 +33,7 @@ export default class Manager_maps {
         this.map = myMap;
         this.setPlaceMark(myMap, "whereBuy");
         this.setOptionsMap(myMap, {
-            geo: false
+            geo: true
         });
     }
 
