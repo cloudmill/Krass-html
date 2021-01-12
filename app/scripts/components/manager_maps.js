@@ -33,7 +33,7 @@ export default class Manager_maps {
         this.map = myMap;
         this.setPlaceMark(myMap, "whereBuy");
         this.setOptionsMap(myMap, {
-            geo: true
+            geo: false
         });
     }
 
@@ -120,12 +120,17 @@ export default class Manager_maps {
         const MARKET_ZOOM = 15;
         const marketsCount = $(".map-data input").length;
         if (marketsCount) {
-            myMap.setBounds(this.clusterer.getBounds());
+            myMap.setBounds(this.clusterer.getBounds(), {
+                checkZoomRange:true,
+                zoomMargin: 100
+            });
             if (marketsCount === 1) {
                 myMap.setZoom(MARKET_ZOOM);
             }
         }
+        console.log(this.clusterer.getBounds());
     }
+    
 
     async setRegions(myMap) {
         this.regions = null;
