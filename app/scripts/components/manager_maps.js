@@ -1,6 +1,13 @@
 import $ from "jquery";
 
 export default class Manager_maps {
+    showOnMap() {
+        return {
+            PLACEMARK_COORD: [51.661535, 39.200287],
+            PLACEMARK_IMAGE_SRC: 'images/map-pin-red.svg'
+        };
+    }
+    
     constructor() {
         this.init();
     }
@@ -22,10 +29,18 @@ export default class Manager_maps {
     contactsMap() {
         var myMap = this.createMap([55.751574, 37.573856]);
         this.map = myMap;
-        this.setPlaceMark(myMap, "contacts");
         this.setOptionsMap(myMap, {
             geo: false
         });
+
+        const placemarkSettings = {
+            iconLayout: 'default#image',
+            iconImageHref: this.showOnMap().PLACEMARK_IMAGE_SRC,
+            iconImageSize: [29, 45],
+            iconImageOffset: [-14, -45]
+        };
+        addImagePlacemarkToYandexMap(myMap, this.showOnMap().PLACEMARK_COORD, placemarkSettings);
+        myMap.setCenter(this.showOnMap().PLACEMARK_COORD, 13);
     }
 
     whereBuyMap() {
@@ -228,16 +243,22 @@ export default class Manager_maps {
         $(".show-in-map").click(function (e) {
             e.preventDefault();
 
-            // вывод карты
+            if (!$('.contacts-map').length) {
+                const placemarkSettings = {
+                    iconLayout: 'default#image',
+                    iconImageHref: that.showOnMap().PLACEMARK_IMAGE_SRC,
+                    iconImageSize: [29, 45],
+                    iconImageOffset: [-14, -45]
+                };
+                addImagePlacemarkToYandexMap(myMap, that.showOnMap().PLACEMARK_COORD, placemarkSettings);
+                myMap.setCenter(that.showOnMap().PLACEMARK_COORD, 13);
+
+                $("[href='#map-block']").click();
+            }
+
             $("html, body").animate({
                 scrollTop: $("#map").offset().top - 90
-            }, 500);
-            $("[href='#map-block']").click();
-
-            // добавление метки на карту
-            addImagePlacemarkToYandexMap(myMap, [51.661535, 39.200287]);
-            // позиционирование карты на координате (координаты, зум)
-            myMap.setCenter([51.661535, 39.200287], 13);
+            }, 500); 
         });
     }
 
@@ -355,18 +376,13 @@ export default class Manager_maps {
 // ПАРАМЕТРЫ:
 //      yandexMap - экземпляр карты (new ymaps.Map(...))
 //      coordinates - координаты (массив - [широта, долгота], широта/долгота - вещественные числа)
-//      placemarkSettings - настройки метки (тема, ссылка на изображение итп)
 
-function addImagePlacemarkToYandexMap(yandexMap, coordinates, placemarkSettings = {
-    iconLayout: 'default#image',
-    iconImageHref: 'images/map-pin-red.svg',
-    iconImageSize: [29, 45],
-    iconImageOffset: [-14, -45]
-}) {
+function addImagePlacemarkToYandexMap(yandexMap, coordinates, placemarkSettings) {
     console.log(
         'YANDEX MAPS: ADD PLACEMARK',
         yandexMap,
-        coordinates
+        coordinates,
+        placemarkSettings
     );
 
     const placemark = new ymaps.Placemark(coordinates, {}, placemarkSettings);

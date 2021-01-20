@@ -346,9 +346,14 @@
         justify-content: space-between;
       }
       & + .outside {
+        display: flex;
+        justify-content: center;
+        
         img {
           margin: 0 !important;
-          margin-bottom: 50px !important;
+          // margin-bottom: 50px !important;
+          margin-bottom: 30px !important;
+          max-width: 100%;
         }
       }
     }
