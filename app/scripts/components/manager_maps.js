@@ -50,27 +50,27 @@ export default class Manager_maps {
     createMap(center) {
         return new ymaps.Map(
             "map", {
-                center: center,
-                zoom: 5,
-                controls: ["geolocationControl"]
-            }, {
-                searchControlProvider: "yandex#search"
-            }
+            center: center,
+            zoom: 5,
+            controls: ["geolocationControl"]
+        }, {
+            searchControlProvider: "yandex#search"
+        }
         );
     }
 
     clustererInit() {
         var clusterIcons = [{
-                    href: `/local/templates/main/images/map-pin-black.svg`,
-                    size: [29, 45],
-                    offset: [-14, -45]
-                },
-                {
-                    href: `/local/templates/main/images/map-pin-black.svg`,
-                    size: [29, 45],
-                    offset: [-14, -45]
-                }
-            ],
+            href: `/local/templates/main/images/map-pin-black.svg`,
+            size: [29, 45],
+            offset: [-14, -45]
+        },
+        {
+            href: `/local/templates/main/images/map-pin-black.svg`,
+            size: [29, 45],
+            offset: [-14, -45]
+        }
+        ],
             MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
                 '<div class="map-clusterer">{{ properties.geoObjects.length }}</div>'
             );
@@ -121,7 +121,7 @@ export default class Manager_maps {
         const marketsCount = $(".map-data input").length;
         if (marketsCount) {
             myMap.setBounds(this.clusterer.getBounds(), {
-                checkZoomRange:true,
+                checkZoomRange: true,
                 zoomMargin: 100
             });
             if (marketsCount === 1) {
@@ -130,7 +130,7 @@ export default class Manager_maps {
         }
         console.log(this.clusterer.getBounds());
     }
-    
+
 
     async setRegions(myMap) {
         this.regions = null;
@@ -201,8 +201,8 @@ export default class Manager_maps {
                 setTimeout(() => {
                     this.regionCenter(
                         $("#region")
-                        .find(":selected")
-                        .text()
+                            .find(":selected")
+                            .text()
                     );
                 }, 100);
             }
@@ -225,18 +225,19 @@ export default class Manager_maps {
         window.searchControl = searchControl;
         myMap.controls.add(searchControl);
 
-        $(".show-in-map").click(function(e) {
+        $(".show-in-map").click(function (e) {
             e.preventDefault();
+
+            // вывод карты
             $("html, body").animate({
                 scrollTop: $("#map").offset().top - 90
-            }, 500); // анимируем скроолинг к элементу scroll_el
-            let search = $(this).attr("data-search");
-            if ($("#map-block #map").length > 0) {
-                $("[href='#map-block']").click();
-                that.search(search);
-            } else {
-                that.search(search);
-            }
+            }, 500);
+            $("[href='#map-block']").click();
+
+            // добавление метки на карту
+            addImagePlacemarkToYandexMap(myMap, [51.661535, 39.200287]);
+            // позиционирование карты на координате (координаты, зум)
+            myMap.setCenter([51.661535, 39.200287], 13);
         });
     }
 
@@ -263,7 +264,7 @@ export default class Manager_maps {
         geo: true
     }) {
         myMap.behaviors.disable("scrollZoom");
-        myMap.events.add("click", function() {
+        myMap.events.add("click", function () {
             myMap.balloon.close();
         });
         myMap.controls.add(
@@ -322,7 +323,7 @@ export default class Manager_maps {
                     select_region: $("#region").val(),
                     select_sales_type: $(".whereBuy-filter-type-item input:checked").attr("id")
                 },
-                success: function(data) {
+                success: function (data) {
                     // $("#region")
                     //     .find("option")
                     //     .remove();
@@ -334,7 +335,7 @@ export default class Manager_maps {
                 }
             });
         };
-        $(document).on("change", '.whereBuy-filter-type-item', function() {
+        $(document).on("change", '.whereBuy-filter-type-item', function () {
             changeHandler();
         });
         $("#region").on("change", e => {
@@ -345,4 +346,30 @@ export default class Manager_maps {
     search(str) {
         window.searchControl.search(str);
     }
+}
+
+
+// ФУНКЦИЯ:
+//      addPlacemarkToMap - добавить метку на карту
+//
+// ПАРАМЕТРЫ:
+//      yandexMap - экземпляр карты (new ymaps.Map(...))
+//      coordinates - координаты (массив - [широта, долгота], широта/долгота - вещественные числа)
+//      placemarkSettings - настройки метки (тема, ссылка на изображение итп)
+
+function addImagePlacemarkToYandexMap(yandexMap, coordinates, placemarkSettings = {
+    iconLayout: 'default#image',
+    iconImageHref: 'images/map-pin-red.svg',
+    iconImageSize: [29, 45],
+    iconImageOffset: [-14, -45]
+}) {
+    console.log(
+        'YANDEX MAPS: ADD PLACEMARK',
+        yandexMap,
+        coordinates
+    );
+
+    const placemark = new ymaps.Placemark(coordinates, {}, placemarkSettings);
+
+    yandexMap.geoObjects.add(placemark);
 }
