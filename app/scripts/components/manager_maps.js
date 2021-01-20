@@ -3,8 +3,9 @@ import $ from "jquery";
 export default class Manager_maps {
     showOnMap() {
         return {
-            PLACEMARK_COORD: [51.661535, 39.200287],
-            PLACEMARK_IMAGE_SRC: 'images/map-pin-red.svg'
+            PLACEMARK_COORD: [55.617891, 37.970314],
+            PLACEMARK_IMAGE_SRC: '/local/templates/main/images/map-pin-red.svg',
+            PLACEMARK_ZOOM: 16
         };
     }
     
@@ -40,7 +41,7 @@ export default class Manager_maps {
             iconImageOffset: [-14, -45]
         };
         addImagePlacemarkToYandexMap(myMap, this.showOnMap().PLACEMARK_COORD, placemarkSettings);
-        myMap.setCenter(this.showOnMap().PLACEMARK_COORD, 13);
+        myMap.setCenter(this.showOnMap().PLACEMARK_COORD, this.showOnMap().PLACEMARK_ZOOM);
     }
 
     whereBuyMap() {
@@ -251,7 +252,7 @@ export default class Manager_maps {
                     iconImageOffset: [-14, -45]
                 };
                 addImagePlacemarkToYandexMap(myMap, that.showOnMap().PLACEMARK_COORD, placemarkSettings);
-                myMap.setCenter(that.showOnMap().PLACEMARK_COORD, 13);
+                myMap.setCenter(that.showOnMap().PLACEMARK_COORD, that.showOnMap().PLACEMARK_ZOOM);
 
                 $("[href='#map-block']").click();
             }
