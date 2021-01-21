@@ -167,6 +167,7 @@ export default class Manager_forms {
       $(select).select2({
         minimumResultsForSearch: Infinity,
         dropdownParent: $(".selectArea"),
+        width: 'style'
       });
       $(select).on("select2:open", function (e) {
         $(".selectArea").addClass("active");
