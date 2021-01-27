@@ -185,7 +185,7 @@
         grid-column-gap: 30px;
       }
       @media (max-width: 768px) {
-        display: flex;
+        display: block;
       }
     }
     &-item {
@@ -228,6 +228,13 @@
           font-size: 16px;
           line-height: 160%;
           color: #cc3e1e;
+        }
+      }
+
+      @media (max-width: 768px) {
+        
+        &:not(:first-child) {
+          margin-top: 40px;
         }
       }
     }

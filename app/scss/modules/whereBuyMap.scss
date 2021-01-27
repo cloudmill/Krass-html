@@ -67,4 +67,11 @@
       display: none;
     }
   }
+
+  .field-select {
+
+    @media (min-width: 1025px) {
+      max-width: 290px;
+    }
+  }
 }
