@@ -177,8 +177,9 @@
       display: flex;
       align-items: flex-end;
       background: #e5f0f8;
+      z-index: 0;
       &::before {
-        z-index: 5;
+        z-index: -1;
         content: "";
         display: block;
         width: 100%;
