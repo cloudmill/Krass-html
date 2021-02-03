@@ -31,7 +31,7 @@ export default class Manager_maps {
         var myMap = this.createMap([55.751574, 37.573856]);
         this.map = myMap;
         this.setOptionsMap(myMap, {
-            geo: false
+            geo: true
         });
 
         const placemarkSettings = {
@@ -45,11 +45,25 @@ export default class Manager_maps {
     }
 
     whereBuyMap() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const region = urlParams.get('region');
+        const salesType = urlParams.get('sales_type');
+        const regionId = urlParams.get('regionId');
+
+        let geoSettings = null;
+
+        if (region !== null && salesType !== null && regionId !== null) {
+            geoSettings = false;
+        } else {
+            geoSettings = true;
+        }
+
         var myMap = this.createMap([55.751574, 37.573856]);
         this.map = myMap;
         this.setPlaceMark(myMap, "whereBuy");
         this.setOptionsMap(myMap, {
-            geo: false
+            geo: geoSettings
         });
     }
 
@@ -59,7 +73,7 @@ export default class Manager_maps {
         this.map = myMap;
         this.setPlaceMark(myMap, "modal");
         this.setOptionsMap(myMap, {
-            geo: false
+            geo: true
         });
     }
 
@@ -264,6 +278,7 @@ export default class Manager_maps {
     }
 
     linkedWithPointForWhereBuy(myMap, placeMark) {
+        console.log(placeMark);
         let pointTarget = $(".whereBuy-map-item[data-id=" + placeMark.id + "]");
         pointTarget.click(() => {
             placeMark.events.fire("click", {
@@ -273,6 +288,7 @@ export default class Manager_maps {
             myMap.panTo([placeMark.geometry.getCoordinates()], {
                 flying: true
             });
+            console.log(placeMark.geometry.getCoordinates());
         });
         placeMark.events.add("click", e => {
             //Активация элелмента в списке и проктутка до него
@@ -339,7 +355,7 @@ export default class Manager_maps {
         const changeHandler = () => {
             $.ajax({
                 type: "POST",
-                url: "http://krass.hellem.ru/whereBuy/",
+                url: "/whereBuy/",
                 dataType: "html",
                 data: {
                     select_region: $("#region").val(),
