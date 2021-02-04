@@ -31,7 +31,7 @@ export default class Manager_maps {
         var myMap = this.createMap([55.751574, 37.573856]);
         this.map = myMap;
         this.setOptionsMap(myMap, {
-            geo: true
+            geo: false
         });
 
         const placemarkSettings = {
