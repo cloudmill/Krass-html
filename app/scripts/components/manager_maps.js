@@ -48,12 +48,10 @@ export default class Manager_maps {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const region = urlParams.get('region');
-        const salesType = urlParams.get('sales_type');
-        const regionId = urlParams.get('regionId');
 
         let geoSettings = null;
 
-        if (region !== null && salesType !== null && regionId !== null) {
+        if (region !== null) {
             geoSettings = false;
         } else {
             geoSettings = true;
@@ -73,7 +71,7 @@ export default class Manager_maps {
         this.map = myMap;
         this.setPlaceMark(myMap, "modal");
         this.setOptionsMap(myMap, {
-            geo: true
+            geo: false
         });
     }
 
@@ -278,7 +276,6 @@ export default class Manager_maps {
     }
 
     linkedWithPointForWhereBuy(myMap, placeMark) {
-        console.log(placeMark);
         let pointTarget = $(".whereBuy-map-item[data-id=" + placeMark.id + "]");
         pointTarget.click(() => {
             placeMark.events.fire("click", {
@@ -288,7 +285,6 @@ export default class Manager_maps {
             myMap.panTo([placeMark.geometry.getCoordinates()], {
                 flying: true
             });
-            console.log(placeMark.geometry.getCoordinates());
         });
         placeMark.events.add("click", e => {
             //Активация элелмента в списке и проктутка до него
