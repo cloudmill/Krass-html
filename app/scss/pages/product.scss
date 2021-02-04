@@ -630,6 +630,7 @@
       }
     }
     &-name {
+      display: block;
       font-style: normal;
       font-weight: bold;
       font-size: 16px;
@@ -647,6 +648,7 @@
       justify-content: space-between;
     }
     &-type {
+      display: block;
       width: 45px;
       height: 58px;
       position: relative;
