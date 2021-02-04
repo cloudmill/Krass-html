@@ -45,11 +45,23 @@ export default class Manager_maps {
     }
 
     whereBuyMap() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const region = urlParams.get('region');
+
+        let geoSettings = null;
+
+        if (region !== null) {
+            geoSettings = false;
+        } else {
+            geoSettings = true;
+        }
+
         var myMap = this.createMap([55.751574, 37.573856]);
         this.map = myMap;
         this.setPlaceMark(myMap, "whereBuy");
         this.setOptionsMap(myMap, {
-            geo: false
+            geo: geoSettings
         });
     }
 
@@ -339,7 +351,7 @@ export default class Manager_maps {
         const changeHandler = () => {
             $.ajax({
                 type: "POST",
-                url: "http://krass.hellem.ru/whereBuy/",
+                url: "/whereBuy/",
                 dataType: "html",
                 data: {
                     select_region: $("#region").val(),

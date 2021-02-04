@@ -263,12 +263,8 @@ export default class Manager_forms {
 
   initSertTabsChange() {
     if ($(".sert-block").length > 0) {
-      $("#tabs-trigger").change(function () {
-        console.log($("#tabs-trigger").val());
-        $(".sert-block").removeClass("active");
-        $(".sert-block[data-target=" + $("#tabs-trigger").val() + "]").addClass(
-          "active"
-        );
+      $('[data-type=certificates_select_sections]').on('change', function () {
+        window.location.href = $(this).val();
       });
     }
   }
